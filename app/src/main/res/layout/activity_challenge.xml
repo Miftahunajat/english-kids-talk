@@ -1,4 +1,5 @@
 <layout>
+    <!--author : rachmad-->
     <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="fill_parent"
@@ -12,7 +13,7 @@
         android:background="#eee"
         android:orientation="horizontal">
 
-            <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="50dp"
                 android:layout_height="fill_parent"
                 android:src="@drawable/dragon"/>
