@@ -16,8 +16,6 @@ public class SplashScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivitySplashScreenBinding binding = DataBindingUtil.setContentView(this,R.layout.activity_splash_screen);
-        binding.ivBackgroundSplash.setOnClickListener(view -> {
-            startActivity(new Intent(SplashScreenActivity.this,));
-        });
+//        binding.ivBackgroundSplash.setOnClickListener(view -> startActivity(new Intent(SplashScreenActivity.this,)));
     }
 }

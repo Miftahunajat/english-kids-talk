@@ -9,8 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".MainActivity">
-        </activity>
+        <activity android:name=".MainActivity"></activity>
         <activity android:name=".ui.splashscreen.SplashScreenActivity" />
         <activity android:name=".ui.welcomescreen.WelcomeScreenActivity" />
         <activity
@@ -23,6 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.menuselect.MenuSelectActivity"
+            android:label="@string/title_activity_menu_select"></activity>
     </application>
 
 </manifest>

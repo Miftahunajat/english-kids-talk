@@ -1,5 +1,6 @@
 package com.squishydev.setoz.englishkidstalk.ui.levelselect;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.squishydev.setoz.englishkidstalk.R;
+import com.squishydev.setoz.englishkidstalk.databinding.FragmentLevelSelectEasyBinding;
 
 /**
  * Created by miftahun on 9/18/18.
@@ -46,8 +48,8 @@ public class LevelSelectFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         int index = getArguments().getInt(ARG_SECTION_NUMBER);
-        Log.v("Debug",index + "");
-        View rootView = inflater.inflate(mLayouts[index - 1], container, false);
+        FragmentLevelSelectEasyBinding binding = DataBindingUtil.inflate(inflater,mLayouts[index - 1],container,false);
+        View rootView = binding.getRoot();
         return rootView;
     }
 }

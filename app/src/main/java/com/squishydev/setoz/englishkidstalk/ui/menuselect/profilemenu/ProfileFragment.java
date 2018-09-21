@@ -1,4 +1,4 @@
-package com.squishydev.setoz.englishkidstalk.ui.profile;
+package com.squishydev.setoz.englishkidstalk.ui.menuselect.profilemenu;
 
 import android.content.Context;
 import android.net.Uri;
