@@ -9,22 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".ui.splashscreen.SplashScreenActivity" />
-        <activity android:name=".ui.welcomescreen.WelcomeScreenActivity" />
-        <activity
-            android:name=".ui.levelselect.LevelSelectActivity"
-            android:label="@string/title_activity_level_select"
-            android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".MainActivity" />
+        <activity android:name=".ui.splashscreen.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.welcomescreen.WelcomeScreenActivity" />
+        <activity
+            android:name=".ui.levelselect.LevelSelectActivity"
+            android:label="@string/title_activity_level_select"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.menuselect.MenuSelectActivity"
-            android:label="@string/title_activity_menu_select"></activity>
+            android:label="@string/title_activity_menu_select" />
+        <activity android:name=".ui.inputnama.InputNamaActivity" />
+        <activity android:name=".ui.pilihavatar.PilihAvatar"></activity>
     </application>
 
 </manifest>
