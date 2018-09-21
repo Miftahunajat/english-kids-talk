@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.squishydev.setoz.englishkidstalk">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -26,7 +29,8 @@
             android:name=".ui.menuselect.MenuSelectActivity"
             android:label="@string/title_activity_menu_select" />
         <activity android:name=".ui.inputnama.InputNamaActivity" />
-        <activity android:name=".ui.pilihavatar.PilihAvatar"></activity>
+        <activity android:name=".ui.pilihavatar.PilihAvatarActivity" />
+        <activity android:name=".ui.konfirmasiakun.KonfirmasiAkunActivity"></activity>
     </application>
 
 </manifest>
