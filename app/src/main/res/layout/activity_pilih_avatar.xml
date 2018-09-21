@@ -14,7 +14,7 @@
         app:srcCompat="@drawable/cewek" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_masuk"
         android:layout_width="124dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

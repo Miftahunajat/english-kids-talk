@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.squishydev.setoz.englishkidstalk.Config;
+import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.AppDataManager;
 import com.squishydev.setoz.englishkidstalk.data.DataManager;
 import com.squishydev.setoz.englishkidstalk.data.db.AppDbHelper;
@@ -21,6 +22,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 /**
  * Created by miftahun on 6/11/18.
@@ -84,5 +86,12 @@ public class ApplicationModule {
     @PreferenceInfo
     String providePreferenceName() {
         return Config.PREF_NAME;
+    }
+
+    @Provides
+    @Singleton
+    CalligraphyConfig provideCalligraphyDefaultConfig() {
+        return new CalligraphyConfig.Builder()
+                .build();
     }
 }

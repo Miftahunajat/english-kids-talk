@@ -30,7 +30,7 @@ ext {
     // App dependencies
 //    supportLibraryVersion = '27.1.1'
 //    gsonVersion = '2.8.0'
-//    calligraphyVersion = '2.2.0'
+    calligraphyVersion = '2.2.0'
 //    glideVersion = '3.7.0'
 //
     rx2FastAndroidNetworking = '1.0.1'
