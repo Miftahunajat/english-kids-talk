@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/latar_dua">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp"
+        app:srcCompat="@drawable/ali" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/acme"
+        android:text="Hai"
+        android:textColor=""
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        android:fontFamily="@font/acme"
+        android:text="Ali Ali Ali"
+        android:textColor="#590B08"
+        android:textSize="34sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/aref_ruqaa_bold"
+        android:text="Apa kamu mau buat akun ?"
+        android:textColor="#590B08"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginRight="150dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="505dp"
+        android:background="@drawable/button1"
+        android:textColor="#FFFF"
+        android:textSize="20sp"
+        android:text="Iya" />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginRight="150dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="560dp"
+        android:background="@drawable/button1"
+        android:textColor="#FFFF"
+        android:textSize="20sp"
+        android:text="Tidak" />
+
+</android.support.constraint.ConstraintLayout>
