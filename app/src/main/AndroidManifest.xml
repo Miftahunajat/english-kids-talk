@@ -23,7 +23,6 @@
         <activity android:name=".ui.welcomescreen.WelcomeScreenActivity" />
         <activity
             android:name=".ui.levelselect.LevelSelectActivity"
-            android:label="@string/title_activity_level_select"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.menuselect.MenuSelectActivity"

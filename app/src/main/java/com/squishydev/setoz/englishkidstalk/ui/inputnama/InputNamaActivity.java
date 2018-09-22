@@ -15,8 +15,7 @@ public class InputNamaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityInputNamaBinding binding =
-                DataBindingUtil.setContentView(this, R.layout.activity_input_nama);
+        ActivityInputNamaBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_input_nama);
 
         binding.btnNext.setOnClickListener(v ->{
             startActivity(new Intent(InputNamaActivity.this, PilihAvatarActivity.class));
