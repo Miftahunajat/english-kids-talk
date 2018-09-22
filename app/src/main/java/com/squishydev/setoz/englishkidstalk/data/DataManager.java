@@ -1,12 +1,16 @@
 package com.squishydev.setoz.englishkidstalk.data;
 
+import com.squishydev.setoz.englishkidstalk.data.db.DbHelper;
+import com.squishydev.setoz.englishkidstalk.data.network.ApiHelper;
+import com.squishydev.setoz.englishkidstalk.data.prefs.PreferencesHelper;
+
 /**
  * Created by miftahun on 9/15/18.
  * Email : miftahunajat@gmail.com
  * Github : https://github.com/miftahunajat/
  */
 
-public interface DataManager {
+public interface DataManager extends ApiHelper,DbHelper,PreferencesHelper {
 
     enum LoggedInMode {
 

@@ -20,6 +20,5 @@ public class SplashScreenActivity extends AppCompatActivity {
         binding.imageView16.setOnClickListener(view -> {
             startActivity(new Intent(SplashScreenActivity.this, InputNamaActivity.class));
         });
-//        binding.ivBackgroundSplash.setOnClickListener(view -> startActivity(new Intent(SplashScreenActivity.this,)));
     }
 }

@@ -8,7 +8,7 @@ import android.os.Bundle;
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivityInputNamaBinding;
 import com.squishydev.setoz.englishkidstalk.ui.levelselect.LevelSelectActivity;
-import com.squishydev.setoz.englishkidstalk.ui.pilihavatar.PilihAvatar;
+import com.squishydev.setoz.englishkidstalk.ui.pilihavatar.PilihAvatarActivity;
 
 public class InputNamaActivity extends AppCompatActivity {
 
@@ -19,7 +19,7 @@ public class InputNamaActivity extends AppCompatActivity {
                 DataBindingUtil.setContentView(this, R.layout.activity_input_nama);
 
         binding.btnNext.setOnClickListener(v ->{
-            startActivity(new Intent(InputNamaActivity.this, LevelSelectActivity.class));
+            startActivity(new Intent(InputNamaActivity.this, PilihAvatarActivity.class));
         });
     }
 }
