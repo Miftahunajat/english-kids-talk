@@ -25,4 +25,25 @@ public class AppPreferencesHelper implements PreferencesHelper {
                                 @PreferenceInfo String prefFileName) {
         mPrefs = context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE);
     }
+
+    @Override
+    public void simpanNama(String nama) {
+        mPrefs.edit().putString("nama", nama).apply();
+    }
+
+    @Override
+    public String getNama() {
+        return mPrefs.getString("nama", null);
+    }
+
+    @Override
+    public void setAvatar(int avatar) {
+        mPrefs.edit().putInt("avatar", avatar).apply();
+    }
+
+    @Override
+    public int getAvatar() {
+        return mPrefs.getInt("avatar",0);
+    }
+
 }

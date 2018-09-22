@@ -32,6 +32,7 @@
         tools:text="Kenalan Dulu Yuk" />
 
     <EditText
+        android:id="@+id/et_nama"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:layout_marginLeft="50dp"

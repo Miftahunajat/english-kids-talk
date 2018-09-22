@@ -17,5 +17,10 @@ import javax.inject.Singleton;
 
 public interface PreferencesHelper {
 
+    void simpanNama(String nama);
+    String getNama();
+
+    void setAvatar(int avatar);
+    int getAvatar();
 
 }

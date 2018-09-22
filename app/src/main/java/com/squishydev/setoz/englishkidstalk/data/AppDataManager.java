@@ -36,4 +36,24 @@ public class AppDataManager implements DataManager {
         mPreferencesHelper = preferencesHelper;
         mApiHelper = apiHelper;
     }
+
+    @Override
+    public void simpanNama(String nama) {
+        mPreferencesHelper.simpanNama(nama);
+    }
+
+    @Override
+    public String getNama() {
+        return mPreferencesHelper.getNama();
+    }
+
+    @Override
+    public void setAvatar(int avatar) {
+        mPreferencesHelper.setAvatar(avatar);
+    }
+
+    @Override
+    public int getAvatar() {
+        return mPreferencesHelper.getAvatar();
+    }
 }

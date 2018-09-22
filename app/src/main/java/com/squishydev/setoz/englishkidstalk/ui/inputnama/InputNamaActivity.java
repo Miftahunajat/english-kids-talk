@@ -18,7 +18,8 @@ public class InputNamaActivity extends AppCompatActivity {
         ActivityInputNamaBinding binding =
                 DataBindingUtil.setContentView(this, R.layout.activity_input_nama);
 
-        binding.btnNext.setOnClickListener(v ->{
+        binding.btnNext.setOnClickListener(v -> {
+
             startActivity(new Intent(InputNamaActivity.this, PilihAvatarActivity.class));
         });
     }
