@@ -1,4 +1,4 @@
-package com.squishydev.setoz.englishkidstalk.ui.menuselect.itemstoremenu;
+package com.squishydev.setoz.englishkidstalk.ui.menuselect.mainmenu;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,17 +12,17 @@ import com.squishydev.setoz.englishkidstalk.ui.base.BaseFragment;
 
 import javax.inject.Inject;
 
-public class ItemStoreFragment extends BaseFragment implements
-        ItemStoreMvpView {
+public class MainMenuFragment extends BaseFragment implements
+        MainMenuMvpView {
 
-    private static final String TAG = "ItemStoreFragment";
+    private static final String TAG = "MainMenuFragment";
 
     @Inject
-    ItemStoreMvpPresenter<ItemStoreMvpView> mPresenter;
+    MainMenuMvpPresenter<MainMenuMvpView> mPresenter;
 
-    public static ItemStoreFragment newInstance() {
+    public static MainMenuFragment newInstance() {
         Bundle args = new Bundle();
-        ItemStoreFragment fragment = new ItemStoreFragment();
+        MainMenuFragment fragment = new MainMenuFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -31,7 +31,7 @@ public class ItemStoreFragment extends BaseFragment implements
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_item_store, container, false);
+        View view = inflater.inflate(R.layout.fragment_main, container, false);
 
         ActivityComponent component = getActivityComponent();
         if (component != null) {

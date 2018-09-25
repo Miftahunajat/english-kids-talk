@@ -13,13 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".MainActivity" />
-        <activity android:name=".ui.splashscreen.SplashScreenActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".ui.welcomescreen.WelcomeScreenActivity" />
         <activity
             android:name=".ui.levelselect.LevelSelectActivity"
@@ -30,6 +23,12 @@
         <activity android:name=".ui.inputnama.InputNamaActivity" />
         <activity android:name=".ui.pilihavatar.PilihAvatarActivity" />
         <activity android:name=".ui.konfirmasiakun.KonfirmasiAkunActivity"></activity>
+        <activity android:name=".ui.splashscreen.SplashScreenActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

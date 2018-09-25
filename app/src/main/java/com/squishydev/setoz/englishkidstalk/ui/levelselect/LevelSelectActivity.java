@@ -9,8 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 
 import com.squishydev.setoz.englishkidstalk.R;
-
-import java.util.Set;
+import com.squishydev.setoz.englishkidstalk.ui.levelselect.fragment.LevelSelectFragment;
 
 public class LevelSelectActivity extends AppCompatActivity {
 
