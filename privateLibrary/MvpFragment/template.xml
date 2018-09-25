@@ -1,0 +1,18 @@
+<template format="4"
+        revision="1"
+        name="Kencum Template MVP Framgnt"
+        description="MEmbyuat sebuah mvp fragment">
+
+    <category value="Other"/>
+
+    <parameter id="className"
+        name="ClassName Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="MvpFunction"
+        help="Nama Class"/>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>

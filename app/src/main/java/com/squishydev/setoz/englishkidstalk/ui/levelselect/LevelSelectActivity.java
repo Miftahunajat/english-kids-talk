@@ -1,7 +1,6 @@
 package com.squishydev.setoz.englishkidstalk.ui.levelselect;
 
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 
 import com.squishydev.setoz.englishkidstalk.R;
+import com.squishydev.setoz.englishkidstalk.ui.levelselect.fragment.LevelSelectFragment;
 
 public class LevelSelectActivity extends AppCompatActivity {
 
@@ -36,11 +36,10 @@ public class LevelSelectActivity extends AppCompatActivity {
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-
-        // Set up the ViewPager with the sections adapter.
+//
+//         Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-
     }
 
     /**
@@ -62,7 +61,7 @@ public class LevelSelectActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a LevelSelectFragment (defined as a static inner class below).
-            return LevelSelectFragment.newInstance(position + 1);
+            return LevelSelectFragment.newInstance(position);
         }
 
         @Override
