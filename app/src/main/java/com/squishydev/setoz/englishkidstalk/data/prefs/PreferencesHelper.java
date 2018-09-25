@@ -17,5 +17,4 @@ import javax.inject.Singleton;
 
 public interface PreferencesHelper {
 
-
 }

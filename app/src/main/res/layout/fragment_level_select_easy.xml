@@ -74,6 +74,7 @@
         android:src="@drawable/dragon_easy"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/view_1"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintVertical_bias="1.0"
         app:layout_constraintVertical_chainStyle="packed"
         tools:layout_editor_absoluteX="0dp" />

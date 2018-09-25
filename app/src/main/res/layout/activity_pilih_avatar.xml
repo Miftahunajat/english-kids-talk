@@ -6,7 +6,7 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/avatar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
@@ -26,7 +26,7 @@
         android:textSize="24sp" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_nama_avatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -36,7 +36,7 @@
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView2_lala"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -47,7 +47,7 @@
         android:textSize="30sp" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/btn_next_avatar"
         android:layout_width="45dp"
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"
@@ -57,11 +57,11 @@
         tools:background="@drawable/btn_next_karakter_background" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/btn_prev_avatar"
         android:layout_width="45dp"
         android:layout_height="40dp"
-        android:layout_alignTop="@+id/imageButton"
-        android:layout_marginBottom="211dp"
+        android:layout_alignTop="@+id/btn_next_avatar"
+        android:layout_toLeftOf="@+id/textView2"
         android:layout_toStartOf="@+id/textView2"
         android:background="@drawable/btn_next_karakter_background"
         app:srcCompat="@drawable/ic_keyboard_arrow_left_black_24dp" />
