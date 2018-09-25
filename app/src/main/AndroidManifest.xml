@@ -23,14 +23,13 @@
         <activity android:name=".ui.welcomescreen.WelcomeScreenActivity" />
         <activity
             android:name=".ui.levelselect.LevelSelectActivity"
-            android:label="@string/title_activity_level_select"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.menuselect.MenuSelectActivity"
             android:label="@string/title_activity_menu_select" />
-        <activity android:name=".ui.inputnama.InputNamaActivity" />
         <activity android:name=".ui.pilihavatar.PilihAvatarActivity" />
         <activity android:name=".ui.konfirmasiakun.KonfirmasiAkunActivity"></activity>
+        <activity android:name=".ui.buatAkun.BuatAkunActivity" />
     </application>
 
 </manifest>

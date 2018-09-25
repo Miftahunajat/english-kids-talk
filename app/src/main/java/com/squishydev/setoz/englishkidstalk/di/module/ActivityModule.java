@@ -6,6 +6,10 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import com.squishydev.setoz.englishkidstalk.di.ActivityContext;
 import com.squishydev.setoz.englishkidstalk.di.PerActivity;
+import com.squishydev.setoz.englishkidstalk.ui.buatAkun.BuatAkunMvpPresenter;
+import com.squishydev.setoz.englishkidstalk.ui.buatAkun.BuatAkunMvpView;
+import com.squishydev.setoz.englishkidstalk.ui.inputnama.InputNamaMvpPresenter;
+import com.squishydev.setoz.englishkidstalk.ui.inputnama.InputNamaMvpView;
 
 import dagger.Module;
 import dagger.Provides;
@@ -48,4 +52,17 @@ public class ActivityModule {
     LinearLayoutManager provideLinearLayoutManager(AppCompatActivity activity) {
         return new LinearLayoutManager(activity);
     }
+
+    @Provides
+    InputNamaMvpPresenter<InputNamaMvpView> provideInputNamaMvpPresenter(
+            InputNamaMvpPresenter<InputNamaMvpView> presenter){
+        return presenter;
+    }
+
+    @Provides
+    BuatAkunMvpPresenter<BuatAkunMvpView> provideBuatAkunMvpPresenter(
+            BuatAkunMvpPresenter<BuatAkunMvpView> presenter){
+        return presenter;
+    }
+
 }

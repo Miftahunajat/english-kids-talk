@@ -4,12 +4,9 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 
 import com.squishydev.setoz.englishkidstalk.R;
-import com.squishydev.setoz.englishkidstalk.databinding.ActivityMainBinding;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivitySplashScreenBinding;
-import com.squishydev.setoz.englishkidstalk.ui.inputnama.InputNamaActivity;
 
 public class SplashScreenActivity extends AppCompatActivity {
 

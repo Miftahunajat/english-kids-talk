@@ -3,6 +3,8 @@ package com.squishydev.setoz.englishkidstalk.di.componen;
 
 import com.squishydev.setoz.englishkidstalk.di.PerActivity;
 import com.squishydev.setoz.englishkidstalk.di.module.ActivityModule;
+import com.squishydev.setoz.englishkidstalk.ui.buatAkun.BuatAkunActivity;
+import com.squishydev.setoz.englishkidstalk.ui.inputnama.InputNamaActivity;
 
 import dagger.Component;
 
@@ -18,4 +20,7 @@ import dagger.Component;
 @Component(dependencies = ApplicationComponent.class, modules = ActivityModule.class)
 public interface ActivityComponent {
 
+    void inject(InputNamaActivity inputNamaActivity);
+
+    void inject(BuatAkunActivity buatAkunActivity);
 }

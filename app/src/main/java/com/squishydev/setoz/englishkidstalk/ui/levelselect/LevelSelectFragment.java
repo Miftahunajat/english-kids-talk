@@ -52,22 +52,9 @@ public class LevelSelectFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         int index = getArguments().getInt(ARG_SECTION_NUMBER);
-        View rootView = null;
-        if (index == 1 ){
-            FragmentLevelSelectEasyBinding binding = DataBindingUtil.inflate(inflater,mLayouts[index - 1],container,false);
-            binding.tvMasuk.setOnClickListener(v ->{
-                startActivity(new Intent(getContext(), MenuSelectActivity.class));
-            });
-            rootView = binding.getRoot();
-        }else if (index == 2){
-            FragmentLevelSelectMediumBinding binding = DataBindingUtil.inflate(inflater,mLayouts[index - 1],container,false);
-            rootView = binding.getRoot();
-        }else {
-            FragmentLevelSelectHardBinding binding = DataBindingUtil.inflate(inflater,mLayouts[index - 1],container,false);
-            rootView = binding.getRoot();
-        }
-
-
+        View rootView = LayoutInflater.from(getContext()).inflate(mLayouts[index],container,false);
+        TextView tvMasuk = rootView.findViewById(R.id.tv_masuk);
+        tvMasuk.setOnClickListener(view -> startActivity(new Intent(getContext(), MenuSelectActivity.class)));
         return rootView;
     }
 }

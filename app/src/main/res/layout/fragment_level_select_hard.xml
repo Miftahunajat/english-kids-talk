@@ -89,14 +89,14 @@
         android:textColor="#000"
         android:textSize="32sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintBottom_toTopOf="@+id/tv_masuk"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/tv_masuk"
         android:layout_width="188dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -125,10 +125,10 @@
         android:textAlignment="center"
         android:text="pada level ini terdapat materi vocabulary (kosakata), wrting (menulis) dan speaking (berbicara) yang sesuai untuk ahli"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView6"
+        app:layout_constraintEnd_toEndOf="@+id/tv_masuk"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintStart_toStartOf="@+id/tv_masuk"
+        app:layout_constraintTop_toBottomOf="@+id/tv_masuk" />
 
 
 </android.support.constraint.ConstraintLayout>
