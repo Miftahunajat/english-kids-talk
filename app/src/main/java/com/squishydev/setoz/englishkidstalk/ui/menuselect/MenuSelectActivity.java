@@ -15,7 +15,7 @@ import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivityLevelSelectBinding;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivityMenuSelectBinding;
 import com.squishydev.setoz.englishkidstalk.ui.menuselect.itemstoremenu.ItemStoreFragment;
-import com.squishydev.setoz.englishkidstalk.ui.menuselect.mainmenu.MainFragment;
+import com.squishydev.setoz.englishkidstalk.ui.menuselect.mainmenu.MainMenuFragment;
 import com.squishydev.setoz.englishkidstalk.ui.menuselect.profilemenu.ProfileFragment;
 
 public class MenuSelectActivity extends AppCompatActivity{
@@ -39,7 +39,7 @@ public class MenuSelectActivity extends AppCompatActivity{
                     return true;
                 case R.id.navigation_study:
                     navigation.setBackgroundColor(ContextCompat.getColor(MenuSelectActivity.this,R.color.bottomNavigation));
-                    MainFragment mainFragment = new MainFragment();
+                    MainMenuFragment mainFragment = new MainMenuFragment();
                     fm.beginTransaction()
                             .replace(R.id.fl_fragment,mainFragment)
                             .commit();

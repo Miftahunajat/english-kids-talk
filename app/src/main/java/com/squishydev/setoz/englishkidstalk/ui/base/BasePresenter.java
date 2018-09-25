@@ -105,7 +105,7 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
                 case HttpsURLConnection.HTTP_UNAUTHORIZED:
                 case HttpsURLConnection.HTTP_FORBIDDEN:
 //                    setUserAsLoggedOut();
-                    getMvpView().openActivityOnTokenExpire();
+//                    getMvpView().openActivityOnTokenExpire();
                 case HttpsURLConnection.HTTP_INTERNAL_ERROR:
                 case HttpsURLConnection.HTTP_NOT_FOUND:
                 default:
