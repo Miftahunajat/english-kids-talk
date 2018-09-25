@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-<RelativeLayout
+<layout xmlns:tools="http://schemas.android.com/tools">
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,54 +8,51 @@
     android:layout_height="match_parent"
     android:background="@drawable/latar">
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="500dp"
-        android:layout_height="350dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="56dp"
-         />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView4"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="9dp"
         android:fontFamily="@font/amaranth_bold"
         android:text="TextView"
         android:textColor="#590B08"
         android:textSize="23sp"
+        tools:layout_editor_absoluteX="115dp"
+        tools:layout_editor_absoluteY="425dp"
         tools:text="Kenalan Dulu Yuk" />
 
     <EditText
         android:id="@+id/et_nama"
         android:layout_width="300dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="455dp"
         android:background="@drawable/edittext_input_nama"
         android:hint="Siapa nama kamu ?"
+        android:inputType="textPersonName"
         android:textColorHint="#590B08"
         android:textSize="15sp"
-        android:inputType="textPersonName" />
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="467dp" />
 
     <Button
         android:id="@+id/btn_next"
-        android:layout_width="300dp"
+        android:layout_width="110dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="140dp"
-        android:layout_marginRight="140dp"
-        android:layout_marginTop="520dp"
         android:background="@drawable/next_input"
         android:text="Next"
         android:textColor="@color/cardview_light_background"
         android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="150dp"
+        tools:layout_editor_absoluteY="533dp" />
 
-</RelativeLayout>
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="360dp"
+        android:layout_height="360dp"
+        app:srcCompat="@drawable/wel"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="58dp" />
+
+</android.support.constraint.ConstraintLayout>
 </layout>
