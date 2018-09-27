@@ -26,7 +26,6 @@
         android:id="@+id/iv_background_splash"
         android:layout_width="600dp"
         android:layout_height="700dp"
-        android:src="@drawable/splash_full"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
