@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.view.View;
 
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivityPilihAvatarBinding;
@@ -17,6 +18,8 @@ public class PilihAvatarActivity extends BaseActivity implements PilihAvatarMvpV
 
     @Inject
     PilihAvatarMvpPresenter<PilihAvatarMvpView> mPresenter;
+
+    ActivityPilihAvatarBinding binding;
 
     int indexAvatar = 0;
     int avatars[] = {R.drawable.cewek,R.drawable.cowok};
@@ -40,28 +43,22 @@ public class PilihAvatarActivity extends BaseActivity implements PilihAvatarMvpV
     protected void onDestroy() {
         mPresenter.onDetach();
         super.onDestroy();
+
     }
 
     @Override
     protected void setUp() {
-        ActivityPilihAvatarBinding binding = DataBindingUtil.setContentView(this,R.layout.activity_pilih_avatar);
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_pilih_avatar);
 
-        binding.btnNextAvatar.setOnClickListener(v ->{
-            indexAvatar++;
-            indexAvatar%=2;
-            binding.avatar.setImageDrawable(ContextCompat.getDrawable(PilihAvatarActivity.this,avatars[indexAvatar]));
-            binding.tvNamaAvatar.setText(namaAvatar[indexAvatar]);
-        });
-
-        binding.btnPrevAvatar.setOnClickListener(view -> {
-            indexAvatar++;
-            indexAvatar%=2;
-            binding.avatar.setImageDrawable(ContextCompat.getDrawable(PilihAvatarActivity.this,avatars[indexAvatar]));
-            binding.tvNamaAvatar.setText(namaAvatar[indexAvatar]);
-        });
-
-        binding.btnMasuk.setOnClickListener(v ->{
+        binding.btnMasuk.setOnClickListener(v -> {
             startActivity(new Intent(PilihAvatarActivity.this,KonfirmasiAkunActivity.class));
         });
+    }
+
+    public void changeAvatar(View view) {
+        indexAvatar++;
+        indexAvatar%=2;
+        binding.avatar.setImageDrawable(ContextCompat.getDrawable(PilihAvatarActivity.this,avatars[indexAvatar]));
+        binding.tvNamaAvatar.setText(namaAvatar[indexAvatar]);
     }
 }
