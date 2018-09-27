@@ -2,6 +2,7 @@ package com.squishydev.setoz.englishkidstalk.ui.menuselect.mainmenu;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,7 @@ public class MainMenuFragment extends BaseFragment implements
         if (component != null) {
             component.inject(this);
             mPresenter.onAttach(this);
+            Log.d("Presenter","Not null");
         }
         return view;
     }
