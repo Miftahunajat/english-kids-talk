@@ -9,4 +9,8 @@
     <color name="white">#ffffff</color>
     <color name="black_effective">#2a2a2a</color>
 
+    <color name="bottomNavigation">#5D4037</color>
+    <color name="bottomProfile">#B041D0</color>
+
+
 </resources>
