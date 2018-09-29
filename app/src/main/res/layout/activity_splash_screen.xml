@@ -7,19 +7,6 @@
     tools:context="com.squishydev.setoz.englishkidstalk.ui.splashscreen.SplashScreenActivity">
 
     <ImageView
-<<<<<<< HEAD
-        android:id="@+id/imageView8"
-        android:layout_width="386dp"
-        android:layout_height="756dp"
-        app:srcCompat="@drawable/screen_biru"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-74dp" />
-
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-=======
         android:id="@+id/imageView14"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -40,21 +27,14 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
->>>>>>> e37e61ee07b2796b98901c7299eb4ad98fdfa2fb
     app:layout_constraintBottom_toBottomOf="parent"
     app:srcCompat="@drawable/screen_animasi"
     tools:layout_editor_absoluteX="0dp" />
 
     <ImageView
-<<<<<<< HEAD
         android:id="@+id/imageView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-=======
-        android:id="@+id/imageView16"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
->>>>>>> e37e61ee07b2796b98901c7299eb4ad98fdfa2fb
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:src="@drawable/ekita"

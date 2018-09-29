@@ -46,22 +46,22 @@ public class PilihAvatarActivity extends BaseActivity implements PilihAvatarMvpV
     protected void setUp() {
         ActivityPilihAvatarBinding binding = DataBindingUtil.setContentView(this,R.layout.activity_pilih_avatar);
 
-        binding.btnNextAvatar.setOnClickListener(v ->{
-            indexAvatar++;
-            indexAvatar%=2;
-            binding.avatar.setImageDrawable(ContextCompat.getDrawable(PilihAvatarActivity.this,avatars[indexAvatar]));
-            binding.tvNamaAvatar.setText(namaAvatar[indexAvatar]);
-        });
-
-        binding.btnPrevAvatar.setOnClickListener(view -> {
-            indexAvatar++;
-            indexAvatar%=2;
-            binding.avatar.setImageDrawable(ContextCompat.getDrawable(PilihAvatarActivity.this,avatars[indexAvatar]));
-            binding.tvNamaAvatar.setText(namaAvatar[indexAvatar]);
-        });
-
-        binding.btnMasuk.setOnClickListener(v ->{
-            startActivity(new Intent(PilihAvatarActivity.this,KonfirmasiAkunActivity.class));
-        });
+//        binding.btnNextAvatar.setOnClickListener(v ->{
+//            indexAvatar++;
+//            indexAvatar%=2;
+//            binding.avatar.setImageDrawable(ContextCompat.getDrawable(PilihAvatarActivity.this,avatars[indexAvatar]));
+//            binding.tvNamaAvatar.setText(namaAvatar[indexAvatar]);
+//        });
+//
+//        binding.btnPrevAvatar.setOnClickListener(view -> {
+//            indexAvatar++;
+//            indexAvatar%=2;
+//            binding.avatar.setImageDrawable(ContextCompat.getDrawable(PilihAvatarActivity.this,avatars[indexAvatar]));
+//            binding.tvNamaAvatar.setText(namaAvatar[indexAvatar]);
+//        });
+//
+//        binding.btnMasuk.setOnClickListener(v ->{
+//            startActivity(new Intent(PilihAvatarActivity.this,KonfirmasiAkunActivity.class));
+//        });
     }
 }

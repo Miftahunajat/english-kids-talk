@@ -6,7 +6,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 
 import com.squishydev.setoz.englishkidstalk.R;
-import com.squishydev.setoz.englishkidstalk.databinding.ActivityInputNamaBinding;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
 import com.squishydev.setoz.englishkidstalk.ui.pilihavatar.PilihAvatarActivity;
 
@@ -39,9 +38,9 @@ public class InputNamaActivity extends BaseActivity implements InputNamaMvpView 
 
     @Override
     protected void setUp() {
-        ActivityInputNamaBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_input_nama);
-        binding.btnNext.setOnClickListener(v ->{
-            startActivity(new Intent(InputNamaActivity.this, PilihAvatarActivity.class));
-        });
+//        ActivityInputNamaBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_input_nama);
+//        binding.btnNext.setOnClickListener(v ->{
+//            startActivity(new Intent(InputNamaActivity.this, PilihAvatarActivity.class));
+//        });
     }
 }
