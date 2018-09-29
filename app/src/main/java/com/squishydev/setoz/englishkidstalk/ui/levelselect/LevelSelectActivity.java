@@ -9,9 +9,10 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 
 import com.squishydev.setoz.englishkidstalk.R;
+import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
 import com.squishydev.setoz.englishkidstalk.ui.levelselect.fragment.LevelSelectFragment;
 
-public class LevelSelectActivity extends AppCompatActivity {
+public class LevelSelectActivity extends BaseActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -40,6 +41,11 @@ public class LevelSelectActivity extends AppCompatActivity {
 //         Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+    }
+
+    @Override
+    protected void setUp() {
+
     }
 
     /**
