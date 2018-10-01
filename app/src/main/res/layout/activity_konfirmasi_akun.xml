@@ -14,7 +14,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView2"
-            app:srcCompat="@drawable/ali"
+            app:srcCompat="@drawable/cowok"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="111dp" />
 
