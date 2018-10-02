@@ -55,8 +55,8 @@ public class LevelSelectFragment extends BaseFragment implements
 
     @Override
     protected void setUp(View view) {
-        TextView tvMasuk = view.findViewById(R.id.tv_masuk);
-        tvMasuk.setOnClickListener(v -> startActivity(new Intent(getContext(), MenuSelectActivity.class)));
+//        TextView tvMasuk = view.findViewById(R.id.tv_masuk);
+//        tvMasuk.setOnClickListener(v -> startActivity(new Intent(getContext(), MenuSelectActivity.class)));
     }
 
 
