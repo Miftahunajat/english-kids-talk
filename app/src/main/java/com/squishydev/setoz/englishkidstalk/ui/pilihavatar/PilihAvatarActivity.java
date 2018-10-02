@@ -11,7 +11,6 @@ import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivityPilihAvatarBinding;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
 import com.squishydev.setoz.englishkidstalk.ui.konfirmasiakun.KonfirmasiAkunActivity;
-import com.squishydev.setoz.englishkidstalk.ui.learning.Learning;
 import com.squishydev.setoz.englishkidstalk.ui.levelselect.LevelSelectActivity;
 
 import javax.inject.Inject;

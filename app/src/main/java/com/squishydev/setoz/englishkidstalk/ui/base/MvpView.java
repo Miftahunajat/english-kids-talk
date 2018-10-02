@@ -28,4 +28,8 @@ public interface MvpView {
 
     void hideKeyboard();
 
+    void showSuccessPrompt();
+
+    void showFailedPrompt();
+
 }

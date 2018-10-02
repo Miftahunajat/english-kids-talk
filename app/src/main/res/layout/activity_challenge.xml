@@ -1,104 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="fill_parent"
-    android:layout_width="fill_parent"
-    >
-    <LinearLayout
-        android:id="@+id/toolbar"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<android.support.constraint.ConstraintLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:paddingLeft="10dp"
-        android:background="#eee"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="50dp"
-                android:layout_height="fill_parent"
-                android:src="@drawable/dragon"/>
-        <LinearLayout
-            android:layout_width="220dp"
-            android:layout_height="fill_parent"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="25dp"
-                android:hint="Alee"/>
+    </FrameLayout>
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="25dp"
-                android:hint="Menyelesaikan 1 dari 25 level"/>
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="20dp"
-                android:hint="62 stars" />
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:src="@drawable/stars"/>
-/>
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/toolbar"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        >
-        <ProgressBar
-            android:id="@+id/ProgressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="30dp"
-            android:indeterminate="false"
-            android:maxHeight="10dip"
-            android:minHeight="30dip"
-            android:progress="50"
-            android:progressDrawable="@drawable/greenprogress"
-            />
-        <RatingBar
-            android:layout_below="@+id/rate_me"
-            android:id="@+id/ratingBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:numStars="5"
-            android:stepSize="1.0"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"/>
-
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="280dp"
-            android:src="@drawable/dragon"/>
-
-        <EditText
-            android:width="500px"
-            android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:hint="Masukkan jawaban"/>
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:text="Jawab"
-            android:textColor="#ffffff"
-            android:background="#008000"
-            android:id="@+id/button"/>
-    </LinearLayout>
-
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
 </layout>

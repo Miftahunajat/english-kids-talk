@@ -22,8 +22,10 @@ import com.squishydev.setoz.englishkidstalk.di.componen.ActivityComponent;
 import com.squishydev.setoz.englishkidstalk.di.componen.DaggerActivityComponent;
 import com.squishydev.setoz.englishkidstalk.di.module.ActivityModule;
 import com.squishydev.setoz.englishkidstalk.utils.CommonUtils;
+import com.squishydev.setoz.englishkidstalk.utils.MediaUtils;
 import com.squishydev.setoz.englishkidstalk.utils.NetworkUtils;
 
+import cn.refactor.lib.colordialog.PromptDialog;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
@@ -145,6 +147,28 @@ public abstract class BaseActivity extends AppCompatActivity
                     getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
+    }
+
+    @Override
+    public void showSuccessPrompt() {
+        MediaUtils.playSound(this,R.raw.success_sound);
+        new PromptDialog(this)
+                .setDialogType(PromptDialog.DIALOG_TYPE_SUCCESS)
+                .setAnimationEnable(true)
+                .setTitleText(getString(R.string.success))
+                .setContentText(getString(R.string.text))
+                .setPositiveListener(getString(R.string.ok), PromptDialog::dismiss).show();
+    }
+
+    @Override
+    public void showFailedPrompt() {
+        MediaUtils.playSound(this,R.raw.wrong_answer_sound);
+        new PromptDialog(this)
+                .setDialogType(PromptDialog.DIALOG_TYPE_WRONG)
+                .setAnimationEnable(true)
+                .setTitleText(getString(R.string.wrong))
+                .setContentText(getString(R.string.text_wrong))
+                .setPositiveListener(getString(R.string.ok),PromptDialog::dismiss).show();
     }
 
     protected abstract void setUp();

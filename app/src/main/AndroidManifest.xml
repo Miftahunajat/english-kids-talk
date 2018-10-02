@@ -3,6 +3,7 @@
     package="com.squishydev.setoz.englishkidstalk">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:name=".App"
@@ -12,14 +13,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".MainActivity" />
         <activity android:name=".ui.welcomescreen.WelcomeScreenActivity" />
         <activity
             android:name=".ui.levelselect.LevelSelectActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.menuselect.MenuSelectActivity"
-            android:label="@string/title_activity_menu_select" />
+            android:label="@string/title_activity_menu_select" >
+
+        </activity>
         <activity android:name=".ui.inputnama.InputNamaActivity" />
         <activity android:name=".ui.pilihavatar.PilihAvatarActivity" />
         <activity android:name=".ui.konfirmasiakun.KonfirmasiAkunActivity" />
@@ -30,8 +32,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.learning.LearningActivity" />
-        <activity android:name=".ui.learning.Learning"></activity>
+        <activity android:name=".ui.learning.learningitem.LearningItemActivity" >
+
+        </activity>
+        <activity android:name=".ui.learning.learningcategory.LearningCategoryActivity" />
+        <activity android:name=".ui.challenge.ChallengeActivity" />
     </application>
 
 </manifest>
