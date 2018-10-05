@@ -6,12 +6,27 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import com.squishydev.setoz.englishkidstalk.di.ActivityContext;
 import com.squishydev.setoz.englishkidstalk.di.PerActivity;
+import com.squishydev.setoz.englishkidstalk.ui.buatakun.BuatAkunMvpPresenter;
+import com.squishydev.setoz.englishkidstalk.ui.buatakun.BuatAkunMvpView;
+import com.squishydev.setoz.englishkidstalk.ui.buatakun.BuatAkunPresenter;
+import com.squishydev.setoz.englishkidstalk.ui.challenge.ChallengeMvpPresenter;
+import com.squishydev.setoz.englishkidstalk.ui.challenge.ChallengeMvpView;
+import com.squishydev.setoz.englishkidstalk.ui.challenge.ChallengePresenter;
+import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChalengeItemMvpPresenter;
+import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChalengeItemMvpView;
+import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChalengeItemPresenter;
 import com.squishydev.setoz.englishkidstalk.ui.inputnama.InputNamaMvpPresenter;
 import com.squishydev.setoz.englishkidstalk.ui.inputnama.InputNamaMvpView;
 import com.squishydev.setoz.englishkidstalk.ui.inputnama.InputNamaPresenter;
 import com.squishydev.setoz.englishkidstalk.ui.konfirmasiakun.KonfirmasiAkunMvpPresenter;
 import com.squishydev.setoz.englishkidstalk.ui.konfirmasiakun.KonfirmasiAkunMvpView;
 import com.squishydev.setoz.englishkidstalk.ui.konfirmasiakun.KonfirmasiAkunPresenter;
+import com.squishydev.setoz.englishkidstalk.ui.learning.learningcategory.LearningCategoryMvpPresenter;
+import com.squishydev.setoz.englishkidstalk.ui.learning.learningcategory.LearningCategoryMvpView;
+import com.squishydev.setoz.englishkidstalk.ui.learning.learningcategory.LearningCategoryPresenter;
+import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.LearningItemMvpPresenter;
+import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.LearningItemMvpView;
+import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.LearningItemPresenter;
 import com.squishydev.setoz.englishkidstalk.ui.levelselect.fragment.LevelSelectMvpPresenter;
 import com.squishydev.setoz.englishkidstalk.ui.levelselect.fragment.LevelSelectMvpView;
 import com.squishydev.setoz.englishkidstalk.ui.levelselect.fragment.LevelSelectPresenter;
@@ -110,6 +125,31 @@ public class ActivityModule {
 
     @Provides
     SplashScreenMvpPresenter<SplashScreenMvpView> provideSplashScreenPresenter(SplashScreenPresenter<SplashScreenMvpView> presenter){
+        return presenter;
+    }
+
+    @Provides
+    LearningCategoryMvpPresenter<LearningCategoryMvpView> provideLearningCategoryPresenter(LearningCategoryPresenter<LearningCategoryMvpView> presenter){
+        return presenter;
+    }
+
+    @Provides
+    LearningItemMvpPresenter<LearningItemMvpView> provideLearningItemPresenter(LearningItemPresenter<LearningItemMvpView> presenter){
+        return presenter;
+    }
+
+    @Provides
+    ChallengeMvpPresenter<ChallengeMvpView> provideChallengePresenter(ChallengePresenter<ChallengeMvpView> presenter){
+        return presenter;
+    }
+
+    @Provides
+    ChalengeItemMvpPresenter<ChalengeItemMvpView> provideChalengeItemPresenter(ChalengeItemPresenter<ChalengeItemMvpView> presenter){
+        return presenter;
+    }
+
+    @Provides
+    BuatAkunMvpPresenter<BuatAkunMvpView> provideBuatAkunPresenter(BuatAkunPresenter<BuatAkunMvpView> presenter){
         return presenter;
     }
 }

@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.interceptors.HttpLoggingInterceptor;
+import com.squareup.picasso.Picasso;
 import com.squishydev.setoz.englishkidstalk.data.DataManager;
 import com.squishydev.setoz.englishkidstalk.di.componen.ApplicationComponent;
 import com.squishydev.setoz.englishkidstalk.di.componen.DaggerApplicationComponent;
@@ -43,6 +44,7 @@ public class App extends Application {
         }
 
         CalligraphyConfig.initDefault(mCalligraphyConfig);
+        Picasso.get().setLoggingEnabled(true);
     }
 
     public ApplicationComponent getComponent() {
