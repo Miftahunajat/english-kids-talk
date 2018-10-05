@@ -3,8 +3,13 @@ package com.squishydev.setoz.englishkidstalk.di.componen;
 
 import com.squishydev.setoz.englishkidstalk.di.PerActivity;
 import com.squishydev.setoz.englishkidstalk.di.module.ActivityModule;
+import com.squishydev.setoz.englishkidstalk.ui.buatakun.BuatAkunActivity;
+import com.squishydev.setoz.englishkidstalk.ui.challenge.ChallengeActivity;
+import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChalengeItemFragment;
 import com.squishydev.setoz.englishkidstalk.ui.inputnama.InputNamaActivity;
 import com.squishydev.setoz.englishkidstalk.ui.konfirmasiakun.KonfirmasiAkunActivity;
+import com.squishydev.setoz.englishkidstalk.ui.learning.learningcategory.LearningCategoryActivity;
+import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.LearningItemActivity;
 import com.squishydev.setoz.englishkidstalk.ui.levelselect.fragment.LevelSelectFragment;
 import com.squishydev.setoz.englishkidstalk.ui.menuselect.itemstoremenu.ItemStoreFragment;
 import com.squishydev.setoz.englishkidstalk.ui.menuselect.mainmenu.MainMenuFragment;
@@ -41,4 +46,14 @@ public interface ActivityComponent {
     void inject(ProfileFragment profileFragment);
 
     void inject(LevelSelectFragment levelSelectFragmentFragment);
+
+    void inject(LearningCategoryActivity learningCategoryActivity);
+
+    void inject(LearningItemActivity learningItemActivity);
+
+    void inject(ChallengeActivity challengeActivity);
+
+    void inject(ChalengeItemFragment chalengeItemFragment);
+
+    void inject(BuatAkunActivity buatAkunActivity);
 }

@@ -6,11 +6,15 @@
     <color name="greenEasy">#74ab43</color>
     <color name="redMedium">#FF4F40</color>
     <color name="brownHard">#82543D</color>
+    <color name="brownVeryHard">#673315</color>
     <color name="white">#ffffff</color>
     <color name="black_effective">#2a2a2a</color>
 
     <color name="bottomNavigation">#5D4037</color>
     <color name="bottomProfile">#B041D0</color>
+
+    <color name="categoryMedium">#8a6a2f</color>
+    <color name="categoryEasy">#526c15</color>
 
 
 </resources>

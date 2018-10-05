@@ -41,6 +41,7 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
 
+    implementation 'com.squareup.picasso:picasso:2.71828'
     // dependency injection
     implementation "com.google.dagger:dagger:$rootProject.dagger2Version"
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
@@ -56,4 +57,7 @@ dependencies {
 
     // font
     implementation "uk.co.chrisjenx:calligraphy:$rootProject.calligraphyVersion"
+
+    //color dialog
+    implementation 'com.github.andyxialm:ColorDialog:1.0.0'
 }

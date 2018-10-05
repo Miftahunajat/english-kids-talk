@@ -5,7 +5,6 @@ import android.app.Application;
 import android.content.Context;
 
 import com.squishydev.setoz.englishkidstalk.Config;
-import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.AppDataManager;
 import com.squishydev.setoz.englishkidstalk.data.DataManager;
 import com.squishydev.setoz.englishkidstalk.data.db.AppDbHelper;
