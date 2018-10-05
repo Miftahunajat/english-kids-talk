@@ -7,17 +7,32 @@ package com.squishydev.setoz.englishkidstalk.data.model;
  */
 
 public enum  Difficulty {
-    DIFFICULTY_EASY("easy"),
-    DIFFICULTY_MEDIUM("medium"),
-    DIFFICULTY_HARD("hard");
+    DIFFICULTY_EASY("easy",0),
+    DIFFICULTY_MEDIUM("medium",1),
+    DIFFICULTY_HARD("hard",2);
 
     String text;
+    int number;
 
-    Difficulty(String difficulty){
+    Difficulty(String difficulty, int number){
         this.text = difficulty;
+        this.number = number;
     }
 
-    String getDifficulty(){
+
+    public String getText() {
         return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
     }
 }

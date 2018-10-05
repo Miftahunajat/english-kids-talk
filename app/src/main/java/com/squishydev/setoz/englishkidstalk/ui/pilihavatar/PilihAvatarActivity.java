@@ -10,6 +10,7 @@ import android.view.View;
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivityPilihAvatarBinding;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
+import com.squishydev.setoz.englishkidstalk.ui.buatakun.BuatAkunActivity;
 import com.squishydev.setoz.englishkidstalk.ui.konfirmasiakun.KonfirmasiAkunActivity;
 import com.squishydev.setoz.englishkidstalk.ui.levelselect.LevelSelectActivity;
 
@@ -54,7 +55,7 @@ public class PilihAvatarActivity extends BaseActivity implements PilihAvatarMvpV
         binding.btnMasuk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PilihAvatarActivity.this, KonfirmasiAkunActivity.class);
+                Intent intent = new Intent(PilihAvatarActivity.this, BuatAkunActivity.class);
                 startActivity(intent);
             }
         });

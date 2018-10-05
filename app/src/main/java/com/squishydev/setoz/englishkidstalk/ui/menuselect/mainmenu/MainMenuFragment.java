@@ -11,11 +11,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.squishydev.setoz.englishkidstalk.R;
+import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
+import com.squishydev.setoz.englishkidstalk.data.model.LearningCategory;
 import com.squishydev.setoz.englishkidstalk.databinding.FragmentMainBinding;
 import com.squishydev.setoz.englishkidstalk.di.componen.ActivityComponent;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseFragment;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.ChallengeActivity;
 import com.squishydev.setoz.englishkidstalk.ui.learning.learningcategory.LearningCategoryActivity;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -24,13 +28,19 @@ public class MainMenuFragment extends BaseFragment implements
 
     private static final String TAG = "MainMenuFragment";
 
-    FragmentMainBinding binding;
+    private Difficulty mDifficulty;
+    private int layouts[] = {R.layout.fragment_level_easy,
+            R.layout.fragment_level_medium,
+            R.layout.fragment_level_hard};
+
+
 
     @Inject
     MainMenuMvpPresenter<MainMenuMvpView> mPresenter;
 
-    public static MainMenuFragment newInstance() {
+    public static MainMenuFragment newInstance(Difficulty difficulty) {
         Bundle args = new Bundle();
+        args.putSerializable("difficulty",difficulty);
         MainMenuFragment fragment = new MainMenuFragment();
         fragment.setArguments(args);
         return fragment;
@@ -40,7 +50,13 @@ public class MainMenuFragment extends BaseFragment implements
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_main, container, false);
+        if (getArguments() != null){
+            //MOCK
+            mDifficulty = Difficulty.DIFFICULTY_EASY;
+            //REAL
+//            mDifficulty = (Difficulty) getArguments().getSerializable("difficulty");
+        }
+        View view = inflater.inflate(layouts[mDifficulty.getNumber()],container,false);
 
         ActivityComponent component = getActivityComponent();
         if (component != null) {
@@ -48,20 +64,30 @@ public class MainMenuFragment extends BaseFragment implements
             mPresenter.onAttach(this);
             Log.d("Presenter","Not null");
         }
-        return binding.getRoot();
+        if (mDifficulty == Difficulty.DIFFICULTY_EASY){
+            view.findViewById(R.id.iv_vocab_easy).setOnClickListener(view1 -> {
+                Intent intent = LearningCategoryActivity.getStartIntent(getContext());
+                startActivity(intent);
+            });
+        }
+        return view;
     }
 
     @Override
     protected void setUp(View view) {
-        binding.btnNext.setOnClickListener(v ->{
-            Intent intent = LearningCategoryActivity.getStartIntent(getContext());
-            startActivity(intent);
-        });
+//        // TODO : Diilangi cuman dummy
+//        binding.btnNext.setOnClickListener(v ->{
+//            Intent intent = LearningCategoryActivity.getStartIntent(getContext());
+//            startActivity(intent);
+//        });
+//
+//        // TODO : Diilangi cuman dummy
+//        binding.btnChalenge.setOnClickListener(v->{
+//            Intent intent = ChallengeActivity.getStartIntent(getContext());
+//            startActivity(intent);
+//        });
 
-        binding.btnChalenge.setOnClickListener(v->{
-            Intent intent = ChallengeActivity.getStartIntent(getContext());
-            startActivity(intent);
-        });
+
     }
 
 

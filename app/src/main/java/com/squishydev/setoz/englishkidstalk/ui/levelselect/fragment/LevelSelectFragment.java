@@ -6,9 +6,11 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.squishydev.setoz.englishkidstalk.R;
+import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
 import com.squishydev.setoz.englishkidstalk.di.componen.ActivityComponent;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseFragment;
 import com.squishydev.setoz.englishkidstalk.ui.menuselect.MenuSelectActivity;
@@ -55,8 +57,11 @@ public class LevelSelectFragment extends BaseFragment implements
 
     @Override
     protected void setUp(View view) {
-//        TextView tvMasuk = view.findViewById(R.id.tv_masuk);
-//        tvMasuk.setOnClickListener(v -> startActivity(new Intent(getContext(), MenuSelectActivity.class)));
+        Button btnPlay = view.findViewById(R.id.btn_play);
+        btnPlay.setOnClickListener(v -> {
+            Intent intent = MenuSelectActivity.getStartIntent(getContext(), Difficulty.DIFFICULTY_EASY);
+            getContext().startActivity(intent);
+        });
     }
 
 

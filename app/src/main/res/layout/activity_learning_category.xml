@@ -5,12 +5,14 @@
 <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.squishydev.setoz.englishkidstalk.ui.learning.Learning">
+    tools:context="com.squishydev.setoz.englishkidstalk.ui.learning.Learning"
+    android:background="@drawable/easy_category_bg">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_learning_category"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="400dp"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>
 

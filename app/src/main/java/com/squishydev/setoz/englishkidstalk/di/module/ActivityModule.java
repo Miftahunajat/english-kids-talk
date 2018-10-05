@@ -6,6 +6,9 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import com.squishydev.setoz.englishkidstalk.di.ActivityContext;
 import com.squishydev.setoz.englishkidstalk.di.PerActivity;
+import com.squishydev.setoz.englishkidstalk.ui.buatakun.BuatAkunMvpPresenter;
+import com.squishydev.setoz.englishkidstalk.ui.buatakun.BuatAkunMvpView;
+import com.squishydev.setoz.englishkidstalk.ui.buatakun.BuatAkunPresenter;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.ChallengeMvpPresenter;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.ChallengeMvpView;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.ChallengePresenter;
@@ -142,6 +145,11 @@ public class ActivityModule {
 
     @Provides
     ChalengeItemMvpPresenter<ChalengeItemMvpView> provideChalengeItemPresenter(ChalengeItemPresenter<ChalengeItemMvpView> presenter){
+        return presenter;
+    }
+
+    @Provides
+    BuatAkunMvpPresenter<BuatAkunMvpView> provideBuatAkunPresenter(BuatAkunPresenter<BuatAkunMvpView> presenter){
         return presenter;
     }
 }

@@ -42,11 +42,11 @@ public class AppApiHelper implements ApiHelper {
     @Override
     public Single<List<LearningItem>> getLearningItem(int learningCategoryId) {
         List<LearningItem> list = new ArrayList<>();
-        list.add(new LearningItem("Deer", R.drawable.deer,R.raw.deer));
-        list.add(new LearningItem("Lion", R.drawable.lion,R.raw.lion));
-        list.add(new LearningItem("Butterfly", R.drawable.butterfly,R.raw.butterfly));
+        list.add(new LearningItem("Cow", R.drawable.cow,R.raw.deer));
+        list.add(new LearningItem("Chicken", R.drawable.chicken,R.raw.lion));
+        list.add(new LearningItem("Dog", R.drawable.dog,R.raw.butterfly));
         list.add(new LearningItem("Cat", R.drawable.cat,R.raw.cat));
-        list.add(new LearningItem("Monkey", R.drawable.monkey,R.raw.monkey));
+        list.add(new LearningItem("Duck", R.drawable.duck,R.raw.monkey));
         return Single.just(list);
     }
 }

@@ -16,29 +16,34 @@
         <activity android:name=".ui.welcomescreen.WelcomeScreenActivity" />
         <activity
             android:name=".ui.levelselect.LevelSelectActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" >
+
+        </activity>
         <activity
             android:name=".ui.menuselect.MenuSelectActivity"
             android:label="@string/title_activity_menu_select" >
 
         </activity>
         <activity android:name=".ui.inputnama.InputNamaActivity" >
+
+        </activity>
+        <activity android:name=".ui.pilihavatar.PilihAvatarActivity" />
+        <activity android:name=".ui.konfirmasiakun.KonfirmasiAkunActivity" />
+        <activity android:name=".ui.splashscreen.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.pilihavatar.PilihAvatarActivity" />
-        <activity android:name=".ui.konfirmasiakun.KonfirmasiAkunActivity" />
-        <activity android:name=".ui.splashscreen.SplashScreenActivity">
-
-        </activity>
         <activity android:name=".ui.learning.learningitem.LearningItemActivity" >
 
         </activity>
-        <activity android:name=".ui.learning.learningcategory.LearningCategoryActivity" />
+        <activity android:name=".ui.learning.learningcategory.LearningCategoryActivity" >
+
+        </activity>
         <activity android:name=".ui.challenge.ChallengeActivity" />
+        <activity android:name=".ui.buatakun.BuatAkunActivity"/>
     </application>
 
 </manifest>

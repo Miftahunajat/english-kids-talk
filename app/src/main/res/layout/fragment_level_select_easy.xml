@@ -1,6 +1,6 @@
-<layout xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,22 +10,32 @@
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="415dp"
+        android:layout_height="match_parent"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/page_easy"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/page_easy" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_play"
         android:layout_width="90dp"
         android:layout_height="39dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/btn_easy"
         android:fontFamily="sans-serif-condensed"
         android:text="Play"
         android:textAllCaps="false"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="539dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.84000003" />
 
 
 </android.support.constraint.ConstraintLayout>

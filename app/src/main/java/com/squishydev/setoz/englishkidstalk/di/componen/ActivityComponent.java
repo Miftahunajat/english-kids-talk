@@ -3,6 +3,7 @@ package com.squishydev.setoz.englishkidstalk.di.componen;
 
 import com.squishydev.setoz.englishkidstalk.di.PerActivity;
 import com.squishydev.setoz.englishkidstalk.di.module.ActivityModule;
+import com.squishydev.setoz.englishkidstalk.ui.buatakun.BuatAkunActivity;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.ChallengeActivity;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChalengeItemFragment;
 import com.squishydev.setoz.englishkidstalk.ui.inputnama.InputNamaActivity;
@@ -53,4 +54,6 @@ public interface ActivityComponent {
     void inject(ChallengeActivity challengeActivity);
 
     void inject(ChalengeItemFragment chalengeItemFragment);
+
+    void inject(BuatAkunActivity buatAkunActivity);
 }
