@@ -45,11 +45,11 @@ public abstract class BaseActivity extends AppCompatActivity
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setUp();
         mActivityComponent = DaggerActivityComponent.builder()
                 .activityModule(new ActivityModule(this))
                 .applicationComponent(((App) getApplication()).getComponent())
                 .build();
+        setUp();
 
     }
 
@@ -163,13 +163,33 @@ public abstract class BaseActivity extends AppCompatActivity
 
     @Override
     public void showFailedPrompt() {
-        MediaUtils.playSound(this,R.raw.wrong_answer_sound);
+        MediaUtils.playSound(this,R.raw.lose);
         new PromptDialog(this)
                 .setDialogType(PromptDialog.DIALOG_TYPE_WRONG)
                 .setAnimationEnable(true)
                 .setTitleText(getString(R.string.wrong))
                 .setContentText(getString(R.string.text_wrong))
                 .setPositiveListener(getString(R.string.ok),PromptDialog::dismiss).show();
+    }
+
+    public void showSuccessPrompt(String title, String content, PromptDialog.OnPositiveListener listener) {
+        MediaUtils.playSound(this,R.raw.success_sound);
+        new PromptDialog(this)
+                .setDialogType(PromptDialog.DIALOG_TYPE_SUCCESS)
+                .setAnimationEnable(true)
+                .setTitleText(title)
+                .setContentText(content)
+                .setPositiveListener(getString(R.string.ok), listener).show();
+    }
+
+    public void showFailedPrompt(String title, String content, PromptDialog.OnPositiveListener listener) {
+        MediaUtils.playSound(this,R.raw.lose);
+        new PromptDialog(this)
+                .setDialogType(PromptDialog.DIALOG_TYPE_WRONG)
+                .setAnimationEnable(true)
+                .setTitleText(title)
+                .setContentText(content)
+                .setPositiveListener(getString(R.string.ok),listener).show();
     }
 
     protected abstract void setUp();

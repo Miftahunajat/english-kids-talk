@@ -69,6 +69,10 @@ public class MainMenuFragment extends BaseFragment implements
                 Intent intent = LearningCategoryActivity.getStartIntent(getContext());
                 startActivity(intent);
             });
+            view.findViewById(R.id.iv_challenge_easy).setOnClickListener(view1 -> {
+                Intent intent = ChallengeActivity.getStartIntent(getContext());
+                startActivity(intent);
+            });
         }
         return view;
     }

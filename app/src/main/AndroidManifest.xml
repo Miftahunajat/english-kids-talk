@@ -42,7 +42,10 @@
         <activity android:name=".ui.learning.learningcategory.LearningCategoryActivity" >
 
         </activity>
-        <activity android:name=".ui.challenge.ChallengeActivity" />
+        <activity android:name=".ui.challenge.ChallengeActivity"
+            android:windowSoftInputMode="adjustResize">
+
+        </activity>
         <activity android:name=".ui.buatakun.BuatAkunActivity"/>
     </application>
 

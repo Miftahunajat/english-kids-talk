@@ -55,6 +55,7 @@ public class PilihAvatarActivity extends BaseActivity implements PilihAvatarMvpV
         binding.btnMasuk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mPresenter.saveAvatar(indexAvatar);
                 Intent intent = new Intent(PilihAvatarActivity.this, BuatAkunActivity.class);
                 startActivity(intent);
             }

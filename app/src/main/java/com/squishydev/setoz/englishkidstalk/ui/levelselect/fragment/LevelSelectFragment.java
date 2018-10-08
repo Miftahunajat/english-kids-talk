@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
@@ -21,6 +20,7 @@ public class LevelSelectFragment extends BaseFragment implements
         LevelSelectMvpView {
 
     private static final String TAG = "LevelSelectFragment";
+    private int mIndex = 0;
 
     private static final String ARG_SECTION_NUMBER = "section_number";
     private int[] mLayouts = {R.layout.fragment_level_select_easy,
@@ -42,8 +42,8 @@ public class LevelSelectFragment extends BaseFragment implements
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        int index = getArguments().getInt(ARG_SECTION_NUMBER);
-        View view = inflater.inflate(mLayouts[index], container, false);
+        mIndex = getArguments().getInt(ARG_SECTION_NUMBER);
+        View view = inflater.inflate(mLayouts[mIndex], container, false);
 
         ActivityComponent component = getActivityComponent();
         if (component != null) {
@@ -59,8 +59,13 @@ public class LevelSelectFragment extends BaseFragment implements
     protected void setUp(View view) {
         Button btnPlay = view.findViewById(R.id.btn_play);
         btnPlay.setOnClickListener(v -> {
-            Intent intent = MenuSelectActivity.getStartIntent(getContext(), Difficulty.DIFFICULTY_EASY);
-            getContext().startActivity(intent);
+            if (mIndex == 0) {
+                Intent intent = MenuSelectActivity.getStartIntent(getContext(), Difficulty.DIFFICULTY_EASY);
+                getContext().startActivity(intent);
+            }else {
+                showMessage("Maaf bintang ada tidak cukup");
+            }
+
         });
     }
 

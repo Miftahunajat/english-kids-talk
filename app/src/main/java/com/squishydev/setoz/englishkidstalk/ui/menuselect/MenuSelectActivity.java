@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
@@ -22,7 +23,6 @@ import com.squishydev.setoz.englishkidstalk.ui.pilihavatar.PilihAvatarActivity;
 
 public class MenuSelectActivity extends BaseActivity{
 
-    private TextView mTextMessage;
     private FragmentManager fm;
     BottomNavigationView navigation;
     private Difficulty mDifficulty;
@@ -84,7 +84,6 @@ public class MenuSelectActivity extends BaseActivity{
 
     @Override
     protected void setUp() {
-
 
     }
 }

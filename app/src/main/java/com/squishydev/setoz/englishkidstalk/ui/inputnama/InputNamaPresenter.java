@@ -12,10 +12,16 @@ public class InputNamaPresenter<V extends InputNamaMvpView> extends BasePresente
 
     private static final String TAG = "InputNamaPresenter";
 
+
     @Inject
     public InputNamaPresenter(DataManager dataManager,
                               CompositeDisposable compositeDisposable) {
         super(dataManager, compositeDisposable);
     }
 
+
+    @Override
+    public void saveNama(String nama) {
+        getDataManager().setPrefName(nama);
+    }
 }

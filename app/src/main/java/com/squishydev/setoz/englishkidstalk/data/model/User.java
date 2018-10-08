@@ -1,31 +1,122 @@
 package com.squishydev.setoz.englishkidstalk.data.model;
 
-/**
- * Created by miftahun on 9/15/18.
- * Email : miftahunajat@gmail.com
- * Github : https://github.com/miftahunajat/
- */
+import javax.annotation.Generated;
+import com.google.gson.annotations.SerializedName;
 
-public class User {
-    private  String nama;
-    private  int password;
+@Generated("com.robohorse.robopojogenerator")
+public class User{
 
-    public User() {
-    }
+	@SerializedName("password")
+	private String password;
 
-    public String getNama() {
-        return nama;
-    }
+	@SerializedName("profile_id")
+	private int profileId;
 
-    public void setNama(String nama) {
-        this.nama = nama;
-    }
+	@SerializedName("inventory_id")
+	private int inventoryId;
 
-    public int getPassword() {
-        return password;
-    }
+	@SerializedName("name")
+	private String name;
 
-    public void setPassword(int password) {
-        this.password = password;
-    }
+	@SerializedName("id")
+	private int id;
+
+	@SerializedName("gender")
+	private int gender;
+
+	@SerializedName("star_gained")
+	private int starGained;
+
+	@SerializedName("xp_gained")
+	private int xpGained;
+
+	@SerializedName("username")
+	private String username;
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public int getProfileId() {
+		return profileId;
+	}
+
+	public void setProfileId(int profileId) {
+		this.profileId = profileId;
+	}
+
+	public int getInventoryId() {
+		return inventoryId;
+	}
+
+	public void setInventoryId(int inventoryId) {
+		this.inventoryId = inventoryId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public int getGender() {
+		return gender;
+	}
+
+	public void setGender(int gender) {
+		this.gender = gender;
+	}
+
+	public int getStarGained() {
+		return starGained;
+	}
+
+	public void setStarGained(int starGained) {
+		this.starGained = starGained;
+	}
+
+	public int getXpGained() {
+		return xpGained;
+	}
+
+	public void setXpGained(int xpGained) {
+		this.xpGained = xpGained;
+	}
+
+
+
+	@Override
+ 	public String toString(){
+		return 
+			"User{" + 
+			"password = '" + password + '\'' + 
+			",profile_id = '" + profileId + '\'' + 
+			",inventory_id = '" + inventoryId + '\'' + 
+			",name = '" + name + '\'' + 
+			",id = '" + id + '\'' + 
+			",username = '" + username + '\'' + 
+			"}";
+		}
 }

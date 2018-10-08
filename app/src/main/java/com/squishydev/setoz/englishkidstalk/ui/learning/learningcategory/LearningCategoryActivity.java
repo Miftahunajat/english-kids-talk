@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.model.LearningCategory;
+import com.squishydev.setoz.englishkidstalk.data.network.model.LearningTopicsItem;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivityLearningCategoryBinding;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
 import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.LearningItemActivity;
@@ -25,6 +26,7 @@ public class LearningCategoryActivity extends BaseActivity implements LearningCa
 
     ActivityLearningCategoryBinding binding;
     LearningCategoryAdapter learningCategoryAdapter;
+    List<LearningTopicsItem> learningTopicsItem;
 
     public static Intent getStartIntent(Context context) {
         Intent intent = new Intent(context, LearningCategoryActivity.class);
@@ -38,6 +40,8 @@ public class LearningCategoryActivity extends BaseActivity implements LearningCa
         getActivityComponent().inject(this);
 
         mPresenter.onAttach(LearningCategoryActivity.this);
+
+        mPresenter.getLearningTopics(1);
     }
 
     @Override
@@ -52,17 +56,20 @@ public class LearningCategoryActivity extends BaseActivity implements LearningCa
         learningCategoryAdapter = new LearningCategoryAdapter(new ArrayList<>(),this);
         binding.rvLearningCategory.setLayoutManager(new GridLayoutManager(this,2));
         binding.rvLearningCategory.setAdapter(learningCategoryAdapter);
+
+
     }
 
     @Override
-    public void setupLearningCategory(List<LearningCategory> learningCategories) {
-        Log.v("Debug",learningCategories.size() + "");
-        learningCategoryAdapter.addAll(learningCategories);
+    public void setupTopicsItem(List<LearningTopicsItem> learningTopicsItems) {
+        Log.v("Debug",learningTopicsItems.size() + "");
+        this.learningTopicsItem = learningTopicsItems;
+        learningCategoryAdapter.addAll(learningTopicsItems);
     }
 
     @Override
     public void onClick(int position) {
-        Intent intent = LearningItemActivity.getStartIntent(this);
+        Intent intent = LearningItemActivity.getStartIntent(this,learningTopicsItem.get(position).getId());
         startActivity(intent);
     }
 }

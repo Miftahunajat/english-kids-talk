@@ -43,35 +43,32 @@
         </android.support.v7.widget.CardView>
 
 
-
         <TextView
             android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:textAlignment="center"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@{learningItem.title}"
-            android:textSize="20sp"
-            android:fontFamily="@font/acme"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_submit"
-            app:layout_constraintStart_toEndOf="@+id/btn_submit"
-            app:layout_constraintTop_toTopOf="@+id/btn_submit"
-            tools:text="qweqwe" />
-
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/et_edittext"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/iv_icon"
-            app:layout_constraintStart_toStartOf="@+id/iv_icon"
-            app:layout_constraintTop_toBottomOf="@+id/tv_name">
+            android:fontFamily="@font/acme"
+            android:text="@{learningItem.title}"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_submit"
+            app:layout_constraintEnd_toEndOf="@+id/cv_icon"
+            app:layout_constraintStart_toEndOf="@+id/btn_submit"
+            app:layout_constraintTop_toTopOf="@+id/btn_submit"
+            tools:text="qweqwe" />
+        <View
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            app:layout_constraintLeft_toLeftOf="@id/tv_name"
+            app:layout_constraintRight_toRightOf="@id/tv_name"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:background="@android:color/darker_gray" />
 
-        </android.support.design.widget.TextInputLayout>
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -82,7 +79,6 @@
             android:id="@+id/btn_submit"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:layout_marginStart="8dp"
             android:src="@drawable/sound"
             android:layout_marginTop="8dp"
             android:drawableLeft="@drawable/ic_notifications_black_24dp"
