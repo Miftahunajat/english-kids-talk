@@ -28,12 +28,11 @@ public class LearningItemPresenter<V extends LearningItemMvpView> extends BasePr
     @Override
     public void onAttach(V mvpView) {
         super.onAttach(mvpView);
-        getLearningItem(1);
     }
 
     @Override
     public void getLearningItem(int learningCategoryId) {
-        getCompositeDisposable().add(getDataManager().getLearningItem(3)
+        getCompositeDisposable().add(getDataManager().getLearningItem(learningCategoryId)
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(

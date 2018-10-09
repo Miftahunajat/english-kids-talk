@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
-            name="learningCategory"
-            type="com.squishydev.setoz.englishkidstalk.data.model.LearningCategory"/>
+            name="learningTopicsItem"
+            type="com.squishydev.setoz.englishkidstalk.data.network.model.LearningTopicsItem"/>
     </data>
 <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
@@ -32,7 +32,7 @@
             android:layout_margin="16dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            app:imageUrl="@{learningCategory.categoryImageUrl}"
+            app:imageUrl="@{learningTopicsItem.learningTopicImage}"
             app:srcCompat="@drawable/ic_broken_image_black_24dp" />
     </RelativeLayout>
 
@@ -47,7 +47,7 @@
         android:textSize="20sp"
         android:fontFamily="@font/acme"
         android:layout_marginTop="4dp"
-        android:text="@{learningCategory.categoryName}"
+        android:text="@{learningTopicsItem.learningTopicName}"
         app:layout_constraintEnd_toEndOf="@+id/cv_icon"
         app:layout_constraintStart_toStartOf="@+id/cv_icon"
         app:layout_constraintTop_toBottomOf="@+id/cv_icon"

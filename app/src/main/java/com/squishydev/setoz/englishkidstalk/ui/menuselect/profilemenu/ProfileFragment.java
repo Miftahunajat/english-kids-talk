@@ -1,12 +1,16 @@
 package com.squishydev.setoz.englishkidstalk.ui.menuselect.profilemenu;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.squishydev.setoz.englishkidstalk.R;
+import com.squishydev.setoz.englishkidstalk.data.model.User;
+import com.squishydev.setoz.englishkidstalk.databinding.FragmentProfileBinding;
 import com.squishydev.setoz.englishkidstalk.di.componen.ActivityComponent;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseFragment;
 
@@ -22,6 +26,10 @@ public class ProfileFragment extends BaseFragment implements
 
     private String mParam1;
     private String mParam2;
+
+    private int[] profiles = {R.drawable.cowok,R.drawable.cewek};
+
+    FragmentProfileBinding binding;
 
     @Inject
     ProfileMvpPresenter<ProfileMvpView> mPresenter;
@@ -48,19 +56,22 @@ public class ProfileFragment extends BaseFragment implements
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_profile,container,false);
+
+
+
 
         ActivityComponent component = getActivityComponent();
         if (component != null) {
             component.inject(this);
             mPresenter.onAttach(this);
         }
-        return view;
+        return binding.getRoot();
     }
 
     @Override
     protected void setUp(View view) {
-
+        mPresenter.getProfileUser();
     }
 
 
@@ -68,6 +79,12 @@ public class ProfileFragment extends BaseFragment implements
     public void onDestroyView() {
         mPresenter.onDetach();
         super.onDestroyView();
+    }
+
+    @Override
+    public void updateProfile(User user) {
+        binding.setUser(user);
+        binding.avatarPreviewImage.setImageResource(profiles[user.getGender()]);
     }
 
     public interface OnFragmentInteractionListener {

@@ -20,8 +20,9 @@ public class BuatAkunActivity extends BaseActivity implements BuatAkunMvpView {
 
     ActivityBuatAkunBinding binding;
 
-    public static Intent getStartIntent(Context context) {
+    public static Intent getStartIntent(Context context,String nama) {
         Intent intent = new Intent(context, BuatAkunActivity.class);
+        intent.putExtra("nama",nama);
         return intent;
     }
 
@@ -48,8 +49,27 @@ public class BuatAkunActivity extends BaseActivity implements BuatAkunMvpView {
 
     void setOnClickListener(){
         binding.btnRegister.setOnClickListener(view -> {
-            Intent intent = LevelSelectActivity.getStartIntent(BuatAkunActivity.this);
-            startActivity(intent);
+            binding.executePendingBindings();
+            if (binding.etNama.getText().toString().trim().equals("") ||
+                    binding.etPassword.getText().toString().trim().equals("") ){
+                showMessage("Maaf nama / password tidak boleh kosong");
+                return;
+            }
+            mPresenter.registerUser(binding.etNama.getText().toString(),binding.etPassword.getText().toString());
         });
+    }
+
+
+
+    @Override
+    public void setNama(String nama) {
+        binding.tvHaiNama.setText("Hai, " + nama);
+    }
+
+    @Override
+    public void openLevelSelectActivity() {
+        Intent intent = LevelSelectActivity.getStartIntent(BuatAkunActivity.this);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }

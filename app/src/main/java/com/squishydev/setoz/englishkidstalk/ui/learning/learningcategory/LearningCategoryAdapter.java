@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.model.LearningCategory;
+import com.squishydev.setoz.englishkidstalk.data.network.model.LearningTopicsItem;
 import com.squishydev.setoz.englishkidstalk.databinding.ItemLearningCategoryBinding;
 
 import java.util.List;
@@ -21,12 +22,12 @@ import java.util.List;
 
 public class LearningCategoryAdapter extends RecyclerView.Adapter<LearningCategoryAdapter.LearningCategoryVH> {
 
-    private List<LearningCategory> learningCategories;
+    private List<LearningTopicsItem> learningTopicsItems;
     ItemLearningCategoryBinding binding;
     OnCategoryClick onCategoryClick;
 
-    public LearningCategoryAdapter(List<LearningCategory> learningCategories,OnCategoryClick onCategoryClick) {
-        this.learningCategories = learningCategories;
+    public LearningCategoryAdapter(List<LearningTopicsItem> learningTopicsItems,OnCategoryClick onCategoryClick) {
+        this.learningTopicsItems = learningTopicsItems;
         this.onCategoryClick = onCategoryClick;
     }
 
@@ -45,11 +46,12 @@ public class LearningCategoryAdapter extends RecyclerView.Adapter<LearningCatego
 
     @Override
     public int getItemCount() {
-        return learningCategories.size();
+        return learningTopicsItems.size();
     }
 
-    public void addAll(List<LearningCategory> list){
-        learningCategories.addAll(list);
+    public void addAll(List<LearningTopicsItem> list){
+        learningTopicsItems.addAll(list);
+        notifyDataSetChanged();
     }
 
     class LearningCategoryVH extends RecyclerView.ViewHolder {
@@ -59,7 +61,7 @@ public class LearningCategoryAdapter extends RecyclerView.Adapter<LearningCatego
         }
 
         public void bind(int position) {
-            binding.setLearningCategory(learningCategories.get(position));
+            binding.setLearningTopicsItem(learningTopicsItems.get(position));
             binding.ivIcon.setOnClickListener(view -> {
                 onCategoryClick.onClick(position);
             });

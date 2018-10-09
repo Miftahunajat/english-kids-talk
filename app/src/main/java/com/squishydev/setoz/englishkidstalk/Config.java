@@ -8,4 +8,6 @@ package com.squishydev.setoz.englishkidstalk;
 
 public class Config {
     public static final String PREF_NAME = "ekita_prefs";
+    public static final String BASE_URL = "https://ekita-api.herokuapp.com/";
+    public static final String BASE_URL_API = "https://ekita-api.herokuapp.com/api/";
 }

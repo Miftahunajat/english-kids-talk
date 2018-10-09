@@ -28,8 +28,9 @@ public class LearningItemActivity extends BaseActivity implements LearningItemMv
     LearningItemAdapter learningItemAdapter;
     List<LearningItem> learningItems;
 
-    public static Intent getStartIntent(Context context) {
+    public static Intent getStartIntent(Context context, int id) {
         Intent intent = new Intent(context, LearningItemActivity.class);
+        intent.putExtra("id_category",id);
         return intent;
     }
 
@@ -40,6 +41,8 @@ public class LearningItemActivity extends BaseActivity implements LearningItemMv
         getActivityComponent().inject(this);
 
         mPresenter.onAttach(LearningItemActivity.this);
+
+        mPresenter.getLearningItem(getIntent().getIntExtra("id_category",0));
     }
 
     @Override
@@ -54,12 +57,12 @@ public class LearningItemActivity extends BaseActivity implements LearningItemMv
         learningItemAdapter = new LearningItemAdapter(new ArrayList<>(),this);
         binding.rvLearningItem.setLayoutManager(new GridLayoutManager(this,2));
         binding.rvLearningItem.setAdapter(learningItemAdapter);
+
     }
 
     @Override
     public void onClick(int position) {
         MediaUtils.playSound(this,learningItems.get(position).getSound());
-//        showSuccessPrompt();
 
     }
 

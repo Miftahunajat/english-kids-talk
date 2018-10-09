@@ -18,4 +18,18 @@ public class SplashScreenPresenter<V extends SplashScreenMvpView> extends BasePr
         super(dataManager, compositeDisposable);
     }
 
+    @Override
+    public void onAttach(V mvpView) {
+        super.onAttach(mvpView);
+
+    }
+
+    @Override
+    public void checkUserLoggedInMode() {
+        if (getDataManager().getLoggedInMode() == DataManager.LoggedInMode.LOGGED_IN_MODE_SERVER_LOGIN.getType()){
+            getMvpView().openLevelSelectActivity();
+        }else {
+            getMvpView().openInputNamaActivity();
+        }
+    }
 }
