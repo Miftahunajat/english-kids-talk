@@ -3,10 +3,12 @@ package com.squishydev.setoz.englishkidstalk.data;
 import android.content.Context;
 
 import com.squishydev.setoz.englishkidstalk.data.db.DbHelper;
-import com.squishydev.setoz.englishkidstalk.data.model.Challenge;
+import com.squishydev.setoz.englishkidstalk.data.network.model.Challenge;
 import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
 import com.squishydev.setoz.englishkidstalk.data.model.LearningCategory;
-import com.squishydev.setoz.englishkidstalk.data.model.LearningItem;
+import com.squishydev.setoz.englishkidstalk.data.network.model.Inventory;
+import com.squishydev.setoz.englishkidstalk.data.network.model.ItemCategory;
+import com.squishydev.setoz.englishkidstalk.data.network.model.LearningItem;
 import com.squishydev.setoz.englishkidstalk.data.model.User;
 import com.squishydev.setoz.englishkidstalk.data.network.ApiHelper;
 import com.squishydev.setoz.englishkidstalk.data.network.model.QuestionCategory;
@@ -54,8 +56,8 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Single<List<LearningItem>> getLearningItem(int learningCategoryId) {
-        return mApiHelper.getLearningItem(learningCategoryId);
+    public Observable<List<LearningItem>> getLearningItem() {
+        return mApiHelper.getLearningItem();
     }
 
     @Override
@@ -69,7 +71,7 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Single<List<Challenge>> getChallenges() {
+    public Observable<List<Challenge>> getChallenges() {
         return mApiHelper.getChallenges();
     }
 
@@ -84,8 +86,28 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Single<User> updateUserStars(String id, String totalStars) {
-        return mApiHelper.updateUserStars(id,totalStars);
+    public Single<User> updateUserStars(User user) {
+        return mApiHelper.updateUserStars(user);
+    }
+
+    @Override
+    public Observable<Inventory> getInventory(String userId) {
+        return mApiHelper.getInventory(userId);
+    }
+
+    @Override
+    public Observable<Inventory> activateItemInventory(String inventoryId, String itemId) {
+        return mApiHelper.activateItemInventory(inventoryId,itemId);
+    }
+
+    @Override
+    public Observable<Inventory> deactivateItemInventory(String inventoryId, String itemId) {
+        return mApiHelper.deactivateItemInventory(inventoryId,itemId);
+    }
+
+    @Override
+    public Single<List<ItemCategory>> getItemCategory() {
+        return mApiHelper.getItemCategory();
     }
 
     @Override

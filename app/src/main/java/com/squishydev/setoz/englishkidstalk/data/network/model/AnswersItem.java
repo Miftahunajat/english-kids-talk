@@ -1,29 +1,38 @@
 package com.squishydev.setoz.englishkidstalk.data.network.model;
 
-import java.util.List;
 import javax.annotation.Generated;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 @Generated("com.robohorse.robopojogenerator")
-public class Inventory{
+public class AnswersItem implements Serializable{
+
+	@SerializedName("answer_text")
+	private String answerText;
 
 	@SerializedName("createdAt")
 	private String createdAt;
 
-	@SerializedName("user_id")
-	private int userId;
+	@SerializedName("challenge_id")
+	private int challengeId;
 
 	@SerializedName("id")
 	private int id;
 
-	@SerializedName("items")
-	private List<Item> items;
-
-	@SerializedName("user")
-	private User user;
+	@SerializedName("is_correct")
+	private boolean isCorrect;
 
 	@SerializedName("updatedAt")
 	private String updatedAt;
+
+	public void setAnswerText(String answerText){
+		this.answerText = answerText;
+	}
+
+	public String getAnswerText(){
+		return answerText;
+	}
 
 	public void setCreatedAt(String createdAt){
 		this.createdAt = createdAt;
@@ -33,12 +42,12 @@ public class Inventory{
 		return createdAt;
 	}
 
-	public void setUserId(int userId){
-		this.userId = userId;
+	public void setChallengeId(int challengeId){
+		this.challengeId = challengeId;
 	}
 
-	public int getUserId(){
-		return userId;
+	public int getChallengeId(){
+		return challengeId;
 	}
 
 	public void setId(int id){
@@ -49,20 +58,12 @@ public class Inventory{
 		return id;
 	}
 
-	public void setItems(List<Item> items){
-		this.items = items;
+	public void setIsCorrect(boolean isCorrect){
+		this.isCorrect = isCorrect;
 	}
 
-	public List<Item> getItems(){
-		return items;
-	}
-
-	public void setUser(User user){
-		this.user = user;
-	}
-
-	public User getUser(){
-		return user;
+	public boolean isIsCorrect(){
+		return isCorrect;
 	}
 
 	public void setUpdatedAt(String updatedAt){
@@ -76,12 +77,12 @@ public class Inventory{
 	@Override
  	public String toString(){
 		return 
-			"Inventory{" + 
-			"createdAt = '" + createdAt + '\'' + 
-			",user_id = '" + userId + '\'' + 
+			"AnswersItem{" + 
+			"answer_text = '" + answerText + '\'' + 
+			",createdAt = '" + createdAt + '\'' + 
+			",challenge_id = '" + challengeId + '\'' + 
 			",id = '" + id + '\'' + 
-			",items = '" + items + '\'' + 
-			",user = '" + user + '\'' + 
+			",is_correct = '" + isCorrect + '\'' + 
 			",updatedAt = '" + updatedAt + '\'' + 
 			"}";
 		}

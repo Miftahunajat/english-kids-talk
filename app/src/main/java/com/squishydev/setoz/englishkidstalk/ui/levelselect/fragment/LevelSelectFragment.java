@@ -62,8 +62,12 @@ public class LevelSelectFragment extends BaseFragment implements
             if (mIndex == 0) {
                 Intent intent = MenuSelectActivity.getStartIntent(getContext(), Difficulty.DIFFICULTY_EASY);
                 getContext().startActivity(intent);
-            }else {
-                showMessage("Maaf bintang ada tidak cukup");
+            }else if (mIndex == 1) {
+                Intent intent = MenuSelectActivity.getStartIntent(getContext(), Difficulty.DIFFICULTY_MEDIUM);
+                getContext().startActivity(intent);
+            }else{
+                Intent intent = MenuSelectActivity.getStartIntent(getContext(), Difficulty.DIFFICULTY_HARD);
+                getContext().startActivity(intent);
             }
 
         });
@@ -75,5 +79,8 @@ public class LevelSelectFragment extends BaseFragment implements
         mPresenter.onDetach();
         super.onDestroyView();
     }
+
+
+
 }
 

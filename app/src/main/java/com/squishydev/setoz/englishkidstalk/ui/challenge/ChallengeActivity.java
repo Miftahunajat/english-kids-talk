@@ -4,28 +4,25 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v4.app.Fragment;
 import android.view.WindowManager;
 
 import com.squishydev.setoz.englishkidstalk.R;
-import com.squishydev.setoz.englishkidstalk.data.model.Challenge;
+import com.squishydev.setoz.englishkidstalk.data.network.model.Challenge;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivityChallengeBinding;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
-import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChalengeItemFragment;
+import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChalengeItemAFragment;
 import com.squishydev.setoz.englishkidstalk.utils.MediaUtils;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
 import javax.inject.Inject;
 
-import cn.refactor.lib.colordialog.PromptDialog;
-
 public class ChallengeActivity extends BaseActivity implements
         ChallengeMvpView,
-        ChalengeItemFragment.ChallengeFragmentInteractionCallback {
+        ChalengeItemAFragment.ChallengeFragmentInteractionCallback {
 
     @Inject
     ChallengeMvpPresenter<ChallengeMvpView> mPresenter;
@@ -79,15 +76,19 @@ public class ChallengeActivity extends BaseActivity implements
             binding.tvAngka.setText(String.valueOf(mChallengesNum));
             mChallengesNum++;
 
-            ChalengeItemFragment fragment = ChalengeItemFragment.newInstance(challengeQueue.peek());
+            int type = challengeQueue.peek().getChallengeType();
+
+            Fragment fragment = getChallengeFragments(type,challengeQueue.peek());
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.frame_layout,fragment)
                     .commit();
         }else{
             showSuccessPrompt("Selamat !!", "Total bintang yang anda dapat " + totalStars,
-                    promptDialog -> finish());
-            mPresenter.updateUserStar(totalStars);
+                    promptDialog -> {
+                        mPresenter.updateUserStar(totalStars);
+                    });
+
         }
         binding.tvJumlahBintang.setText(String.valueOf(totalStars));
     }
@@ -96,13 +97,12 @@ public class ChallengeActivity extends BaseActivity implements
     public void onTimeRunningOut() {
         showFailedPrompt("Waktu anda telah habis","Total bintang yang didapat " + totalStars,
                 promptDialog -> {
-                    finish();
+                    mPresenter.updateUserStar(totalStars);
                 });
     }
 
     @Override
     public void onAnswersCorrect(int stars) {
-
         totalStars+=stars;
         challengeQueue.poll();
         if (! challengeQueue.isEmpty()){
@@ -115,8 +115,17 @@ public class ChallengeActivity extends BaseActivity implements
     public void onAnswersWrong() {
         showFailedPrompt("Jawaban anda salah","Total bintang yang didapat " + totalStars,
                 promptDialog -> {
-            finish();
+            mPresenter.updateUserStar(totalStars);
                 });
 
+    }
+
+    Fragment getChallengeFragments(int type,Challenge challenge){
+        switch (type){
+            case 1:
+                return ChalengeItemAFragment.newInstance(challenge);
+            default:
+                return ChalengeItemAFragment.newInstance(challenge);
+        }
     }
 }

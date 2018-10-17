@@ -52,9 +52,9 @@ public class MainMenuFragment extends BaseFragment implements
                              @Nullable Bundle savedInstanceState) {
         if (getArguments() != null){
             //MOCK
-            mDifficulty = Difficulty.DIFFICULTY_EASY;
+//            mDifficulty = Difficulty.DIFFICULTY_EASY;
             //REAL
-//            mDifficulty = (Difficulty) getArguments().getSerializable("difficulty");
+            mDifficulty = (Difficulty) getArguments().getSerializable("difficulty");
         }
         View view = inflater.inflate(layouts[mDifficulty.getNumber()],container,false);
 

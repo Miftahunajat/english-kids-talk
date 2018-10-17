@@ -5,8 +5,9 @@ import com.squishydev.setoz.englishkidstalk.di.PerActivity;
 import com.squishydev.setoz.englishkidstalk.di.module.ActivityModule;
 import com.squishydev.setoz.englishkidstalk.ui.buatakun.BuatAkunActivity;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.ChallengeActivity;
-import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChalengeItemFragment;
+import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChalengeItemAFragment;
 import com.squishydev.setoz.englishkidstalk.ui.inputnama.InputNamaActivity;
+import com.squishydev.setoz.englishkidstalk.ui.inventory.InventoryActivity;
 import com.squishydev.setoz.englishkidstalk.ui.konfirmasiakun.KonfirmasiAkunActivity;
 import com.squishydev.setoz.englishkidstalk.ui.learning.learningcategory.LearningCategoryActivity;
 import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.LearningItemActivity;
@@ -53,7 +54,9 @@ public interface ActivityComponent {
 
     void inject(ChallengeActivity challengeActivity);
 
-    void inject(ChalengeItemFragment chalengeItemFragment);
+    void inject(ChalengeItemAFragment chalengeItemFragment);
 
     void inject(BuatAkunActivity buatAkunActivity);
+
+    void inject(InventoryActivity inventoryActivity);
 }

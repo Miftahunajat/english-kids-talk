@@ -5,19 +5,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 
 import com.squishydev.setoz.englishkidstalk.di.ActivityContext;
-import com.squishydev.setoz.englishkidstalk.di.PerActivity;
 import com.squishydev.setoz.englishkidstalk.ui.buatakun.BuatAkunMvpPresenter;
 import com.squishydev.setoz.englishkidstalk.ui.buatakun.BuatAkunMvpView;
 import com.squishydev.setoz.englishkidstalk.ui.buatakun.BuatAkunPresenter;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.ChallengeMvpPresenter;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.ChallengeMvpView;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.ChallengePresenter;
-import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChalengeItemMvpPresenter;
-import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChalengeItemMvpView;
-import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChalengeItemPresenter;
 import com.squishydev.setoz.englishkidstalk.ui.inputnama.InputNamaMvpPresenter;
 import com.squishydev.setoz.englishkidstalk.ui.inputnama.InputNamaMvpView;
 import com.squishydev.setoz.englishkidstalk.ui.inputnama.InputNamaPresenter;
+import com.squishydev.setoz.englishkidstalk.ui.inventory.InventoryMvpPresenter;
+import com.squishydev.setoz.englishkidstalk.ui.inventory.InventoryMvpView;
+import com.squishydev.setoz.englishkidstalk.ui.inventory.InventoryPresenter;
 import com.squishydev.setoz.englishkidstalk.ui.konfirmasiakun.KonfirmasiAkunMvpPresenter;
 import com.squishydev.setoz.englishkidstalk.ui.konfirmasiakun.KonfirmasiAkunMvpView;
 import com.squishydev.setoz.englishkidstalk.ui.konfirmasiakun.KonfirmasiAkunPresenter;
@@ -144,12 +143,12 @@ public class ActivityModule {
     }
 
     @Provides
-    ChalengeItemMvpPresenter<ChalengeItemMvpView> provideChalengeItemPresenter(ChalengeItemPresenter<ChalengeItemMvpView> presenter){
+    BuatAkunMvpPresenter<BuatAkunMvpView> provideBuatAkunPresenter(BuatAkunPresenter<BuatAkunMvpView> presenter){
         return presenter;
     }
 
     @Provides
-    BuatAkunMvpPresenter<BuatAkunMvpView> provideBuatAkunPresenter(BuatAkunPresenter<BuatAkunMvpView> presenter){
+    InventoryMvpPresenter<InventoryMvpView> provideInventoryPresenter(InventoryPresenter<InventoryMvpView> presenter){
         return presenter;
     }
 }

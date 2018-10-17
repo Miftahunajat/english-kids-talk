@@ -18,4 +18,24 @@ public class Endpoint {
 
     public static final String ENDPOINT_USER_PROFILE = Config.BASE_URL_API
             + "users/";
+
+    public static final String ENDPOINT_LEARNING_ITEMS = Config.BASE_URL_API
+            + "learning-items";
+
+    public static final String ENDPOINT_CHALLENGESS = Config.BASE_URL_API
+            + "challenges";
+
+    public static final String ENDPOINT_INVETORIES = Config.BASE_URL_API
+            + "inventories/";
+
+    public static final String ENDPOINT_ACTIVATE_ITEM = Config.BASE_URL_API
+            + "activate-item";
+
+    public static final String ENDPOINT_DEACTIVATE_ITEM = Config.BASE_URL_API
+            + "activate-item";
+
+    public static final String ENDPOINT_ITEM_CATEGORIES = Config.BASE_URL_API
+            + "item-categories";
+
+
 }

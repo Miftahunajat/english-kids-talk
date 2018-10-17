@@ -18,5 +18,8 @@
     <color name="categoryMedium">#8a6a2f</color>
     <color name="categoryEasy">#526c15</color>
 
+    <color name="bottomCategoryNavigationColorBackground">#e7ad60</color>
+    <color name="bottomCategoryNavigationColorOutline">#b98136</color>
+
 
 </resources>

@@ -5,13 +5,16 @@ import javax.annotation.Generated;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("com.robohorse.robopojogenerator")
-public class Inventory{
+public class ItemCategory{
 
 	@SerializedName("createdAt")
 	private String createdAt;
 
-	@SerializedName("user_id")
-	private int userId;
+	@SerializedName("item_category_image")
+	private String itemCategoryImage;
+
+	@SerializedName("item_category_name")
+	private String itemCategoryName;
 
 	@SerializedName("id")
 	private int id;
@@ -19,8 +22,8 @@ public class Inventory{
 	@SerializedName("items")
 	private List<Item> items;
 
-	@SerializedName("user")
-	private User user;
+	@SerializedName("item_category_color")
+	private String itemCategoryColor;
 
 	@SerializedName("updatedAt")
 	private String updatedAt;
@@ -33,12 +36,20 @@ public class Inventory{
 		return createdAt;
 	}
 
-	public void setUserId(int userId){
-		this.userId = userId;
+	public void setItemCategoryImage(String itemCategoryImage){
+		this.itemCategoryImage = itemCategoryImage;
 	}
 
-	public int getUserId(){
-		return userId;
+	public String getItemCategoryImage(){
+		return itemCategoryImage;
+	}
+
+	public void setItemCategoryName(String itemCategoryName){
+		this.itemCategoryName = itemCategoryName;
+	}
+
+	public String getItemCategoryName(){
+		return itemCategoryName;
 	}
 
 	public void setId(int id){
@@ -57,12 +68,12 @@ public class Inventory{
 		return items;
 	}
 
-	public void setUser(User user){
-		this.user = user;
+	public void setItemCategoryColor(String itemCategoryColor){
+		this.itemCategoryColor = itemCategoryColor;
 	}
 
-	public User getUser(){
-		return user;
+	public String getItemCategoryColor(){
+		return itemCategoryColor;
 	}
 
 	public void setUpdatedAt(String updatedAt){
@@ -76,12 +87,13 @@ public class Inventory{
 	@Override
  	public String toString(){
 		return 
-			"Inventory{" + 
+			"ItemCategory{" + 
 			"createdAt = '" + createdAt + '\'' + 
-			",user_id = '" + userId + '\'' + 
+			",item_category_image = '" + itemCategoryImage + '\'' + 
+			",item_category_name = '" + itemCategoryName + '\'' + 
 			",id = '" + id + '\'' + 
 			",items = '" + items + '\'' + 
-			",user = '" + user + '\'' + 
+			",item_category_color = '" + itemCategoryColor + '\'' + 
 			",updatedAt = '" + updatedAt + '\'' + 
 			"}";
 		}

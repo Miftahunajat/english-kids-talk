@@ -5,7 +5,7 @@
     <data>
         <variable
             name="challenge"
-            type="com.squishydev.setoz.englishkidstalk.data.model.Challenge"/>
+            type="com.squishydev.setoz.englishkidstalk.data.network.model.Challenge"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -70,7 +70,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{String.valueOf(challenge.stars)}"
+            android:text="@{String.valueOf(challenge.challengeStar)}"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintRight_toLeftOf="@id/iv_bintang_bintang"
             app:layout_constraintTop_toTopOf="@id/iv_bintang_bintang"
@@ -100,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:padding="4dp"
-                    app:imageChallengeUrl="@{challenge.questionPict}"/>
+                    app:imageUrl="@{challenge.challengeImage}"/>
             </RelativeLayout>
 
         </android.support.v7.widget.CardView>
@@ -111,7 +111,7 @@
             android:layout_height="28dp"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/baloo_chettan"
-            android:text="@{challenge.questions}"
+            android:text="@{challenge.challengeQuestion}"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textSize="24sp"
             android:textColor="#000"
