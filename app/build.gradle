@@ -63,4 +63,7 @@ dependencies {
 
     //color dialog
     implementation 'com.github.andyxialm:ColorDialog:1.0.0'
+
+    //Bottom Navigation
+    implementation 'com.aurelhubert:ahbottomnavigation:2.1.0'
 }

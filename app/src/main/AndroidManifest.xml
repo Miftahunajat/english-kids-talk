@@ -27,7 +27,9 @@
         <activity android:name=".ui.inputnama.InputNamaActivity" >
 
         </activity>
-        <activity android:name=".ui.pilihavatar.PilihAvatarActivity" />
+        <activity android:name=".ui.pilihavatar.PilihAvatarActivity" >
+
+        </activity>
         <activity android:name=".ui.konfirmasiakun.KonfirmasiAkunActivity" />
         <activity android:name=".ui.splashscreen.SplashScreenActivity">
             <intent-filter>
@@ -47,6 +49,7 @@
 
         </activity>
         <activity android:name=".ui.buatakun.BuatAkunActivity"/>
+        <activity android:name=".ui.inventory.InventoryActivity" />
     </application>
 
 </manifest>

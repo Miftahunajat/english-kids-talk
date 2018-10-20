@@ -17,19 +17,22 @@
         android:layout_height="match_parent"
         tools:context=".ui.menuselect.profilemenu.ProfileFragment">
 
-        <ImageView
-            android:id="@+id/avatar_preview_image"
+        <FrameLayout
+            android:id="@+id/fl_avatar_preview"
             android:layout_width="0dp"
             android:layout_height="336dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/avatar_text"/>
+            app:layout_constraintTop_toBottomOf="@+id/avatar_text">
+            <ImageView
+                android:id="@+id/iv_avatar_preview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/avatar_text"/>
+        </FrameLayout>
+
 
         <ImageView
             android:id="@+id/cover_image"
@@ -287,15 +290,16 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_pilih_avatar"
             android:text="Lihat Avatar"
+            android:id="@+id/tv_pilih_avatar"
             android:textAlignment="center"
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginBottom="64dp"
-            app:layout_constraintLeft_toLeftOf="@id/avatar_preview_image"
-            app:layout_constraintRight_toRightOf="@id/avatar_preview_image"
-            app:layout_constraintTop_toBottomOf="@id/avatar_preview_image" />
+            app:layout_constraintLeft_toLeftOf="@id/fl_avatar_preview"
+            app:layout_constraintRight_toRightOf="@id/fl_avatar_preview"
+            app:layout_constraintTop_toBottomOf="@id/fl_avatar_preview" />
 
 
 

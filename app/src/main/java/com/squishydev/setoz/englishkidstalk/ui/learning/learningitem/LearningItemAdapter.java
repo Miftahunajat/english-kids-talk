@@ -7,13 +7,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import com.squishydev.setoz.englishkidstalk.R;
-import com.squishydev.setoz.englishkidstalk.data.model.LearningCategory;
-import com.squishydev.setoz.englishkidstalk.data.model.LearningItem;
-import com.squishydev.setoz.englishkidstalk.databinding.ItemLearningCategoryBinding;
+import com.squishydev.setoz.englishkidstalk.data.network.model.LearningItem;
 import com.squishydev.setoz.englishkidstalk.databinding.ItemLearningItemBinding;
 
 import java.util.List;
@@ -57,6 +53,7 @@ public class LearningItemAdapter extends RecyclerView.Adapter<LearningItemAdapte
 
     public void addAll(List<LearningItem> list){
         learningItems.addAll(list);
+        notifyDataSetChanged();
     }
 
     class LearningItemVH extends RecyclerView.ViewHolder {

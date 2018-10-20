@@ -14,7 +14,7 @@
 
     </FrameLayout>
 
-    <android.support.design.widget.BottomNavigationView
+    <com.aurelhubert.ahbottomnavigation.AHBottomNavigation
         android:id="@+id/navigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

@@ -4,17 +4,17 @@ import android.util.Log;
 
 import com.rx2androidnetworking.Rx2AndroidNetworking;
 import com.squishydev.setoz.englishkidstalk.R;
-import com.squishydev.setoz.englishkidstalk.data.model.Challenge;
+import com.squishydev.setoz.englishkidstalk.data.network.model.Challenge;
 import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
 import com.squishydev.setoz.englishkidstalk.data.model.LearningCategory;
-import com.squishydev.setoz.englishkidstalk.data.model.LearningItem;
+import com.squishydev.setoz.englishkidstalk.data.network.model.Inventory;
+import com.squishydev.setoz.englishkidstalk.data.network.model.ItemCategory;
+import com.squishydev.setoz.englishkidstalk.data.network.model.LearningItem;
 import com.squishydev.setoz.englishkidstalk.data.model.User;
 import com.squishydev.setoz.englishkidstalk.data.network.model.QuestionCategory;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -47,16 +47,19 @@ public class AppApiHelper implements ApiHelper {
     }
 
     @Override
-    public Single<List<LearningItem>> getLearningItem(int learningCategoryId) {
-        List<LearningItem> list = new ArrayList<>();
-        if (learningCategoryId == 1) {
-            list.add(new LearningItem("Cow", R.drawable.cow, R.raw.cow));
-            list.add(new LearningItem("Chicken", R.drawable.chicken, R.raw.chicken));
-            list.add(new LearningItem("Dog", R.drawable.dog, R.raw.dog));
-            list.add(new LearningItem("Cat", R.drawable.cat, R.raw.cat));
-            list.add(new LearningItem("Duck", R.drawable.duck, R.raw.duck));
-        }
-        return Single.just(list);
+    public Observable<List<LearningItem>> getLearningItem() {
+        return Rx2AndroidNetworking.get(Endpoint.ENDPOINT_LEARNING_ITEMS)
+                .build()
+                .getObjectListObservable(LearningItem.class);
+//        List<LearningItem> list = new ArrayList<>();
+//        if (learningCategoryId == 1) {
+//            list.add(new LearningItem("Cow", R.drawable.cow));
+//            list.add(new LearningItem("Chicken", R.drawable.chicken));
+//            list.add(new LearningItem("Dog", R.drawable.dog));
+//            list.add(new LearningItem("Cat", R.drawable.cat));
+//            list.add(new LearningItem("Duck", R.drawable.duck));
+//        }
+//        return Single.just(list);
     }
 
     @Override
@@ -79,14 +82,17 @@ public class AppApiHelper implements ApiHelper {
     }
 
     @Override
-    public Single<List<Challenge>> getChallenges() {
-        List<Challenge> list = new ArrayList<>();
-        list.add(new Challenge(0, 3, R.drawable.duck, "What animal is it", "duck"));
-        list.add(new Challenge(0, 3, R.drawable.dog, "What animal is it", "dog"));
-        list.add(new Challenge(0, 2, R.drawable.cow, "What animal is it", "cow"));
-        list.add(new Challenge(0, 2, R.drawable.cat, "What animal is it", "cat"));
-        list.add(new Challenge(0, 3, R.drawable.chicken, "What animal is it", "chicken"));
-        return Single.just(list);
+    public Observable<List<Challenge>> getChallenges() {
+        return Rx2AndroidNetworking.get(Endpoint.ENDPOINT_CHALLENGESS)
+                .build()
+                .getObjectListObservable(Challenge.class);
+//        List<Challenge> list = new ArrayList<>();
+//        list.add(new Challenge(0, 3, R.drawable.duck, "What animal is it", "duck"));
+//        list.add(new Challenge(0, 3, R.drawable.dog, "What animal is it", "dog"));
+//        list.add(new Challenge(0, 2, R.drawable.cow, "What animal is it", "cow"));
+//        list.add(new Challenge(0, 2, R.drawable.cat, "What animal is it", "cat"));
+//        list.add(new Challenge(0, 3, R.drawable.chicken, "What animal is it", "chicken"));
+//        return Single.just(list);
     }
 
     @Override
@@ -99,16 +105,51 @@ public class AppApiHelper implements ApiHelper {
     @Override
     public Single<User> getUser(String id) {
         return Rx2AndroidNetworking.get(Endpoint.ENDPOINT_USER_PROFILE + id)
+                 .build()
+                .getObjectSingle(User.class);
+    }
+
+    @Override
+    public Single<User> updateUserStars(User user) {
+        Log.d("AppAPiHelper",user.getStarGained() + "");
+        return Rx2AndroidNetworking.patch(Endpoint.ENDPOINT_USER_PROFILE + user.getId())
+                .addBodyParameter(user)
                 .build()
                 .getObjectSingle(User.class);
     }
 
     @Override
-    public Single<User> updateUserStars(String id, String totalStars) {
-        return Rx2AndroidNetworking.put(Endpoint.ENDPOINT_USER_PROFILE + id)
-                .addUrlEncodeFormBodyParameter("star_gained",totalStars)
+    public Observable<Inventory> getInventory(String userId) {
+        return Rx2AndroidNetworking.get(Endpoint.ENDPOINT_INVETORIES + userId)
                 .build()
-                .getObjectSingle(User.class);
+                .getObjectObservable(Inventory.class);
+    }
+
+    @Override
+    public Observable<Inventory> activateItemInventory(String inventoryId, String itemId) {
+        return Rx2AndroidNetworking.post(Endpoint.ENDPOINT_ACTIVATE_ITEM)
+                .addBodyParameter("inventory_id",inventoryId)
+                .addBodyParameter("item_id",itemId)
+                .addBodyParameter("is_active","true")
+                .build()
+                .getObjectObservable(Inventory.class);
+    }
+
+    @Override
+    public Observable<Inventory> deactivateItemInventory(String inventoryId, String itemId) {
+        return Rx2AndroidNetworking.post(Endpoint.ENDPOINT_ACTIVATE_ITEM)
+                .addBodyParameter("inventory_id",inventoryId)
+                .addBodyParameter("item_id",itemId)
+                .addBodyParameter("is_active","false")
+                .build()
+                .getObjectObservable(Inventory.class);
+    }
+
+    @Override
+    public Single<List<ItemCategory>> getItemCategory() {
+        return Rx2AndroidNetworking.get(Endpoint.ENDPOINT_ITEM_CATEGORIES)
+                .build()
+                .getObjectListSingle(ItemCategory.class);
     }
 
 }
