@@ -8,6 +8,7 @@ import com.squishydev.setoz.englishkidstalk.ui.base.BasePresenter;
 
 import javax.inject.Inject;
 
+import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
@@ -28,12 +29,14 @@ public class LearningItemPresenter<V extends LearningItemMvpView> extends BasePr
     @Override
     public void onAttach(V mvpView) {
         super.onAttach(mvpView);
-        getLearningItem(1);
     }
 
     @Override
     public void getLearningItem(int learningCategoryId) {
-        getCompositeDisposable().add(getDataManager().getLearningItem(3)
+        getCompositeDisposable().add(getDataManager().getLearningItem()
+                .flatMap(Observable::fromIterable)
+                .filter(learningItem -> learningItem.getLearningTopic().getId() == learningCategoryId)
+                .toList()
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(

@@ -17,17 +17,17 @@ public class LearningCategory {
 
     private int id;
     private String categoryName;
-    private String categoryImageUrl;
+    private int categoryImageUrl;
 
     public LearningCategory() {
     }
 
-    @BindingAdapter({"imageUrl"})
-    public static void loadImage(ImageView view, String imageUrl){
+    @BindingAdapter({"imageUrlss"})
+    public static void loadImage(ImageView view, int imageUrl){
         Picasso.get().load(imageUrl).into(view);
     }
 
-    public LearningCategory(int id, String categoryName, String categoryImageUrl) {
+    public LearningCategory(int id, String categoryName, int categoryImageUrl) {
         this.id = id;
         this.categoryName = categoryName;
         this.categoryImageUrl = categoryImageUrl;
@@ -49,11 +49,11 @@ public class LearningCategory {
         this.categoryName = categoryName;
     }
 
-    public String getCategoryImageUrl() {
+    public int getCategoryImageUrl() {
         return categoryImageUrl;
     }
 
-    public void setCategoryImageUrl(String categoryImageUrl) {
+    public void setCategoryImageUrl(int categoryImageUrl) {
         this.categoryImageUrl = categoryImageUrl;
     }
 }

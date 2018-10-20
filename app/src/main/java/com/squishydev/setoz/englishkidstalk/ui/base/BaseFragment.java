@@ -142,4 +142,9 @@ public abstract class BaseFragment extends Fragment implements MvpView {
     public void showFailedPrompt() {
 
     }
+
+    @Override
+    public void finish() {
+
+    }
 }

@@ -7,7 +7,7 @@ import com.squishydev.setoz.englishkidstalk.ui.base.MvpPresenter;
 @PerActivity
 public interface LearningCategoryMvpPresenter<V extends LearningCategoryMvpView> extends MvpPresenter<V> {
 
-    void getLearningCategory(Difficulty difficulty, String type);
+    void getLearningTopics(int idQuestionCategories);
 
 }
 

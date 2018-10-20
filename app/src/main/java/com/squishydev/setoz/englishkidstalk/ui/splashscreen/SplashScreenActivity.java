@@ -10,6 +10,7 @@ import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivitySplashScreenBinding;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
 import com.squishydev.setoz.englishkidstalk.ui.inputnama.InputNamaActivity;
+import com.squishydev.setoz.englishkidstalk.ui.levelselect.LevelSelectActivity;
 
 import javax.inject.Inject;
 
@@ -46,9 +47,22 @@ public class SplashScreenActivity extends BaseActivity implements SplashScreenMv
     @Override
     protected void setUp() {
         new Handler().postDelayed(() -> {
-            Intent intent = InputNamaActivity.getStartIntent(SplashScreenActivity.this);
-            startActivity(intent);
-            finish();
+            mPresenter.checkUserLoggedInMode();
         },SPLASH_TIME_OUT);
+    }
+
+
+    @Override
+    public void openLevelSelectActivity() {
+        Intent intent = LevelSelectActivity.getStartIntent(SplashScreenActivity.this);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void openInputNamaActivity() {
+        Intent intent = InputNamaActivity.getStartIntent(SplashScreenActivity.this);
+        startActivity(intent);
+        finish();
     }
 }

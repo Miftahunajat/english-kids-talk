@@ -8,7 +8,7 @@
         android:background="@drawable/latar">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tv_hai_nama"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imageView14"
@@ -21,7 +21,7 @@
             android:text="Kenalan Dulu Yuk"
             android:textColor="#590B08"
             android:textSize="23sp"
-            app:layout_constraintBottom_toTopOf="@+id/editText2"
+            app:layout_constraintBottom_toTopOf="@+id/et_name"
             app:layout_constraintEnd_toEndOf="@+id/imageView2"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/imageView2"
@@ -30,7 +30,7 @@
 
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/et_name"
             android:layout_width="300dp"
             android:layout_height="40dp"
             android:layout_marginBottom="32dp"
@@ -41,9 +41,9 @@
             android:textColorHint="#590B08"
             android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@+id/btn_next"
-            app:layout_constraintEnd_toEndOf="@+id/textView"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="@+id/tv_hai_nama"
+            app:layout_constraintStart_toStartOf="@+id/tv_hai_nama"
+            app:layout_constraintTop_toBottomOf="@+id/tv_hai_nama"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <Button
@@ -63,7 +63,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText2" />
+            app:layout_constraintTop_toBottomOf="@+id/et_name" />
 
         <ImageView
             android:id="@+id/imageView2"

@@ -41,6 +41,12 @@ public class InputNamaActivity extends BaseActivity implements InputNamaMvpView 
     protected void setUp() {
         ActivityInputNamaBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_input_nama);
         binding.btnNext.setOnClickListener(v ->{
+            binding.executePendingBindings();
+            if (binding.etName.getText().toString().trim().equals("")){
+                showMessage("Maaf nama tidak boleh kosong");
+                return;
+            }
+            mPresenter.saveNama(binding.etName.getText().toString());
             startActivity(new Intent(InputNamaActivity.this, PilihAvatarActivity.class));
         });
     }

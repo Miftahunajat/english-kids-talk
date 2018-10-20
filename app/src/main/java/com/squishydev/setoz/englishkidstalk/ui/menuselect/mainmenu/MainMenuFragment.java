@@ -52,9 +52,9 @@ public class MainMenuFragment extends BaseFragment implements
                              @Nullable Bundle savedInstanceState) {
         if (getArguments() != null){
             //MOCK
-            mDifficulty = Difficulty.DIFFICULTY_EASY;
+//            mDifficulty = Difficulty.DIFFICULTY_EASY;
             //REAL
-//            mDifficulty = (Difficulty) getArguments().getSerializable("difficulty");
+            mDifficulty = (Difficulty) getArguments().getSerializable("difficulty");
         }
         View view = inflater.inflate(layouts[mDifficulty.getNumber()],container,false);
 
@@ -67,6 +67,10 @@ public class MainMenuFragment extends BaseFragment implements
         if (mDifficulty == Difficulty.DIFFICULTY_EASY){
             view.findViewById(R.id.iv_vocab_easy).setOnClickListener(view1 -> {
                 Intent intent = LearningCategoryActivity.getStartIntent(getContext());
+                startActivity(intent);
+            });
+            view.findViewById(R.id.iv_challenge_easy).setOnClickListener(view1 -> {
+                Intent intent = ChallengeActivity.getStartIntent(getContext());
                 startActivity(intent);
             });
         }

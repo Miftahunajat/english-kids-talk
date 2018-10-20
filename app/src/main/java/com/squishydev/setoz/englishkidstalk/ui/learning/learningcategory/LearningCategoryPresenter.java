@@ -2,10 +2,13 @@ package com.squishydev.setoz.englishkidstalk.ui.learning.learningcategory;
 
 import com.squishydev.setoz.englishkidstalk.data.DataManager;
 import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
+import com.squishydev.setoz.englishkidstalk.data.network.model.QuestionCategory;
 import com.squishydev.setoz.englishkidstalk.ui.base.BasePresenter;
 
 import javax.inject.Inject;
 
+import io.reactivex.Observable;
+import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
@@ -24,18 +27,18 @@ public class LearningCategoryPresenter<V extends LearningCategoryMvpView> extend
     @Override
     public void onAttach(V mvpView) {
         super.onAttach(mvpView);
-        getLearningCategory(null,null);
     }
 
     @Override
-    public void getLearningCategory(Difficulty difficulty, String type) {
-        getCompositeDisposable().add(getDataManager().getLearningCategory(difficulty,type)
-        .subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(learningCategories -> {
-            getMvpView().setupLearningCategory(learningCategories);
-        },throwable -> {
-
-        }));
+    public void getLearningTopics(int idQuestionCategories){
+        getCompositeDisposable().add(getDataManager().getQuestionCategories()
+                .flatMap(Observable::fromIterable)
+                .filter(questionCategory -> questionCategory.getId() == idQuestionCategories)
+                .map(QuestionCategory::getLearningTopics)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(learningTopicsItems -> {
+                    getMvpView().setupTopicsItem(learningTopicsItems);
+                }, this::baseHandleError));
     }
 }

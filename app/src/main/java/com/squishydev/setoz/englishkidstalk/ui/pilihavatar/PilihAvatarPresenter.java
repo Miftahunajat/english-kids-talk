@@ -18,4 +18,8 @@ public class PilihAvatarPresenter<V extends PilihAvatarMvpView> extends BasePres
         super(dataManager, compositeDisposable);
     }
 
+    @Override
+    public void saveAvatar(int indexAvatar) {
+        getDataManager().setAvatarType(indexAvatar);
+    }
 }

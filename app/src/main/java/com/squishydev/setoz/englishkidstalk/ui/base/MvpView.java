@@ -32,4 +32,6 @@ public interface MvpView {
 
     void showFailedPrompt();
 
+    void finish();
+
 }

@@ -126,5 +126,13 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
         }
     }
 
+    public void baseHandleError(Throwable throwable){
+        Log.e("Error",throwable.toString());
+
+        if (throwable instanceof ANError) {
+            ANError anError = (ANError) throwable;
+            handleApiError(anError);
+        }
+    }
 
 }
