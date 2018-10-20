@@ -29,10 +29,10 @@ public class Endpoint {
             + "inventories/";
 
     public static final String ENDPOINT_ACTIVATE_ITEM = Config.BASE_URL_API
-            + "activate-item";
+            + "inventories/activate-item";
 
     public static final String ENDPOINT_DEACTIVATE_ITEM = Config.BASE_URL_API
-            + "activate-item";
+            + "inventories/activate-item";
 
     public static final String ENDPOINT_ITEM_CATEGORIES = Config.BASE_URL_API
             + "item-categories";

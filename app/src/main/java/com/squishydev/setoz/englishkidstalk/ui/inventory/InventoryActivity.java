@@ -3,20 +3,18 @@ package com.squishydev.setoz.englishkidstalk.ui.inventory;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
 
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
 import com.squishydev.setoz.englishkidstalk.R;
+import com.squishydev.setoz.englishkidstalk.data.network.model.Inventory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.Item;
 import com.squishydev.setoz.englishkidstalk.data.network.model.ItemCategory;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivityInventoryBinding;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
+import com.squishydev.setoz.englishkidstalk.utils.AvatarControl;
 
 import java.util.List;
 
@@ -36,19 +34,7 @@ public class InventoryActivity extends BaseActivity implements InventoryMvpView,
 
     OnBottomUpdateListener bottomCallback;
 
-    FrameLayout frameLayout;
-
-    Item bagianTopi;
-    Item bagianAtas;
-    Item bagianCelana;
-    Item bagianSepatu;
-
-    ImageView ivTopi;
-    ImageView ivAtas;
-    ImageView ivCelana;
-    ImageView ivSepatu;
-    private FrameLayout.LayoutParams layoutParams;
-
+    AvatarControl avatarControl;
 
     public static Intent getStartIntent(Context context) {
         Intent intent = new Intent(context, InventoryActivity.class);
@@ -66,7 +52,13 @@ public class InventoryActivity extends BaseActivity implements InventoryMvpView,
 
     @Override
     protected void onDestroy() {
-        mPresenter.onDetach();
+        Item[] oldItem = avatarControl.getOldItem();
+        Item[] newItem = avatarControl.getNewItem();
+        if (newItem != null)
+            mPresenter.updateItem(oldItem,newItem);
+        else
+            mPresenter.onDetach();
+
         super.onDestroy();
     }
 
@@ -75,23 +67,7 @@ public class InventoryActivity extends BaseActivity implements InventoryMvpView,
         binding = DataBindingUtil.setContentView(this, R.layout.activity_inventory);
         setupBottomMenu();
         setupSideMenu();
-        setupAvatar();
-    }
-
-    private void setupAvatar() {
-        frameLayout = binding.flContentAvatar;
-        layoutParams = new FrameLayout.LayoutParams(
-                FrameLayout.LayoutParams.MATCH_PARENT,
-                FrameLayout.LayoutParams.MATCH_PARENT
-        );
-        ivTopi = new ImageView(this);
-        ivAtas = new ImageView(this);
-        ivCelana = new ImageView(this);
-        ivSepatu = new ImageView(this);
-        frameLayout.addView(ivTopi,layoutParams);
-        frameLayout.addView(ivAtas,layoutParams);
-        frameLayout.addView(ivCelana,layoutParams);
-        frameLayout.addView(ivSepatu,layoutParams);
+        avatarControl = new AvatarControl(this,binding.flContentAvatar);
     }
 
     private void setupSideMenu() {
@@ -126,22 +102,28 @@ public class InventoryActivity extends BaseActivity implements InventoryMvpView,
     }
 
     @Override
+    public void setAvatarFromInventory(int type, Inventory inventory) {
+        if (type == 0)
+            binding.ivAvatar.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.cowok));
+        else
+            binding.ivAvatar.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.cewek));
+        Log.d("KEpanggil","Kepanggil");
+        avatarControl.buildFromInventory(inventory);
+    }
+
+    @Override
     public void onClick(Item item) {
         if (item.getItemCategoryId() == 1) {
-            bagianTopi = item;
-            Picasso.get().load(item.getImage()).into(loadPissacco(ivTopi));
+            avatarControl.changeTopi(item);
         }
         else if (item.getItemCategoryId() == 2) {
-            bagianAtas = item;
-            Picasso.get().load(item.getImage()).into(loadPissacco(ivAtas));
+            avatarControl.changeBaju(item);
         }
         else if (item.getItemCategoryId() == 3) {
-            bagianCelana = item;
-            Picasso.get().load(item.getImage()).into(loadPissacco(ivCelana));
+            avatarControl.changeCelana(item);
         }
         else if (item.getItemCategoryId() == 4) {
-            bagianSepatu = item;
-            Picasso.get().load(item.getImage()).into(loadPissacco(ivSepatu));
+            avatarControl.changeSepatu(item);
         }
 
 
@@ -151,24 +133,7 @@ public class InventoryActivity extends BaseActivity implements InventoryMvpView,
         void onSidebarUpdate(List<Item> items);
     }
 
-    Target loadPissacco(ImageView view){
-        return new Target() {
-            @Override
-            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                view.setImageBitmap(bitmap);
-            }
 
-            @Override
-            public void onBitmapFailed(Exception e, Drawable errorDrawable) {
-
-            }
-
-            @Override
-            public void onPrepareLoad(Drawable placeHolderDrawable) {
-
-            }
-        };
-    }
 
 }
 

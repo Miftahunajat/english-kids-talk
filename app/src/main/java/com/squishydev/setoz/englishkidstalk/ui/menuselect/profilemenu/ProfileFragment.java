@@ -15,6 +15,7 @@ import com.squishydev.setoz.englishkidstalk.databinding.FragmentProfileBinding;
 import com.squishydev.setoz.englishkidstalk.di.componen.ActivityComponent;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseFragment;
 import com.squishydev.setoz.englishkidstalk.ui.inventory.InventoryActivity;
+import com.squishydev.setoz.englishkidstalk.utils.AvatarControl;
 
 import javax.inject.Inject;
 
@@ -32,6 +33,7 @@ public class ProfileFragment extends BaseFragment implements
     private int[] profiles = {R.drawable.cowok,R.drawable.cewek};
 
     FragmentProfileBinding binding;
+    AvatarControl avatarControl;
 
     @Inject
     ProfileMvpPresenter<ProfileMvpView> mPresenter;
@@ -90,7 +92,7 @@ public class ProfileFragment extends BaseFragment implements
     @Override
     public void updateProfile(User user) {
         binding.setUser(user);
-        binding.avatarPreviewImage.setImageResource(profiles[user.getGender()]);
+        binding.ivAvatarPreview.setImageResource(profiles[user.getGender()]);
     }
 
     public interface OnFragmentInteractionListener {

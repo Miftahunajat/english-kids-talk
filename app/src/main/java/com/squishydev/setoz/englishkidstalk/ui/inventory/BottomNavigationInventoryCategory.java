@@ -31,7 +31,7 @@ import java.util.List;
 public class BottomNavigationInventoryCategory extends BaseFragment implements OnBottomUpdateListener {
 
     FragmentBottomNavigationItemCategoryBinding binding;
-    ImageButton imageButtons[] = new ImageButton[3] ;
+    ImageButton imageButtons[] = new ImageButton[4] ;
     CategoryChangeListener callback;
 
 
@@ -50,6 +50,7 @@ public class BottomNavigationInventoryCategory extends BaseFragment implements O
         imageButtons[0] = binding.ivCategoryAtas;
         imageButtons[1] = binding.ivCategoryTengah;
         imageButtons[2] = binding.ivCategoryBawah;
+        imageButtons[3] = binding.ivCategorySepatu;
 
         setOnClickListeners();
 
@@ -69,6 +70,10 @@ public class BottomNavigationInventoryCategory extends BaseFragment implements O
 
         imageButtons[2].setOnClickListener(view -> {
             setCurrentCategory(3);
+        });
+
+        imageButtons[3].setOnClickListener(view -> {
+            setCurrentCategory(4);
         });
     }
 
@@ -91,6 +96,7 @@ public class BottomNavigationInventoryCategory extends BaseFragment implements O
         Picasso.get().load(itemCategories.get(0).getItemCategoryImage()).into(imageButtons[0]);
         Picasso.get().load(itemCategories.get(1).getItemCategoryImage()).into(imageButtons[1]);
         Picasso.get().load(itemCategories.get(2).getItemCategoryImage()).into(imageButtons[2]);
+        Picasso.get().load(itemCategories.get(3).getItemCategoryImage()).into(imageButtons[3]);
     }
 
     interface CategoryChangeListener{

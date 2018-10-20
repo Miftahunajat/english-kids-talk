@@ -11,8 +11,8 @@ public interface InventoryMvpPresenter<V extends InventoryMvpView> extends MvpPr
 
     void updateCategorySelection(int position);
 
-    void activateSynchroSummon(Item item);
-
     void getItemCategories();
+
+    void updateItem(Item[] oldItem, Item[] newItem);
 }
 

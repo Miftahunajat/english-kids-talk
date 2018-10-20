@@ -25,6 +25,14 @@ public class Item {
 	@SerializedName("item_desc")
 	private String itemDesc;
 
+	public InventoryItem getInventoryItem() {
+		return inventoryItem;
+	}
+
+	public void setInventoryItem(InventoryItem inventoryItem) {
+		this.inventoryItem = inventoryItem;
+	}
+
 	@SerializedName("star")
 	private int star;
 

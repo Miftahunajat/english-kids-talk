@@ -1,6 +1,11 @@
 package com.squishydev.setoz.englishkidstalk.data.network.model;
 
+import android.util.Log;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.annotation.Generated;
 import com.google.gson.annotations.SerializedName;
 
@@ -72,6 +77,17 @@ public class Inventory{
 	public String getUpdatedAt(){
 		return updatedAt;
 	}
+
+	//Terkadang suka error disini
+	public List<Item> getActiveItems(){
+        List<Item> result = new ArrayList<>();
+        for (Item item : items){
+            if (item.getInventoryItem().isIsActive())
+                result.add(item);
+        }
+
+	    return result;
+    }
 
 	@Override
  	public String toString(){
