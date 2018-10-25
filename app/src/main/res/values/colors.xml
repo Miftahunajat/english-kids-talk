@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="greenEasy">#74ab43</color>
+    <color name="redMedium">#FF4F40</color>
+    <color name="brownHard">#82543D</color>
+    <color name="brownVeryHard">#673315</color>
+    <color name="brown">#fe7f2d0c</color>
+    <color name="white">#ffffff</color>
+    <color name="black_effective">#2a2a2a</color>
+
+    <color name="bottomNavigation">#5D4037</color>
+    <color name="bottomProfile">#D061F0</color>
+    <color name="bottomProfileDarker">#801180</color>
+
+    <color name="categoryMedium">#8a6a2f</color>
+    <color name="categoryEasy">#526c15</color>
+
+    <color name="bottomCategoryNavigationColorBackground">#e7ad60</color>
+    <color name="bottomCategoryNavigationColorOutline">#b98136</color>
+
+
+</resources>

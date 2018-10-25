@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="learningTopicsItem"
+            type="com.squishydev.setoz.englishkidstalk.data.network.model.LearningTopicsItem"/>
+    </data>
+<android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp">
+
+    <RelativeLayout
+        android:id="@+id/cv_icon"
+        android:layout_width="144dp"
+        android:layout_height="102dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/background_category"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_centerInParent="true"
+            android:layout_margin="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            app:imageUrl="@{learningTopicsItem.learningTopicImage}"
+            app:srcCompat="@drawable/ic_broken_image_black_24dp" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:fontFamily="@font/acme"
+        android:layout_marginTop="4dp"
+        android:text="@{learningTopicsItem.learningTopicName}"
+        app:layout_constraintEnd_toEndOf="@+id/cv_icon"
+        app:layout_constraintStart_toStartOf="@+id/cv_icon"
+        app:layout_constraintTop_toBottomOf="@+id/cv_icon"
+        tools:text="Animals"
+        android:layout_marginBottom="8dp"/>
+</android.support.constraint.ConstraintLayout>
+</layout>

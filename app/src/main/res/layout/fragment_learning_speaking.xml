@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="learningItem"
+            type="com.squishydev.setoz.englishkidstalk.data.network.model.LearningItem"/>
+
+    </data>
+<android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.learning.learningitem.learningspeaking.LearningSpeakingFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:id="@+id/rl_gambar"
+        android:layout_width="290dp"
+        android:layout_height="180dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_speaking"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:imageUrl="@{learningItem.learningItemImage}"
+            />
+
+        <TextView
+            android:id="@+id/tv_speaking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_speaking"
+            android:text="@{learningItem.learningItemTitle}"
+            android:textAlignment="center"
+            android:fontFamily="@font/acme"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_usersvoice"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_uservoice"
+        android:fontFamily="@font/acme"
+        android:gravity="center"
+        android:textColor="#000"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/rl_gambar"
+        app:layout_constraintStart_toStartOf="@+id/rl_gambar"
+        app:layout_constraintTop_toBottomOf="@+id/rl_gambar" />
+
+    <ImageView
+        android:id="@+id/btn_speaking"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/mic"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_usersvoice" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:visibility="invisible"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_speaking"
+        app:layout_constraintEnd_toEndOf="@+id/btn_speaking"
+        app:layout_constraintStart_toStartOf="@+id/btn_speaking"
+        app:layout_constraintTop_toTopOf="@+id/btn_speaking" />
+
+</android.support.constraint.ConstraintLayout>
+</layout>

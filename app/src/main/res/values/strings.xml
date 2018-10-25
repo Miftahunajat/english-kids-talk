@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">EnglishKidsTalk</string>
+    <string name="title_activity_level_select">LevelSelectActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="home_image">home-image</string>
+    <string name="edit_avatar_profile">Edit avatar</string>
+    <string name="cover_image">cover_image</string>
+    <string name="cover_image_highlight">cover_image_highlight</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_menu_select">MenuSelectActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <!--App Message-->
+    <string name="api_retry_error">Please retry!</string>
+    <string name="api_default_error">Something wrong happened!</string>
+    <string name="some_error">Some Error Occurred!</string>
+    <string name="connection_error">Internet connection lost!</string>
+    <string name="success">Benar</string>
+    <string name="text">Kata - kata yang anda pilih sesuai dengan keterangan</string>
+    <string name="ok">Ok</string>
+    <string name="wrong">Salah</string>
+    <string name="text_wrong">Kata yang anda masukkan salah. Silahkan Coba lagi</string>
+
+    <!--speaking-->
+    <string name="speech_prompt">Say something&#8230;</string>
+    <string name="speech_not_supported">Sorry! Your device doesn\'t support speech input</string>
+</resources>
