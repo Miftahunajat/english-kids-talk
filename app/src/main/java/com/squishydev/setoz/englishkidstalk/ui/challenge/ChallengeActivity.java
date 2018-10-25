@@ -22,7 +22,7 @@ import javax.inject.Inject;
 
 public class ChallengeActivity extends BaseActivity implements
         ChallengeMvpView,
-        ChalengeItemAFragment.ChallengeFragmentInteractionCallback {
+        BaseChallengeItemFragment.ChallengeFragmentInteractionCallback {
 
     @Inject
     ChallengeMvpPresenter<ChallengeMvpView> mPresenter;
