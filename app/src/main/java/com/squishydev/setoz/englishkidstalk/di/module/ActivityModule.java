@@ -26,6 +26,9 @@ import com.squishydev.setoz.englishkidstalk.ui.learning.learningcategory.Learnin
 import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.LearningItemMvpPresenter;
 import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.LearningItemMvpView;
 import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.LearningItemPresenter;
+import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.learningspeaking.LearningSpeakingMvpPresenter;
+import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.learningspeaking.LearningSpeakingMvpView;
+import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.learningspeaking.LearningSpeakingPresenter;
 import com.squishydev.setoz.englishkidstalk.ui.levelselect.fragment.LevelSelectMvpPresenter;
 import com.squishydev.setoz.englishkidstalk.ui.levelselect.fragment.LevelSelectMvpView;
 import com.squishydev.setoz.englishkidstalk.ui.levelselect.fragment.LevelSelectPresenter;
@@ -149,6 +152,11 @@ public class ActivityModule {
 
     @Provides
     InventoryMvpPresenter<InventoryMvpView> provideInventoryPresenter(InventoryPresenter<InventoryMvpView> presenter){
+        return presenter;
+    }
+
+    @Provides
+    LearningSpeakingMvpPresenter<LearningSpeakingMvpView> provideLearningSpeakingPresenter(LearningSpeakingPresenter<LearningSpeakingMvpView> presenter){
         return presenter;
     }
 }

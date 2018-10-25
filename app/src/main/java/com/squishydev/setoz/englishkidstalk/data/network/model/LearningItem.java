@@ -3,13 +3,14 @@ package com.squishydev.setoz.englishkidstalk.data.network.model;
 import android.databinding.BindingAdapter;
 import android.widget.ImageView;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.annotation.Generated;
 import com.google.gson.annotations.SerializedName;
 import com.squareup.picasso.Picasso;
 
 @Generated("com.robohorse.robopojogenerator")
-public class LearningItem{
+public class LearningItem implements Serializable {
 
 	@SerializedName("createdAt")
 	private String createdAt;
