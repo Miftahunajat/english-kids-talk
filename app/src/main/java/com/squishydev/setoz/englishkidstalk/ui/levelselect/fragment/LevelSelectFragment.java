@@ -6,9 +6,10 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Button;
 
 import com.squishydev.setoz.englishkidstalk.R;
+import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
 import com.squishydev.setoz.englishkidstalk.di.componen.ActivityComponent;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseFragment;
 import com.squishydev.setoz.englishkidstalk.ui.menuselect.MenuSelectActivity;
@@ -19,6 +20,7 @@ public class LevelSelectFragment extends BaseFragment implements
         LevelSelectMvpView {
 
     private static final String TAG = "LevelSelectFragment";
+    private int mIndex = 0;
 
     private static final String ARG_SECTION_NUMBER = "section_number";
     private int[] mLayouts = {R.layout.fragment_level_select_easy,
@@ -40,8 +42,8 @@ public class LevelSelectFragment extends BaseFragment implements
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        int index = getArguments().getInt(ARG_SECTION_NUMBER);
-        View view = inflater.inflate(mLayouts[index], container, false);
+        mIndex = getArguments().getInt(ARG_SECTION_NUMBER);
+        View view = inflater.inflate(mLayouts[mIndex], container, false);
 
         ActivityComponent component = getActivityComponent();
         if (component != null) {
@@ -55,8 +57,20 @@ public class LevelSelectFragment extends BaseFragment implements
 
     @Override
     protected void setUp(View view) {
-        TextView tvMasuk = view.findViewById(R.id.tv_masuk);
-        tvMasuk.setOnClickListener(v -> startActivity(new Intent(getContext(), MenuSelectActivity.class)));
+        Button btnPlay = view.findViewById(R.id.btn_play);
+        btnPlay.setOnClickListener(v -> {
+            if (mIndex == 0) {
+                Intent intent = MenuSelectActivity.getStartIntent(getContext(), Difficulty.DIFFICULTY_EASY);
+                getContext().startActivity(intent);
+            }else if (mIndex == 1) {
+                Intent intent = MenuSelectActivity.getStartIntent(getContext(), Difficulty.DIFFICULTY_MEDIUM);
+                getContext().startActivity(intent);
+            }else{
+                Intent intent = MenuSelectActivity.getStartIntent(getContext(), Difficulty.DIFFICULTY_HARD);
+                getContext().startActivity(intent);
+            }
+
+        });
     }
 
 
@@ -65,5 +79,8 @@ public class LevelSelectFragment extends BaseFragment implements
         mPresenter.onDetach();
         super.onDestroyView();
     }
+
+
+
 }
 

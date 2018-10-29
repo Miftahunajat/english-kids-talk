@@ -1,5 +1,19 @@
 package com.squishydev.setoz.englishkidstalk.data.network;
 
+import com.squishydev.setoz.englishkidstalk.data.network.model.Challenge;
+import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
+import com.squishydev.setoz.englishkidstalk.data.model.LearningCategory;
+import com.squishydev.setoz.englishkidstalk.data.network.model.Inventory;
+import com.squishydev.setoz.englishkidstalk.data.network.model.ItemCategory;
+import com.squishydev.setoz.englishkidstalk.data.network.model.LearningItem;
+import com.squishydev.setoz.englishkidstalk.data.model.User;
+import com.squishydev.setoz.englishkidstalk.data.network.model.QuestionCategory;
+
+import java.util.List;
+
+import io.reactivex.Observable;
+import io.reactivex.Single;
+
 /**
  * Created by miftahun on 9/21/18.
  * Email : miftahunajat@gmail.com
@@ -7,5 +21,29 @@ package com.squishydev.setoz.englishkidstalk.data.network;
  */
 
 public interface ApiHelper {
+    Single<List<LearningCategory>> getLearningCategory(Difficulty difficulty, String type);
 
+    Observable<List<LearningItem>> getLearningItem();
+
+    Single<User> registerUser(String name,
+                              String userName,
+                              String password,
+                              int gender,
+                              int starGained,
+                              int xpGained);
+
+    Observable<List<Challenge>>  getChallenges();
+
+    Observable<List<QuestionCategory>> getQuestionCategories();
+
+    Single<User> getUser(String id);
+
+    Single<User> updateUserStars(User user);
+
+    Observable<Inventory> getInventory(String userId);
+
+    Observable<Inventory> activateItemInventory(String inventoryId, String itemId);
+    Observable<Inventory> deactivateItemInventory(String inventoryId, String itemId);
+
+    Single<List<ItemCategory>> getItemCategory();
 }

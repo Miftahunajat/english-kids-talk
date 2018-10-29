@@ -132,4 +132,19 @@ public abstract class BaseFragment extends Fragment implements MvpView {
 
         void onFragmentDetached(String tag);
     }
+
+    @Override
+    public void showSuccessPrompt() {
+
+    }
+
+    @Override
+    public void showFailedPrompt() {
+
+    }
+
+    @Override
+    public void finish() {
+
+    }
 }

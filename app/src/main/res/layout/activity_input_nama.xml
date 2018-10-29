@@ -1,75 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-<layout xmlns:tools="http://schemas.android.com/tools">
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/latar">
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView4"
-        android:layout_centerHorizontal="true"
-        android:fontFamily="@font/amaranth_bold"
-        android:textColor="#590B08"
-        android:textSize="23sp"
-        tools:layout_editor_absoluteX="115dp"
-        tools:layout_editor_absoluteY="425dp"
-        tools:text="Kenalan Dulu Yuk" />
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/latar">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tv_hai_nama"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView4"
+            android:layout_below="@+id/imageView14"
             android:layout_centerHorizontal="true"
+            android:layout_marginBottom="32dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/amaranth_bold"
-            android:text="TextView"
+            android:text="Kenalan Dulu Yuk"
             android:textColor="#590B08"
             android:textSize="23sp"
-            app:layout_constraintBottom_toTopOf="@+id/editText2"
+            app:layout_constraintBottom_toTopOf="@+id/et_name"
             app:layout_constraintEnd_toEndOf="@+id/imageView2"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/imageView2"
             app:layout_constraintTop_toBottomOf="@+id/imageView2"
-            tools:text="Kenalan Dulu Yuk" />
+            app:layout_constraintVertical_chainStyle="packed" />
+
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/et_name"
             android:layout_width="300dp"
             android:layout_height="40dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginBottom="32dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/edittext_input_nama"
             android:hint="Siapa nama kamu ?"
             android:inputType="textPersonName"
             android:textColorHint="#590B08"
             android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@+id/btn_next"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintEnd_toEndOf="@+id/tv_hai_nama"
+            app:layout_constraintStart_toStartOf="@+id/tv_hai_nama"
+            app:layout_constraintTop_toBottomOf="@+id/tv_hai_nama"
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <Button
             android:id="@+id/btn_next"
             android:layout_width="110dp"
             android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
             android:background="@drawable/next_input"
+            app:layout_constraintVertical_chainStyle="packed"
             android:text="Next"
             android:textColor="@color/cardview_light_background"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText2"
-            tools:layout_editor_absoluteX="150dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_name" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -79,8 +73,10 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.485"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
             app:srcCompat="@drawable/wel" />
 
     </android.support.constraint.ConstraintLayout>

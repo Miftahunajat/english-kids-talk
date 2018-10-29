@@ -13,6 +13,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,8 +23,10 @@ import com.squishydev.setoz.englishkidstalk.di.componen.ActivityComponent;
 import com.squishydev.setoz.englishkidstalk.di.componen.DaggerActivityComponent;
 import com.squishydev.setoz.englishkidstalk.di.module.ActivityModule;
 import com.squishydev.setoz.englishkidstalk.utils.CommonUtils;
+import com.squishydev.setoz.englishkidstalk.utils.MediaUtils;
 import com.squishydev.setoz.englishkidstalk.utils.NetworkUtils;
 
+import cn.refactor.lib.colordialog.PromptDialog;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
@@ -42,11 +45,11 @@ public abstract class BaseActivity extends AppCompatActivity
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setUp();
         mActivityComponent = DaggerActivityComponent.builder()
                 .activityModule(new ActivityModule(this))
                 .applicationComponent(((App) getApplication()).getComponent())
                 .build();
+        setUp();
 
     }
 
@@ -145,6 +148,48 @@ public abstract class BaseActivity extends AppCompatActivity
                     getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
+    }
+
+    @Override
+    public void showSuccessPrompt() {
+        MediaUtils.playSound(this,R.raw.success_sound);
+        new PromptDialog(this)
+                .setDialogType(PromptDialog.DIALOG_TYPE_SUCCESS)
+                .setAnimationEnable(true)
+                .setTitleText(getString(R.string.success))
+                .setContentText(getString(R.string.text))
+                .setPositiveListener(getString(R.string.ok), PromptDialog::dismiss).show();
+    }
+
+    @Override
+    public void showFailedPrompt() {
+        MediaUtils.playSound(this,R.raw.lose);
+        new PromptDialog(this)
+                .setDialogType(PromptDialog.DIALOG_TYPE_WRONG)
+                .setAnimationEnable(true)
+                .setTitleText(getString(R.string.wrong))
+                .setContentText(getString(R.string.text_wrong))
+                .setPositiveListener(getString(R.string.ok),PromptDialog::dismiss).show();
+    }
+
+    public void showSuccessPrompt(String title, String content, PromptDialog.OnPositiveListener listener) {
+        MediaUtils.playSound(this,R.raw.success_sound);
+        new PromptDialog(this)
+                .setDialogType(PromptDialog.DIALOG_TYPE_SUCCESS)
+                .setAnimationEnable(true)
+                .setTitleText(title)
+                .setContentText(content)
+                .setPositiveListener(getString(R.string.ok), listener).show();
+    }
+
+    public void showFailedPrompt(String title, String content, PromptDialog.OnPositiveListener listener) {
+        MediaUtils.playSound(this,R.raw.lose);
+        new PromptDialog(this)
+                .setDialogType(PromptDialog.DIALOG_TYPE_WRONG)
+                .setAnimationEnable(true)
+                .setTitleText(title)
+                .setContentText(content)
+                .setPositiveListener(getString(R.string.ok),listener).show();
     }
 
     protected abstract void setUp();

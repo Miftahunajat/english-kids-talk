@@ -1,5 +1,7 @@
 package com.squishydev.setoz.englishkidstalk.ui.levelselect;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 
 import android.support.v4.app.Fragment;
@@ -8,9 +10,11 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
 import com.squishydev.setoz.englishkidstalk.ui.levelselect.fragment.LevelSelectFragment;
+import com.squishydev.setoz.englishkidstalk.ui.pilihavatar.PilihAvatarActivity;
 
 public class LevelSelectActivity extends BaseActivity {
 
@@ -23,6 +27,11 @@ public class LevelSelectActivity extends BaseActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
+
+    public static Intent getStartIntent(Context context) {
+        Intent intent = new Intent(context, LevelSelectActivity.class);
+        return intent;
+    }
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -41,6 +50,7 @@ public class LevelSelectActivity extends BaseActivity {
 //         Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+
     }
 
     @Override

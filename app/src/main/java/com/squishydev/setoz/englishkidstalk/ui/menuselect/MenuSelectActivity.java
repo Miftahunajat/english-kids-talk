@@ -1,49 +1,56 @@
 package com.squishydev.setoz.englishkidstalk.ui.menuselect;
 
+import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.content.ContextCompat;
-import android.view.MenuItem;
-import android.widget.TextView;
 
+
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.squishydev.setoz.englishkidstalk.R;
+import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivityMenuSelectBinding;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
 import com.squishydev.setoz.englishkidstalk.ui.menuselect.itemstoremenu.ItemStoreFragment;
 import com.squishydev.setoz.englishkidstalk.ui.menuselect.mainmenu.MainMenuFragment;
 import com.squishydev.setoz.englishkidstalk.ui.menuselect.profilemenu.ProfileFragment;
+import com.squishydev.setoz.englishkidstalk.ui.pilihavatar.PilihAvatarActivity;
 
 public class MenuSelectActivity extends BaseActivity{
 
-    private TextView mTextMessage;
     private FragmentManager fm;
-    BottomNavigationView navigation;
+    private Difficulty mDifficulty;
+    ActivityMenuSelectBinding binding;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
+
+    public static Intent getStartIntent(Context context, Difficulty difficulty) {
+        Intent intent = new Intent(context, MenuSelectActivity.class);
+        intent.putExtra("difficulty",difficulty);
+        return intent;
+    }
+
+    private AHBottomNavigation.OnTabSelectedListener mOnNavigationItemSelectedListener
+            = new AHBottomNavigation.OnTabSelectedListener() {
         @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_profile:
-                    navigation.setBackgroundColor(ContextCompat.getColor(MenuSelectActivity.this,R.color.bottomProfile));
+        public boolean onTabSelected(int position, boolean wasSelected) {
+            switch (position){
+                case 0:
                     ProfileFragment profileFragment = new ProfileFragment();
                     fm.beginTransaction()
                             .replace(R.id.fl_fragment,profileFragment)
                             .commit();
                     return true;
-                case R.id.navigation_study:
-                    navigation.setBackgroundColor(ContextCompat.getColor(MenuSelectActivity.this,R.color.bottomNavigation));
-                    MainMenuFragment mainFragment = new MainMenuFragment();
+                case 1:
+                    MainMenuFragment mainFragment = MainMenuFragment.newInstance(mDifficulty);
                     fm.beginTransaction()
                             .replace(R.id.fl_fragment,mainFragment)
                             .commit();
                     return true;
-                case R.id.navigation_store:
-                    navigation.setBackgroundColor(ContextCompat.getColor(MenuSelectActivity.this,R.color.bottomProfile));
+                case 2:
                     ItemStoreFragment itemStoreFragment = new ItemStoreFragment();
                     fm.beginTransaction()
                             .replace(R.id.fl_fragment,itemStoreFragment)
@@ -57,13 +64,40 @@ public class MenuSelectActivity extends BaseActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityMenuSelectBinding binding = DataBindingUtil.setContentView(this,R.layout.activity_menu_select);
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_menu_select);
+
         fm = getSupportFragmentManager();
 
-        navigation = binding.navigation;
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        navigation.setBackgroundColor(ContextCompat.getColor(this,R.color.bottomNavigation));
-        navigation.setSelectedItemId(R.id.navigation_study);
+        mDifficulty = (Difficulty) getIntent().getSerializableExtra("difficulty");
+
+        AHBottomNavigation ahBottomNavigation = binding.navigation;
+        AHBottomNavigationItem item1 = new AHBottomNavigationItem("asdasd",R.drawable.home,R.color.categoryEasy);
+        AHBottomNavigationItem item2 = new AHBottomNavigationItem("aaaaa",R.drawable.ic_broken_image_black_24dp);
+        AHBottomNavigationItem item3 = new AHBottomNavigationItem("qweqwe",R.drawable.ic_dashboard_black_24dp);
+        ahBottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
+            @Override
+            public boolean onTabSelected(int position, boolean wasSelected) {
+                MainMenuFragment mainFragment = MainMenuFragment.newInstance(mDifficulty);
+                fm.beginTransaction()
+                        .replace(R.id.fl_fragment,mainFragment)
+                        .commit();
+                return true;
+            }
+        });
+
+        // Manage titles
+        ahBottomNavigation.setTitleState(AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE);
+        ahBottomNavigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
+        ahBottomNavigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_HIDE);
+
+        ahBottomNavigation.setTranslucentNavigationEnabled(true);
+        ahBottomNavigation.setNotificationBackgroundColor(Color.parseColor("#F63D2B"));
+
+        ahBottomNavigation.addItem(item1);
+        ahBottomNavigation.addItem(item2);
+        ahBottomNavigation.addItem(item3);
+        ahBottomNavigation.setOnTabSelectedListener(mOnNavigationItemSelectedListener);
+        ahBottomNavigation.setCurrentItem(1);
     }
 
     @Override

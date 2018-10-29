@@ -3,6 +3,8 @@
     package="com.squishydev.setoz.englishkidstalk">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
         android:name=".App"
@@ -12,18 +14,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".MainActivity" />
         <activity android:name=".ui.welcomescreen.WelcomeScreenActivity" />
         <activity
             android:name=".ui.levelselect.LevelSelectActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".ui.menuselect.MenuSelectActivity"
-            android:label="@string/title_activity_menu_select" />
-        <activity android:name=".ui.inputnama.InputNamaActivity" />
-        <activity android:name=".ui.pilihavatar.PilihAvatarActivity" />
-        <activity android:name=".ui.konfirmasiakun.KonfirmasiAkunActivity"></activity>
-        <activity android:name=".ui.splashscreen.SplashScreenActivity" >
+            android:label="@string/title_activity_menu_select"></activity>
+        <activity android:name=".ui.inputnama.InputNamaActivity"></activity>
+        <activity android:name=".ui.pilihavatar.PilihAvatarActivity"></activity>
+        <activity android:name=".ui.konfirmasiakun.KonfirmasiAkunActivity" />
+        <activity android:name=".ui.splashscreen.SplashScreenActivity">
+
+        </activity>
+        <activity android:name=".ui.learning.learningitem.LearningItemActivity"></activity>
+        <activity android:name=".ui.learning.learningcategory.LearningCategoryActivity"></activity>
+        <activity
+            android:name=".ui.challenge.ChallengeActivity"
+            android:windowSoftInputMode="adjustResize"></activity>
+        <activity android:name=".ui.buatakun.BuatAkunActivity" />
+        <activity android:name=".ui.inventory.InventoryActivity" />
+        <activity android:name=".ui.learning.learningitem.learningspeaking.LearningSpeakingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
