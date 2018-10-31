@@ -11,6 +11,7 @@ import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.network.model.Challenge;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivityChallengeBinding;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
+import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.BaseChallengeItemFragment;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChalengeItemAFragment;
 import com.squishydev.setoz.englishkidstalk.utils.MediaUtils;
 
