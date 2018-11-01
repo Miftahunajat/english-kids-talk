@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    // Reduce the corner radius value
+    <corners android:radius="30dp" />
+
+    <stroke
+        android:color="#A4741D"
+        android:width="3dp"
+        />
+
+    <padding
+
+        android:layout_width="500dp"
+        android:layout_height="100dp">
+    </padding>
+
+</shape>

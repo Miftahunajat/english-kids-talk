@@ -20,8 +20,6 @@ public class ChalengeItemAFragment extends BaseChallengeItemFragment
     FragmentChallengeItemABinding binding;
 
 
-    private Challenge mChallenge;
-
     public static ChalengeItemAFragment newInstance(Challenge challenge) {
         Bundle args = new Bundle();
         args.putSerializable("challenge",challenge);
@@ -36,8 +34,6 @@ public class ChalengeItemAFragment extends BaseChallengeItemFragment
                              @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater,container,savedInstanceState);
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_challenge_item_a, container, false);
-
-        mChallenge = (Challenge) getArguments().getSerializable("challenge");
 
         binding.setChallenge(mChallenge);
 
