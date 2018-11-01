@@ -34,10 +34,9 @@
         <activity android:name=".ui.inventory.InventoryActivity" />
         <activity android:name=".ui.learning.learningitem.learningspeaking.LearningSpeakingActivity">
         </activity>
-        <activity android:name=".ui.learning.learningitem.learningwriting.LearningWritingActivity">
+        <activity android:name=".ui.learning.learningitem.learningwriting.LearningWritingActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

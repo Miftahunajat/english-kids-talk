@@ -48,11 +48,6 @@ public class LearningSpeakingActivity extends BaseActivity implements LearningSp
     @Override
     protected void setUp() {
         //ActivityLearningSpeakingBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_learning_speaking);
-
-        LearningItem learningItem = new LearningItem();
-        learningItem.setLearningItemImage("http://belitongekspres.co.id/wp-content/uploads/2016/11/boks-Miftahun-Pulus-tak-lulus-SD-kuliahkan-3-anak.jpg");
-        learningItem.setLearningItemTitle("Miftahun");
-        setLearningFragment(learningItem);
     }
 
     void setLearningFragment(LearningItem learningItem){

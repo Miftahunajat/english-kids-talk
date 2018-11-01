@@ -42,25 +42,20 @@ public class LearningWritingFragment extends BaseFragment {
         return learningWritingFragment;
     }
 
-    public static LearningWritingFragment newInstance() {
-        LearningWritingFragment fragment = new LearningWritingFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_learning_writing,container,false);
-        WritingControl writingControl = new WritingControl(binding.fbQuestion, "Good Morning",getContext() );
+
+        LearningItem learningItem = (LearningItem) getArguments().getSerializable("learning-item");
+        WritingControl writingControl = new WritingControl(binding.fbQuestion, learningItem.getLearningItemTitle(),getContext() );
         writingControl.buildLinearLayout();
         binding.writingSend.setOnClickListener(v -> {
             checkAnswer(writingControl.getAnswer());
             Toast.makeText(getContext(),writingControl.getAnswer(), Toast.LENGTH_SHORT).show();
         });
-        LearningItem learningItem = (LearningItem) getArguments().getSerializable("learning-item");
         binding.setLearningItem(learningItem);
+        onWritingResponse = (OnWritingResponse) getBaseActivity();
         
         // Inflate the layout for this fragment
         return binding.getRoot();
