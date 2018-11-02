@@ -78,6 +78,8 @@ public class LearningSpeakingActivity extends BaseActivity implements LearningSp
     @Override
     public void onSuccess() {
         currentUserProgress++;
+        if (currentUserProgress >= learningItemList.size())
+            finish();
         setProgressText(currentUserProgress);
         setLearningFragment(learningItemList.get(currentUserProgress-1));
     }
