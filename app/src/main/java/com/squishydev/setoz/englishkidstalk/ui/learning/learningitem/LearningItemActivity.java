@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 
 import com.squishydev.setoz.englishkidstalk.R;
+import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
 import com.squishydev.setoz.englishkidstalk.data.network.model.LearningItem;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivityLearningItemBinding;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
@@ -28,10 +30,13 @@ public class LearningItemActivity extends BaseActivity implements LearningItemMv
     LearningItemAdapter learningItemAdapter;
     List<LearningItem> learningItems;
     TextToSpeech tts;
+    private int layouts[] = {R.drawable.latar_item_easy,R.drawable.latar_item_med,R.drawable.latar_item_hard};
+    private Difficulty mDifficulty;
 
-    public static Intent getStartIntent(Context context, int id) {
+    public static Intent getStartIntent(Context context, int id, Difficulty mDifficulty) {
         Intent intent = new Intent(context, LearningItemActivity.class);
         intent.putExtra("id_category",id);
+        intent.putExtra("difficulty",mDifficulty);
         return intent;
     }
 
@@ -55,6 +60,11 @@ public class LearningItemActivity extends BaseActivity implements LearningItemMv
     @Override
     protected void setUp() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_learning_item);
+
+        mDifficulty = (Difficulty) getIntent().getSerializableExtra("difficulty");
+
+        binding.getRoot().setBackground(ContextCompat.getDrawable(this,layouts[mDifficulty.getNumber()]));
+
         learningItemAdapter = new LearningItemAdapter(new ArrayList<>(),this);
         binding.rvLearningItem.setLayoutManager(new GridLayoutManager(this,2));
         binding.rvLearningItem.setAdapter(learningItemAdapter);

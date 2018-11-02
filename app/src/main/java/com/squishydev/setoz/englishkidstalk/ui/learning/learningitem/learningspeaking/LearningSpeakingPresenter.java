@@ -35,10 +35,4 @@ public class LearningSpeakingPresenter<V extends LearningSpeakingMvpView> extend
                 },this::baseHandleError));
 
     }
-
-    @Override
-    public void onAttach(V mvpView) {
-        super.onAttach(mvpView);
-        getLearningSpeakingItem(58);
-    }
 }

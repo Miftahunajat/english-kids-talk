@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.androidnetworking.error.ANError;
 import com.squishydev.setoz.englishkidstalk.data.DataManager;
+import com.squishydev.setoz.englishkidstalk.data.network.model.User;
 import com.squishydev.setoz.englishkidstalk.ui.base.BasePresenter;
 
 import javax.inject.Inject;
@@ -37,7 +38,8 @@ public class BuatAkunPresenter<V extends BuatAkunMvpView> extends BasePresenter<
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(
-                user -> {
+                userResponse -> {
+                    User user = userResponse.getUser();
                     getDataManager().setLoggedInMode(DataManager.LoggedInMode.LOGGED_IN_MODE_SERVER_LOGIN);
                     getDataManager().setAvatarType(user.getGender());
                     getDataManager().setUserId(String.valueOf(user.getId()));

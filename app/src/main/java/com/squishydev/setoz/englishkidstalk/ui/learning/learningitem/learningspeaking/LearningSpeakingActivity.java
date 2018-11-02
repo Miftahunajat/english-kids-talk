@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.widget.GridLayout;
 import android.widget.TextView;
 
 import com.squishydev.setoz.englishkidstalk.R;
@@ -19,12 +21,14 @@ public class LearningSpeakingActivity extends BaseActivity implements LearningSp
 
     List<LearningItem> learningItemList;
     int currentUserProgress = 1;
+    int learningTopicId;
 
     @Inject
     LearningSpeakingMvpPresenter<LearningSpeakingMvpView> mPresenter;
 
-    public static Intent getStartIntent(Context context) {
+    public static Intent getStartIntent(Context context, int learningTopicId) {
         Intent intent = new Intent(context, LearningSpeakingActivity.class);
+        intent.putExtra("learning-topic-id",learningTopicId);
         return intent;
     }
 
@@ -36,6 +40,10 @@ public class LearningSpeakingActivity extends BaseActivity implements LearningSp
         getActivityComponent().inject(this);
 
         mPresenter.onAttach(LearningSpeakingActivity.this);
+
+        learningTopicId = getIntent().getIntExtra("learning-topic-id",1);
+
+        mPresenter.getLearningSpeakingItem(learningTopicId);
     }
 
     @Override

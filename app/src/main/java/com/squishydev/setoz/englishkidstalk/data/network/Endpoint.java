@@ -11,7 +11,7 @@ import com.squishydev.setoz.englishkidstalk.Config;
 public class Endpoint {
     //SUMMARY
     public static final String ENDPOINT_REGISTER_USERS = Config.BASE_URL_API
-            + "users/register";
+            + "auth/register";
 
     public static final String ENDPOINT_QUESTION_CATEGORIES = Config.BASE_URL_API
             + "question-categories";

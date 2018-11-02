@@ -20,7 +20,7 @@
         app:srcCompat="@drawable/frag_md" />
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/iv_vocab_medium"
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:layout_marginEnd="8dp"
@@ -34,7 +34,7 @@
         app:srcCompat="@drawable/vocab_md" />
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/iv_writing_medium"
         android:layout_width="96dp"
         android:layout_height="96dp"
         app:srcCompat="@drawable/write_md"
@@ -46,7 +46,7 @@
         app:layout_constraintRight_toRightOf="parent"/>
 
     <ImageView
-        android:id="@+id/imageView11"
+        android:id="@+id/iv_challenge_medium"
         android:layout_width="112dp"
         android:layout_height="112dp"
         android:layout_marginEnd="8dp"

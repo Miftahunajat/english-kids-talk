@@ -5,9 +5,12 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.WindowManager;
 
 import com.squishydev.setoz.englishkidstalk.R;
+import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
 import com.squishydev.setoz.englishkidstalk.data.network.model.Challenge;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivityChallengeBinding;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
@@ -31,10 +34,14 @@ public class ChallengeActivity extends BaseActivity implements
     private int mChallengesNum = 1;
     ActivityChallengeBinding binding;
     private int totalStars = 0;
+    private Difficulty mDifficulty;
+    private String TAG = getClass().getSimpleName();
+    private int layouts[] = {R.drawable.latar_item_easy,R.drawable.latar_item_med,R.drawable.latar_item_hard};
 
 
-    public static Intent getStartIntent(Context context) {
+    public static Intent getStartIntent(Context context, Difficulty mDifficulty) {
         Intent intent = new Intent(context, ChallengeActivity.class);
+        intent.putExtra("difficulty",mDifficulty);
         return intent;
     }
 
@@ -51,6 +58,13 @@ public class ChallengeActivity extends BaseActivity implements
 
         mPresenter.onAttach(ChallengeActivity.this);
 
+        mDifficulty = (Difficulty) getIntent().getSerializableExtra("difficulty");
+
+        binding.getRoot().setBackground(ContextCompat.getDrawable(this,layouts[mDifficulty.getNumber()]));
+
+        Log.d(TAG, "onCreate: " + "Kepanggil");
+
+        mPresenter.getAllChalleges(mDifficulty);
     }
 
     @Override
@@ -68,6 +82,7 @@ public class ChallengeActivity extends BaseActivity implements
 
     @Override
     public void setupChallenges(List<Challenge> challenges) {
+        Log.d(TAG, "setupChallenges: " + challenges.size());
         challengeQueue.addAll(challenges);
         loadChallegeGame();
     }

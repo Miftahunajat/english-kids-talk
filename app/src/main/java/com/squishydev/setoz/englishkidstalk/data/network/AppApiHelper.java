@@ -12,6 +12,7 @@ import com.squishydev.setoz.englishkidstalk.data.network.model.ItemCategory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.LearningItem;
 import com.squishydev.setoz.englishkidstalk.data.model.User;
 import com.squishydev.setoz.englishkidstalk.data.network.model.QuestionCategory;
+import com.squishydev.setoz.englishkidstalk.data.network.model.UserResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,12 +64,12 @@ public class AppApiHelper implements ApiHelper {
     }
 
     @Override
-    public Single<User> registerUser(String name,
-                                     String userName,
-                                     String password,
-                                     int gender,
-                                     int starGained,
-                                     int xpGained) {
+    public Single<UserResponse> registerUser(String name,
+                                             String userName,
+                                             String password,
+                                             int gender,
+                                             int starGained,
+                                             int xpGained) {
         Log.v("debug", name + userName + password);
         return Rx2AndroidNetworking.post(Endpoint.ENDPOINT_REGISTER_USERS)
                 .addUrlEncodeFormBodyParameter("name", name)
@@ -78,7 +79,7 @@ public class AppApiHelper implements ApiHelper {
                 .addUrlEncodeFormBodyParameter("star_gained",String.valueOf(starGained))
                 .addUrlEncodeFormBodyParameter("xp_gained",String.valueOf(xpGained))
                 .build()
-                .getObjectSingle(User.class);
+                .getObjectSingle(UserResponse.class);
     }
 
     @Override
@@ -86,13 +87,6 @@ public class AppApiHelper implements ApiHelper {
         return Rx2AndroidNetworking.get(Endpoint.ENDPOINT_CHALLENGESS)
                 .build()
                 .getObjectListObservable(Challenge.class);
-//        List<Challenge> list = new ArrayList<>();
-//        list.add(new Challenge(0, 3, R.drawable.duck, "What animal is it", "duck"));
-//        list.add(new Challenge(0, 3, R.drawable.dog, "What animal is it", "dog"));
-//        list.add(new Challenge(0, 2, R.drawable.cow, "What animal is it", "cow"));
-//        list.add(new Challenge(0, 2, R.drawable.cat, "What animal is it", "cat"));
-//        list.add(new Challenge(0, 3, R.drawable.chicken, "What animal is it", "chicken"));
-//        return Single.just(list);
     }
 
     @Override

@@ -25,9 +25,11 @@ public class LearningWritingActivity extends BaseActivity implements LearningWri
     ActivityLearningWritingBinding binding;
     List<LearningItem> learningItemList;
     int currentUserProgress = 1;
+    int learningTopicId;
 
-    public static Intent getStartIntent(Context context) {
+    public static Intent getStartIntent(Context context,int learningTopicId) {
         Intent intent = new Intent(context, LearningWritingActivity.class);
+        intent.putExtra("learning-topic-id",learningTopicId);
         return intent;
     }
 
@@ -38,6 +40,10 @@ public class LearningWritingActivity extends BaseActivity implements LearningWri
         getActivityComponent().inject(this);
 
         mPresenter.onAttach(LearningWritingActivity.this);
+
+        learningTopicId = getIntent().getIntExtra("learning-topic-id",1);
+
+        mPresenter.getLearningWritingItem(learningTopicId);
     }
 
     @Override

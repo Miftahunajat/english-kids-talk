@@ -1,6 +1,5 @@
 package com.squishydev.setoz.englishkidstalk.ui.menuselect.mainmenu;
 
-import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -12,14 +11,15 @@ import android.view.ViewGroup;
 
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
-import com.squishydev.setoz.englishkidstalk.data.model.LearningCategory;
-import com.squishydev.setoz.englishkidstalk.databinding.FragmentMainBinding;
+import com.squishydev.setoz.englishkidstalk.databinding.FragmentLevelEasyBinding;
+import com.squishydev.setoz.englishkidstalk.databinding.FragmentLevelHardBinding;
+import com.squishydev.setoz.englishkidstalk.databinding.FragmentLevelMediumBinding;
 import com.squishydev.setoz.englishkidstalk.di.componen.ActivityComponent;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseFragment;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.ChallengeActivity;
 import com.squishydev.setoz.englishkidstalk.ui.learning.learningcategory.LearningCategoryActivity;
+import com.squishydev.setoz.englishkidstalk.utils.LearningConstant;
 
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -51,12 +51,10 @@ public class MainMenuFragment extends BaseFragment implements
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         if (getArguments() != null){
-            //MOCK
-//            mDifficulty = Difficulty.DIFFICULTY_EASY;
-            //REAL
             mDifficulty = (Difficulty) getArguments().getSerializable("difficulty");
         }
         View view = inflater.inflate(layouts[mDifficulty.getNumber()],container,false);
+
 
         ActivityComponent component = getActivityComponent();
         if (component != null) {
@@ -64,33 +62,59 @@ public class MainMenuFragment extends BaseFragment implements
             mPresenter.onAttach(this);
             Log.d("Presenter","Not null");
         }
+        setContentBinding(view);
+
+        return view;
+    }
+
+    private void setContentBinding(View view) {
         if (mDifficulty == Difficulty.DIFFICULTY_EASY){
-            view.findViewById(R.id.iv_vocab_easy).setOnClickListener(view1 -> {
-                Intent intent = LearningCategoryActivity.getStartIntent(getContext());
+            FragmentLevelEasyBinding binding = DataBindingUtil.bind(view);
+            binding.ivVocabEasy.setOnClickListener(v -> {
+                Intent intent = LearningCategoryActivity.getStartIntent(getContext(), LearningConstant.CATEGORY_VOCAB_EASY,mDifficulty);
                 startActivity(intent);
             });
-            view.findViewById(R.id.iv_challenge_easy).setOnClickListener(view1 -> {
-                Intent intent = ChallengeActivity.getStartIntent(getContext());
+            binding.ivChallengeEasy.setOnClickListener(v -> {
+                Intent intent = ChallengeActivity.getStartIntent(getContext(),mDifficulty);
+                startActivity(intent);
+            });
+        }else if (mDifficulty == Difficulty.DIFFICULTY_MEDIUM){
+            FragmentLevelMediumBinding binding = DataBindingUtil.bind(view);
+            binding.ivVocabMedium.setOnClickListener(v -> {
+                Intent intent = LearningCategoryActivity.getStartIntent(getContext(), LearningConstant.CATEGORY_VOCAB_MEDIUM,mDifficulty);
+                startActivity(intent);
+            });
+            binding.ivWritingMedium.setOnClickListener(v -> {
+                Intent intent = LearningCategoryActivity.getStartIntent(getContext(), LearningConstant.CATEGORY_WRITING_MEDIUM,mDifficulty);
+                startActivity(intent);
+            });
+            binding.ivChallengeMedium.setOnClickListener(v -> {
+                Intent intent = ChallengeActivity.getStartIntent(getContext(),mDifficulty);
+                startActivity(intent);
+            });
+        }else if (mDifficulty == Difficulty.DIFFICULTY_HARD){
+            FragmentLevelHardBinding binding = DataBindingUtil.bind(view);
+            binding.ivVocabHard.setOnClickListener(v -> {
+                Intent intent = LearningCategoryActivity.getStartIntent(getContext(), LearningConstant.CATEGORY_VOCAB_HARD,mDifficulty);
+                startActivity(intent);
+            });
+            binding.ivWritingHard.setOnClickListener(v -> {
+                Intent intent = LearningCategoryActivity.getStartIntent(getContext(), LearningConstant.CATEGORY_WRITING_HARD,mDifficulty);
+                startActivity(intent);
+            });
+            binding.ivSpeakingHard.setOnClickListener(v -> {
+                Intent intent = LearningCategoryActivity.getStartIntent(getContext(), LearningConstant.CATEGORY_SPEAKING_HARD,mDifficulty);
+                startActivity(intent);
+            });
+            binding.ivChallengeHard.setOnClickListener(v -> {
+                Intent intent = ChallengeActivity.getStartIntent(getContext(),mDifficulty);
                 startActivity(intent);
             });
         }
-        return view;
     }
 
     @Override
     protected void setUp(View view) {
-//        // TODO : Diilangi cuman dummy
-//        binding.btnNext.setOnClickListener(v ->{
-//            Intent intent = LearningCategoryActivity.getStartIntent(getContext());
-//            startActivity(intent);
-//        });
-//
-//        // TODO : Diilangi cuman dummy
-//        binding.btnChalenge.setOnClickListener(v->{
-//            Intent intent = ChallengeActivity.getStartIntent(getContext());
-//            startActivity(intent);
-//        });
-
 
     }
 

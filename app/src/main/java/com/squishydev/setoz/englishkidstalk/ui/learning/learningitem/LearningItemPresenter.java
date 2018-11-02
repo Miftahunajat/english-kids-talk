@@ -42,14 +42,7 @@ public class LearningItemPresenter<V extends LearningItemMvpView> extends BasePr
         .subscribe(
                 learningItems -> {
                     getMvpView().setupLearningItem(learningItems);
-                },throwable -> {
-                    Log.e("Error",throwable.toString());
-
-                    if (throwable instanceof ANError) {
-                        ANError anError = (ANError) throwable;
-                        handleApiError(anError);
-                    }
-                }
+                },this::baseHandleError
         ));
     }
 }

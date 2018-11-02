@@ -12,6 +12,7 @@ import com.squishydev.setoz.englishkidstalk.data.network.model.LearningItem;
 import com.squishydev.setoz.englishkidstalk.data.model.User;
 import com.squishydev.setoz.englishkidstalk.data.network.ApiHelper;
 import com.squishydev.setoz.englishkidstalk.data.network.model.QuestionCategory;
+import com.squishydev.setoz.englishkidstalk.data.network.model.UserResponse;
 import com.squishydev.setoz.englishkidstalk.data.prefs.PreferencesHelper;
 import com.squishydev.setoz.englishkidstalk.di.ApplicationContext;
 
@@ -61,12 +62,12 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Single<User> registerUser(String name,
-                                     String userName,
-                                     String password,
-                                     int gender,
-                                     int starGained,
-                                     int xpGained) {
+    public Single<UserResponse> registerUser(String name,
+                                             String userName,
+                                             String password,
+                                             int gender,
+                                             int starGained,
+                                             int xpGained) {
         return mApiHelper.registerUser(name, userName, password, gender,starGained, xpGained);
     }
 
