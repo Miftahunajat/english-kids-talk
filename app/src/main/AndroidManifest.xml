@@ -40,7 +40,6 @@
         <activity android:name=".ui.learning.learningitem.learningspeaking.LearningSpeakingActivity">
         </activity>
         <activity android:name=".ui.learning.learningitem.learningwriting.LearningWritingActivity" >
-
         </activity>
     </application>
 
