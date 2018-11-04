@@ -14,44 +14,53 @@
     android:layout_margin="8dp"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/iv_bg_kayu"
+    <android.support.v7.widget.CardView
         android:layout_width="143dp"
         android:layout_height="200dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.039"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.603"
-        app:srcCompat="@drawable/papan_kategori_md" />
+        app:cardElevation="8dp"
+        android:background="@drawable/papan_kategori_md"
+        app:cardBackgroundColor="#00000000">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/iv_bg_kayu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.039"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.603"
+                app:srcCompat="@drawable/papan_kategori_md" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="87dp"
-        android:layout_height="23dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:text="@{learningTopic.learningTopicName}"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_bg_kayu"
-        app:layout_constraintEnd_toEndOf="@+id/iv_bg_kayu"
-        app:layout_constraintStart_toStartOf="@+id/iv_bg_kayu" />
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"
+                android:text="@{learningTopic.learningTopicName}"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                tools:text="palkon"
+                android:fontFamily="@font/acme"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_bg_kayu"
+                app:layout_constraintEnd_toEndOf="@+id/iv_bg_kayu"
+                app:layout_constraintStart_toStartOf="@+id/iv_bg_kayu" />
 
-    <ImageView
-        android:id="@+id/imageView20"
-        android:layout_width="126dp"
-        android:layout_height="140dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView7"
-        app:layout_constraintEnd_toEndOf="@+id/iv_bg_kayu"
-        app:layout_constraintStart_toStartOf="@+id/iv_bg_kayu"
-        app:layout_constraintTop_toTopOf="@+id/iv_bg_kayu"
-        app:imageUrl="@{learningTopic.learningTopicImage}" />
+            <ImageView
+                android:id="@+id/imageView20"
+                android:layout_width="126dp"
+                android:layout_height="140dp"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toTopOf="@+id/textView7"
+                app:layout_constraintEnd_toEndOf="@+id/iv_bg_kayu"
+                app:layout_constraintStart_toStartOf="@+id/iv_bg_kayu"
+                app:layout_constraintTop_toTopOf="@+id/iv_bg_kayu"
+                app:imageUrl="@{learningTopic.learningTopicImage}" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+
 
 </android.support.constraint.ConstraintLayout>
 </layout>

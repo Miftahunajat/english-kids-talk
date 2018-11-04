@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 
@@ -31,6 +32,7 @@ public class LearningCategoryActivity extends BaseActivity implements LearningCa
     ActivityLearningCategory2Binding binding;
     LearningCategoryAdapter2 learningCategoryAdapter2;
     List<LearningTopicsItem> learningTopicsItem;
+    int backgrounds[] = {R.drawable.latar_kategori_easy,R.drawable.latar_kategori_medium,R.drawable.latar_kategori_hard};
     Difficulty mDifficulty;
     int learningCategoryId;
 
@@ -52,6 +54,8 @@ public class LearningCategoryActivity extends BaseActivity implements LearningCa
         learningCategoryId = getIntent().getIntExtra("learning-category-id",1);
 
         mDifficulty = (Difficulty) getIntent().getSerializableExtra("difficulty");
+
+        binding.getRoot().setBackground(ContextCompat.getDrawable(this,backgrounds[mDifficulty.getNumber()]));
 
         mPresenter.getLearningTopics(learningCategoryId);
     }
