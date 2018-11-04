@@ -24,10 +24,11 @@ import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.learningspe
  * Use the {@link LearningWritingFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LearningWritingFragment extends BaseFragment {
+public class LearningWritingFragment extends BaseFragment implements WritingControl.OnWritingSubmit {
 
     FragmentLearningWritingBinding binding;
     OnWritingResponse onWritingResponse;
+    private WritingControl writingControl;
 
 
     public LearningWritingFragment() {
@@ -48,7 +49,7 @@ public class LearningWritingFragment extends BaseFragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_learning_writing,container,false);
 
         LearningItem learningItem = (LearningItem) getArguments().getSerializable("learning-item");
-        WritingControl writingControl = new WritingControl(binding.fbQuestion, learningItem.getLearningItemTitle(),getContext() );
+        writingControl = new WritingControl(binding.fbQuestion, learningItem.getLearningItemTitle(),this );
         writingControl.buildLinearLayout();
         binding.writingSend.setOnClickListener(v -> {
             checkAnswer(writingControl.getAnswer());
@@ -76,6 +77,11 @@ public class LearningWritingFragment extends BaseFragment {
     @Override
     protected void setUp(View view) {
 
+    }
+
+    @Override
+    public void onSubmit() {
+        checkAnswer(writingControl.getAnswer());
     }
 
     interface OnWritingResponse{

@@ -8,6 +8,7 @@ import com.squishydev.setoz.englishkidstalk.data.network.model.Challenge;
 import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
 import com.squishydev.setoz.englishkidstalk.data.model.LearningCategory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.Inventory;
+import com.squishydev.setoz.englishkidstalk.data.network.model.Item;
 import com.squishydev.setoz.englishkidstalk.data.network.model.ItemCategory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.LearningItem;
 import com.squishydev.setoz.englishkidstalk.data.model.User;
@@ -121,7 +122,7 @@ public class AppApiHelper implements ApiHelper {
         Log.d("AppAPiHelper",user.getStarGained() + "");
         return Rx2AndroidNetworking.patch(Endpoint.ENDPOINT_USER_PROFILE + user.getId())
                 .addHeaders(getHeader())
-                .addBodyParameter("start_gained", String.valueOf(user.getStarGained()))
+                .addBodyParameter("star_gained", String.valueOf(user.getStarGained()))
                 .build()
                 .getObjectSingle(User.class);
     }
@@ -162,6 +163,14 @@ public class AppApiHelper implements ApiHelper {
                 .addHeaders(getHeader())
                 .build()
                 .getObjectListSingle(ItemCategory.class);
+    }
+
+    @Override
+    public Single<List<Item>> getAllItem() {
+        return Rx2AndroidNetworking.get(Endpoint.ENDPOINT_GET_ITEMS)
+                .addHeaders(getHeader())
+                .build()
+                .getObjectListSingle(Item.class);
     }
 
     private Map<String,String> getHeader(){

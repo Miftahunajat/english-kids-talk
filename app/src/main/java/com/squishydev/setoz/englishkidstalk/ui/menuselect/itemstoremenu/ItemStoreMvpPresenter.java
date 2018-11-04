@@ -6,5 +6,10 @@ import com.squishydev.setoz.englishkidstalk.ui.base.MvpPresenter;
 @PerActivity
 public interface ItemStoreMvpPresenter<V extends ItemStoreMvpView> extends MvpPresenter<V> {
 
+    void getAllItem();
+
+    void getItemPercategories(int categoryId);
+
+    void getUser();
 }
 

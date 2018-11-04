@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.squishydev.setoz.englishkidstalk.R;
+import com.squishydev.setoz.englishkidstalk.data.model.User;
 import com.squishydev.setoz.englishkidstalk.data.network.model.Item;
 import com.squishydev.setoz.englishkidstalk.databinding.FragmentItemStoreBinding;
 import com.squishydev.setoz.englishkidstalk.di.componen.ActivityComponent;
@@ -48,16 +49,6 @@ public class ItemStoreFragment extends BaseFragment implements
                              @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_item_store,container, false);
         itemList = new ArrayList<>();
-        Item item = new Item();
-        item.setName("koonam");
-        item.setSnippet("gdyu");
-        item.setStar(100);
-        item.setImage("asd");
-        itemList.add(item);
-        itemList.add(item);
-        itemList.add(item);
-        itemList.add(item);
-        itemList.add(item);
 
         itemStoreAdapter = new ItemStoreAdapter(itemList, this);
 
@@ -69,6 +60,8 @@ public class ItemStoreFragment extends BaseFragment implements
             component.inject(this);
             mPresenter.onAttach(this);
         }
+        mPresenter.getAllItem();
+        mPresenter.getUser();
         return binding.getRoot();
     }
 
@@ -87,6 +80,18 @@ public class ItemStoreFragment extends BaseFragment implements
     @Override
     public void onClick(int position) {
 
+    }
+
+    @Override
+    public void setupItem(List<Item> items) {
+        itemList = items;
+        itemStoreAdapter = new ItemStoreAdapter(itemList, this);
+        binding.rvItem.setAdapter(itemStoreAdapter);
+    }
+
+    @Override
+    public void setUser(User user) {
+        binding.setUser(user);
     }
 }
 

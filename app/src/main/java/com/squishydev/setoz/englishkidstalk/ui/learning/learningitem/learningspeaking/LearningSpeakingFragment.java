@@ -1,6 +1,7 @@
 package com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.learningspeaking;
 
 
+import android.Manifest;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -9,7 +10,9 @@ import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,11 +72,13 @@ public class LearningSpeakingFragment extends BaseFragment implements Recognitio
     }
 
     private void promptSpeechInput() {
+        ActivityCompat.requestPermissions(getBaseActivity(),new String[]{Manifest.permission.RECORD_AUDIO},1);
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
                 RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
         intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE,
                 this.getContext().getPackageName());
+        intent.putExtra(RecognizerIntent.EXTRA_PARTIAL_RESULTS,true);
         mSpeechRecognizer.startListening(intent);
     }
 
@@ -116,9 +121,13 @@ public class LearningSpeakingFragment extends BaseFragment implements Recognitio
     @Override
     public void onResults(Bundle results) {
         ArrayList<String> matches = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
-        binding.tvUsersvoice.setText(matches.get(0));
-        checkAnswer(binding.tvUsersvoice.getText().toString());
-        Toast.makeText(getContext(), "on result", Toast.LENGTH_SHORT).show();
+        if (matches != null && matches.size() != 0) {
+            binding.tvUsersvoice.setText(matches.get(0));
+            checkAnswer(binding.tvUsersvoice.getText().toString());
+            Toast.makeText(getContext(), "on result", Toast.LENGTH_SHORT).show();
+        }else{
+            showMessage("Maaf tidak bisa menemukan");
+        }
     }
 
     @Override
