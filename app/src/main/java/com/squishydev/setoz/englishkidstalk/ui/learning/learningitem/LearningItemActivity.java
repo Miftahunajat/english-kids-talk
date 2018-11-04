@@ -3,6 +3,7 @@ package com.squishydev.setoz.englishkidstalk.ui.learning.learningitem;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.content.ContextCompat;
@@ -74,6 +75,9 @@ public class LearningItemActivity extends BaseActivity implements LearningItemMv
                 tts.setLanguage(Locale.UK);
             }
         });
+        AudioManager am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        int streamMaxVol = am.getStreamMaxVolume(am.STREAM_MUSIC);
+        am.setStreamVolume(am.STREAM_MUSIC,100,0);
     }
 
     @Override

@@ -4,6 +4,7 @@ import com.squishydev.setoz.englishkidstalk.data.network.model.Challenge;
 import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
 import com.squishydev.setoz.englishkidstalk.data.model.LearningCategory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.Inventory;
+import com.squishydev.setoz.englishkidstalk.data.network.model.Item;
 import com.squishydev.setoz.englishkidstalk.data.network.model.ItemCategory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.LearningItem;
 import com.squishydev.setoz.englishkidstalk.data.model.User;
@@ -51,4 +52,6 @@ public interface ApiHelper {
     Observable<Inventory> deactivateItemInventory(String inventoryId, String itemId);
 
     Single<List<ItemCategory>> getItemCategory();
+
+    Single<List<Item>> getAllItem();
 }

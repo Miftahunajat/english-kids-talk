@@ -40,5 +40,6 @@ public class Endpoint {
     public static final String ENDPOINT_ITEM_CATEGORIES = Config.BASE_URL_API
             + "item-categories";
 
-
+    public static final String ENDPOINT_GET_ITEMS = Config.BASE_URL_API
+            + "items";
 }

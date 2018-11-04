@@ -15,7 +15,7 @@
         android:id="@+id/ib_home"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:scaleType="fitCenter"
+        android:scaleType="centerCrop"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"

@@ -7,8 +7,10 @@ import javax.annotation.Generated;
 import com.google.gson.annotations.SerializedName;
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
+
 @Generated("com.robohorse.robopojogenerator")
-public class LearningTopicsItem{
+public class LearningTopicsItem implements Serializable {
 
 	@SerializedName("createdAt")
 	private String createdAt;
