@@ -8,6 +8,7 @@ import com.squishydev.setoz.englishkidstalk.data.network.model.ItemCategory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.LearningItem;
 import com.squishydev.setoz.englishkidstalk.data.model.User;
 import com.squishydev.setoz.englishkidstalk.data.network.model.QuestionCategory;
+import com.squishydev.setoz.englishkidstalk.data.network.model.TokenResponse;
 import com.squishydev.setoz.englishkidstalk.data.network.model.UserResponse;
 
 import java.util.List;
@@ -32,6 +33,9 @@ public interface ApiHelper {
                                       int gender,
                                       int starGained,
                                       int xpGained);
+
+    Single<TokenResponse> loginUser(String userName,
+                                    String password);
 
     Observable<List<Challenge>>  getChallenges();
 

@@ -5,10 +5,12 @@ import android.util.Log;
 import com.androidnetworking.error.ANError;
 import com.squishydev.setoz.englishkidstalk.data.DataManager;
 import com.squishydev.setoz.englishkidstalk.data.network.model.User;
+import com.squishydev.setoz.englishkidstalk.data.network.model.UserResponse;
 import com.squishydev.setoz.englishkidstalk.ui.base.BasePresenter;
 
 import javax.inject.Inject;
 
+import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
@@ -35,14 +37,19 @@ public class BuatAkunPresenter<V extends BuatAkunMvpView> extends BasePresenter<
         String nickName = getDataManager().getPrefName();
         int gender = getDataManager().getAvatarType();
         getCompositeDisposable().add(getDataManager().registerUser(nickName,name,password,gender,0,0)
+                .flatMap(userResponse -> {
+                    User user = userResponse.getUser();
+                    getDataManager().setAvatarType(user.getGender());
+                    getDataManager().setUserId(String.valueOf(user.getId()));
+                    getDataManager().setInventoryId(String.valueOf(user.getInventoryId()));
+                    return getDataManager().loginUser(userResponse.getUser().getUsername(),userResponse.getUser().getPassword());
+                })
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(
-                userResponse -> {
-                    User user = userResponse.getUser();
+                tokenResponse -> {
                     getDataManager().setLoggedInMode(DataManager.LoggedInMode.LOGGED_IN_MODE_SERVER_LOGIN);
-                    getDataManager().setAvatarType(user.getGender());
-                    getDataManager().setUserId(String.valueOf(user.getId()));
+                    getDataManager().setToken(tokenResponse.getToken());
                     getMvpView().openLevelSelectActivity();
                 },
                 this::baseHandleError

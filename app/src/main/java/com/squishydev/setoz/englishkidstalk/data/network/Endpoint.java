@@ -13,6 +13,9 @@ public class Endpoint {
     public static final String ENDPOINT_REGISTER_USERS = Config.BASE_URL_API
             + "auth/register";
 
+    public static final String ENDPOINT_LOGIN_USERS = Config.BASE_URL_API
+            + "auth/login";
+
     public static final String ENDPOINT_QUESTION_CATEGORIES = Config.BASE_URL_API
             + "question-categories";
 

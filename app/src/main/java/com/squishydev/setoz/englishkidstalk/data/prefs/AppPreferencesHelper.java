@@ -76,5 +76,25 @@ public class AppPreferencesHelper implements PreferencesHelper {
         return mPrefs.getString(PREF_KEY_USER_ID,"");
     }
 
+    @Override
+    public String getToken() {
+        return mPrefs.getString("token",null);
+    }
+
+    @Override
+    public void setToken(String token) {
+        mPrefs.edit().putString("token",token).apply();
+    }
+
+    @Override
+    public void setInventoryId(String inventoryId) {
+        mPrefs.edit().putString("inventory",inventoryId).apply();
+    }
+
+    @Override
+    public String getInventoryId() {
+        return mPrefs.getString("inventory",null);
+    }
+
 
 }

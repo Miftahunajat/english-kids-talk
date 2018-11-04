@@ -12,6 +12,7 @@ import com.squishydev.setoz.englishkidstalk.data.network.model.LearningItem;
 import com.squishydev.setoz.englishkidstalk.data.model.User;
 import com.squishydev.setoz.englishkidstalk.data.network.ApiHelper;
 import com.squishydev.setoz.englishkidstalk.data.network.model.QuestionCategory;
+import com.squishydev.setoz.englishkidstalk.data.network.model.TokenResponse;
 import com.squishydev.setoz.englishkidstalk.data.network.model.UserResponse;
 import com.squishydev.setoz.englishkidstalk.data.prefs.PreferencesHelper;
 import com.squishydev.setoz.englishkidstalk.di.ApplicationContext;
@@ -69,6 +70,11 @@ public class AppDataManager implements DataManager {
                                              int starGained,
                                              int xpGained) {
         return mApiHelper.registerUser(name, userName, password, gender,starGained, xpGained);
+    }
+
+    @Override
+    public Single<TokenResponse> loginUser(String userName, String password) {
+        return mApiHelper.loginUser(userName,password);
     }
 
     @Override
@@ -149,5 +155,25 @@ public class AppDataManager implements DataManager {
     @Override
     public String getUserId() {
         return mPreferencesHelper.getUserId();
+    }
+
+    @Override
+    public String getToken() {
+        return mPreferencesHelper.getToken();
+    }
+
+    @Override
+    public void setToken(String token) {
+        mPreferencesHelper.setToken(token);
+    }
+
+    @Override
+    public void setInventoryId(String inventoryId) {
+        mPreferencesHelper.setInventoryId(inventoryId);
+    }
+
+    @Override
+    public String getInventoryId() {
+        return mPreferencesHelper.getInventoryId();
     }
 }
