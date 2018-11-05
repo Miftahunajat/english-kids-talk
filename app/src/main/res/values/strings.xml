@@ -25,4 +25,8 @@
     <string name="ok">Ok</string>
     <string name="wrong">Salah</string>
     <string name="text_wrong">Kata yang anda masukkan salah. Silahkan Coba lagi</string>
+
+    <!--speaking-->
+    <string name="speech_prompt">Say something&#8230;</string>
+    <string name="speech_not_supported">Sorry! Your device doesn\'t support speech input</string>
 </resources>
