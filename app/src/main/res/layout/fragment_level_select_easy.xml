@@ -1,12 +1,20 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:scrolling_image_view="http://schemas.android.com/apk/res-auto">
 <android.support.constraint.ConstraintLayout
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
     tools:context="com.squishydev.setoz.englishkidstalk.ui.levelselect.LevelSelectActivit">
+
+    <com.q42.android.scrollingimageview.ScrollingImageView
+        android:id="@+id/scroll_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        scrolling_image_view:speed="1dp"
+        scrolling_image_view:src="@mipmap/ic_launcher"/>
 
     <ImageView
         android:id="@+id/imageView7"

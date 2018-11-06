@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.q42.android.scrollingimageview.ScrollingImageView;
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
 import com.squishydev.setoz.englishkidstalk.di.componen.ActivityComponent;
@@ -61,6 +62,7 @@ public class LevelSelectFragment extends BaseFragment implements
         btnPlay.setOnClickListener(v -> {
             if (mIndex == 0) {
                 Intent intent = MenuSelectActivity.getStartIntent(getContext(), Difficulty.DIFFICULTY_EASY);
+                ((ScrollingImageView) view.findViewById(R.id.scroll_image_view)).start();
                 getContext().startActivity(intent);
             }else if (mIndex == 1) {
                 Intent intent = MenuSelectActivity.getStartIntent(getContext(), Difficulty.DIFFICULTY_MEDIUM);
