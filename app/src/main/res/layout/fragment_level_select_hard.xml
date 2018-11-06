@@ -6,18 +6,9 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/latar_level_hard"
         tools:context="com.squishydev.setoz.englishkidstalk.ui.levelselect.LevelSelectActivity">
 
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="415dp"
-            android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/page_hd" />
 
         <ImageView
             android:id="@+id/imageView19"
@@ -35,22 +26,22 @@
             android:id="@+id/btn_play"
             android:layout_width="130dp"
             android:layout_height="39dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="92dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/btn_hard"
-            android:textAlignment="center"
             android:drawableLeft="@drawable/ic_lock_black_24dp"
             android:drawablePadding="2dip"
             android:fontFamily="sans-serif-condensed"
             android:paddingLeft="52dip"
             android:paddingRight="30dip"
+            android:textAlignment="center"
             android:textAllCaps="false"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.54"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imageView7"
             app:layout_constraintVertical_bias="0.86" />

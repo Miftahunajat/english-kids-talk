@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
+import android.widget.GridLayout;
 
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
@@ -31,7 +32,7 @@ public class LearningItemActivity extends BaseActivity implements LearningItemMv
     LearningItemAdapter learningItemAdapter;
     List<LearningItem> learningItems;
     TextToSpeech tts;
-    private int layouts[] = {R.drawable.latar_item_easy,R.drawable.latar_item_med,R.drawable.latar_item_hard};
+    private int layouts[] = {R.drawable.latar_item_easy,R.drawable.latar_item_medium,R.drawable.latar_item_hard};
     private Difficulty mDifficulty;
 
     public static Intent getStartIntent(Context context, int id, Difficulty mDifficulty) {
@@ -67,7 +68,7 @@ public class LearningItemActivity extends BaseActivity implements LearningItemMv
         binding.getRoot().setBackground(ContextCompat.getDrawable(this,layouts[mDifficulty.getNumber()]));
 
         learningItemAdapter = new LearningItemAdapter(new ArrayList<>(),this);
-        binding.rvLearningItem.setLayoutManager(new GridLayoutManager(this,2));
+        binding.rvLearningItem.setLayoutManager(new GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false));
         binding.rvLearningItem.setAdapter(learningItemAdapter);
 
         tts = new TextToSpeech(this, i -> {

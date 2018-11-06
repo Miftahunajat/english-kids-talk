@@ -6,4 +6,5 @@
         android:color="#FFFFFF" /> <!-- focused -->
 
     <item android:color="@color/bottomCategoryNavigationColorOutline" /> <!-- default -->
+
 </selector>

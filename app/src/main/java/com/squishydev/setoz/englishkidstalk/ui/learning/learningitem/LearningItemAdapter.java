@@ -69,8 +69,7 @@ public class LearningItemAdapter extends RecyclerView.Adapter<LearningItemAdapte
             Log.d("Lala","lala");
             binding.setLearningItem(learningItems.get(position));
 
-
-            binding.btnSubmit.setOnClickListener(view -> {
+            binding.cvIcon.setOnClickListener(view -> {
                 binding.executePendingBindings();
                 onItemClick.onClick(position);
             });
