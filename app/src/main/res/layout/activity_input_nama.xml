@@ -5,7 +5,7 @@
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/latar">
+        android:background="#CEE1E2">
 
         <TextView
             android:id="@+id/tv_hai_nama"
@@ -16,14 +16,14 @@
             android:layout_marginBottom="32dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
             android:fontFamily="@font/amaranth_bold"
+            android:paddingTop="0dp"
             android:text="Kenalan Dulu Yuk"
-            android:textColor="#590B08"
+            android:textColor="#87100B"
             android:textSize="23sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/et_name"
             app:layout_constraintEnd_toEndOf="@+id/imageView2"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/imageView2"
             app:layout_constraintTop_toBottomOf="@+id/imageView2"
             app:layout_constraintVertical_chainStyle="packed" />
@@ -34,10 +34,10 @@
             android:layout_width="300dp"
             android:layout_height="40dp"
             android:layout_marginBottom="32dp"
-            android:layout_marginTop="8dp"
             android:background="@drawable/edittext_input_nama"
             android:hint="Siapa nama kamu ?"
             android:inputType="text"
+            android:textColor="#87100B"
             android:textColorHint="#590B08"
             android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@+id/btn_next"
@@ -71,7 +71,7 @@
             android:layout_height="360dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.485"
             app:layout_constraintStart_toStartOf="parent"

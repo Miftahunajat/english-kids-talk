@@ -1,309 +1,83 @@
-<?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="user"
-            type="com.squishydev.setoz.englishkidstalk.data.model.User"/>
+            type="com.squishydev.setoz.englishkidstalk.data.model.User"></variable>
     </data>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:fillViewport="true"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.menuselect.profilemenu.ProfileFragment">
-
-        <FrameLayout
-            android:id="@+id/fl_avatar_preview"
-            android:layout_width="0dp"
-            android:layout_height="336dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/avatar_text">
-            <ImageView
-                android:id="@+id/iv_avatar_preview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/avatar_text"/>
-        </FrameLayout>
+        android:background="@drawable/latar_home"
+        tools:context="com.squishydev.setoz.englishkidstalk.ui.menuselect.itemstoremenu.ItemStoreFragment">
 
 
         <ImageView
-            android:id="@+id/cover_image"
-            android:layout_width="392dp"
-            android:layout_height="249dp"
-            android:contentDescription="@string/cover_image"
-            android:src="@drawable/kids"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.25"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/cover_image_highlight"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:contentDescription="@string/cover_image_highlight"
-            android:src="@drawable/blue_transparent_square"
-            app:layout_constraintBottom_toBottomOf="@+id/cover_image"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/cover_image"
-            app:layout_constraintVertical_bias="1.0"
-            tools:layout_margin="0dp" />
-
-
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/cardView"
-            android:layout_width="305dp"
-            android:layout_height="184dp"
+            android:id="@+id/imageView7"
+            android:layout_width="92dp"
+            android:layout_height="61dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            app:cardBackgroundColor="#CCFFFFFF"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/cover_image"
+            app:layout_constraintEnd_toEndOf="@+id/tv_pilih_avatar"
+            app:layout_constraintStart_toStartOf="@+id/tv_pilih_avatar"
+            app:srcCompat="@drawable/nama_profile" />
+
+        <ImageView
+            android:id="@+id/tv_pilih_avatar"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.507"
+            app:layout_constraintHorizontal_bias="0.451"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/cover_image_highlight"
-            app:layout_constraintVertical_bias="2.3">
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/avatar_cewek_profile" />
 
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:layout_editor_absoluteX="40dp"
-                tools:layout_editor_absoluteY="130dp">
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Lala"
+            android:textColor="#FFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+            app:layout_constraintEnd_toEndOf="@+id/tv_pilih_avatar"
+            app:layout_constraintStart_toStartOf="@+id/tv_pilih_avatar" />
 
-                <TextView
-                    android:id="@+id/rank_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Peringkat"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.95"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.74" />
-
-                <TextView
-                    android:id="@+id/level_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Level"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.73" />
-
-                <TextView
-                    android:id="@+id/star_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Bintang"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.07"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.74" />
-
-                <TextView
-                    android:id="@+id/rank_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="#4"
-                    android:textColor="#000"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.88"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="1.0" />
-
-                <TextView
-                    android:id="@+id/level_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="@{String.valueOf(user.xpGained/1000)}"
-                    android:textColor="#000"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="1.0" />
-
-                <TextView
-                    android:id="@+id/star_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="@{String.valueOf(user.starGained)}"
-                    android:textColor="#000"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.06"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="1.0" />
-
-                <TextView
-                    android:id="@+id/tv_profile_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="@{user.name}"
-                    android:textColor="#000"
-                    android:textSize="28sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.38" />
-
-
-
-            </android.support.constraint.ConstraintLayout>
-
-        </android.support.v7.widget.CardView>
-
+        <ImageView
+            android:id="@+id/imageView34"
+            android:layout_width="327dp"
+            android:layout_height="450dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.47"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView7"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/bg_latar_home_satu" />
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="304dp"
-            android:layout_height="97dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView"
-            app:layout_constraintVertical_bias="0.06999999" />
-
-        <TextView
-            android:id="@+id/badge_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="Badge"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView"
-            app:layout_constraintVertical_bias="0.050000012" />
-
-        <TextView
-            android:id="@+id/avatar_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="Avatarmu"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.11"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerView"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_pilih_avatar"
-            android:text="Lihat Avatar"
-            android:id="@+id/tv_pilih_avatar"
-            android:textAlignment="center"
-            android:textColor="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="64dp"
-            app:layout_constraintLeft_toLeftOf="@id/fl_avatar_preview"
-            app:layout_constraintRight_toRightOf="@id/fl_avatar_preview"
-            app:layout_constraintTop_toBottomOf="@id/fl_avatar_preview" />
-
-
+            android:layout_width="299dp"
+            android:layout_height="427dp"
+            app:layout_constraintBottom_toBottomOf="@id/imageView34"
+            app:layout_constraintLeft_toLeftOf="@id/imageView34"
+            app:layout_constraintRight_toRightOf="@id/imageView34"
+            app:layout_constraintTop_toTopOf="@id/imageView34"
+            app:layout_constraintVertical_bias="0.6" />
 
     </android.support.constraint.ConstraintLayout>
-
-</android.support.v4.widget.NestedScrollView>
 </layout>
