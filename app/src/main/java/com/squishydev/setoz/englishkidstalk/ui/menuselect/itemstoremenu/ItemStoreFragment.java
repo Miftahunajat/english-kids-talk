@@ -1,10 +1,12 @@
 package com.squishydev.setoz.englishkidstalk.ui.menuselect.itemstoremenu;
 
 import android.app.LauncherActivity;
+import android.content.DialogInterface;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.renderscript.ScriptGroup;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -79,7 +81,21 @@ public class ItemStoreFragment extends BaseFragment implements
 
     @Override
     public void onClick(int position) {
+        DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
+            switch (which){
+                case DialogInterface.BUTTON_POSITIVE:
+                    //Yes button clicked
+                    break;
 
+                case DialogInterface.BUTTON_NEGATIVE:
+                    //No button clicked
+                    break;
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage("Are you sure?").setPositiveButton("Yes", dialogClickListener)
+                .setNegativeButton("No", dialogClickListener).show();
     }
 
     @Override

@@ -119,7 +119,7 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Single<List<Item>> getAllItem() {
+    public Observable<List<Item>> getAllItem() {
         return mApiHelper.getAllItem();
     }
 

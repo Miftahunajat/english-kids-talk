@@ -7,6 +7,8 @@ import com.squishydev.setoz.englishkidstalk.ui.base.BasePresenter;
 
 import javax.inject.Inject;
 
+import io.reactivex.Observable;
+import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
@@ -24,7 +26,11 @@ public class ItemStorePresenter<V extends ItemStoreMvpView> extends BasePresente
 
     @Override
     public void getAllItem() {
+        int gender = getDataManager().getAvatarType();
         getCompositeDisposable().add(getDataManager().getAllItem()
+                .flatMap(Observable::fromIterable)
+                .filter(item -> item.getGender() == gender)
+                .toList()
         .observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())
         .subscribe(items -> getMvpView().setupItem(items),this::baseHandleError));

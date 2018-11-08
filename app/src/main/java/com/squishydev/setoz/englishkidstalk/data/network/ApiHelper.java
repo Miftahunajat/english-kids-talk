@@ -53,5 +53,5 @@ public interface ApiHelper {
 
     Single<List<ItemCategory>> getItemCategory();
 
-    Single<List<Item>> getAllItem();
+    Observable<List<Item>> getAllItem();
 }

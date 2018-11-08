@@ -166,11 +166,11 @@ public class AppApiHelper implements ApiHelper {
     }
 
     @Override
-    public Single<List<Item>> getAllItem() {
+    public Observable<List<Item>> getAllItem() {
         return Rx2AndroidNetworking.get(Endpoint.ENDPOINT_GET_ITEMS)
                 .addHeaders(getHeader())
                 .build()
-                .getObjectListSingle(Item.class);
+                .getObjectListObservable(Item.class);
     }
 
     private Map<String,String> getHeader(){
