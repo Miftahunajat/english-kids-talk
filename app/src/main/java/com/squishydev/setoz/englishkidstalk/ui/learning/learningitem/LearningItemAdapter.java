@@ -4,12 +4,16 @@ import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.TextView;
 
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.network.model.LearningItem;
+import com.squishydev.setoz.englishkidstalk.data.network.model.User;
 import com.squishydev.setoz.englishkidstalk.databinding.ItemLearningItemBinding;
 
 import java.util.List;
@@ -25,10 +29,12 @@ public class LearningItemAdapter extends RecyclerView.Adapter<LearningItemAdapte
     private List<LearningItem> learningItems;
     ItemLearningItemBinding binding;
     OnItemClick onItemClick;
+    private String userId;
 
-    public LearningItemAdapter(List<LearningItem> learningItems, OnItemClick onItemClick) {
+    public LearningItemAdapter(List<LearningItem> learningItems, OnItemClick onItemClick,String userId) {
         this.learningItems = learningItems;
         this.onItemClick = onItemClick;
+        this.userId = userId;
     }
 
     @NonNull
@@ -56,6 +62,13 @@ public class LearningItemAdapter extends RecyclerView.Adapter<LearningItemAdapte
         notifyDataSetChanged();
     }
 
+    void updateLearned(int position, User user){
+//        List<User> users = learningItems.get(position).getUsers();
+//        users.add(user);
+//        learningItems.get(position).setUsers(users);
+//        notifyDataSetChanged();
+    }
+
     class LearningItemVH extends RecyclerView.ViewHolder {
 
         private ItemLearningItemBinding binding;
@@ -66,8 +79,25 @@ public class LearningItemAdapter extends RecyclerView.Adapter<LearningItemAdapte
         }
 
         public void bind(int position) {
-            Log.d("Lala","lala");
-            binding.setLearningItem(learningItems.get(position));
+            LearningItem learningItem = learningItems.get(position);
+            binding.setLearningItem(learningItem);
+            if (learningItem.getUserCompleteStatus(userId)){
+                binding.etAnswer.setVisibility(View.INVISIBLE);
+                binding.tvName.setVisibility(View.VISIBLE);
+                binding.tvName.setVisibility(View.VISIBLE);
+            }
+            binding.etAnswer.setOnEditorActionListener((v, actionId, event) -> {
+                if (actionId == EditorInfo.IME_ACTION_DONE){
+                    //binding.executePendingBindings();
+                    onItemClick.answer(binding.etAnswer.getText().toString(),learningItem.getLearningItemTitle(),position);
+
+                    binding.etAnswer.setVisibility(View.INVISIBLE);
+                    binding.tvName.setVisibility(View.VISIBLE);
+                    binding.tvName.setVisibility(View.VISIBLE);
+                    return true;
+                }
+                return false;
+            });
 
             binding.cvIcon.setOnClickListener(view -> {
                 binding.executePendingBindings();
@@ -78,5 +108,7 @@ public class LearningItemAdapter extends RecyclerView.Adapter<LearningItemAdapte
 
     interface OnItemClick{
         void onClick(int position);
+
+        void answer(String answerUser, String correctAnswer, int position);
     }
 }

@@ -19,6 +19,7 @@ public class User{
 	@SerializedName("inventory")
 	private Inventory inventory;
 
+
 	@SerializedName("name")
 	private String name;
 

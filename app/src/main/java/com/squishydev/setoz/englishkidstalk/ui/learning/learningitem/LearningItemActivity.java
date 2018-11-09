@@ -8,13 +8,14 @@ import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
-import android.widget.GridLayout;
 
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
 import com.squishydev.setoz.englishkidstalk.data.network.model.LearningItem;
+import com.squishydev.setoz.englishkidstalk.data.network.model.User;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivityLearningItemBinding;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
+import com.squishydev.setoz.englishkidstalk.utils.MediaUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,7 @@ public class LearningItemActivity extends BaseActivity implements LearningItemMv
     TextToSpeech tts;
     private int layouts[] = {R.drawable.latar_item_easy,R.drawable.latar_item_medium,R.drawable.latar_item_hard};
     private Difficulty mDifficulty;
+    private String userId;
 
     public static Intent getStartIntent(Context context, int id, Difficulty mDifficulty) {
         Intent intent = new Intent(context, LearningItemActivity.class);
@@ -51,6 +53,8 @@ public class LearningItemActivity extends BaseActivity implements LearningItemMv
         mPresenter.onAttach(LearningItemActivity.this);
 
         mPresenter.getLearningItem(getIntent().getIntExtra("id_category",0));
+
+        userId = mPresenter.getUserId();
     }
 
     @Override
@@ -67,7 +71,9 @@ public class LearningItemActivity extends BaseActivity implements LearningItemMv
 
         binding.getRoot().setBackground(ContextCompat.getDrawable(this,layouts[mDifficulty.getNumber()]));
 
-        learningItemAdapter = new LearningItemAdapter(new ArrayList<>(),this);
+
+
+        learningItemAdapter = new LearningItemAdapter(new ArrayList<>(),this,userId);
         binding.rvLearningItem.setLayoutManager(new GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false));
         binding.rvLearningItem.setAdapter(learningItemAdapter);
 
@@ -84,6 +90,17 @@ public class LearningItemActivity extends BaseActivity implements LearningItemMv
     @Override
     public void onClick(int position) {
         tts.speak(learningItems.get(position).getLearningItemTitle(),TextToSpeech.QUEUE_FLUSH,null);
+    }
+
+    @Override
+    public void answer(String answerUser, String correctAnswer, int position) {
+        if (answerUser.equals(correctAnswer)){
+            MediaUtils.playSound(this,R.raw.correct);
+        }
+//        hideKeyboard();
+        User user = new User();
+        user.setId(Integer.parseInt(mPresenter.getUserId()));
+        learningItemAdapter.updateLearned(position,user);
     }
 
     @Override

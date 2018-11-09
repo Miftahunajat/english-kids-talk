@@ -45,4 +45,9 @@ public class LearningItemPresenter<V extends LearningItemMvpView> extends BasePr
                 },this::baseHandleError
         ));
     }
+
+    @Override
+    public String getUserId() {
+        return getDataManager().getUserId();
+    }
 }

@@ -11,7 +11,7 @@ import com.squishydev.setoz.englishkidstalk.data.network.model.Inventory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.Item;
 import com.squishydev.setoz.englishkidstalk.data.network.model.ItemCategory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.LearningItem;
-import com.squishydev.setoz.englishkidstalk.data.model.User;
+import com.squishydev.setoz.englishkidstalk.data.network.model.User;
 import com.squishydev.setoz.englishkidstalk.data.network.model.QuestionCategory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.TokenResponse;
 import com.squishydev.setoz.englishkidstalk.data.network.model.UserResponse;
@@ -111,7 +111,7 @@ public class AppApiHelper implements ApiHelper {
 
     @Override
     public Single<User> getUser(String id) {
-        return Rx2AndroidNetworking.get(Endpoint.ENDPOINT_USER_PROFILE + id)
+        return Rx2AndroidNetworking.get(Endpoint.ENDPOINT_USER_PROFILE + "/" + id)
                 .addHeaders(getHeader())
                  .build()
                 .getObjectSingle(User.class);
@@ -120,7 +120,7 @@ public class AppApiHelper implements ApiHelper {
     @Override
     public Single<User> updateUserStars(User user) {
         Log.d("AppAPiHelper",user.getStarGained() + "");
-        return Rx2AndroidNetworking.patch(Endpoint.ENDPOINT_USER_PROFILE + user.getId())
+        return Rx2AndroidNetworking.patch(Endpoint.ENDPOINT_USER_PROFILE + "/" + user.getId())
                 .addHeaders(getHeader())
                 .addBodyParameter("star_gained", String.valueOf(user.getStarGained()))
                 .build()
@@ -171,6 +171,24 @@ public class AppApiHelper implements ApiHelper {
                 .addHeaders(getHeader())
                 .build()
                 .getObjectListObservable(Item.class);
+    }
+
+    @Override
+    public Observable<List<User>> getAllUsers() {
+        return Rx2AndroidNetworking.get(Endpoint.ENDPOINT_USER_PROFILE)
+                .addHeaders(getHeader())
+                .build()
+                .getObjectListObservable(User.class);
+    }
+
+    @Override
+    public Observable<User> addItemToInventory(String inventoryId, String itemId) {
+        return Rx2AndroidNetworking.post(Endpoint.ENDPOINT_ADD_ITEM_TO_INVENTORIES)
+                .addHeaders(getHeader())
+                .addBodyParameter("inventory_id",inventoryId)
+                .addBodyParameter("item_id",itemId)
+                .build()
+                .getObjectObservable(User.class);
     }
 
     private Map<String,String> getHeader(){

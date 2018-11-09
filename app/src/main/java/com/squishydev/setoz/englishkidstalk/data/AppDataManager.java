@@ -10,7 +10,7 @@ import com.squishydev.setoz.englishkidstalk.data.network.model.Inventory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.Item;
 import com.squishydev.setoz.englishkidstalk.data.network.model.ItemCategory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.LearningItem;
-import com.squishydev.setoz.englishkidstalk.data.model.User;
+import com.squishydev.setoz.englishkidstalk.data.network.model.User;
 import com.squishydev.setoz.englishkidstalk.data.network.ApiHelper;
 import com.squishydev.setoz.englishkidstalk.data.network.model.QuestionCategory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.TokenResponse;
@@ -121,6 +121,16 @@ public class AppDataManager implements DataManager {
     @Override
     public Observable<List<Item>> getAllItem() {
         return mApiHelper.getAllItem();
+    }
+
+    @Override
+    public Observable<List<User>> getAllUsers() {
+        return mApiHelper.getAllUsers();
+    }
+
+    @Override
+    public Observable<User> addItemToInventory(String inventoryId, String itemId) {
+        return mApiHelper.addItemToInventory(inventoryId,itemId);
     }
 
     @Override
