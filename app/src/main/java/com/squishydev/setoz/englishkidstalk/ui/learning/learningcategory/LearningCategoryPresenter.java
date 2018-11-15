@@ -2,8 +2,12 @@ package com.squishydev.setoz.englishkidstalk.ui.learning.learningcategory;
 
 import com.squishydev.setoz.englishkidstalk.data.DataManager;
 import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
+import com.squishydev.setoz.englishkidstalk.data.network.model.LearningTopicsItem;
 import com.squishydev.setoz.englishkidstalk.data.network.model.QuestionCategory;
 import com.squishydev.setoz.englishkidstalk.ui.base.BasePresenter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 

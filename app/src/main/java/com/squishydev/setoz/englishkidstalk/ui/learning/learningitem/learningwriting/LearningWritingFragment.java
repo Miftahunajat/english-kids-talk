@@ -24,10 +24,11 @@ import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.learningspe
  * Use the {@link LearningWritingFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LearningWritingFragment extends BaseFragment {
+public class LearningWritingFragment extends BaseFragment implements WritingControl.OnWritingSubmit {
 
     FragmentLearningWritingBinding binding;
     OnWritingResponse onWritingResponse;
+    private WritingControl writingControl;
 
 
     public LearningWritingFragment() {
@@ -42,25 +43,20 @@ public class LearningWritingFragment extends BaseFragment {
         return learningWritingFragment;
     }
 
-    public static LearningWritingFragment newInstance() {
-        LearningWritingFragment fragment = new LearningWritingFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_learning_writing,container,false);
-        WritingControl writingControl = new WritingControl(binding.fbQuestion, "Good Morning",getContext() );
+
+        LearningItem learningItem = (LearningItem) getArguments().getSerializable("learning-item");
+        writingControl = new WritingControl(binding.fbQuestion, learningItem.getLearningItemTitle(),this );
         writingControl.buildLinearLayout();
         binding.writingSend.setOnClickListener(v -> {
             checkAnswer(writingControl.getAnswer());
             Toast.makeText(getContext(),writingControl.getAnswer(), Toast.LENGTH_SHORT).show();
         });
-        LearningItem learningItem = (LearningItem) getArguments().getSerializable("learning-item");
         binding.setLearningItem(learningItem);
+        onWritingResponse = (OnWritingResponse) getBaseActivity();
         
         // Inflate the layout for this fragment
         return binding.getRoot();
@@ -81,6 +77,11 @@ public class LearningWritingFragment extends BaseFragment {
     @Override
     protected void setUp(View view) {
 
+    }
+
+    @Override
+    public void onSubmit() {
+        checkAnswer(writingControl.getAnswer());
     }
 
     interface OnWritingResponse{

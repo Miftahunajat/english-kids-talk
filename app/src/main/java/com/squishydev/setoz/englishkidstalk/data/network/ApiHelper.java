@@ -4,10 +4,13 @@ import com.squishydev.setoz.englishkidstalk.data.network.model.Challenge;
 import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
 import com.squishydev.setoz.englishkidstalk.data.model.LearningCategory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.Inventory;
+import com.squishydev.setoz.englishkidstalk.data.network.model.Item;
 import com.squishydev.setoz.englishkidstalk.data.network.model.ItemCategory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.LearningItem;
 import com.squishydev.setoz.englishkidstalk.data.model.User;
 import com.squishydev.setoz.englishkidstalk.data.network.model.QuestionCategory;
+import com.squishydev.setoz.englishkidstalk.data.network.model.TokenResponse;
+import com.squishydev.setoz.englishkidstalk.data.network.model.UserResponse;
 
 import java.util.List;
 
@@ -25,12 +28,15 @@ public interface ApiHelper {
 
     Observable<List<LearningItem>> getLearningItem();
 
-    Single<User> registerUser(String name,
-                              String userName,
-                              String password,
-                              int gender,
-                              int starGained,
-                              int xpGained);
+    Single<UserResponse> registerUser(String name,
+                                      String userName,
+                                      String password,
+                                      int gender,
+                                      int starGained,
+                                      int xpGained);
+
+    Single<TokenResponse> loginUser(String userName,
+                                    String password);
 
     Observable<List<Challenge>>  getChallenges();
 
@@ -46,4 +52,6 @@ public interface ApiHelper {
     Observable<Inventory> deactivateItemInventory(String inventoryId, String itemId);
 
     Single<List<ItemCategory>> getItemCategory();
+
+    Single<List<Item>> getAllItem();
 }

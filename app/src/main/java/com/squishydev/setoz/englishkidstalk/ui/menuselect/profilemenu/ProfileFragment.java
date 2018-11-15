@@ -54,6 +54,7 @@ public class ProfileFragment extends BaseFragment implements
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Nullable
@@ -62,6 +63,7 @@ public class ProfileFragment extends BaseFragment implements
                              @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_profile,container,false);
 
+//        avatarControl = new AvatarControl(getContext(),binding.flAvatarPreview);
 
 
 
@@ -92,7 +94,8 @@ public class ProfileFragment extends BaseFragment implements
     @Override
     public void updateProfile(User user) {
         binding.setUser(user);
-        binding.ivAvatarPreview.setImageResource(profiles[user.getGender()]);
+//        avatarControl.buildFromInventory(user.getInventory());
+//        binding.ivAvatarPreview.setImageResource(profiles[user.getGender()]);
     }
 
     public interface OnFragmentInteractionListener {

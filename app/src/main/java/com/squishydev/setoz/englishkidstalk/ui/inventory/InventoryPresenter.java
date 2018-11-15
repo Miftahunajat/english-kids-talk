@@ -62,7 +62,7 @@ public class InventoryPresenter<V extends InventoryMvpView> extends BasePresente
 
     @Override
     public void getMyInventory() {
-        String id = getDataManager().getUserId();
+        String id = getDataManager().getInventoryId();
         getCompositeDisposable().add(getDataManager().getInventory(id)
         .observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())
@@ -115,15 +115,7 @@ public class InventoryPresenter<V extends InventoryMvpView> extends BasePresente
 
     @Override
     public void updateItem(Item[] oldItem, Item[] newItem) {
-        String inventoryId = getDataManager().getUserId();
-//        //deactive
-//        getCompositeDisposable().add(Observable.fromArray(oldItem)
-//                .filter(item -> item != null)
-//        .subscribeOn(Schedulers.io())
-//        .observeOn(AndroidSchedulers.mainThread())
-//        .subscribe(item -> {
-//            getDataManager().deactivateItemInventory(inventoryId,String.valueOf(item.getId()));
-//        },this::baseHandleError));
+        String inventoryId = getDataManager().getInventoryId();
 //        activate
         getCompositeDisposable().add(Observable.fromArray(newItem)
                 .flatMap(item -> getDataManager().activateItemInventory(inventoryId,String.valueOf(item.getId())))

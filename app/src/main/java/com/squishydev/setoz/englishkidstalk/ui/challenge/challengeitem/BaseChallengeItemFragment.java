@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.squishydev.setoz.englishkidstalk.data.network.model.Challenge;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseFragment;
 import com.squishydev.setoz.englishkidstalk.ui.base.MvpView;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.ChallengeTimer;
@@ -22,11 +23,13 @@ public abstract class BaseChallengeItemFragment extends BaseFragment implements 
 
     private ChallengeFragmentInteractionCallback callback;
     private ChallengeTimer challengeTimer;
+    protected Challenge mChallenge;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         callback = (ChallengeFragmentInteractionCallback) getActivity();
+        mChallenge = (Challenge) getArguments().getSerializable("challenge");
 
         return super.onCreateView(inflater, container, savedInstanceState);
 
@@ -66,6 +69,10 @@ public abstract class BaseChallengeItemFragment extends BaseFragment implements 
         } else {
             callback.onAnswersWrong();
         }
+    }
+
+    public Challenge getChallenge() {
+        return mChallenge;
     }
 
     protected void stopChallengeTimer(){

@@ -12,6 +12,7 @@ import com.squishydev.setoz.englishkidstalk.ui.konfirmasiakun.KonfirmasiAkunActi
 import com.squishydev.setoz.englishkidstalk.ui.learning.learningcategory.LearningCategoryActivity;
 import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.LearningItemActivity;
 import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.learningspeaking.LearningSpeakingActivity;
+import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.learningwriting.LearningWritingActivity;
 import com.squishydev.setoz.englishkidstalk.ui.levelselect.fragment.LevelSelectFragment;
 import com.squishydev.setoz.englishkidstalk.ui.menuselect.itemstoremenu.ItemStoreFragment;
 import com.squishydev.setoz.englishkidstalk.ui.menuselect.mainmenu.MainMenuFragment;
@@ -62,4 +63,6 @@ public interface ActivityComponent {
     void inject(InventoryActivity inventoryActivity);
 
     void inject(LearningSpeakingActivity learningSpeakingActivity);
+
+    void inject(LearningWritingActivity learningWritingActivity);
 }

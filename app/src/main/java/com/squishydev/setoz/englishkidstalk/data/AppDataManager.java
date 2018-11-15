@@ -7,11 +7,14 @@ import com.squishydev.setoz.englishkidstalk.data.network.model.Challenge;
 import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
 import com.squishydev.setoz.englishkidstalk.data.model.LearningCategory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.Inventory;
+import com.squishydev.setoz.englishkidstalk.data.network.model.Item;
 import com.squishydev.setoz.englishkidstalk.data.network.model.ItemCategory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.LearningItem;
 import com.squishydev.setoz.englishkidstalk.data.model.User;
 import com.squishydev.setoz.englishkidstalk.data.network.ApiHelper;
 import com.squishydev.setoz.englishkidstalk.data.network.model.QuestionCategory;
+import com.squishydev.setoz.englishkidstalk.data.network.model.TokenResponse;
+import com.squishydev.setoz.englishkidstalk.data.network.model.UserResponse;
 import com.squishydev.setoz.englishkidstalk.data.prefs.PreferencesHelper;
 import com.squishydev.setoz.englishkidstalk.di.ApplicationContext;
 
@@ -61,13 +64,18 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Single<User> registerUser(String name,
-                                     String userName,
-                                     String password,
-                                     int gender,
-                                     int starGained,
-                                     int xpGained) {
+    public Single<UserResponse> registerUser(String name,
+                                             String userName,
+                                             String password,
+                                             int gender,
+                                             int starGained,
+                                             int xpGained) {
         return mApiHelper.registerUser(name, userName, password, gender,starGained, xpGained);
+    }
+
+    @Override
+    public Single<TokenResponse> loginUser(String userName, String password) {
+        return mApiHelper.loginUser(userName,password);
     }
 
     @Override
@@ -111,6 +119,11 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
+    public Single<List<Item>> getAllItem() {
+        return mApiHelper.getAllItem();
+    }
+
+    @Override
     public void setPrefName(String name) {
         mPreferencesHelper.setPrefName(name);
     }
@@ -148,5 +161,25 @@ public class AppDataManager implements DataManager {
     @Override
     public String getUserId() {
         return mPreferencesHelper.getUserId();
+    }
+
+    @Override
+    public String getToken() {
+        return mPreferencesHelper.getToken();
+    }
+
+    @Override
+    public void setToken(String token) {
+        mPreferencesHelper.setToken(token);
+    }
+
+    @Override
+    public void setInventoryId(String inventoryId) {
+        mPreferencesHelper.setInventoryId(inventoryId);
+    }
+
+    @Override
+    public String getInventoryId() {
+        return mPreferencesHelper.getInventoryId();
     }
 }

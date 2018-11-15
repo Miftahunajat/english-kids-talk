@@ -2,6 +2,7 @@ package com.squishydev.setoz.englishkidstalk.data.model;
 
 import javax.annotation.Generated;
 import com.google.gson.annotations.SerializedName;
+import com.squishydev.setoz.englishkidstalk.data.network.model.Inventory;
 
 @Generated("com.robohorse.robopojogenerator")
 public class User{
@@ -14,6 +15,9 @@ public class User{
 
 	@SerializedName("inventory_id")
 	private int inventoryId;
+
+	@SerializedName("inventory")
+	private Inventory inventory;
 
 	@SerializedName("name")
 	private String name;

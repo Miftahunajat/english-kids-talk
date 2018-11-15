@@ -33,4 +33,12 @@ public interface PreferencesHelper {
     void setUserId(String id);
 
     String getUserId();
+
+    String getToken();
+
+    void setToken(String token);
+
+    void setInventoryId(String inventoryId);
+
+    String getInventoryId();
 }

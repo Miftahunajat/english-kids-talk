@@ -6,6 +6,7 @@ import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
@@ -71,9 +72,9 @@ public class MenuSelectActivity extends BaseActivity{
         mDifficulty = (Difficulty) getIntent().getSerializableExtra("difficulty");
 
         AHBottomNavigation ahBottomNavigation = binding.navigation;
-        AHBottomNavigationItem item1 = new AHBottomNavigationItem("asdasd",R.drawable.home,R.color.categoryEasy);
-        AHBottomNavigationItem item2 = new AHBottomNavigationItem("aaaaa",R.drawable.ic_broken_image_black_24dp);
-        AHBottomNavigationItem item3 = new AHBottomNavigationItem("qweqwe",R.drawable.ic_dashboard_black_24dp);
+        AHBottomNavigationItem item1 = new AHBottomNavigationItem("asdasd",ContextCompat.getDrawable(this,R.drawable.home_2),ContextCompat.getColor(this,R.color.categoryEasy));
+        AHBottomNavigationItem item2 = new AHBottomNavigationItem("aaaaa",R.drawable.study);
+        AHBottomNavigationItem item3 = new AHBottomNavigationItem("qweqwe",R.drawable.store);
         ahBottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
             @Override
             public boolean onTabSelected(int position, boolean wasSelected) {
@@ -86,18 +87,20 @@ public class MenuSelectActivity extends BaseActivity{
         });
 
         // Manage titles
-        ahBottomNavigation.setTitleState(AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE);
-        ahBottomNavigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
+        ahBottomNavigation.setInactiveColor(ContextCompat.getColor(this,R.color.white));
+//        ahBottomNavigation.setTitleState(AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE);
+//        ahBottomNavigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
         ahBottomNavigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_HIDE);
 
         ahBottomNavigation.setTranslucentNavigationEnabled(true);
-        ahBottomNavigation.setNotificationBackgroundColor(Color.parseColor("#F63D2B"));
+//        ahBottomNavigation.setNotificationBackgroundColor(Color.parseColor("#F63D2B"));
 
         ahBottomNavigation.addItem(item1);
         ahBottomNavigation.addItem(item2);
         ahBottomNavigation.addItem(item3);
         ahBottomNavigation.setOnTabSelectedListener(mOnNavigationItemSelectedListener);
         ahBottomNavigation.setCurrentItem(1);
+        ahBottomNavigation.setDefaultBackgroundColor(ContextCompat.getColor(this,R.color.black_transparent));
     }
 
     @Override

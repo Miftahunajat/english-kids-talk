@@ -1,12 +1,16 @@
 package com.squishydev.setoz.englishkidstalk.ui.challenge;
 
+import android.util.Log;
+
 import com.squishydev.setoz.englishkidstalk.data.DataManager;
+import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
 import com.squishydev.setoz.englishkidstalk.ui.base.BasePresenter;
 
 import java.util.Collections;
 
 import javax.inject.Inject;
 
+import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
@@ -19,7 +23,6 @@ public class ChallengePresenter<V extends ChallengeMvpView> extends BasePresente
     @Override
     public void onAttach(V mvpView) {
         super.onAttach(mvpView);
-        getAllChalleges();
     }
 
     @Inject
@@ -29,8 +32,12 @@ public class ChallengePresenter<V extends ChallengeMvpView> extends BasePresente
     }
 
     @Override
-    public void getAllChalleges() {
+    public void getAllChalleges(Difficulty difficulty) {
+        Log.v(TAG, "getAllChalleges: " + difficulty.getText());
         getCompositeDisposable().add(getDataManager().getChallenges()
+                .flatMap(Observable::fromIterable)
+                .filter(challenge -> challenge.getQuestionDifficultyId() == difficulty.getId())
+                .toList()
                 .map(challenges -> {
                     Collections.shuffle(challenges);
                     return challenges;
@@ -39,6 +46,7 @@ public class ChallengePresenter<V extends ChallengeMvpView> extends BasePresente
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(challenges -> {
+                    Log.d(TAG, "getAllChalleges: " + challenges.size() + "juga");
                     getMvpView().setupChallenges(challenges);
                     }, this::baseHandleError));
     }
