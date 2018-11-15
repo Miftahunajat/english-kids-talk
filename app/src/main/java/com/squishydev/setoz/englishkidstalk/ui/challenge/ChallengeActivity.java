@@ -16,6 +16,7 @@ import com.squishydev.setoz.englishkidstalk.databinding.ActivityChallengeBinding
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.BaseChallengeItemFragment;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChalengeItemAFragment;
+import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChallengeItemBFragment;
 import com.squishydev.setoz.englishkidstalk.utils.MediaUtils;
 
 import java.util.LinkedList;
@@ -140,6 +141,8 @@ public class ChallengeActivity extends BaseActivity implements
         switch (type){
             case 1:
                 return ChalengeItemAFragment.newInstance(challenge);
+            case 2:
+                return ChallengeItemBFragment.newInstance(challenge);
             default:
                 return ChalengeItemAFragment.newInstance(challenge);
         }

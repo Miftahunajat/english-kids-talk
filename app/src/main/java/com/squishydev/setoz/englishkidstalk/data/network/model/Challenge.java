@@ -48,10 +48,20 @@ public class Challenge implements Serializable{
 	@SerializedName("updatedAt")
 	private String updatedAt;
 
+	@SerializedName("questionCategory")
+	private QuestionCategory questionCategory;
 
 	@BindingAdapter({"imageUrl"})
 	public static void loadImage(ImageView view, String imageUrl){
 		Picasso.get().load(imageUrl).into(view);
+	}
+
+	public void setQuestionCategory(QuestionCategory questionCategory){
+		this.questionCategory= questionCategory;
+	}
+
+	public QuestionCategory getQuestionCategory(){
+		return questionCategory;
 	}
 
 	public void setChallengeType(int challengeType){
