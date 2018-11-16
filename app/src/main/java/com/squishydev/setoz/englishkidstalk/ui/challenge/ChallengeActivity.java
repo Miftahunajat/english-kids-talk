@@ -103,6 +103,7 @@ public class ChallengeActivity extends BaseActivity implements
         }else{
             showSuccessPrompt("Selamat !!", "Total bintang yang anda dapat " + totalStars,
                     promptDialog -> {
+                        promptDialog.dismiss();
                         mPresenter.updateUserStar(totalStars);
                     });
 
