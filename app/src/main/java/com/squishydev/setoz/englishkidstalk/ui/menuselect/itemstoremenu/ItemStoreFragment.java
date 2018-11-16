@@ -92,7 +92,7 @@ public class ItemStoreFragment extends BaseFragment implements
         };
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setMessage("Apakah anda yakin inging membeli " + item.getName() + " ?").setPositiveButton("Ya", dialogClickListener)
+        builder.setMessage("Apakah anda yakin ingin membeli " + item.getName() + " ?").setPositiveButton("Ya", dialogClickListener)
                 .setNegativeButton("Tidak", dialogClickListener).show();
     }
 

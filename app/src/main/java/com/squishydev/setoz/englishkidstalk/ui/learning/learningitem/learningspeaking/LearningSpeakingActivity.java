@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.network.model.LearningItem;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
+import com.squishydev.setoz.englishkidstalk.utils.MediaUtils;
 
 import java.util.List;
 
@@ -77,6 +78,7 @@ public class LearningSpeakingActivity extends BaseActivity implements LearningSp
 
     @Override
     public void onSuccess() {
+        MediaUtils.playSound(this,R.raw.correct);
         currentUserProgress++;
         if (currentUserProgress >= learningItemList.size())
             finish();

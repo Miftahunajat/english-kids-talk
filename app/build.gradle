@@ -71,4 +71,8 @@ dependencies {
 
     //scrolling imageview
     implementation 'com.github.Q42:AndroidScrollingImageView:1.3.3'
+
+    //flipping view
+    implementation 'com.wajahatkarim3.EasyFlipView:EasyFlipView:2.1.0'
+
 }

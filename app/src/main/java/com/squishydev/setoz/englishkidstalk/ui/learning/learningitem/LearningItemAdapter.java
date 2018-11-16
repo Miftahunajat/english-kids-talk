@@ -1,5 +1,6 @@
 package com.squishydev.setoz.englishkidstalk.ui.learning.learningitem;
 
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +16,8 @@ import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.network.model.LearningItem;
 import com.squishydev.setoz.englishkidstalk.data.network.model.User;
 import com.squishydev.setoz.englishkidstalk.databinding.ItemLearningItemBinding;
+import com.squishydev.setoz.englishkidstalk.utils.MediaUtils;
+import com.wajahatkarim3.easyflipview.EasyFlipView;
 
 import java.util.List;
 
@@ -30,11 +33,13 @@ public class LearningItemAdapter extends RecyclerView.Adapter<LearningItemAdapte
     ItemLearningItemBinding binding;
     OnItemClick onItemClick;
     private String userId;
+    private Context context;
 
-    public LearningItemAdapter(List<LearningItem> learningItems, OnItemClick onItemClick,String userId) {
+    public LearningItemAdapter(Context context, List<LearningItem> learningItems, OnItemClick onItemClick,String userId) {
         this.learningItems = learningItems;
         this.onItemClick = onItemClick;
         this.userId = userId;
+        this.context = context;
     }
 
     @NonNull
@@ -82,26 +87,30 @@ public class LearningItemAdapter extends RecyclerView.Adapter<LearningItemAdapte
             LearningItem learningItem = learningItems.get(position);
             binding.setLearningItem(learningItem);
             if (learningItem.getUserCompleteStatus(userId)){
-                binding.etAnswer.setVisibility(View.INVISIBLE);
-                binding.tvName.setVisibility(View.VISIBLE);
-                binding.tvName.setVisibility(View.VISIBLE);
             }
-            binding.etAnswer.setOnEditorActionListener((v, actionId, event) -> {
-                if (actionId == EditorInfo.IME_ACTION_DONE){
-                    //binding.executePendingBindings();
-                    onItemClick.answer(binding.etAnswer.getText().toString(),learningItem.getLearningItemTitle(),position);
 
-                    binding.etAnswer.setVisibility(View.INVISIBLE);
-                    binding.tvName.setVisibility(View.VISIBLE);
-                    binding.tvName.setVisibility(View.VISIBLE);
-                    return true;
-                }
-                return false;
-            });
 
             binding.cvIcon.setOnClickListener(view -> {
                 binding.executePendingBindings();
                 onItemClick.onClick(position);
+            });
+
+            binding.easyFlipView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    binding.easyFlipView.flipTheView();
+
+                }
+            });
+            binding.easyFlipView.setOnFlipListener(new EasyFlipView.OnFlipAnimationListener() {
+                @Override
+                public void onViewFlipCompleted(EasyFlipView easyFlipView, EasyFlipView.FlipState newCurrentSide) {
+                    if (newCurrentSide == EasyFlipView.FlipState.BACK_SIDE) {
+                        binding.easyFlipView.setFlipEnabled(false);
+                        onItemClick.onFlipSound(position);
+//                        onItemClick.onClick(position);
+                    }
+                }
             });
         }
     }
@@ -110,5 +119,7 @@ public class LearningItemAdapter extends RecyclerView.Adapter<LearningItemAdapte
         void onClick(int position);
 
         void answer(String answerUser, String correctAnswer, int position);
+
+        void onFlipSound(int position);
     }
 }

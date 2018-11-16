@@ -8,23 +8,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/latar_level_easy"
     tools:context="com.squishydev.setoz.englishkidstalk.ui.levelselect.LevelSelectActivit">
-    <com.q42.android.scrollingimageview.ScrollingImageView
-        android:id="@+id/scroll_image_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        scrolling_image_view:speed="1dp"
-        scrolling_image_view:src="@mipmap/ic_launcher"/>
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="415dp"
-        android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/page_easy" />
 
     <Button
         android:id="@+id/btn_play"

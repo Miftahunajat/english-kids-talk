@@ -102,7 +102,7 @@ public class ChallengeTimer {
         ConstraintLayout.LayoutParams lp = new ConstraintLayout.LayoutParams(
                 (int)(detik.floatValue() / totalDetik.floatValue() * (float) params.width),
                 (int)(params.height));
-        lp.leftMargin = (int) (48f * mActivity.getResources().getDisplayMetrics().density);
+        lp.leftMargin = (int) (40f * mActivity.getResources().getDisplayMetrics().density);
         lp.bottomToBottom = R.id.loading_empty;
         lp.leftToLeft= R.id.loading_empty;
         lp.topToTop = R.id.loading_empty;

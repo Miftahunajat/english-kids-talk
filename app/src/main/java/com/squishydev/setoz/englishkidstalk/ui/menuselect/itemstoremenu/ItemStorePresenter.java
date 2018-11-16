@@ -74,7 +74,7 @@ public class ItemStorePresenter<V extends ItemStoreMvpView> extends BasePresente
 
         Observable<User> addItem = getDataManager().addItemToInventory(inventoryId, String.valueOf(item.getId()));
 
-        getCompositeDisposable().add(Observable.merge(updateStarUser,addItem)
+        getCompositeDisposable().add(Observable.concat(updateStarUser,addItem)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(

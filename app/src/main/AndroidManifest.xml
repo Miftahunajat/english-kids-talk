@@ -11,9 +11,9 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:largeHeap="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".ui.welcomescreen.WelcomeScreenActivity" />
         <activity
@@ -28,6 +28,7 @@
         <activity android:name=".ui.splashscreen.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -38,9 +39,14 @@
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.buatakun.BuatAkunActivity" />
         <activity android:name=".ui.inventory.InventoryActivity" />
-        <activity android:name=".ui.learning.learningitem.learningspeaking.LearningSpeakingActivity">
-        </activity>
-        <activity android:name=".ui.learning.learningitem.learningwriting.LearningWritingActivity" >
+        <activity android:name=".ui.learning.learningitem.learningspeaking.LearningSpeakingActivity"></activity>
+        <activity android:name=".ui.learning.learningitem.learningwriting.LearningWritingActivity"></activity>
+        <activity android:name=".ui.battle.BattleActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

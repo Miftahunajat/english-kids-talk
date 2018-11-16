@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.content.ContextCompat;
@@ -73,7 +74,7 @@ public class LearningItemActivity extends BaseActivity implements LearningItemMv
 
 
 
-        learningItemAdapter = new LearningItemAdapter(new ArrayList<>(),this,userId);
+        learningItemAdapter = new LearningItemAdapter(this,new ArrayList<>(),this,userId);
         binding.rvLearningItem.setLayoutManager(new GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false));
         binding.rvLearningItem.setAdapter(learningItemAdapter);
 
@@ -101,6 +102,11 @@ public class LearningItemActivity extends BaseActivity implements LearningItemMv
         User user = new User();
         user.setId(Integer.parseInt(mPresenter.getUserId()));
         learningItemAdapter.updateLearned(position,user);
+    }
+
+    @Override
+    public void onFlipSound(int position) {
+        MediaUtils.playSound(this, R.raw.swap);
     }
 
     @Override
