@@ -7,5 +7,7 @@ import com.squishydev.setoz.englishkidstalk.ui.base.MvpPresenter;
 public interface LearningItemMvpPresenter<V extends LearningItemMvpView> extends MvpPresenter<V> {
 
     void getLearningItem(int learningCategoryId);
+
+    String getUserId();
 }
 

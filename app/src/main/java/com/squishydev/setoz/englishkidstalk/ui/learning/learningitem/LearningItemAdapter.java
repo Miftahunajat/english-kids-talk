@@ -1,16 +1,23 @@
 package com.squishydev.setoz.englishkidstalk.ui.learning.learningitem;
 
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.TextView;
 
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.network.model.LearningItem;
+import com.squishydev.setoz.englishkidstalk.data.network.model.User;
 import com.squishydev.setoz.englishkidstalk.databinding.ItemLearningItemBinding;
+import com.squishydev.setoz.englishkidstalk.utils.MediaUtils;
+import com.wajahatkarim3.easyflipview.EasyFlipView;
 
 import java.util.List;
 
@@ -25,10 +32,14 @@ public class LearningItemAdapter extends RecyclerView.Adapter<LearningItemAdapte
     private List<LearningItem> learningItems;
     ItemLearningItemBinding binding;
     OnItemClick onItemClick;
+    private String userId;
+    private Context context;
 
-    public LearningItemAdapter(List<LearningItem> learningItems, OnItemClick onItemClick) {
+    public LearningItemAdapter(Context context, List<LearningItem> learningItems, OnItemClick onItemClick,String userId) {
         this.learningItems = learningItems;
         this.onItemClick = onItemClick;
+        this.userId = userId;
+        this.context = context;
     }
 
     @NonNull
@@ -56,6 +67,13 @@ public class LearningItemAdapter extends RecyclerView.Adapter<LearningItemAdapte
         notifyDataSetChanged();
     }
 
+    void updateLearned(int position, User user){
+//        List<User> users = learningItems.get(position).getUsers();
+//        users.add(user);
+//        learningItems.get(position).setUsers(users);
+//        notifyDataSetChanged();
+    }
+
     class LearningItemVH extends RecyclerView.ViewHolder {
 
         private ItemLearningItemBinding binding;
@@ -66,18 +84,42 @@ public class LearningItemAdapter extends RecyclerView.Adapter<LearningItemAdapte
         }
 
         public void bind(int position) {
-            Log.d("Lala","lala");
-            binding.setLearningItem(learningItems.get(position));
+            LearningItem learningItem = learningItems.get(position);
+            binding.setLearningItem(learningItem);
+            if (learningItem.getUserCompleteStatus(userId)){
+            }
 
 
-            binding.btnSubmit.setOnClickListener(view -> {
+            binding.cvIcon.setOnClickListener(view -> {
                 binding.executePendingBindings();
                 onItemClick.onClick(position);
+            });
+
+            binding.easyFlipView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    binding.easyFlipView.flipTheView();
+
+                }
+            });
+            binding.easyFlipView.setOnFlipListener(new EasyFlipView.OnFlipAnimationListener() {
+                @Override
+                public void onViewFlipCompleted(EasyFlipView easyFlipView, EasyFlipView.FlipState newCurrentSide) {
+                    if (newCurrentSide == EasyFlipView.FlipState.BACK_SIDE) {
+                        binding.easyFlipView.setFlipEnabled(false);
+                        onItemClick.onFlipSound(position);
+//                        onItemClick.onClick(position);
+                    }
+                }
             });
         }
     }
 
     interface OnItemClick{
         void onClick(int position);
+
+        void answer(String answerUser, String correctAnswer, int position);
+
+        void onFlipSound(int position);
     }
 }

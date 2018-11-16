@@ -25,6 +25,9 @@ public class Item {
 	@SerializedName("item_desc")
 	private String itemDesc;
 
+	@SerializedName("gender")
+	private int gender;
+
 	public InventoryItem getInventoryItem() {
 		return inventoryItem;
 	}
@@ -123,6 +126,14 @@ public class Item {
 
 	public String getUpdatedAt(){
 		return updatedAt;
+	}
+
+	public int getGender() {
+		return gender;
+	}
+
+	public void setGender(int gender) {
+		this.gender = gender;
 	}
 
 	@Override

@@ -4,13 +4,17 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.squishydev.setoz.englishkidstalk.R;
-import com.squishydev.setoz.englishkidstalk.data.model.User;
+import com.squishydev.setoz.englishkidstalk.data.network.model.User;
+import com.squishydev.setoz.englishkidstalk.data.network.model.Inventory;
 import com.squishydev.setoz.englishkidstalk.databinding.FragmentProfileBinding;
 import com.squishydev.setoz.englishkidstalk.di.componen.ActivityComponent;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseFragment;
@@ -33,7 +37,7 @@ public class ProfileFragment extends BaseFragment implements
     private int[] profiles = {R.drawable.cowok,R.drawable.cewek};
 
     FragmentProfileBinding binding;
-    AvatarControl avatarControl;
+    AvatarControl mAvatarControl;
 
     @Inject
     ProfileMvpPresenter<ProfileMvpView> mPresenter;
@@ -63,7 +67,8 @@ public class ProfileFragment extends BaseFragment implements
                              @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_profile,container,false);
 
-//        avatarControl = new AvatarControl(getContext(),binding.flAvatarPreview);
+
+        mAvatarControl = new AvatarControl(getContext(),binding.flContentAvatar);
 
 
 
@@ -72,13 +77,21 @@ public class ProfileFragment extends BaseFragment implements
             component.inject(this);
             mPresenter.onAttach(this);
         }
+
+        int gender = mPresenter.getGender();
+        if (gender == 0){
+            binding.ivAvatarCircle.setImageDrawable(ContextCompat.getDrawable(getContext(),R.drawable.avatar_cowok_profile_bulat));
+        }else{
+            binding.ivAvatarCircle.setImageDrawable(ContextCompat.getDrawable(getContext(),R.drawable.avatar_cewek_profile_bulat));
+        }
+
         return binding.getRoot();
     }
 
     @Override
     protected void setUp(View view) {
-        mPresenter.getProfileUser();
-        binding.tvPilihAvatar.setOnClickListener(view1 -> {
+
+        binding.tvLihatAvatar.setOnClickListener(view1 -> {
             Intent intent = InventoryActivity.getStartIntent(getContext());
             startActivity(intent);
         });
@@ -94,13 +107,48 @@ public class ProfileFragment extends BaseFragment implements
     @Override
     public void updateProfile(User user) {
         binding.setUser(user);
-//        avatarControl.buildFromInventory(user.getInventory());
+
+        String xpGained = String.valueOf(user.getXpGained()%1000) + "/1000";
+        binding.tvXpBar.setText(xpGained);
+        adjustXpBar(user.getXpGained()%1000);
+
+        //set jumlah level pada tv
+        binding.tvJumlahLevel.setText(String.valueOf(user.getXpGained()/1000));
+//        mAvatarControl.buildFromInventory(user.getInventory());
 //        binding.ivAvatarPreview.setImageResource(profiles[user.getGender()]);
     }
 
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-//        void onFragmentInteraction(Uri uri);
+    private void adjustXpBar(int xpGained) {
+        if (xpGained != 0) {
+            ViewGroup.LayoutParams params = binding.xpEmpty.getLayoutParams();
+            ConstraintLayout.LayoutParams lp = new ConstraintLayout.LayoutParams(
+                    (int) ((float) xpGained / 1000.f * (float) params.width),
+                    (int) (params.height));
+//        lp.leftMargin = (int) (14f * getBaseActivity().getResources().getDisplayMetrics().density);
+            lp.bottomToBottom = R.id.xp_empty;
+            lp.leftToLeft = R.id.xp_empty;
+            lp.topToTop = R.id.xp_empty;
+
+            binding.xpFill.setLayoutParams(lp);
+        }else{
+            binding.xpFill.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    @Override
+    public void setAvatarFromInventory(int type, Inventory inventory) {
+        if (type == 0)
+            binding.ivAvatar.setImageDrawable(ContextCompat.getDrawable(getContext()
+                    ,R.drawable.cowok));
+        else
+            binding.ivAvatar.setImageDrawable(ContextCompat.getDrawable(getContext()
+                    ,R.drawable.cewek));
+        mAvatarControl.buildFromInventory(inventory);
+    }
+
+    @Override
+    public void updateRank(int position) {
+        binding.tvJumlahPiala.setText(String.valueOf(position));
     }
 }
 

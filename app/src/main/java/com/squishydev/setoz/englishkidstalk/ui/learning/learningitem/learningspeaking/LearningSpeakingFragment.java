@@ -124,7 +124,6 @@ public class LearningSpeakingFragment extends BaseFragment implements Recognitio
         if (matches != null && matches.size() != 0) {
             binding.tvUsersvoice.setText(matches.get(0));
             checkAnswer(binding.tvUsersvoice.getText().toString());
-            Toast.makeText(getContext(), "on result", Toast.LENGTH_SHORT).show();
         }else{
             showMessage("Maaf tidak bisa menemukan");
         }
@@ -152,7 +151,6 @@ public class LearningSpeakingFragment extends BaseFragment implements Recognitio
         String correctAnswer = binding.tvSpeaking.getText().toString().toLowerCase();
         Log.d("ANSWERS", correctAnswer+" "+answer);
         if(answer.toLowerCase().equalsIgnoreCase(correctAnswer)){
-            getBaseActivity().showSuccessPrompt();
             onSpeakingResponse.onSuccess();
         }
         else {

@@ -3,10 +3,14 @@ package com.squishydev.setoz.englishkidstalk.ui.menuselect.itemstoremenu;
 import android.util.Log;
 
 import com.squishydev.setoz.englishkidstalk.data.DataManager;
+import com.squishydev.setoz.englishkidstalk.data.network.model.Item;
+import com.squishydev.setoz.englishkidstalk.data.network.model.User;
 import com.squishydev.setoz.englishkidstalk.ui.base.BasePresenter;
 
 import javax.inject.Inject;
 
+import io.reactivex.Observable;
+import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
@@ -24,7 +28,11 @@ public class ItemStorePresenter<V extends ItemStoreMvpView> extends BasePresente
 
     @Override
     public void getAllItem() {
+        int gender = getDataManager().getAvatarType();
         getCompositeDisposable().add(getDataManager().getAllItem()
+                .flatMap(Observable::fromIterable)
+                .filter(item -> item.getGender() == gender)
+                .toList()
         .observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())
         .subscribe(items -> getMvpView().setupItem(items),this::baseHandleError));
@@ -47,5 +55,32 @@ public class ItemStorePresenter<V extends ItemStoreMvpView> extends BasePresente
                     getMvpView().setUser(user);
                 },this::baseHandleError
         ));
+    }
+
+    @Override
+    public void buyItem(Item item) {
+        String userId = getDataManager().getUserId();
+        String inventoryId = getDataManager().getInventoryId();
+        Log.d(TAG, "BuyItem: ");
+        int star = item.getStar();
+        Observable<User> updateStarUser = getDataManager().getUser(userId).flatMap(user -> {
+            int userStar = user.getStarGained();
+            if (userStar < star)
+                throw new IllegalAccessException("Tidak cukup bintang");
+            userStar -= star;
+            user.setStarGained(userStar);
+            return getDataManager().updateUserStars(user);
+        }).toObservable();
+
+        Observable<User> addItem = getDataManager().addItemToInventory(inventoryId, String.valueOf(item.getId()));
+
+        getCompositeDisposable().add(Observable.concat(updateStarUser,addItem)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(
+                        user -> {
+                            getUser();
+                        },this::baseHandleError
+                ));
     }
 }

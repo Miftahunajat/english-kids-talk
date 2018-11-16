@@ -9,7 +9,7 @@
     </data>
 
     <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <android.support.v7.widget.CardView
@@ -42,46 +42,68 @@
         </android.support.v7.widget.CardView>
 
 
-        <TextView
-            android:id="@+id/tv_name"
+        <com.wajahatkarim3.easyflipview.EasyFlipView
+            android:id="@+id/easy_flip_view"
             android:layout_width="0dp"
-            android:textAlignment="center"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/acme"
-            android:text="@{learningItem.learningItemTitle}"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_submit"
+            android:layout_height="45dp"
+            app:flipOnTouch="true"
+            app:flipEnabled="true"
+            app:flipDuration="400"
+            app:flipType="vertical"
+            app:flipFrom="front"
+
             app:layout_constraintEnd_toEndOf="@+id/cv_icon"
-            app:layout_constraintStart_toEndOf="@+id/btn_submit"
-            app:layout_constraintTop_toTopOf="@+id/btn_submit"
-            tools:text="qweqwe" />
-        <View
-            app:layout_constraintTop_toBottomOf="@+id/tv_name"
-            app:layout_constraintLeft_toLeftOf="@id/tv_name"
-            app:layout_constraintRight_toRightOf="@id/tv_name"
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:background="@android:color/darker_gray" />
+            app:layout_constraintStart_toStartOf="@+id/cv_icon"
+            app:layout_constraintTop_toBottomOf="@+id/cv_icon"
+            android:layout_marginTop="8dp"
+            >
 
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/flip_back"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/acme"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:text="@{learningItem.learningItemTitle}"
+                    tools:text="Dump truck"/>
+
+            </RelativeLayout>
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/flip_front"
+                />
+
+
+
+
+        </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+
+
 
         <ImageView
             android:id="@+id/btn_submit"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="6dp"
             android:src="@drawable/sound"
-            android:layout_marginTop="8dp"
-            android:drawableLeft="@drawable/ic_notifications_black_24dp"
             app:layout_constraintStart_toStartOf="@+id/cv_icon"
-            app:layout_constraintTop_toBottomOf="@+id/cv_icon" />
+            app:layout_constraintBottom_toBottomOf="@id/cv_icon"
+            tools:layout_editor_absoluteY="118dp" />
     </android.support.constraint.ConstraintLayout>
 </layout>

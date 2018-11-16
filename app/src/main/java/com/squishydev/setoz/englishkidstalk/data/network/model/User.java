@@ -18,6 +18,9 @@ public class User{
 	@SerializedName("inventory_id")
 	private int inventoryId;
 
+	@SerializedName("inventory")
+	private Inventory inventory;
+
 	@SerializedName("xp_gained")
 	private int xpGained;
 
@@ -114,6 +117,14 @@ public class User{
 
 	public String getUpdatedAt(){
 		return updatedAt;
+	}
+
+	public Inventory getInventory() {
+		return inventory;
+	}
+
+	public void setInventory(Inventory inventory) {
+		this.inventory = inventory;
 	}
 
 	@Override

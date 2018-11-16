@@ -6,8 +6,15 @@ import android.widget.ImageView;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.Generated;
+import javax.inject.Inject;
+
 import com.google.gson.annotations.SerializedName;
 import com.squareup.picasso.Picasso;
+import com.squishydev.setoz.englishkidstalk.data.prefs.PreferencesHelper;
+
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 @Generated("com.robohorse.robopojogenerator")
 public class LearningItem implements Serializable {
@@ -34,7 +41,7 @@ public class LearningItem implements Serializable {
 	private String learningItemImage;
 
 	@SerializedName("users")
-	private List<Object> users;
+	private List<User> users;
 
 	@SerializedName("updatedAt")
 	private String updatedAt;
@@ -100,11 +107,11 @@ public class LearningItem implements Serializable {
 		return learningItemImage;
 	}
 
-	public void setUsers(List<Object> users){
+	public void setUsers(List<User> users){
 		this.users = users;
 	}
 
-	public List<Object> getUsers(){
+	public List<User> getUsers(){
 		return users;
 	}
 
@@ -114,6 +121,15 @@ public class LearningItem implements Serializable {
 
 	public String getUpdatedAt(){
 		return updatedAt;
+	}
+
+	public boolean getUserCompleteStatus(String userId){
+		for (User user : users){
+			if (String.valueOf(user.getId()).equals(userId)){
+				return true;
+			}
+		}
+		return false;
 	}
 
 	@Override

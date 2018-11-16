@@ -37,7 +37,7 @@ public class ChallengeActivity extends BaseActivity implements
     private int totalStars = 0;
     private Difficulty mDifficulty;
     private String TAG = getClass().getSimpleName();
-    private int layouts[] = {R.drawable.latar_item_easy,R.drawable.latar_item_med,R.drawable.latar_item_hard};
+    private int layouts[] = {R.drawable.challenge_easy, R.drawable.challenge_medium, R.drawable.challenge_hard};
 
 
     public static Intent getStartIntent(Context context, Difficulty mDifficulty) {

@@ -9,5 +9,11 @@ public interface ProfileMvpPresenter<V extends ProfileMvpView> extends MvpPresen
     String getName();
 
     void getProfileUser();
+
+    void getRankUser();
+
+    void getMyInventory();
+
+    int getGender();
 }
 

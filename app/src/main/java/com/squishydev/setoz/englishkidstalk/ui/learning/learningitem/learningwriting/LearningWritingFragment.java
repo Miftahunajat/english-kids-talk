@@ -66,7 +66,6 @@ public class LearningWritingFragment extends BaseFragment implements WritingCont
         String correctAnswer = binding.textView10.getText().toString().replace(" ","").toLowerCase();
         Log.d("ANSWERS", correctAnswer+" "+answer);
         if(answer.toLowerCase().equalsIgnoreCase(correctAnswer)){
-            getBaseActivity().showSuccessPrompt();
             onWritingResponse.onSuccess();
         }
         else {

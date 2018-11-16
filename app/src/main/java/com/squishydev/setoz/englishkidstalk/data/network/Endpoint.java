@@ -20,7 +20,7 @@ public class Endpoint {
             + "question-categories";
 
     public static final String ENDPOINT_USER_PROFILE = Config.BASE_URL_API
-            + "users/";
+            + "users";
 
     public static final String ENDPOINT_LEARNING_ITEMS = Config.BASE_URL_API
             + "learning-items";
@@ -42,4 +42,6 @@ public class Endpoint {
 
     public static final String ENDPOINT_GET_ITEMS = Config.BASE_URL_API
             + "items";
+    public static final String ENDPOINT_ADD_ITEM_TO_INVENTORIES = Config.BASE_URL_API
+            + "inventories/add-item";
 }

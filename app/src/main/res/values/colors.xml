@@ -24,4 +24,12 @@
 
     <color name="biruDongker">#0e0d3d</color>
 
+    <color name="xpBiru">#3DB2AD</color>
+    <color name="xpAbuAbu">#C6C5C5</color>
+    
+    <color name="backgroundBadgeStroke">#266868</color>
+    <color name="backgroundBadge">#45ab99</color>
+
+    <color name="backgroundBadgeItem">#9ad0c4</color>
+
 </resources>

@@ -64,11 +64,12 @@ public class ItemStoreAdapter extends RecyclerView.Adapter<ItemStoreAdapter.Item
 
         public void bind(int position) {
             binding.setItem(item.get(position));
+            binding.ivBeli.setOnClickListener(v -> onItemClick.onClick(item.get(position)));
 
         }
     }
 
     interface OnItemClick{
-        void onClick(int position);
+        void onClick(Item item);
     }
 }
