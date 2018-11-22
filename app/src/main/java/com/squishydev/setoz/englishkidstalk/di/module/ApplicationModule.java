@@ -9,6 +9,8 @@ import com.squishydev.setoz.englishkidstalk.data.AppDataManager;
 import com.squishydev.setoz.englishkidstalk.data.DataManager;
 import com.squishydev.setoz.englishkidstalk.data.db.AppDbHelper;
 import com.squishydev.setoz.englishkidstalk.data.db.DbHelper;
+import com.squishydev.setoz.englishkidstalk.data.firebase.AppFirebaseHelper;
+import com.squishydev.setoz.englishkidstalk.data.firebase.FirebaseHelper;
 import com.squishydev.setoz.englishkidstalk.data.network.ApiHelper;
 import com.squishydev.setoz.englishkidstalk.data.network.AppApiHelper;
 import com.squishydev.setoz.englishkidstalk.data.prefs.AppPreferencesHelper;
@@ -74,6 +76,13 @@ public class ApplicationModule {
     PreferencesHelper providePreferencesHelper(AppPreferencesHelper appPreferencesHelper) {
         return appPreferencesHelper;
     }
+
+    @Provides
+    @Singleton
+    FirebaseHelper provideFirebaseHelper(AppFirebaseHelper firebaseHelper) {
+        return firebaseHelper;
+    }
+
 
     @Provides
     @Singleton

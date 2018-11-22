@@ -15,6 +15,7 @@ public class BattleActivity extends BaseActivity implements BattleMvpView {
 
     @Inject
     BattleMvpPresenter<BattleMvpView> mPresenter;
+    ActivityBattleBinding binding;
 
     public static Intent getStartIntent(Context context) {
         Intent intent = new Intent(context, BattleActivity.class);
@@ -38,6 +39,25 @@ public class BattleActivity extends BaseActivity implements BattleMvpView {
 
     @Override
     protected void setUp() {
-        ActivityBattleBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_battle);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_battle);
+        binding.btnHost.setOnClickListener(v-> mPresenter.postMatchOnline());
+        binding.btnJoin.setOnClickListener(v -> mPresenter.joinRandomMatch());
+        binding.btnJoinNow.setOnClickListener(v -> mPresenter.joinMatch());
+        binding.btnAddScore.setOnClickListener(v -> mPresenter.addMyScore(1));
+    }
+
+    @Override
+    public void addLog(String key) {
+        binding.tvLog.setText(binding.tvLog.getText() + "\n" + key);
+    }
+
+    @Override
+    public void addMyScore(Integer score) {
+        binding.tvMine.setText("My Score : " + score.toString());
+    }
+
+    @Override
+    public void addEnemyScore(Integer score) {
+        binding.tvEnemy.setText("Enemy Score : " + score.toString());
     }
 }

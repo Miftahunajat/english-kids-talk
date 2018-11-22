@@ -9,7 +9,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.DataManager;
-import com.squishydev.setoz.englishkidstalk.data.model.ApiError;
+import com.squishydev.setoz.englishkidstalk.data.network.model.ApiError;
 import com.squishydev.setoz.englishkidstalk.utils.AppConstants;
 
 import javax.inject.Inject;

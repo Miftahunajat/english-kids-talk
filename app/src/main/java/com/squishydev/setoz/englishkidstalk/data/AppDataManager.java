@@ -2,10 +2,13 @@ package com.squishydev.setoz.englishkidstalk.data;
 
 import android.content.Context;
 
+import com.google.firebase.database.DatabaseReference;
 import com.squishydev.setoz.englishkidstalk.data.db.DbHelper;
+import com.squishydev.setoz.englishkidstalk.data.firebase.FirebaseHelper;
+import com.squishydev.setoz.englishkidstalk.data.firebase.model.Match;
 import com.squishydev.setoz.englishkidstalk.data.network.model.Challenge;
 import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
-import com.squishydev.setoz.englishkidstalk.data.model.LearningCategory;
+import com.squishydev.setoz.englishkidstalk.data.network.model.LearningCategory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.Inventory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.Item;
 import com.squishydev.setoz.englishkidstalk.data.network.model.ItemCategory;
@@ -23,6 +26,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import io.reactivex.Completable;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 
@@ -41,16 +45,19 @@ public class AppDataManager implements DataManager {
     private final DbHelper mDbHelper;
     private final PreferencesHelper mPreferencesHelper;
     private final ApiHelper mApiHelper;
+    private final FirebaseHelper mFirebaseHelper;
 
     @Inject
     public AppDataManager(@ApplicationContext Context context,
                           DbHelper dbHelper,
                           PreferencesHelper preferencesHelper,
-                          ApiHelper apiHelper) {
+                          ApiHelper apiHelper,
+                          FirebaseHelper firebaseHelper) {
         mContext = context;
         mDbHelper = dbHelper;
         mPreferencesHelper = preferencesHelper;
         mApiHelper = apiHelper;
+        mFirebaseHelper = firebaseHelper;
     }
 
     @Override
@@ -191,5 +198,30 @@ public class AppDataManager implements DataManager {
     @Override
     public String getInventoryId() {
         return mPreferencesHelper.getInventoryId();
+    }
+
+    @Override
+    public Observable<Match> postMatch(String userId, DatabaseReference.CompletionListener listener) {
+        return mFirebaseHelper.postMatch(userId,listener);
+    }
+
+    @Override
+    public Single<List<Match>> joinRandomMatch(String userId) {
+        return mFirebaseHelper.joinRandomMatch(userId);
+    }
+
+    @Override
+    public Completable joinMatch(String userId, String matchId) {
+        return mFirebaseHelper.joinMatch(userId,matchId);
+    }
+
+    @Override
+    public Observable<Match> observeScore(String matchId) {
+        return mFirebaseHelper.observeScore(matchId);
+    }
+
+    @Override
+    public Completable addScore(String userId, String matchId, Integer score) {
+        return mFirebaseHelper.addScore(userId,matchId,score);
     }
 }

@@ -68,10 +68,6 @@ public class LearningItemAdapter extends RecyclerView.Adapter<LearningItemAdapte
     }
 
     void updateLearned(int position, User user){
-//        List<User> users = learningItems.get(position).getUsers();
-//        users.add(user);
-//        learningItems.get(position).setUsers(users);
-//        notifyDataSetChanged();
     }
 
     class LearningItemVH extends RecyclerView.ViewHolder {

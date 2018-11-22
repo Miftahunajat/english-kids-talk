@@ -24,13 +24,13 @@ import java.util.List;
 import javax.inject.Inject;
 
 public class LearningCategoryActivity extends BaseActivity implements LearningCategoryMvpView,
-        LearningCategoryAdapter2.OnCategoryClick {
+        LearningCategoryAdapter.OnCategoryClick {
 
     @Inject
     LearningCategoryMvpPresenter<LearningCategoryMvpView> mPresenter;
 
     ActivityLearningCategory2Binding binding;
-    LearningCategoryAdapter2 learningCategoryAdapter2;
+    LearningCategoryAdapter learningCategoryAdapter2;
     List<LearningTopicsItem> learningTopicsItem;
     int backgrounds[] = {R.drawable.latar_kategori_easy,R.drawable.latar_kategori_medium,R.drawable.latar_kategori_hard};
     Difficulty mDifficulty;
@@ -69,7 +69,7 @@ public class LearningCategoryActivity extends BaseActivity implements LearningCa
     @Override
     protected void setUp() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_learning_category_2);
-        learningCategoryAdapter2 = new LearningCategoryAdapter2(new ArrayList<>(),this);
+        learningCategoryAdapter2 = new LearningCategoryAdapter(new ArrayList<>(),this);
 
         binding.rvLearningCategory.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
         binding.rvLearningCategory.setAdapter(learningCategoryAdapter2);

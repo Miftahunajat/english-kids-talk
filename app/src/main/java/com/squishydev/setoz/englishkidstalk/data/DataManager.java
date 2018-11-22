@@ -1,6 +1,7 @@
 package com.squishydev.setoz.englishkidstalk.data;
 
 import com.squishydev.setoz.englishkidstalk.data.db.DbHelper;
+import com.squishydev.setoz.englishkidstalk.data.firebase.FirebaseHelper;
 import com.squishydev.setoz.englishkidstalk.data.network.ApiHelper;
 import com.squishydev.setoz.englishkidstalk.data.prefs.PreferencesHelper;
 
@@ -10,7 +11,7 @@ import com.squishydev.setoz.englishkidstalk.data.prefs.PreferencesHelper;
  * Github : https://github.com/miftahunajat/
  */
 
-public interface DataManager extends ApiHelper,DbHelper,PreferencesHelper {
+public interface DataManager extends ApiHelper,DbHelper,PreferencesHelper,FirebaseHelper {
 
     enum LoggedInMode {
 

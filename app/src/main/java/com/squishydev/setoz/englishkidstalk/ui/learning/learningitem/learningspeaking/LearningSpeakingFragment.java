@@ -61,13 +61,7 @@ public class LearningSpeakingFragment extends BaseFragment implements Recognitio
         onSpeakingResponse = (OnSpeakingResponse) getBaseActivity();
 
         // hide the action bar
-        binding.btnSpeaking.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                promptSpeechInput();
-            }
-        });
+        binding.btnSpeaking.setOnClickListener(v -> promptSpeechInput());
         return binding.getRoot();
     }
 

@@ -1,4 +1,4 @@
-package com.squishydev.setoz.englishkidstalk.data.model;
+package com.squishydev.setoz.englishkidstalk.data.network.model;
 
 import android.databinding.BindingAdapter;
 import android.widget.ImageView;
