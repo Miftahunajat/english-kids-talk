@@ -2,6 +2,7 @@ package com.squishydev.setoz.englishkidstalk.data.firebase;
 
 import android.content.Context;
 
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squishydev.setoz.englishkidstalk.data.firebase.model.Match;
@@ -9,6 +10,7 @@ import com.squishydev.setoz.englishkidstalk.di.ApplicationContext;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -16,8 +18,8 @@ import javax.inject.Singleton;
 import durdinapps.rxfirebase2.DataSnapshotMapper;
 import durdinapps.rxfirebase2.RxFirebaseDatabase;
 import io.reactivex.Completable;
+import io.reactivex.Flowable;
 import io.reactivex.Observable;
-import io.reactivex.Single;
 
 @Singleton
 public class AppFirebaseHelper implements FirebaseHelper {
@@ -28,7 +30,6 @@ public class AppFirebaseHelper implements FirebaseHelper {
     public AppFirebaseHelper(@ApplicationContext Context context) {
         firebaseDatabase = FirebaseDatabase.getInstance();
     }
-
 
     @Override
     public Observable<Match> postMatch(String userId, DatabaseReference.CompletionListener listener) {
@@ -44,13 +45,9 @@ public class AppFirebaseHelper implements FirebaseHelper {
     }
 
     @Override
-    public Single<List<Match>> joinRandomMatch(String userId) {
+    public Flowable<List<Match>> joinRandomMatch(String userId) {
         DatabaseReference matchReference = firebaseDatabase.getReference().child("matches");
-        return RxFirebaseDatabase.observeSingleValueEvent(matchReference,DataSnapshotMapper.listOf(Match.class)).toObservable()
-                .flatMap(Observable::fromIterable)
-                .filter(match -> !match.isPlaying())
-                .toList().toObservable()
-                .firstOrError();
+        return RxFirebaseDatabase.observeValueEvent(matchReference,DataSnapshotMapper.listOf(Match.class));
     }
 
     @Override
@@ -87,4 +84,23 @@ public class AppFirebaseHelper implements FirebaseHelper {
         });
     }
 
+    @Override
+    public Observable<Task<Void>> deleteMatch(String matchId) {
+        DatabaseReference databaseReference = firebaseDatabase.getReference().child("matches").child(matchId);
+        return Observable.just(databaseReference.removeValue());
+    }
+
+    @Override
+    public Completable startMatch(String matchId) {
+        DatabaseReference databaseReference = firebaseDatabase.getReference().child("matches").child(matchId);
+        Map<String,Object> update = new HashMap<>();
+        update.put("starting", true);
+        return RxFirebaseDatabase.updateChildren(databaseReference,update);
+    }
+
+    @Override
+    public Flowable<Match> observeMatch(String matchId) {
+        DatabaseReference databaseReference = firebaseDatabase.getReference().child("matches").child(matchId);
+        return RxFirebaseDatabase.observeValueEvent(databaseReference,Match.class);
+    }
 }

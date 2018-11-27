@@ -58,4 +58,6 @@ public interface ApiHelper {
     Observable<List<User>> getAllUsers();
 
     Observable<User> addItemToInventory(String inventoryId, String itemId);
+
+
 }

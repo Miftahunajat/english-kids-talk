@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class Match {
     private boolean isPlaying;
+    private boolean isStarting;
     private Map<String,Integer> score;
     private String hostId;
     private String clientId;
@@ -39,6 +40,14 @@ public class Match {
 
     public void setClientId(String clientId) {
         this.clientId = clientId;
+    }
+
+    public boolean isStarting() {
+        return isStarting;
+    }
+
+    public void setStarting(boolean starting) {
+        isStarting = starting;
     }
 
     @Override

@@ -5,9 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 
 import com.squishydev.setoz.englishkidstalk.di.ActivityContext;
-import com.squishydev.setoz.englishkidstalk.ui.battle.BattleMvpPresenter;
-import com.squishydev.setoz.englishkidstalk.ui.battle.BattleMvpView;
-import com.squishydev.setoz.englishkidstalk.ui.battle.BattlePresenter;
+import com.squishydev.setoz.englishkidstalk.ui.battle.battlematch.BattleMatchMvpPresenter;
+import com.squishydev.setoz.englishkidstalk.ui.battle.battlematch.BattleMatchMvpView;
+import com.squishydev.setoz.englishkidstalk.ui.battle.battlematch.BattleMatchPresenter;
+import com.squishydev.setoz.englishkidstalk.ui.battle.battleselect.BattleMvpPresenter;
+import com.squishydev.setoz.englishkidstalk.ui.battle.battleselect.BattleMvpView;
+import com.squishydev.setoz.englishkidstalk.ui.battle.battleselect.BattlePresenter;
 import com.squishydev.setoz.englishkidstalk.ui.buatakun.BuatAkunMvpPresenter;
 import com.squishydev.setoz.englishkidstalk.ui.buatakun.BuatAkunMvpView;
 import com.squishydev.setoz.englishkidstalk.ui.buatakun.BuatAkunPresenter;
@@ -173,6 +176,11 @@ public class ActivityModule {
 
     @Provides
     BattleMvpPresenter<BattleMvpView> provideBattlePresenter(BattlePresenter<BattleMvpView> presenter){
+        return presenter;
+    }
+
+    @Provides
+    BattleMatchMvpPresenter<BattleMatchMvpView> provideBattleMatchPresenter(BattleMatchPresenter<BattleMatchMvpView> presenter){
         return presenter;
     }
 }

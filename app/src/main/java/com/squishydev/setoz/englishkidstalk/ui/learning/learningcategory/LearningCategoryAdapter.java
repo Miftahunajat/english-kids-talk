@@ -13,7 +13,7 @@ import com.squishydev.setoz.englishkidstalk.databinding.ItemLearningCategory2Bin
 
 import java.util.List;
 
-public class LearningCategoryAdapter extends RecyclerView.Adapter<LearningCategoryAdapter.LearningCategory2VH> {
+public class LearningCategoryAdapter extends RecyclerView.Adapter<LearningCategoryAdapter.LearningCategoryVH> {
     private List<LearningTopicsItem> learningTopicsItems;
     private ItemLearningCategory2Binding binding;
     private LearningCategoryAdapter.OnCategoryClick onCategoryClick;
@@ -25,14 +25,14 @@ public class LearningCategoryAdapter extends RecyclerView.Adapter<LearningCatego
 
     @NonNull
     @Override
-    public LearningCategoryAdapter.LearningCategory2VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public LearningCategoryVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         binding = DataBindingUtil.inflate(inflater, R.layout.item_learning_category_2,parent,false);
-        return new LearningCategoryAdapter.LearningCategory2VH(binding.getRoot());
+        return new LearningCategoryVH(binding.getRoot());
     }
 
     @Override
-    public void onBindViewHolder(@NonNull LearningCategoryAdapter.LearningCategory2VH holder, int position) {
+    public void onBindViewHolder(@NonNull LearningCategoryVH holder, int position) {
         holder.bind(position);
     }
 
@@ -46,9 +46,9 @@ public class LearningCategoryAdapter extends RecyclerView.Adapter<LearningCatego
         notifyDataSetChanged();
     }
 
-    class LearningCategory2VH extends RecyclerView.ViewHolder {
+    class LearningCategoryVH extends RecyclerView.ViewHolder {
 
-        public LearningCategory2VH(View itemView) {
+        public LearningCategoryVH(View itemView) {
             super(itemView);
         }
 

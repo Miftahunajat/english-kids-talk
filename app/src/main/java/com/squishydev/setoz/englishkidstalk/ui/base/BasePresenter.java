@@ -117,6 +117,9 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
         }
     }
 
+    public void observingScoreChanges(String matchId) {
+
+    }
 
 
     public static class MvpViewNotAttachedException extends RuntimeException {

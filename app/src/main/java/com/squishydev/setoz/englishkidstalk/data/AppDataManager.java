@@ -2,6 +2,7 @@ package com.squishydev.setoz.englishkidstalk.data;
 
 import android.content.Context;
 
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.squishydev.setoz.englishkidstalk.data.db.DbHelper;
 import com.squishydev.setoz.englishkidstalk.data.firebase.FirebaseHelper;
@@ -27,6 +28,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import io.reactivex.Completable;
+import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 
@@ -206,7 +208,7 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Single<List<Match>> joinRandomMatch(String userId) {
+    public Flowable<List<Match>> joinRandomMatch(String userId) {
         return mFirebaseHelper.joinRandomMatch(userId);
     }
 
@@ -223,5 +225,20 @@ public class AppDataManager implements DataManager {
     @Override
     public Completable addScore(String userId, String matchId, Integer score) {
         return mFirebaseHelper.addScore(userId,matchId,score);
+    }
+
+    @Override
+    public Observable<Task<Void>> deleteMatch(String matchId) {
+        return mFirebaseHelper.deleteMatch(matchId);
+    }
+
+    @Override
+    public Completable startMatch(String matchId) {
+        return mFirebaseHelper.startMatch(matchId);
+    }
+
+    @Override
+    public Flowable<Match> observeMatch(String matchId) {
+        return mFirebaseHelper.observeMatch(matchId);
     }
 }

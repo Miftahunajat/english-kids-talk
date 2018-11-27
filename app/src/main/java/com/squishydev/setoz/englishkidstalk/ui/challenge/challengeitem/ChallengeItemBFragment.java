@@ -11,6 +11,7 @@ import com.squishydev.setoz.englishkidstalk.R;
 
 /**
  * A simple {@link Fragment} subclass.
+ * @since 1993
  */
 public class ChallengeItemBFragment extends Fragment {
 
