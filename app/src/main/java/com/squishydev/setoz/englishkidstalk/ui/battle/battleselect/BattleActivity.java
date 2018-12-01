@@ -113,8 +113,8 @@ public class BattleActivity extends BaseActivity implements BattleMvpView,
     }
 
     @Override
-    public void loadBattleMatchActivity(String matchesId) {
-        Intent intent = BattleMatchActivity.getStartIntent(this,matchesId);
+    public void loadBattleMatchActivity(String matchesId,String userId,String enemyId) {
+        Intent intent = BattleMatchActivity.getStartIntent(this,matchesId,userId,enemyId);
         startActivity(intent);
         finish();
     }

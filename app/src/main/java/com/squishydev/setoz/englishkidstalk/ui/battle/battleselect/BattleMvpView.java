@@ -22,5 +22,5 @@ public interface BattleMvpView extends MvpView {
 
     void updateJoinFragment(User user1);
 
-    void loadBattleMatchActivity(String matchesId);
+    void loadBattleMatchActivity(String matchesId, String userId, String enemyId);
 }

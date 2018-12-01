@@ -1,14 +1,41 @@
 package com.squishydev.setoz.englishkidstalk.data.firebase.model;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-public class Match {
+public class Match implements Serializable {
     private boolean isPlaying;
     private boolean isStarting;
-    private Map<String,Integer> score;
     private String hostId;
     private String clientId;
+//    private int hostScore;
+//    private int clientScore;
+    private Map<String,Integer> score;
+
+    public Map<String, Integer> getScore() {
+        return score;
+    }
+
+    public void setScore(Map<String, Integer> score) {
+        this.score = score;
+    }
+
+//    public int getHostScore() {
+//        return hostScore;
+//    }
+
+//    public void setHostScore(int hostScore) {
+//        this.hostScore = hostScore;
+//    }
+
+//    public int getClientScore() {
+//        return clientScore;
+//    }
+
+//    public void setClientScore(int clientScore) {
+//        this.clientScore = clientScore;
+//    }
 
     public boolean isPlaying() {
         return isPlaying;
@@ -18,13 +45,6 @@ public class Match {
         isPlaying = playing;
     }
 
-    public Map<String, Integer> getScore() {
-        return score;
-    }
-
-    public void setScore(Map<String, Integer> score) {
-        this.score = score;
-    }
 
     public String getHostId() {
         return hostId;
@@ -54,9 +74,10 @@ public class Match {
     public String toString() {
         return "Match{" +
                 "isPlaying=" + isPlaying +
-                ", score=" + score +
+                ", isStarting=" + isStarting +
                 ", hostId='" + hostId + '\'' +
                 ", clientId='" + clientId + '\'' +
+                ", score=" + score +
                 '}';
     }
 }

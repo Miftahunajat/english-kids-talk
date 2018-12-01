@@ -3,6 +3,7 @@ package com.squishydev.setoz.englishkidstalk.data;
 import android.content.Context;
 
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DatabaseReference;
 import com.squishydev.setoz.englishkidstalk.data.db.DbHelper;
 import com.squishydev.setoz.englishkidstalk.data.firebase.FirebaseHelper;
@@ -203,6 +204,11 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
+    public void observeScore(String matchId, ChildEventListener listener) {
+        mFirebaseHelper.observeScore(matchId, listener);
+    }
+
+    @Override
     public Observable<Match> postMatch(String userId, DatabaseReference.CompletionListener listener) {
         return mFirebaseHelper.postMatch(userId,listener);
     }
@@ -218,7 +224,7 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Observable<Match> observeScore(String matchId) {
+    public Flowable<Match> observeScore(String matchId) {
         return mFirebaseHelper.observeScore(matchId);
     }
 

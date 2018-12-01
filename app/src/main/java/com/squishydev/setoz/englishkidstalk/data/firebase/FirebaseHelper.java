@@ -1,6 +1,7 @@
 package com.squishydev.setoz.englishkidstalk.data.firebase;
 
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DatabaseReference;
 import com.squishydev.setoz.englishkidstalk.data.firebase.model.Match;
 
@@ -12,13 +13,15 @@ import io.reactivex.Observable;
 
 public interface FirebaseHelper {
 
+    void observeScore(String matchId, ChildEventListener listener);
+
     Observable<Match> postMatch(String userId, DatabaseReference.CompletionListener listener);
 
     Flowable<List<Match>> joinRandomMatch(String userId);
 
     Completable joinMatch(String userId, String matchId);
 
-    Observable<Match> observeScore(String matchId);
+    Flowable<Match> observeScore(String matchId);
 
     Completable addScore(String userId, String matchId, Integer score);
 

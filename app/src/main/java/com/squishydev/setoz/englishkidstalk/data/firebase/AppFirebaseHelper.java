@@ -1,8 +1,10 @@
 package com.squishydev.setoz.englishkidstalk.data.firebase;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squishydev.setoz.englishkidstalk.data.firebase.model.Match;
@@ -17,6 +19,7 @@ import javax.inject.Singleton;
 
 import durdinapps.rxfirebase2.DataSnapshotMapper;
 import durdinapps.rxfirebase2.RxFirebaseDatabase;
+import io.reactivex.BackpressureStrategy;
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
@@ -25,24 +28,14 @@ import io.reactivex.Observable;
 public class AppFirebaseHelper implements FirebaseHelper {
 
     FirebaseDatabase firebaseDatabase;
+    private String TAG = getClass().getSimpleName();
 
     @Inject
     public AppFirebaseHelper(@ApplicationContext Context context) {
         firebaseDatabase = FirebaseDatabase.getInstance();
     }
 
-    @Override
-    public Observable<Match> postMatch(String userId, DatabaseReference.CompletionListener listener) {
-        DatabaseReference matchReference = firebaseDatabase.getReference().child("matches");
-        Match match = new Match();
-        match.setPlaying(false);
-        match.setScore(new HashMap<>());
-        match.setHostId(userId);
-        HashMap<String,Object> matchHashMap = new HashMap<>();
-        matchHashMap.put("match_"+userId,match);
-        matchReference.updateChildren(matchHashMap,listener);
-        return RxFirebaseDatabase.observeValueEvent(matchReference.child("match_"+userId),Match.class).toObservable();
-    }
+
 
     @Override
     public Flowable<List<Match>> joinRandomMatch(String userId) {
@@ -67,21 +60,17 @@ public class AppFirebaseHelper implements FirebaseHelper {
                 });
     }
 
-    @Override
-    public Observable<Match> observeScore(String matchId) {
-        DatabaseReference databaseReference = firebaseDatabase.getReference().child("matches").child(matchId);
-        return RxFirebaseDatabase.observeValueEvent(databaseReference,Match.class).toObservable() ;
-    }
+
 
 
     @Override
     public Completable addScore(String userId, String matchId, Integer score) {
         DatabaseReference databaseReference = firebaseDatabase.getReference().child("matches").child(matchId).child("score");
         return RxFirebaseDatabase.observeSingleValueEvent(databaseReference,DataSnapshotMapper.mapOf(Integer.class))
-        .flatMapCompletable(map -> {
-            Integer k= map.get(userId) + score;
-            return RxFirebaseDatabase.setValue(databaseReference.child(userId),k);
-        });
+                .flatMapCompletable(map -> {
+                    Integer k= map.get(userId) + score;
+                    return RxFirebaseDatabase.setValue(databaseReference.child(userId),k);
+                });
     }
 
     @Override
@@ -102,5 +91,31 @@ public class AppFirebaseHelper implements FirebaseHelper {
     public Flowable<Match> observeMatch(String matchId) {
         DatabaseReference databaseReference = firebaseDatabase.getReference().child("matches").child(matchId);
         return RxFirebaseDatabase.observeValueEvent(databaseReference,Match.class);
+    }
+
+    @Override
+    public Flowable<Match> observeScore(String matchId) {
+        DatabaseReference databaseReference = firebaseDatabase.getReference().child("matches").child(matchId);
+        Log.d(TAG, "observeScore: bude " + matchId);
+        return RxFirebaseDatabase.observeValueEvent(databaseReference,Match.class);
+    }
+
+    @Override
+    public Observable<Match> postMatch(String userId, DatabaseReference.CompletionListener listener) {
+        DatabaseReference matchReference = firebaseDatabase.getReference().child("matches");
+        Match match = new Match();
+        match.setPlaying(false);
+        match.setScore(new HashMap<>());
+        match.setHostId(userId);
+        HashMap<String,Object> matchHashMap = new HashMap<>();
+        matchHashMap.put("match_"+userId,match);
+        matchReference.updateChildren(matchHashMap,listener);
+        return RxFirebaseDatabase.observeValueEvent(matchReference.child("match_"+userId),Match.class).toObservable();
+    }
+
+    @Override
+    public void observeScore(String matchId, ChildEventListener listener) {
+        firebaseDatabase.getReference().child("matches").child(matchId).addChildEventListener(listener);
+        Log.d(TAG, "observeScore: bude " + "executed");
     }
 }

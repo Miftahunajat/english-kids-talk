@@ -22,7 +22,7 @@ public class BattlePresenter<V extends BattleMvpView> extends BasePresenter<V>
     private static final String TAG = "BattlePresenter";
     private String MATCHES_ID = "";
     private String ENEMY_ID = "";
-    private User user;
+    private User myUser;
 
     @Inject
     public BattlePresenter(DataManager dataManager,
@@ -37,7 +37,8 @@ public class BattlePresenter<V extends BattleMvpView> extends BasePresenter<V>
         getCompositeDisposable().add(getDataManager().getUser(userId)
         .observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())
-        .subscribe(user1 -> user = user1));
+        .subscribe(user1 -> myUser = user1,this::baseHandleError));
+
     }
 
     @Override
@@ -53,7 +54,7 @@ public class BattlePresenter<V extends BattleMvpView> extends BasePresenter<V>
         .observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())
         .subscribe(match -> {
-            if (match.isPlaying() && match.getClientId() != null && match.getScore() != null) {
+            if (match.isPlaying() && match.getClientId() != null) {
                 Log.d(TAG, "postMatchOnline: bude" + match.toString());
                 ENEMY_ID = match.getClientId();
                 MATCHES_ID = "match_" + match.getHostId();
@@ -61,7 +62,7 @@ public class BattlePresenter<V extends BattleMvpView> extends BasePresenter<V>
 //                observeScore();
             }else {
                 MATCHES_ID = "match_" + match.getHostId();
-                getMvpView().loadJoinFragment(user);
+                getMvpView().loadJoinFragment(myUser);
             }
         },throwable -> getMvpView().addLog(throwable.getMessage())));
     }
@@ -102,7 +103,7 @@ public class BattlePresenter<V extends BattleMvpView> extends BasePresenter<V>
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         .subscribe(user2 -> {
-            getMvpView().loadJoinFragment(user,user2);
+            getMvpView().loadJoinFragment(myUser,user2);
             observeMatch();
         },this::baseHandleError));
     }
@@ -115,8 +116,8 @@ public class BattlePresenter<V extends BattleMvpView> extends BasePresenter<V>
                 .subscribeOn(Schedulers.io())
                 .subscribe(match -> {
                     Log.d("Autis",match.toString());
-                    getMvpView().addMyScore(match.getScore().get(userId));
-                    getMvpView().addEnemyScore(match.getScore().get(ENEMY_ID));
+//                    getMvpView().addMyScore(match.getScore().get(userId));
+//                    getMvpView().addEnemyScore(match.getScore().get(ENEMY_ID));
                     getMvpView().addLog("ketambahan sesuatu");
                 },throwable -> getMvpView().addLog(throwable.getMessage())));
     }
@@ -167,7 +168,7 @@ public class BattlePresenter<V extends BattleMvpView> extends BasePresenter<V>
         getCompositeDisposable().add(getDataManager().startMatch(MATCHES_ID)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(()-> getMvpView().loadBattleMatchActivity(MATCHES_ID)));
+            .subscribe(()-> getMvpView().loadBattleMatchActivity(MATCHES_ID,String.valueOf(myUser.getId()),ENEMY_ID)));
     }
 
     public void observeMatch(){
@@ -176,7 +177,7 @@ public class BattlePresenter<V extends BattleMvpView> extends BasePresenter<V>
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(match -> {
             if (match.isStarting())
-                getMvpView().loadBattleMatchActivity(MATCHES_ID);
+                getMvpView().loadBattleMatchActivity(MATCHES_ID,String.valueOf(myUser.getId()),ENEMY_ID);
         },this::baseHandleError));
     }
 }
