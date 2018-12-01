@@ -1,4 +1,4 @@
-package com.squishydev.setoz.englishkidstalk.ui.menuselect.itemstoremenu;
+package com.squishydev.setoz.englishkidstalk.ui.dashboard.itemstoremenu;
 
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
@@ -8,10 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.squishydev.setoz.englishkidstalk.R;
-import com.squishydev.setoz.englishkidstalk.data.model.LearningCategory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.Item;
-import com.squishydev.setoz.englishkidstalk.data.network.model.LearningTopicsItem;
-import com.squishydev.setoz.englishkidstalk.databinding.ItemLearningCategoryBinding;
 import com.squishydev.setoz.englishkidstalk.databinding.ItemViewStoreBinding;
 
 import java.util.List;

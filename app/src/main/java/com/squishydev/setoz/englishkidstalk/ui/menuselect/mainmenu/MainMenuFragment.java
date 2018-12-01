@@ -50,6 +50,7 @@ public class MainMenuFragment extends BaseFragment implements
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+
         if (getArguments() != null){
             mDifficulty = (Difficulty) getArguments().getSerializable("difficulty");
         }

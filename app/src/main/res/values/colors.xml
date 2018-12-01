@@ -27,9 +27,9 @@
     <color name="xpBiru">#3DB2AD</color>
     <color name="xpAbuAbu">#C6C5C5</color>
     
-    <color name="backgroundBadgeStroke">#266868</color>
-    <color name="backgroundBadge">#45ab99</color>
+    <color name="backgroundBadgeStroke">#17515B</color>
+    <color name="backgroundBadge">#1B8599</color>
 
-    <color name="backgroundBadgeItem">#9ad0c4</color>
+    <color name="backgroundBadgeItem">#CFE3EB</color>
 
 </resources>

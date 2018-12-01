@@ -9,6 +9,7 @@ import android.view.View;
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivityBuatAkunBinding;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
+import com.squishydev.setoz.englishkidstalk.ui.dashboard.DashboardActivity;
 import com.squishydev.setoz.englishkidstalk.ui.levelselect.LevelSelectActivity;
 
 import javax.inject.Inject;
@@ -67,8 +68,8 @@ public class BuatAkunActivity extends BaseActivity implements BuatAkunMvpView {
     }
 
     @Override
-    public void openLevelSelectActivity() {
-        Intent intent = LevelSelectActivity.getStartIntent(BuatAkunActivity.this);
+    public void openDashboardActivity() {
+        Intent intent = DashboardActivity.getStartIntent(BuatAkunActivity.this);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
