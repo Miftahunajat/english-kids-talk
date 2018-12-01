@@ -21,17 +21,31 @@
             app:srcCompat="@drawable/frag_md" />
 
         <ImageView
-            android:id="@+id/iv_vocab_medium"
+            android:id="@+id/iv_challenge_medium"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintBottom_toBottomOf="@id/imageView5"
             app:layout_constraintEnd_toEndOf="@+id/imageView5"
-            app:layout_constraintHorizontal_bias="0.435"
+            app:layout_constraintHorizontal_bias="0.445"
             app:layout_constraintStart_toStartOf="@id/imageView5"
             app:layout_constraintTop_toTopOf="@id/imageView5"
-            app:layout_constraintVertical_bias="0.400"
+            app:layout_constraintVertical_bias="0.402"
+            app:srcCompat="@drawable/ch_md" />
+
+        <ImageView
+            android:id="@+id/iv_vocab_medium"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.800"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.775"
             app:srcCompat="@drawable/vocab_md" />
 
         <ImageView
@@ -39,27 +53,23 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.033"
+            app:layout_constraintHorizontal_bias="0.045"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.579"
+            app:layout_constraintVertical_bias="0.582"
             app:srcCompat="@drawable/write_md" />
 
         <ImageView
-            android:id="@+id/iv_challenge_medium"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.829"
+            android:id="@+id/imageView35"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.771"
-            app:srcCompat="@drawable/ch_md" />
-
+            app:srcCompat="@drawable/back"
+            android:onClick="backHome"/>
 
     </android.support.constraint.ConstraintLayout>
 </layout>

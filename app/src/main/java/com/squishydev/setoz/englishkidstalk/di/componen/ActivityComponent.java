@@ -7,6 +7,7 @@ import com.squishydev.setoz.englishkidstalk.ui.battle.BattleActivity;
 import com.squishydev.setoz.englishkidstalk.ui.buatakun.BuatAkunActivity;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.ChallengeActivity;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChalengeItemAFragment;
+import com.squishydev.setoz.englishkidstalk.ui.dashboard.homemenu.HomeFragment;
 import com.squishydev.setoz.englishkidstalk.ui.inputnama.InputNamaActivity;
 import com.squishydev.setoz.englishkidstalk.ui.inventory.InventoryActivity;
 import com.squishydev.setoz.englishkidstalk.ui.konfirmasiakun.KonfirmasiAkunActivity;
@@ -15,9 +16,9 @@ import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.LearningIte
 import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.learningspeaking.LearningSpeakingActivity;
 import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.learningwriting.LearningWritingActivity;
 import com.squishydev.setoz.englishkidstalk.ui.levelselect.fragment.LevelSelectFragment;
-import com.squishydev.setoz.englishkidstalk.ui.menuselect.itemstoremenu.ItemStoreFragment;
+import com.squishydev.setoz.englishkidstalk.ui.dashboard.itemstoremenu.ItemStoreFragment;
 import com.squishydev.setoz.englishkidstalk.ui.menuselect.mainmenu.MainMenuFragment;
-import com.squishydev.setoz.englishkidstalk.ui.menuselect.profilemenu.ProfileFragment;
+import com.squishydev.setoz.englishkidstalk.ui.dashboard.profilemenu.ProfileFragment;
 import com.squishydev.setoz.englishkidstalk.ui.pilihavatar.PilihAvatarActivity;
 import com.squishydev.setoz.englishkidstalk.ui.splashscreen.SplashScreenActivity;
 
@@ -68,4 +69,6 @@ public interface ActivityComponent {
     void inject(LearningWritingActivity learningWritingActivity);
 
     void inject(BattleActivity battleActivity);
+
+    void inject(HomeFragment homeFragment);
 }

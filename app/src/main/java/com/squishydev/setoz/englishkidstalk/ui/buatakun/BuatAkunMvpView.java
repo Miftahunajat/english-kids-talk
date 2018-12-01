@@ -6,5 +6,5 @@ public interface BuatAkunMvpView extends MvpView {
 
     void setNama(String nama);
 
-    void openLevelSelectActivity();
+    void openDashboardActivity();
 }

@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/latar_home"
-            tools:context="com.squishydev.setoz.englishkidstalk.ui.menuselect.itemstoremenu.ItemStoreFragment">
+            tools:context="com.squishydev.setoz.englishkidstalk.ui.dashboard.itemstoremenu.ItemStoreFragment">
 
 
             <ImageView
@@ -314,7 +314,7 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/acme"
                 android:textColor="@color/white"
-                android:background="@drawable/bg_beli_store"
+                android:background="@drawable/bg_lihat_avatar"
                 />
 
         </android.support.constraint.ConstraintLayout>

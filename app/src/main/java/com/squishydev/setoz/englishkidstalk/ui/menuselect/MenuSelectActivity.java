@@ -3,10 +3,10 @@ package com.squishydev.setoz.englishkidstalk.ui.menuselect;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
+import android.view.View;
 
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
@@ -15,10 +15,10 @@ import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivityMenuSelectBinding;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
-import com.squishydev.setoz.englishkidstalk.ui.menuselect.itemstoremenu.ItemStoreFragment;
+import com.squishydev.setoz.englishkidstalk.ui.dashboard.homemenu.HomeFragment;
+import com.squishydev.setoz.englishkidstalk.ui.dashboard.itemstoremenu.ItemStoreFragment;
 import com.squishydev.setoz.englishkidstalk.ui.menuselect.mainmenu.MainMenuFragment;
-import com.squishydev.setoz.englishkidstalk.ui.menuselect.profilemenu.ProfileFragment;
-import com.squishydev.setoz.englishkidstalk.ui.pilihavatar.PilihAvatarActivity;
+import com.squishydev.setoz.englishkidstalk.ui.dashboard.profilemenu.ProfileFragment;
 
 public class MenuSelectActivity extends BaseActivity{
 
@@ -87,6 +87,7 @@ public class MenuSelectActivity extends BaseActivity{
         });
 
         // Manage titles
+
         ahBottomNavigation.setInactiveColor(ContextCompat.getColor(this,R.color.white));
 //        ahBottomNavigation.setTitleState(AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE);
 //        ahBottomNavigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
@@ -106,5 +107,9 @@ public class MenuSelectActivity extends BaseActivity{
     @Override
     protected void setUp() {
 
+    }
+
+    public void backHome(View view) {
+        finish();
     }
 }
