@@ -9,6 +9,7 @@ import android.os.Handler;
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivitySplashScreenBinding;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
+import com.squishydev.setoz.englishkidstalk.ui.dashboard.DashboardActivity;
 import com.squishydev.setoz.englishkidstalk.ui.inputnama.InputNamaActivity;
 import com.squishydev.setoz.englishkidstalk.ui.levelselect.LevelSelectActivity;
 
@@ -53,8 +54,8 @@ public class SplashScreenActivity extends BaseActivity implements SplashScreenMv
 
 
     @Override
-    public void openLevelSelectActivity() {
-        Intent intent = LevelSelectActivity.getStartIntent(SplashScreenActivity.this);
+    public void openDashboardActivity() {
+        Intent intent = DashboardActivity.getStartIntent(SplashScreenActivity.this);
         startActivity(intent);
         finish();
     }

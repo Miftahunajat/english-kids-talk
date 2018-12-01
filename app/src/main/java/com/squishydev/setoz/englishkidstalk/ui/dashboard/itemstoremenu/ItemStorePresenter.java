@@ -1,4 +1,4 @@
-package com.squishydev.setoz.englishkidstalk.ui.menuselect.itemstoremenu;
+package com.squishydev.setoz.englishkidstalk.ui.dashboard.itemstoremenu;
 
 import android.util.Log;
 
@@ -10,7 +10,6 @@ import com.squishydev.setoz.englishkidstalk.ui.base.BasePresenter;
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
-import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
@@ -28,6 +27,7 @@ public class ItemStorePresenter<V extends ItemStoreMvpView> extends BasePresente
 
     @Override
     public void getAllItem() {
+        Log.d(TAG, "getALlITEM");
         int gender = getDataManager().getAvatarType();
         getCompositeDisposable().add(getDataManager().getAllItem()
                 .flatMap(Observable::fromIterable)

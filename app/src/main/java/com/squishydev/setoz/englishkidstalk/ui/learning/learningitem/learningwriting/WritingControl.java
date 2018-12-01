@@ -136,7 +136,7 @@ public class WritingControl {
         }
     }
 
-    interface OnWritingSubmit{
+    public interface OnWritingSubmit{
         void onSubmit();
     }
 

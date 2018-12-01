@@ -1,4 +1,4 @@
-package com.squishydev.setoz.englishkidstalk.ui.menuselect.itemstoremenu;
+package com.squishydev.setoz.englishkidstalk.ui.dashboard.itemstoremenu;
 
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;

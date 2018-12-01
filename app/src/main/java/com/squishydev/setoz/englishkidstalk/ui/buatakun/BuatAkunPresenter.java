@@ -38,6 +38,7 @@ public class BuatAkunPresenter<V extends BuatAkunMvpView> extends BasePresenter<
         int gender = getDataManager().getAvatarType();
         getCompositeDisposable().add(getDataManager().registerUser(nickName,name,password,gender,0,0)
                 .flatMap(userResponse -> {
+                    Log.d(TAG, "registerUser: regsiter su,ses" + userResponse.toString());
                     User user = userResponse.getUser();
                     getDataManager().setAvatarType(user.getGender());
                     getDataManager().setUserId(String.valueOf(user.getId()));
@@ -48,9 +49,10 @@ public class BuatAkunPresenter<V extends BuatAkunMvpView> extends BasePresenter<
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(
                 tokenResponse -> {
+                    Log.d(TAG, "registerUser: loginsukses" + tokenResponse.toString());
                     getDataManager().setLoggedInMode(DataManager.LoggedInMode.LOGGED_IN_MODE_SERVER_LOGIN);
                     getDataManager().setToken(tokenResponse.getToken());
-                    getMvpView().openLevelSelectActivity();
+                    getMvpView().openDashboardActivity();
                 },
                 this::baseHandleError
         ));

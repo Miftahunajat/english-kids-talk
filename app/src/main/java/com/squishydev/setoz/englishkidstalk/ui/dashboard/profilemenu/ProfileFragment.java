@@ -1,4 +1,4 @@
-package com.squishydev.setoz.englishkidstalk.ui.menuselect.profilemenu;
+package com.squishydev.setoz.englishkidstalk.ui.dashboard.profilemenu;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.network.model.User;
@@ -76,6 +75,7 @@ public class ProfileFragment extends BaseFragment implements
         if (component != null) {
             component.inject(this);
             mPresenter.onAttach(this);
+            Log.d(TAG, "AttachJalan");
         }
 
         int gender = mPresenter.getGender();

@@ -1,4 +1,4 @@
-package com.squishydev.setoz.englishkidstalk.ui.menuselect.profilemenu;
+package com.squishydev.setoz.englishkidstalk.ui.dashboard.profilemenu;
 
 import com.squishydev.setoz.englishkidstalk.data.network.model.Inventory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.User;

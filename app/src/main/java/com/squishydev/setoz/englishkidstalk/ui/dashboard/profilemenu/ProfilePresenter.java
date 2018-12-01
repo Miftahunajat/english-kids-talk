@@ -1,4 +1,4 @@
-package com.squishydev.setoz.englishkidstalk.ui.menuselect.profilemenu;
+package com.squishydev.setoz.englishkidstalk.ui.dashboard.profilemenu;
 
 import com.squishydev.setoz.englishkidstalk.data.DataManager;
 import com.squishydev.setoz.englishkidstalk.ui.base.BasePresenter;

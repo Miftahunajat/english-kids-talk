@@ -1,4 +1,4 @@
-package com.squishydev.setoz.englishkidstalk.ui.menuselect.itemstoremenu;
+package com.squishydev.setoz.englishkidstalk.ui.dashboard.itemstoremenu;
 
 import com.squishydev.setoz.englishkidstalk.data.network.model.Item;
 import com.squishydev.setoz.englishkidstalk.data.network.model.User;

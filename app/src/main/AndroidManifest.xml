@@ -45,6 +45,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.battle.battlematch.BattleMatchActivity" />
+        <activity android:name=".ui.dashboard.DashboardActivity"></activity>
     </application>
 
 </manifest>

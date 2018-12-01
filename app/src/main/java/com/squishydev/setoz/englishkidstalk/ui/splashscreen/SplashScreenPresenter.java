@@ -27,7 +27,7 @@ public class SplashScreenPresenter<V extends SplashScreenMvpView> extends BasePr
     @Override
     public void checkUserLoggedInMode() {
         if (getDataManager().getLoggedInMode() == DataManager.LoggedInMode.LOGGED_IN_MODE_SERVER_LOGIN.getType()){
-            getMvpView().openLevelSelectActivity();
+            getMvpView().openDashboardActivity();
         }else {
             getMvpView().openInputNamaActivity();
         }

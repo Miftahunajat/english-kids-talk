@@ -16,9 +16,9 @@ import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.LearningIte
 import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.learningspeaking.LearningSpeakingActivity;
 import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.learningwriting.LearningWritingActivity;
 import com.squishydev.setoz.englishkidstalk.ui.levelselect.fragment.LevelSelectFragment;
-import com.squishydev.setoz.englishkidstalk.ui.menuselect.itemstoremenu.ItemStoreFragment;
+import com.squishydev.setoz.englishkidstalk.ui.dashboard.itemstoremenu.ItemStoreFragment;
 import com.squishydev.setoz.englishkidstalk.ui.menuselect.mainmenu.MainMenuFragment;
-import com.squishydev.setoz.englishkidstalk.ui.menuselect.profilemenu.ProfileFragment;
+import com.squishydev.setoz.englishkidstalk.ui.dashboard.profilemenu.ProfileFragment;
 import com.squishydev.setoz.englishkidstalk.ui.pilihavatar.PilihAvatarActivity;
 import com.squishydev.setoz.englishkidstalk.ui.splashscreen.SplashScreenActivity;
 

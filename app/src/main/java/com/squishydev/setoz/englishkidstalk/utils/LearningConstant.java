@@ -8,8 +8,8 @@ public class LearningConstant {
     public static final int CATEGORY_WRITING_HARD = 5;
     public static final int CATEGORY_SPEAKING_HARD = 6;
 
-    public static final int DIFFICULTY_EASY_ID = 0;
-    public static final int DIFFICULTY_MEDIUM_ID = 1;
-    public static final int DIFFICULTY_HARD_ID = 2;
+    public static final int DIFFICULTY_EASY_ID = 1;
+    public static final int DIFFICULTY_MEDIUM_ID = 2;
+    public static final int DIFFICULTY_HARD_ID = 3;
 
 }
