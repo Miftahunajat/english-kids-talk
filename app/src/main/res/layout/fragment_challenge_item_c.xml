@@ -36,7 +36,7 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="40dp"
                 android:background="@drawable/bg_uservoice"
                 android:fontFamily="@font/acme"
                 android:gravity="center"
@@ -153,17 +153,21 @@
                 app:layout_constraintStart_toStartOf="@+id/cv_content"
                 app:layout_constraintTop_toBottomOf="@+id/cv_content" />
 
-        </android.support.constraint.ConstraintLayout>
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_speaking"
+                app:layout_constraintEnd_toEndOf="@+id/btn_speaking"
+                app:layout_constraintStart_toStartOf="@+id/btn_speaking"
+                app:layout_constraintTop_toTopOf="@+id/btn_speaking" />
 
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_speaking"
-            app:layout_constraintEnd_toEndOf="@+id/btn_speaking"
-            app:layout_constraintStart_toStartOf="@+id/btn_speaking"
-            app:layout_constraintTop_toTopOf="@+id/btn_speaking" />
+        </android.support.constraint.ConstraintLayout>
 
     </android.support.constraint.ConstraintLayout>
 </layout>

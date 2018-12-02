@@ -77,6 +77,7 @@ public class ChallengeItemCFragment extends BaseChallengeItemFragment implements
     @Override
     public void onBeginningOfSpeech() {
         Toast.makeText(getContext(), "English Kids Talk is listening ...", Toast.LENGTH_SHORT).show();
+        stopChallengeTimer();
     }
 
     @Override
@@ -90,7 +91,6 @@ public class ChallengeItemCFragment extends BaseChallengeItemFragment implements
 
     @Override
     public void onResults(Bundle results) {
-        stopChallengeTimer();
         binding.executePendingBindings();
         ArrayList<String> matches = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
         if (matches != null && matches.size() != 0) {
