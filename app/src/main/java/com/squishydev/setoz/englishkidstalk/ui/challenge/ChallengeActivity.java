@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
 
 import com.squishydev.setoz.englishkidstalk.R;
@@ -147,5 +148,9 @@ public class ChallengeActivity extends BaseActivity implements
             default:
                 return ChalengeItemAFragment.newInstance(challenge);
         }
+    }
+
+    public void backChallenge (View view){
+        finish();
     }
 }

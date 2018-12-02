@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.view.View;
 
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivityBattleBinding;
@@ -39,5 +40,9 @@ public class BattleActivity extends BaseActivity implements BattleMvpView {
     @Override
     protected void setUp() {
         ActivityBattleBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_battle);
+    }
+
+    public void backBattle (View view){
+        finish();
     }
 }

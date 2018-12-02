@@ -7,12 +7,15 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
+import android.view.View;
 
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
 import com.squishydev.setoz.englishkidstalk.data.network.model.LearningTopicsItem;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivityLearningCategory2Binding;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
+import com.squishydev.setoz.englishkidstalk.ui.battle.BattleActivity;
+import com.squishydev.setoz.englishkidstalk.ui.dashboard.homemenu.HomeFragment;
 import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.LearningItemActivity;
 import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.learningspeaking.LearningSpeakingActivity;
 import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.learningwriting.LearningWritingActivity;
@@ -22,6 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+
+import static java.security.AccessController.getContext;
 
 public class LearningCategoryActivity extends BaseActivity implements LearningCategoryMvpView,
         LearningCategoryAdapter2.OnCategoryClick {
@@ -100,5 +105,9 @@ public class LearningCategoryActivity extends BaseActivity implements LearningCa
             Intent intent = LearningItemActivity.getStartIntent(this, learningTopicsItem.get(position).getId(),mDifficulty);
             startActivity(intent);
         }
+    }
+
+    public void backCategory (View view){
+        finish();
     }
 }

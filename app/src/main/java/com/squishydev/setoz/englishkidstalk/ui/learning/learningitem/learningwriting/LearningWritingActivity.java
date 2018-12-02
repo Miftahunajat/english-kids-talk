@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.View;
 import android.widget.TextView;
 
 import com.squishydev.setoz.englishkidstalk.R;
@@ -83,5 +84,9 @@ public class LearningWritingActivity extends BaseActivity implements LearningWri
             finish();
         setProgressText(currentUserProgress);
         setLearningFragment(learningItemList.get(currentUserProgress-1));
+    }
+
+    public void backWriting (View view){
+        finish();
     }
 }

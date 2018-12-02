@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
+import com.squishydev.setoz.englishkidstalk.data.network.model.User;
+import com.squishydev.setoz.englishkidstalk.databinding.FragmentProfileBinding;
 import com.squishydev.setoz.englishkidstalk.di.componen.ActivityComponent;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseFragment;
 import com.squishydev.setoz.englishkidstalk.ui.battle.BattleActivity;
@@ -18,8 +20,7 @@ import com.squishydev.setoz.englishkidstalk.ui.menuselect.MenuSelectActivity;
 
 import javax.inject.Inject;
 
-public class HomeFragment extends BaseFragment implements
-        HomeMvpView {
+public class HomeFragment extends BaseFragment implements HomeMvpView {
 
     private static final String TAG = "HomeFragment";
 

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
+import android.view.View;
 import android.widget.GridLayout;
 import android.widget.TextView;
 
@@ -35,6 +36,10 @@ public class LearningSpeakingActivity extends BaseActivity implements LearningSp
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_learning_speaking);
 
@@ -84,5 +89,9 @@ public class LearningSpeakingActivity extends BaseActivity implements LearningSp
             finish();
         setProgressText(currentUserProgress);
         setLearningFragment(learningItemList.get(currentUserProgress-1));
+    }
+
+    public  void  backSpeaking (View view){
+        finish();
     }
 }

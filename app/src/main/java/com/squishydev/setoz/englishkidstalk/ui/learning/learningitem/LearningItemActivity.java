@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
+import android.view.View;
 
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
@@ -113,6 +114,10 @@ public class LearningItemActivity extends BaseActivity implements LearningItemMv
     public void setupLearningItem(List<LearningItem> learningItems) {
         learningItemAdapter.addAll(learningItems);
         this.learningItems = learningItems;
+    }
+
+    public void backItem (View view){
+        finish();
     }
 
 }
