@@ -1,109 +1,124 @@
 package com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
+import android.speech.RecognitionListener;
+import android.speech.RecognizerIntent;
+import android.speech.SpeechRecognizer;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.squishydev.setoz.englishkidstalk.R;
+import com.squishydev.setoz.englishkidstalk.data.network.model.Challenge;
+import com.squishydev.setoz.englishkidstalk.databinding.FragmentChallengeItemCBinding;
+import com.squishydev.setoz.englishkidstalk.databinding.FragmentLearningSpeakingBinding;
+import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.learningspeaking.LearningSpeakingFragment;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ChallengeItemCFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link ChallengeItemCFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class ChallengeItemCFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+import java.util.ArrayList;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+import io.reactivex.annotations.Nullable;
 
-    private OnFragmentInteractionListener mListener;
+public class ChallengeItemCFragment extends BaseChallengeItemFragment implements RecognitionListener {
 
-    public ChallengeItemCFragment() {
-        // Required empty public constructor
-    }
+    private static final String TAG = "ChallengeItemCFragment";
+    FragmentChallengeItemCBinding binding;
+    private SpeechRecognizer mSpeechRecognizer;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ChallengeItemCFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ChallengeItemCFragment newInstance(String param1, String param2) {
-        ChallengeItemCFragment fragment = new ChallengeItemCFragment();
+    public static ChallengeItemCFragment newInstance(Challenge challenge) {
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putSerializable("challenge", challenge);
+        ChallengeItemCFragment fragment = new ChallengeItemCFragment();
         fragment.setArguments(args);
         return fragment;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
+    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_challenge_item_c, container, false);
+        super.onCreateView(inflater,container,savedInstanceState);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_challenge_item_c, container, false);
+        constructChallengeTimer(binding.fillLoading, binding.tvTimer);
+        mSpeechRecognizer = SpeechRecognizer.createSpeechRecognizer(getContext());
+        mSpeechRecognizer.setRecognitionListener(this);
+        binding.btnSpeaking.setOnClickListener(v -> promptSpeechInput());
+        binding.setChallenge(mChallenge);
+        return binding.getRoot();
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+    private void promptSpeechInput() {
+        ActivityCompat.requestPermissions(getBaseActivity(),new String[]{Manifest.permission.RECORD_AUDIO},1);
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE,
+                this.getContext().getPackageName());
+        intent.putExtra(RecognizerIntent.EXTRA_PARTIAL_RESULTS,true);
+        mSpeechRecognizer.startListening(intent);
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+    protected void setUp(View view) {
+        binding.btnSpeaking.setOnClickListener(v -> promptSpeechInput());
+    }
+
+    @Override
+    public void onReadyForSpeech(Bundle params) { showLoading(); }
+
+    @Override
+    public void onBeginningOfSpeech() {
+        Toast.makeText(getContext(), "English Kids Talk is listening ...", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onRmsChanged(float rmsdB) {}
+
+    @Override
+    public void onBufferReceived(byte[] buffer) {}
+
+    @Override
+    public void onEndOfSpeech() { hideLoading(); }
+
+    @Override
+    public void onResults(Bundle results) {
+        stopChallengeTimer();
+        binding.executePendingBindings();
+        ArrayList<String> matches = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+        if (matches != null && matches.size() != 0) {
+            binding.tvUsersvoice.setText(matches.get(0));
+            Log.d("answer", matches.get(0));
+            onUserAnswer (
+                binding.tvUsersvoice.getText().toString().toLowerCase(),
+                mChallenge.getAnswers().get(0).getAnswerText(),
+                mChallenge.getChallengeStar()
+            );
         } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+            Log.d("Matches", "Tidak ada suara ter-record!");
         }
     }
 
     @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
+    public void onPartialResults(Bundle partialResults) {}
+
+    @Override
+    public void onEvent(int eventType, Bundle params) {}
+
+    public void showLoading(){
+        binding.btnSpeaking.setVisibility(View.INVISIBLE);
+        binding.progressBar.setVisibility(View.VISIBLE);
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    public void hideLoading(){
+        binding.btnSpeaking.setVisibility(View.INVISIBLE);
+        binding.progressBar.setVisibility(View.VISIBLE);
     }
 }
