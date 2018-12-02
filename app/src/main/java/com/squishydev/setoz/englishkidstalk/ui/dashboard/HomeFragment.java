@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
-import com.squishydev.setoz.englishkidstalk.ui.battle.BattleActivity;
+import com.squishydev.setoz.englishkidstalk.ui.battle.battleselect.BattleActivity;
 import com.squishydev.setoz.englishkidstalk.ui.menuselect.MenuSelectActivity;
 import com.squishydev.setoz.englishkidstalk.ui.menuselect.mainmenu.MainMenuFragment;
 

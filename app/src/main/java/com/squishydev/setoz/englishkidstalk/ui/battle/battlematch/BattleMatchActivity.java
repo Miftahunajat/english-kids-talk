@@ -45,6 +45,7 @@ public class BattleMatchActivity extends BaseActivity implements BattleMatchMvpV
         getActivityComponent().inject(this);
 
         mPresenter.onAttach(BattleMatchActivity.this);
+        mPresenter.setUserData(getIntent().getStringExtra("userid"), getIntent().getStringExtra("enemyid"));
     }
 
     @Override

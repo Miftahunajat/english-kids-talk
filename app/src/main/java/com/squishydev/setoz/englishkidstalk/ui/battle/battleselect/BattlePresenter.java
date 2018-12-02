@@ -176,8 +176,9 @@ public class BattlePresenter<V extends BattleMvpView> extends BasePresenter<V>
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(match -> {
-            if (match.isStarting())
-                getMvpView().loadBattleMatchActivity(MATCHES_ID,String.valueOf(myUser.getId()),ENEMY_ID);
+            if (match.isStarting()) {
+                getMvpView().loadBattleMatchActivity(MATCHES_ID, String.valueOf(myUser.getId()), ENEMY_ID);
+            }
         },this::baseHandleError));
     }
 }

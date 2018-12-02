@@ -110,6 +110,6 @@ public class MenuSelectActivity extends BaseActivity{
     }
 
     public void backHome(View view) {
-        Inten inten =
+//        Inten inten =
     }
 }

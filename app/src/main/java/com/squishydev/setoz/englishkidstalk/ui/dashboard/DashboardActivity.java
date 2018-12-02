@@ -11,7 +11,7 @@ import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivityDashboardBinding;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
-import com.squishydev.setoz.englishkidstalk.ui.battle.BattleActivity;
+import com.squishydev.setoz.englishkidstalk.ui.battle.battleselect.BattleActivity;
 import com.squishydev.setoz.englishkidstalk.ui.dashboard.itemstoremenu.ItemStoreFragment;
 import com.squishydev.setoz.englishkidstalk.ui.dashboard.profilemenu.ProfileFragment;
 import com.squishydev.setoz.englishkidstalk.ui.menuselect.MenuSelectActivity;

@@ -13,6 +13,8 @@ public interface BattleMatchMvpPresenter<V extends BattleMatchMvpView> extends M
 
     void observingScoreChanges(String matchId, ChildEventListener listener);
 
+    void setUserData(String myUser, String enemyId);
+
     void updateUserScore(int i);
 }
 

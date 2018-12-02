@@ -6,14 +6,11 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.network.model.Challenge;
-import com.squishydev.setoz.englishkidstalk.data.network.model.LearningItem;
 import com.squishydev.setoz.englishkidstalk.databinding.FragmentChallengeItemBBinding;
-import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.learningwriting.LearningWritingFragment;
 import com.squishydev.setoz.englishkidstalk.ui.learning.learningitem.learningwriting.WritingControl;
 
 

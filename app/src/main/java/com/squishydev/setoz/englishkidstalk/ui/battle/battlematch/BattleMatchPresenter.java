@@ -45,16 +45,16 @@ public class BattleMatchPresenter<V extends BattleMatchMvpView> extends BasePres
             for (DataSnapshot messageSnapshot : dataSnapshot.getChildren()){
                 Log.d(TAG, "onChildChanged: @"  + messageSnapshot.getKey() + "|" + messageSnapshot.getValue());
                 if (messageSnapshot.getKey().equals(getUserId())){
-                    getMvpView().updateScoreMyScore((String) messageSnapshot.getValue());
+                    getMvpView().updateScoreMyScore(String.valueOf(messageSnapshot.getValue()));
                 }else {
-                    getMvpView().updateScoreEnemyScore((String) messageSnapshot.getValue());
+                    getMvpView().updateScoreEnemyScore(String.valueOf(messageSnapshot.getValue()));
                 }
                 myUser = messageSnapshot.getKey().equals(getUserId()) ? messageSnapshot.getKey() : myUser;
                 enemyId = messageSnapshot.getKey().equals(getUserId()) ? messageSnapshot.getKey() : enemyId;
             }
 
             getMvpView().nextChallenge();
-            setUserData(myUser, enemyId);
+
         }
 
         @Override
@@ -118,9 +118,10 @@ public class BattleMatchPresenter<V extends BattleMatchMvpView> extends BasePres
         getDataManager().observeScore(matchId,listener);
     }
 
-    private void setUserData(String myUser, String enemyId) {
-//        if (checked > 0 )
-//            return;
+    @Override
+    public void setUserData(String myUser, String enemyId) {
+        if (checked > 0 )
+            return;
         getMvpView().showMessage("yowes");
         checked++;
         Observable<User> allyUser = getDataManager().getUser(myUser).toObservable();
@@ -135,7 +136,9 @@ public class BattleMatchPresenter<V extends BattleMatchMvpView> extends BasePres
                 }
         ).observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())
-        .subscribe());
+        .subscribe(objec -> {
+
+        },this::baseHandleError));
 
     }
 

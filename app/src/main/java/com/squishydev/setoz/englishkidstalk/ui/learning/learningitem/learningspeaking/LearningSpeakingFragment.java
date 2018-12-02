@@ -37,7 +37,6 @@ public class LearningSpeakingFragment extends BaseFragment implements Recognitio
     OnSpeakingResponse onSpeakingResponse;
 
     public LearningSpeakingFragment() {
-
         // Required empty public constructor
     }
     public static LearningSpeakingFragment newInstance(LearningItem learningItem){
