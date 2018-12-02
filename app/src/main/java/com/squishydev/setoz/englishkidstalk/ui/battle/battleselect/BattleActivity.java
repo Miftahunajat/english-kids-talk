@@ -96,6 +96,7 @@ public class BattleActivity extends BaseActivity implements BattleMvpView,
     @Override
     public void loadJoinFragment(User ally, User enemy){
         IS_JOINED = true;
+        Log.d(TAG, "loadJoinFragment: " + ally + "||" + enemy);
         Fragment battleJoin = BattleJoinFragment.newInstance(ally,enemy);
         battleJoinCallback  = (BattleJoinCallback) battleJoin;
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_content,battleJoin).commit();

@@ -16,5 +16,7 @@ public interface BattleMatchMvpPresenter<V extends BattleMatchMvpView> extends M
     void setUserData(String myUser, String enemyId);
 
     void updateUserScore(int i);
+
+    void endMatchGame();
 }
 

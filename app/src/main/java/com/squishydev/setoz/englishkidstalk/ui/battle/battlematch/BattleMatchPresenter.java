@@ -32,6 +32,7 @@ public class BattleMatchPresenter<V extends BattleMatchMvpView> extends BasePres
     private String userId = null;
     int checked = 0;
     private Match match;
+    private String MATCH_ID;
     private ChildEventListener childEventListener = new ChildEventListener() {
         @Override
         public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
@@ -42,6 +43,8 @@ public class BattleMatchPresenter<V extends BattleMatchMvpView> extends BasePres
         public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
             String myUser = "";
             String enemyId = "";
+            int myScore = 0;
+            int enemyScore = 0;
             for (DataSnapshot messageSnapshot : dataSnapshot.getChildren()){
                 Log.d(TAG, "onChildChanged: @"  + messageSnapshot.getKey() + "|" + messageSnapshot.getValue());
                 if (messageSnapshot.getKey().equals(getUserId())){
@@ -115,6 +118,7 @@ public class BattleMatchPresenter<V extends BattleMatchMvpView> extends BasePres
 
     @Override
     public void observingScoreChanges(String matchId, ChildEventListener listener) {
+        MATCH_ID = matchId;
         getDataManager().observeScore(matchId,listener);
     }
 
@@ -149,6 +153,16 @@ public class BattleMatchPresenter<V extends BattleMatchMvpView> extends BasePres
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(()->{
 
+        },this::baseHandleError));
+    }
+
+    @Override
+    public void endMatchGame() {
+        getCompositeDisposable().add(getDataManager().deleteMatch(MATCH_ID)
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribeOn(Schedulers.io())
+        .subscribe(voidTask -> {
+            getMvpView().openBattleResult();
         },this::baseHandleError));
     }
 

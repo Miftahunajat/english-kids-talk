@@ -15,7 +15,7 @@ public interface FirebaseHelper {
 
     void observeScore(String matchId, ChildEventListener listener);
 
-    Observable<Match> postMatch(String userId, DatabaseReference.CompletionListener listener);
+    Observable<Match> postMatch(String userId, String userName, DatabaseReference.CompletionListener listener);
 
     Flowable<List<Match>> joinRandomMatch(String userId);
 

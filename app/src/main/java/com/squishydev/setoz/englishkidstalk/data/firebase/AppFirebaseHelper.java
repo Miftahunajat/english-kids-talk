@@ -19,7 +19,6 @@ import javax.inject.Singleton;
 
 import durdinapps.rxfirebase2.DataSnapshotMapper;
 import durdinapps.rxfirebase2.RxFirebaseDatabase;
-import io.reactivex.BackpressureStrategy;
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
@@ -101,12 +100,13 @@ public class AppFirebaseHelper implements FirebaseHelper {
     }
 
     @Override
-    public Observable<Match> postMatch(String userId, DatabaseReference.CompletionListener listener) {
+    public Observable<Match> postMatch(String userId, String userName, DatabaseReference.CompletionListener listener) {
         DatabaseReference matchReference = firebaseDatabase.getReference().child("matches");
         Match match = new Match();
         match.setPlaying(false);
         match.setScore(new HashMap<>());
         match.setHostId(userId);
+        match.setHostName(userName);
         HashMap<String,Object> matchHashMap = new HashMap<>();
         matchHashMap.put("match_"+userId,match);
         matchReference.updateChildren(matchHashMap,listener);

@@ -9,6 +9,7 @@ public class Match implements Serializable {
     private boolean isStarting;
     private String hostId;
     private String clientId;
+    private String hostName;
 //    private int hostScore;
 //    private int clientScore;
     private Map<String,Integer> score;
@@ -21,7 +22,15 @@ public class Match implements Serializable {
         this.score = score;
     }
 
-//    public int getHostScore() {
+    public String getHostName() {
+        return hostName;
+    }
+
+    public void setHostName(String hostName) {
+        this.hostName = hostName;
+    }
+
+    //    public int getHostScore() {
 //        return hostScore;
 //    }
 

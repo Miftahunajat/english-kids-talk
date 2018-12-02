@@ -209,8 +209,8 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Observable<Match> postMatch(String userId, DatabaseReference.CompletionListener listener) {
-        return mFirebaseHelper.postMatch(userId,listener);
+    public Observable<Match> postMatch(String userId, String userName, DatabaseReference.CompletionListener listener) {
+        return mFirebaseHelper.postMatch(userId, userName, listener);
     }
 
     @Override

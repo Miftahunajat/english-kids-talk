@@ -11,6 +11,7 @@ import com.squishydev.setoz.englishkidstalk.data.network.model.Challenge;
 import com.squishydev.setoz.englishkidstalk.data.network.model.User;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivityBattleMatchBinding;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
+import com.squishydev.setoz.englishkidstalk.ui.battle.battleresult.BattleResultActivity;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.BaseChallengeItemFragment;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChalengeItemAFragment;
 
@@ -29,6 +30,8 @@ public class BattleMatchActivity extends BaseActivity implements BattleMatchMvpV
 
     List<Challenge> challenges = new ArrayList<>();
     int currentQuestion = 0;
+    private int myScore = 0;
+    private int enemyScore = 0;
 
     public static Intent getStartIntent(Context context, String matchId, String userId, String enemyId) {
         Intent intent = new Intent(context, BattleMatchActivity.class);
@@ -63,16 +66,30 @@ public class BattleMatchActivity extends BaseActivity implements BattleMatchMvpV
     public void updateScore(String myUser, String enemyId) {
         binding.tvMyScore.setText(myUser);
         binding.tvEnemyScore.setText(enemyId);
+
+        myScore = Integer.valueOf(myUser);
+        enemyScore = Integer.valueOf(enemyId);
+        observeCurrentScore();
     }
 
     @Override
     public void updateScoreMyScore(String myUser) {
         binding.tvMyScore.setText(myUser);
+        myScore = Integer.valueOf(myUser);
+        observeCurrentScore();
     }
 
     @Override
     public void updateScoreEnemyScore(String enemyId) {
         binding.tvEnemyScore.setText(enemyId);
+        enemyScore = Integer.valueOf(enemyId);
+        observeCurrentScore();
+    }
+
+    private void observeCurrentScore() {
+        if (myScore > 6 || enemyScore > 6){
+            mPresenter.endMatchGame();
+        }
     }
 
     @Override
@@ -120,6 +137,15 @@ public class BattleMatchActivity extends BaseActivity implements BattleMatchMvpV
     @Override
     public String getEnemyId() {
         return getIntent().getStringExtra("enemyid");
+    }
+
+    @Override
+    public void openBattleResult() {
+        mPresenter.setUserData(getIntent().getStringExtra("userid"), getIntent().getStringExtra("enemyid"));
+        String myUserId = getIntent().getStringExtra("userid");
+        String enemyId = getIntent().getStringExtra("enemyid");
+        boolean isWinning = myScore >= enemyScore;
+        Intent intent = BattleResultActivity.getStartIntent(this,myUserId, enemyId,myScore,enemyScore,isWinning);
     }
 
     @Override

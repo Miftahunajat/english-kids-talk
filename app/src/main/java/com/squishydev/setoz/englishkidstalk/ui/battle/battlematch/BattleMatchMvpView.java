@@ -25,4 +25,6 @@ public interface BattleMatchMvpView extends MvpView {
     String getCurrentUserId();
 
     String getEnemyId();
+
+    void openBattleResult();
 }

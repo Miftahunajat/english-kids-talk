@@ -6,6 +6,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 
 import com.squishydev.setoz.englishkidstalk.R;
+import com.squishydev.setoz.englishkidstalk.data.network.model.User;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivityBattleResultBinding;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
 
@@ -16,8 +17,18 @@ public class BattleResultActivity extends BaseActivity implements BattleResultMv
     @Inject
     BattleResultMvpPresenter<BattleResultMvpView> mPresenter;
 
-    public static Intent getStartIntent(Context context) {
+    public static Intent getStartIntent(Context context,
+                                        String myUserId,
+                                        String enemyId,
+                                        int myScore,
+                                        int enemyScore,
+                                        boolean isWinning) {
         Intent intent = new Intent(context, BattleResultActivity.class);
+        intent.putExtra("userid",myUserId);
+        intent.putExtra("enemyid",enemyId);
+        intent.putExtra("myscore",myScore);
+        intent.putExtra("enemyscore",enemyScore);
+        intent.putExtra("iswinning",isWinning);
         return intent;
     }
 
@@ -28,6 +39,13 @@ public class BattleResultActivity extends BaseActivity implements BattleResultMv
         getActivityComponent().inject(this);
 
         mPresenter.onAttach(BattleResultActivity.this);
+        setDataLayar();
+    }
+
+    private void setDataLayar() {
+        String userId = getIntent().getStringExtra("userid");
+        String enemyId = getIntent().getStringExtra("enemyid");
+        mPresenter.getUserData(userId,enemyId);
     }
 
     @Override
@@ -39,5 +57,10 @@ public class BattleResultActivity extends BaseActivity implements BattleResultMv
     @Override
     protected void setUp() {
         ActivityBattleResultBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_battle_result);
+    }
+
+    @Override
+    public void setBattleResultView(User user, User user2) {
+
     }
 }

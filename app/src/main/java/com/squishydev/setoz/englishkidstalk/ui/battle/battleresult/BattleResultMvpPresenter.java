@@ -6,5 +6,6 @@ import com.squishydev.setoz.englishkidstalk.ui.base.MvpPresenter;
 @PerActivity
 public interface BattleResultMvpPresenter<V extends BattleResultMvpView> extends MvpPresenter<V> {
 
+    void getUserData(String userId, String enemyId);
 }
 

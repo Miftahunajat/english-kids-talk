@@ -44,13 +44,14 @@ public class BattlePresenter<V extends BattleMvpView> extends BasePresenter<V>
     @Override
     public void postMatchOnline() {
         String userId = getDataManager().getUserId();
+        String userName = getDataManager().getPrefName();
 
         DatabaseReference.CompletionListener callback = (databaseError, databaseReference) -> {
             if (databaseError != null) {
                 getMvpView().addLog("Firebase " + databaseError.getMessage());
             }
         };
-        getCompositeDisposable().add(getDataManager().postMatch(userId, callback)
+        getCompositeDisposable().add(getDataManager().postMatch(userId,userName, callback)
         .observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())
         .subscribe(match -> {
@@ -104,6 +105,7 @@ public class BattlePresenter<V extends BattleMvpView> extends BasePresenter<V>
                 .observeOn(AndroidSchedulers.mainThread())
         .subscribe(user2 -> {
             getMvpView().loadJoinFragment(myUser,user2);
+            ENEMY_ID = String.valueOf(user2.getId());
             observeMatch();
         },this::baseHandleError));
     }
