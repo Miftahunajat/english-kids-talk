@@ -4,6 +4,7 @@ package com.squishydev.setoz.englishkidstalk.di.componen;
 import com.squishydev.setoz.englishkidstalk.di.PerActivity;
 import com.squishydev.setoz.englishkidstalk.di.module.ActivityModule;
 import com.squishydev.setoz.englishkidstalk.ui.battle.battlematch.BattleMatchActivity;
+import com.squishydev.setoz.englishkidstalk.ui.battle.battleresult.BattleResultActivity;
 import com.squishydev.setoz.englishkidstalk.ui.battle.battleselect.BattleActivity;
 import com.squishydev.setoz.englishkidstalk.ui.buatakun.BuatAkunActivity;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.ChallengeActivity;
@@ -71,4 +72,6 @@ public interface ActivityComponent {
     void inject(BattleActivity battleActivity);
 
     void inject(BattleMatchActivity battleMatchActivity);
+
+    void inject(BattleResultActivity battleResultActivity);
 }

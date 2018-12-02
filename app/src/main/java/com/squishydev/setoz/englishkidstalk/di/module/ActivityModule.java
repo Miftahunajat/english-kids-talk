@@ -8,6 +8,9 @@ import com.squishydev.setoz.englishkidstalk.di.ActivityContext;
 import com.squishydev.setoz.englishkidstalk.ui.battle.battlematch.BattleMatchMvpPresenter;
 import com.squishydev.setoz.englishkidstalk.ui.battle.battlematch.BattleMatchMvpView;
 import com.squishydev.setoz.englishkidstalk.ui.battle.battlematch.BattleMatchPresenter;
+import com.squishydev.setoz.englishkidstalk.ui.battle.battleresult.BattleResultMvpPresenter;
+import com.squishydev.setoz.englishkidstalk.ui.battle.battleresult.BattleResultMvpView;
+import com.squishydev.setoz.englishkidstalk.ui.battle.battleresult.BattleResultPresenter;
 import com.squishydev.setoz.englishkidstalk.ui.battle.battleselect.BattleMvpPresenter;
 import com.squishydev.setoz.englishkidstalk.ui.battle.battleselect.BattleMvpView;
 import com.squishydev.setoz.englishkidstalk.ui.battle.battleselect.BattlePresenter;
@@ -181,6 +184,11 @@ public class ActivityModule {
 
     @Provides
     BattleMatchMvpPresenter<BattleMatchMvpView> provideBattleMatchPresenter(BattleMatchPresenter<BattleMatchMvpView> presenter){
+        return presenter;
+    }
+
+    @Provides
+    BattleResultMvpPresenter<BattleResultMvpView> provideBattleResultPresenter(BattleResultPresenter<BattleResultMvpView> presenter){
         return presenter;
     }
 }

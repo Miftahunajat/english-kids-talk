@@ -46,6 +46,7 @@
         </activity>
         <activity android:name=".ui.battle.battlematch.BattleMatchActivity" />
         <activity android:name=".ui.dashboard.DashboardActivity"></activity>
+        <activity android:name=".ui.battle.battleresult.BattleResultActivity" />
     </application>
 
 </manifest>

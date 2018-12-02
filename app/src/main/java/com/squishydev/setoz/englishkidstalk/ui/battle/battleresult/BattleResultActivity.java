@@ -6,6 +6,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 
 import com.squishydev.setoz.englishkidstalk.R;
+import com.squishydev.setoz.englishkidstalk.databinding.ActivityBattleResultBinding;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
 
 import javax.inject.Inject;
@@ -23,7 +24,6 @@ public class BattleResultActivity extends BaseActivity implements BattleResultMv
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.xxx);
 
         getActivityComponent().inject(this);
 
@@ -38,6 +38,6 @@ public class BattleResultActivity extends BaseActivity implements BattleResultMv
 
     @Override
     protected void setUp() {
-        ActivityBattleResultBinding binding = DataBindingUtil.setContentView(this, R.layout.xxx);
+        ActivityBattleResultBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_battle_result);
     }
 }
