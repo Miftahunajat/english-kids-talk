@@ -20,6 +20,9 @@ import com.squishydev.setoz.englishkidstalk.ui.buatakun.BuatAkunPresenter;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.ChallengeMvpPresenter;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.ChallengeMvpView;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.ChallengePresenter;
+import com.squishydev.setoz.englishkidstalk.ui.dashboard.homemenu.HomeMvpPresenter;
+import com.squishydev.setoz.englishkidstalk.ui.dashboard.homemenu.HomeMvpView;
+import com.squishydev.setoz.englishkidstalk.ui.dashboard.homemenu.HomePresenter;
 import com.squishydev.setoz.englishkidstalk.ui.dashboard.itemstoremenu.ItemStoreMvpPresenter;
 import com.squishydev.setoz.englishkidstalk.ui.dashboard.itemstoremenu.ItemStoreMvpView;
 import com.squishydev.setoz.englishkidstalk.ui.dashboard.itemstoremenu.ItemStorePresenter;
@@ -188,7 +191,12 @@ public class ActivityModule {
     }
 
     @Provides
-    BattleResultMvpPresenter<BattleResultMvpView> provideBattleResultPresenter(BattleResultPresenter<BattleResultMvpView> presenter){
+    BattleResultMvpPresenter<BattleResultMvpView> provideBattleResultPresenter(BattleResultPresenter<BattleResultMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    HomeMvpPresenter<HomeMvpView> provideHomePresenter(HomePresenter<HomeMvpView> presenter){
         return presenter;
     }
 }

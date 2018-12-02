@@ -15,7 +15,7 @@ import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivityMenuSelectBinding;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
-import com.squishydev.setoz.englishkidstalk.ui.dashboard.HomeFragment;
+import com.squishydev.setoz.englishkidstalk.ui.dashboard.homemenu.HomeFragment;
 import com.squishydev.setoz.englishkidstalk.ui.dashboard.itemstoremenu.ItemStoreFragment;
 import com.squishydev.setoz.englishkidstalk.ui.menuselect.mainmenu.MainMenuFragment;
 import com.squishydev.setoz.englishkidstalk.ui.dashboard.profilemenu.ProfileFragment;
@@ -110,6 +110,6 @@ public class MenuSelectActivity extends BaseActivity{
     }
 
     public void backHome(View view) {
-//        Inten inten =
+        finish();
     }
 }

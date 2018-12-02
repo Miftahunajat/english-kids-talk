@@ -3,6 +3,7 @@ package com.squishydev.setoz.englishkidstalk.ui.dashboard;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,16 +13,15 @@ import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivityDashboardBinding;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
 import com.squishydev.setoz.englishkidstalk.ui.battle.battleselect.BattleActivity;
+import com.squishydev.setoz.englishkidstalk.ui.dashboard.homemenu.HomeFragment;
 import com.squishydev.setoz.englishkidstalk.ui.dashboard.itemstoremenu.ItemStoreFragment;
 import com.squishydev.setoz.englishkidstalk.ui.dashboard.profilemenu.ProfileFragment;
 import com.squishydev.setoz.englishkidstalk.ui.menuselect.MenuSelectActivity;
-import com.squishydev.setoz.englishkidstalk.ui.menuselect.mainmenu.MainMenuFragment;
-import com.squishydev.setoz.englishkidstalk.ui.pilihavatar.PilihAvatarActivity;
-import com.squishydev.setoz.englishkidstalk.ui.splashscreen.SplashScreenActivity;
 
 public class DashboardActivity extends BaseActivity {
 
     ActivityDashboardBinding binding;
+    MediaPlayer tone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +39,24 @@ public class DashboardActivity extends BaseActivity {
 
         setContentView(R.layout.activity_dashboard);
 
-
         HomeFragment homeFragment = HomeFragment.newInstance();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fl_dashboard,homeFragment)
                 .commit();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        tone = MediaPlayer.create(DashboardActivity.this, R.raw.backsound);
+        tone.setLooping(true);
+        tone.start();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        tone.stop();
     }
 
     @Override

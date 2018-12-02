@@ -61,75 +61,12 @@
             app:srcCompat="@drawable/home"
             android:onClick="openHome"/>
 
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="510dp"
-            android:layout_height="60dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/kotak_dashboard" />
-
-        <ImageView
-            android:id="@+id/imageView36"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView7"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView7"
-            app:srcCompat="@drawable/avatar_cewek_profile_bulat" />
-
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@{user.name}"
-            android:textColor="#4F4E4E"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView36"
-            app:layout_constraintStart_toEndOf="@+id/imageView36"
-            app:layout_constraintTop_toTopOf="@+id/imageView36" />
-
-        <ImageView
-            android:id="@+id/imageView37"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="135dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView7"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView7"
-            app:srcCompat="@drawable/bintang_kuning" />
-
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@{String.valueOf(user.starGained)"
-            android:textColor="#DFAB3B"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView37"
-            app:layout_constraintStart_toEndOf="@+id/imageView37"
-            app:layout_constraintTop_toTopOf="@+id/imageView37" />
-
         <FrameLayout
             android:id="@+id/fl_dashboard"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@id/imageView10"
-            app:layout_constraintTop_toBottomOf="@id/imageView7"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent">
         </FrameLayout>
