@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
 
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.network.model.User;
@@ -16,6 +18,9 @@ public class BattleResultActivity extends BaseActivity implements BattleResultMv
 
     @Inject
     BattleResultMvpPresenter<BattleResultMvpView> mPresenter;
+
+    ActivityBattleResultBinding binding;
+    private String TAG = getClass().getSimpleName();
 
     public static Intent getStartIntent(Context context,
                                         String myUserId,
@@ -56,11 +61,28 @@ public class BattleResultActivity extends BaseActivity implements BattleResultMv
 
     @Override
     protected void setUp() {
-        ActivityBattleResultBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_battle_result);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_battle_result);
     }
 
     @Override
     public void setBattleResultView(User user, User user2) {
+        Log.d(TAG, "setBattleResultView: " + user.toString() + "||" + user2.toString());
+//        binding.setMyUser(user);
+//        binding.setEnemyUser(user2);
+
+
+        Integer myscore = getIntent().getIntExtra("myscore",0);
+        Integer enemyscore = getIntent().getIntExtra("enemyscore",0);
+        boolean isWinning =  getIntent().getBooleanExtra("iswinning",false);
+
+//        binding.tvMyScore.setText(myscore.toString());
+//        binding.tvEnemyScore.setText(enemyscore.toString());
+
+        Log.d(TAG, "setBattleResultView: " + String.format("%d || %d || %d || %d || %s",user.getId(),user2.getId(),myscore,enemyscore,isWinning));
+
+        String winningText = isWinning ? "Selamat anda menang" : "Maaf anda kalah";
+//        binding.tvWinningStatus.setText(winningText);
+        ((TextView) findViewById(R.id.tv_winning_status)).setText(winningText);
 
     }
 }

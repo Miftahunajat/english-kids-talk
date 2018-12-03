@@ -9,6 +9,7 @@ import android.util.Pair;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squishydev.setoz.englishkidstalk.data.DataManager;
 import com.squishydev.setoz.englishkidstalk.data.firebase.model.Match;
 import com.squishydev.setoz.englishkidstalk.data.network.model.User;
@@ -123,6 +124,12 @@ public class BattleMatchPresenter<V extends BattleMatchMvpView> extends BasePres
     }
 
     @Override
+    public void onDetach() {
+        FirebaseDatabase.getInstance().getReference().child("matches").child(getMvpView().getMatchId()).removeEventListener(childEventListener);
+        super.onDetach();
+    }
+
+    @Override
     public void setUserData(String myUser, String enemyId) {
         if (checked > 0 )
             return;
@@ -163,7 +170,9 @@ public class BattleMatchPresenter<V extends BattleMatchMvpView> extends BasePres
         .subscribeOn(Schedulers.io())
         .subscribe(voidTask -> {
             getMvpView().openBattleResult();
-        },this::baseHandleError));
+        },this::baseHandleError,() -> {
+
+        }));
     }
 
     private String getUserId(){

@@ -1,34 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-<android.support.constraint.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
-    <TextView
-        android:id="@+id/tv_my_score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="42dp"
-        tools:layout_editor_absoluteY="36dp" />
+        <TextView
+            android:id="@+id/tv_my_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Score 0"
+            app:layout_constraintBottom_toTopOf="@+id/imageView38"
+            app:layout_constraintEnd_toEndOf="@+id/imageView38"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/imageView38"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_enemy_score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="286dp"
-        tools:layout_editor_absoluteY="36dp" />
+        <TextView
+            android:id="@+id/tv_enemy_score"
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            android:text="Enemy Score 0"
+            app:layout_constraintBottom_toTopOf="@+id/imageView11"
+            app:layout_constraintEnd_toEndOf="@+id/imageView11"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/imageView11"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView38"
-        android:layout_width="212dp"
-        android:layout_height="216dp"
-        app:srcCompat="@drawable/avatar_cewek_profile_bulat"
-        tools:layout_editor_absoluteX="70dp"
-        tools:layout_editor_absoluteY="126dp" />
-</android.support.constraint.ConstraintLayout>
+        <ImageView
+            android:id="@+id/imageView38"
+            android:layout_width="84dp"
+            android:layout_height="84dp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_my_username"
+            app:layout_constraintEnd_toStartOf="@+id/tv_winning_status"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_my_score"
+            app:srcCompat="@drawable/avatar_cewek_profile_bulat" />
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="84dp"
+            android:layout_height="84dp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_enemy_username"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_winning_status"
+            app:layout_constraintTop_toBottomOf="@+id/tv_enemy_score"
+            app:srcCompat="@drawable/avatar_cowok_profile_bulat" />
+
+        <TextView
+            android:id="@+id/tv_my_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="asdqwe"
+            app:layout_constraintBottom_toTopOf="@+id/tv_bintang_total"
+            app:layout_constraintEnd_toEndOf="@+id/imageView38"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/imageView38"
+            app:layout_constraintTop_toBottomOf="@+id/imageView38" />
+
+        <TextView
+            android:id="@+id/tv_enemy_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="asdqwe"
+            app:layout_constraintBottom_toTopOf="@+id/tv_bintang_total"
+            app:layout_constraintEnd_toEndOf="@+id/imageView11"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/imageView11"
+            app:layout_constraintTop_toBottomOf="@+id/imageView11" />
+
+        <TextView
+            android:id="@+id/tv_winning_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Winner"
+            app:layout_constraintBottom_toTopOf="@+id/tv_bintang_total"
+            app:layout_constraintEnd_toStartOf="@+id/imageView11"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imageView38"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_bintang_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="Anda Kehilangan 100 Bintang"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tv_enemy_username"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/tv_my_username"
+            app:layout_constraintTop_toBottomOf="@+id/tv_my_username" />
+    </android.support.constraint.ConstraintLayout>
 </layout>

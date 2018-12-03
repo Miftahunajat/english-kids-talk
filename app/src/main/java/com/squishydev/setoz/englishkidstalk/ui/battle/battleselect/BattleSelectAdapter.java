@@ -56,6 +56,7 @@ public class BattleSelectAdapter extends RecyclerView.Adapter<BattleSelectAdapte
         }
 
         public void bind(int position) {
+            binding.executePendingBindings();
             binding.setMatch(matches.get(position));
             binding.btnJoin.setOnClickListener(new View.OnClickListener() {
                 @Override

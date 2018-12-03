@@ -30,4 +30,6 @@
     <string name="speech_prompt">Say something&#8230;</string>
     <string name="speech_not_supported">Sorry! Your device doesn\'t support speech input</string>
     <string name="swap"><![CDATA[<< swap >>]]></string>
+
+    <string name="title_ekita">English Kids Talk</string>
 </resources>

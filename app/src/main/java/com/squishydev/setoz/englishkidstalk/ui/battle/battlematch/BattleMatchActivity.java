@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 
+import com.google.firebase.database.FirebaseDatabase;
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.network.model.Challenge;
 import com.squishydev.setoz.englishkidstalk.data.network.model.User;
@@ -14,6 +16,9 @@ import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
 import com.squishydev.setoz.englishkidstalk.ui.battle.battleresult.BattleResultActivity;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.BaseChallengeItemFragment;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChalengeItemAFragment;
+import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChallengeItemBFragment;
+import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChallengeItemCFragment;
+import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChallengeItemDFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +37,7 @@ public class BattleMatchActivity extends BaseActivity implements BattleMatchMvpV
     int currentQuestion = 0;
     private int myScore = 0;
     private int enemyScore = 0;
+    private String TAG = getClass().getSimpleName();
 
     public static Intent getStartIntent(Context context, String matchId, String userId, String enemyId) {
         Intent intent = new Intent(context, BattleMatchActivity.class);
@@ -54,6 +60,7 @@ public class BattleMatchActivity extends BaseActivity implements BattleMatchMvpV
     @Override
     protected void onDestroy() {
         mPresenter.onDetach();
+
         super.onDestroy();
     }
 
@@ -87,7 +94,8 @@ public class BattleMatchActivity extends BaseActivity implements BattleMatchMvpV
     }
 
     private void observeCurrentScore() {
-        if (myScore > 6 || enemyScore > 6){
+        Log.d(TAG, "observeCurrentScore: ");
+        if (myScore > 3 || enemyScore > 3){
             mPresenter.endMatchGame();
         }
     }
@@ -124,6 +132,12 @@ public class BattleMatchActivity extends BaseActivity implements BattleMatchMvpV
         switch (type){
             case 1:
                 return ChalengeItemAFragment.newInstance(challenge);
+            case 2:
+                return ChallengeItemBFragment.newInstance(challenge);
+            case 3:
+                return ChallengeItemCFragment.newInstance(challenge);
+//            case 4:
+//                return ChallengeItemDFragment.newInstance(challenge);
             default:
                 return ChalengeItemAFragment.newInstance(challenge);
         }
@@ -145,7 +159,10 @@ public class BattleMatchActivity extends BaseActivity implements BattleMatchMvpV
         String myUserId = getIntent().getStringExtra("userid");
         String enemyId = getIntent().getStringExtra("enemyid");
         boolean isWinning = myScore >= enemyScore;
+        Log.d(TAG, "openBattleResult: " + String.format("%s || %s || %d || %d || %s",myUserId,enemyId,myScore,enemyScore,isWinning));
         Intent intent = BattleResultActivity.getStartIntent(this,myUserId, enemyId,myScore,enemyScore,isWinning);
+        startActivity(intent);
+        finish();
     }
 
     @Override
@@ -162,4 +179,6 @@ public class BattleMatchActivity extends BaseActivity implements BattleMatchMvpV
     public void onAnswersWrong() {
         showMessage("Jawaban salah");
     }
+
+
 }

@@ -1,5 +1,7 @@
 package com.squishydev.setoz.englishkidstalk.ui.battle.battleresult;
 
+import android.util.Log;
+
 import com.squishydev.setoz.englishkidstalk.data.DataManager;
 import com.squishydev.setoz.englishkidstalk.data.network.model.User;
 import com.squishydev.setoz.englishkidstalk.ui.base.BasePresenter;
@@ -34,6 +36,7 @@ public class BattleResultPresenter<V extends BattleResultMvpView> extends BasePr
                 allyUser,
                 enemyUser,
                 (user, user2) -> {
+                    Log.d(TAG, "getUserData: " + "Observable Success");
                     getMvpView().setBattleResultView(user,user2);
                     return null;
                 }
