@@ -12,20 +12,22 @@
         <!-- TODO: Update blank fragment layout -->
         <ImageView
             android:id="@+id/imageView50"
-            android:layout_width="350dp"
-            android:layout_height="544dp"
-            android:layout_marginBottom="25dp"
+            android:layout_width="320dp"
+            android:layout_height="525dp"
+            android:layout_marginBottom="74dp"
             android:layout_marginTop="16dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginLeft="32dp"
+            app:layout_constraintTop_toBottomOf="@id/textView16"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:srcCompat="@drawable/kotak_battle_join" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_match_battle"
-            android:layout_width="320dp"
-            android:layout_height="510dp"
+            android:layout_width="300dp"
+            android:layout_height="500dp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView50"
             app:layout_constraintLeft_toLeftOf="@+id/imageView50"
             app:layout_constraintRight_toRightOf="@+id/imageView50"
@@ -38,7 +40,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginBottom="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginEnd="16dp"
             app:backgroundTint="#D8D8D8"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
@@ -59,8 +61,8 @@
 
         <ImageView
             android:id="@+id/btn_close"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -71,17 +73,15 @@
             android:id="@+id/textView16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="22dp"
             android:textColor="#FFFF"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/imageView50"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
             tools:text="CARI MUSUH" />
 
     </android.support.constraint.ConstraintLayout>
