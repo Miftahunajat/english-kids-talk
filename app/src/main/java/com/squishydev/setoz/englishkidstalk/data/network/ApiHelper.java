@@ -2,7 +2,7 @@ package com.squishydev.setoz.englishkidstalk.data.network;
 
 import com.squishydev.setoz.englishkidstalk.data.network.model.Challenge;
 import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
-import com.squishydev.setoz.englishkidstalk.data.model.LearningCategory;
+import com.squishydev.setoz.englishkidstalk.data.network.model.LearningCategory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.Inventory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.Item;
 import com.squishydev.setoz.englishkidstalk.data.network.model.ItemCategory;
@@ -58,4 +58,6 @@ public interface ApiHelper {
     Observable<List<User>> getAllUsers();
 
     Observable<User> addItemToInventory(String inventoryId, String itemId);
+
+
 }

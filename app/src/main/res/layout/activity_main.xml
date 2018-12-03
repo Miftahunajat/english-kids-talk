@@ -4,15 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.squishydev.setoz.englishkidstalk.MainActivity">
 
-    <data>
-        <variable
-            name="user"
-            type="com.squishydev.setoz.englishkidstalk.data.model.User">
-
-        </variable>
-
-    </data>
-
     <android.support.constraint.ConstraintLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent">

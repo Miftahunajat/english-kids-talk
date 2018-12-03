@@ -81,6 +81,8 @@ public class LearningSpeakingActivity extends BaseActivity implements LearningSp
         tvUpdate.setText(progress+"/"+learningItemList.size());
     }
 
+
+
     @Override
     public void onSuccess() {
         MediaUtils.playSound(this,R.raw.correct);

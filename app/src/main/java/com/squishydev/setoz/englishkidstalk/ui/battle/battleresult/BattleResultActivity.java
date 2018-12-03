@@ -1,4 +1,4 @@
-package com.squishydev.setoz.englishkidstalk.ui.battle;
+package com.squishydev.setoz.englishkidstalk.ui.battle.battleresult;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,18 +7,18 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.squishydev.setoz.englishkidstalk.R;
-import com.squishydev.setoz.englishkidstalk.databinding.ActivityBattleBinding;
+import com.squishydev.setoz.englishkidstalk.databinding.ActivityBattleResultBinding;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
 
 import javax.inject.Inject;
 
-public class BattleActivity extends BaseActivity implements BattleMvpView {
+public class BattleResultActivity extends BaseActivity implements BattleResultMvpView {
 
     @Inject
-    BattleMvpPresenter<BattleMvpView> mPresenter;
+    BattleResultMvpPresenter<BattleResultMvpView> mPresenter;
 
     public static Intent getStartIntent(Context context) {
-        Intent intent = new Intent(context, BattleActivity.class);
+        Intent intent = new Intent(context, BattleResultActivity.class);
         return intent;
     }
 
@@ -28,7 +28,7 @@ public class BattleActivity extends BaseActivity implements BattleMvpView {
 
         getActivityComponent().inject(this);
 
-        mPresenter.onAttach(BattleActivity.this);
+        mPresenter.onAttach(BattleResultActivity.this);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class BattleActivity extends BaseActivity implements BattleMvpView {
 
     @Override
     protected void setUp() {
-        ActivityBattleBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_battle);
+        ActivityBattleResultBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_battle_result);
     }
 
     public void backBattle (View view){

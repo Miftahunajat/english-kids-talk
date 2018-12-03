@@ -6,8 +6,11 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 
 import com.squishydev.setoz.englishkidstalk.R;
+import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivityInputNamaBinding;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
+import com.squishydev.setoz.englishkidstalk.ui.buatakun.BuatAkunActivity;
+import com.squishydev.setoz.englishkidstalk.ui.menuselect.MenuSelectActivity;
 import com.squishydev.setoz.englishkidstalk.ui.pilihavatar.PilihAvatarActivity;
 
 import javax.inject.Inject;
@@ -47,6 +50,9 @@ public class InputNamaActivity extends BaseActivity implements InputNamaMvpView 
                 return;
             }
             mPresenter.saveNama(binding.etName.getText().toString());
+
+            binding.btnNext.setOnClickListener(v2 ->{
+            });
             startActivity(new Intent(InputNamaActivity.this, PilihAvatarActivity.class));
         });
     }

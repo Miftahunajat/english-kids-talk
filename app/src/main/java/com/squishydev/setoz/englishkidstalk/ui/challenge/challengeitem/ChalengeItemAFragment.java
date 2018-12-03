@@ -16,8 +16,7 @@ import com.squishydev.setoz.englishkidstalk.data.network.model.Challenge;
 import com.squishydev.setoz.englishkidstalk.databinding.FragmentChallengeItemABinding;
 
 
-public class ChalengeItemAFragment extends BaseChallengeItemFragment
-         {
+public class ChalengeItemAFragment extends BaseChallengeItemFragment {
 
     private static final String TAG = "ChalengeItemAFragment";
     FragmentChallengeItemABinding binding;
@@ -53,9 +52,11 @@ public class ChalengeItemAFragment extends BaseChallengeItemFragment
                 if (actionId == EditorInfo.IME_ACTION_DONE){
                     stopChallengeTimer();
                     binding.executePendingBindings();
-                    onUserAnswer(binding.etAnswer.getText().toString().toLowerCase(),
+                    onUserAnswer(
+                            binding.etAnswer.getText().toString().toLowerCase(),
                             mChallenge.getAnswers().get(0).getAnswerText(),
-                            mChallenge.getChallengeStar());
+                            mChallenge.getChallengeStar()
+                    );
                     hideKeyboard();
                     return true;
                 }
@@ -70,11 +71,6 @@ public class ChalengeItemAFragment extends BaseChallengeItemFragment
                     mChallenge.getChallengeStar());
         });
     }
-
-
-
-
-
 
 }
 

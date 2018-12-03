@@ -8,25 +8,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.squishydev.setoz.englishkidstalk.R;
-import com.squishydev.setoz.englishkidstalk.data.model.LearningCategory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.LearningTopicsItem;
-import com.squishydev.setoz.englishkidstalk.databinding.ItemLearningCategoryBinding;
+import com.squishydev.setoz.englishkidstalk.databinding.ItemLearningCategory2Binding;
 
 import java.util.List;
 
-/**
- * Created by miftahun on 9/29/18.
- * Email : miftahunajat@gmail.com
- * Github : https://github.com/miftahunajat/
- */
-
 public class LearningCategoryAdapter extends RecyclerView.Adapter<LearningCategoryAdapter.LearningCategoryVH> {
-
     private List<LearningTopicsItem> learningTopicsItems;
-    ItemLearningCategoryBinding binding;
-    OnCategoryClick onCategoryClick;
+    private ItemLearningCategory2Binding binding;
+    private LearningCategoryAdapter.OnCategoryClick onCategoryClick;
 
-    public LearningCategoryAdapter(List<LearningTopicsItem> learningTopicsItems,OnCategoryClick onCategoryClick) {
+    public LearningCategoryAdapter(List<LearningTopicsItem> learningTopicsItems, LearningCategoryAdapter.OnCategoryClick onCategoryClick) {
         this.learningTopicsItems = learningTopicsItems;
         this.onCategoryClick = onCategoryClick;
     }
@@ -35,7 +27,7 @@ public class LearningCategoryAdapter extends RecyclerView.Adapter<LearningCatego
     @Override
     public LearningCategoryVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        binding = DataBindingUtil.inflate(inflater, R.layout.item_learning_category,parent,false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.item_learning_category_2,parent,false);
         return new LearningCategoryVH(binding.getRoot());
     }
 
@@ -61,10 +53,8 @@ public class LearningCategoryAdapter extends RecyclerView.Adapter<LearningCatego
         }
 
         public void bind(int position) {
-            binding.setLearningTopicsItem(learningTopicsItems.get(position));
-            binding.ivIcon.setOnClickListener(view -> {
-                onCategoryClick.onClick(position);
-            });
+            binding.setLearningTopic(learningTopicsItems.get(position));
+            binding.ivBgKayu.setOnClickListener(v -> onCategoryClick.onClick(position));
         }
     }
 

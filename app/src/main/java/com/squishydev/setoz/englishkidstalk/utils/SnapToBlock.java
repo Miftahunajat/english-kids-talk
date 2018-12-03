@@ -104,7 +104,7 @@ public class SnapToBlock extends SnapHelper {
         if (mSnapBlockCallback != null) {
             if (out[0] == 0 && out[1] == 0) {
                 mSnapBlockCallback.onBlockSnapped(layoutManager.getPosition(targetView));
-            } else {
+            } else  {
                 mSnapBlockCallback.onBlockSnap(layoutManager.getPosition(targetView));
             }
         }

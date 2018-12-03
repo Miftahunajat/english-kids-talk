@@ -37,7 +37,6 @@ public class LearningSpeakingFragment extends BaseFragment implements Recognitio
     OnSpeakingResponse onSpeakingResponse;
 
     public LearningSpeakingFragment() {
-
         // Required empty public constructor
     }
     public static LearningSpeakingFragment newInstance(LearningItem learningItem){
@@ -61,13 +60,7 @@ public class LearningSpeakingFragment extends BaseFragment implements Recognitio
         onSpeakingResponse = (OnSpeakingResponse) getBaseActivity();
 
         // hide the action bar
-        binding.btnSpeaking.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                promptSpeechInput();
-            }
-        });
+        binding.btnSpeaking.setOnClickListener(v -> promptSpeechInput());
         return binding.getRoot();
     }
 

@@ -14,8 +14,8 @@ import com.squishydev.setoz.englishkidstalk.data.network.model.User;
 import com.squishydev.setoz.englishkidstalk.databinding.FragmentProfileBinding;
 import com.squishydev.setoz.englishkidstalk.di.componen.ActivityComponent;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseFragment;
-import com.squishydev.setoz.englishkidstalk.ui.battle.BattleActivity;
 import com.squishydev.setoz.englishkidstalk.ui.dashboard.DashboardActivity;
+import com.squishydev.setoz.englishkidstalk.ui.battle.battleselect.BattleActivity;
 import com.squishydev.setoz.englishkidstalk.ui.menuselect.MenuSelectActivity;
 
 import javax.inject.Inject;

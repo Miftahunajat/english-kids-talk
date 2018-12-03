@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1080826187608",
+    "firebase_url": "https://ekita-e370b.firebaseio.com",
+    "project_id": "ekita-e370b",
+    "storage_bucket": "ekita-e370b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080826187608:android:08a1137a47aacded",
+        "android_client_info": {
+          "package_name": "com.squishydev.setoz.englishkidstalk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1080826187608-q32ahbolu3r2ipbnthn9ortua63epkvp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.squishydev.setoz.englishkidstalk",
+            "certificate_hash": "3ad6c1d720b6b88ff08090f2b28bb9011d9dca17"
+          }
+        },
+        {
+          "client_id": "1080826187608-2lvsffm7i9uvlpthhc71nh5rgu9qmevj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0GHUXMsPCalMd_ZydB9Eo_fAg-ddFww8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1080826187608-2lvsffm7i9uvlpthhc71nh5rgu9qmevj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

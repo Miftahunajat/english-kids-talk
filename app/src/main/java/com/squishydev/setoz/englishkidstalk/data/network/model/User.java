@@ -3,8 +3,10 @@ package com.squishydev.setoz.englishkidstalk.data.network.model;
 import javax.annotation.Generated;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 @Generated("com.robohorse.robopojogenerator")
-public class User{
+public class User implements Serializable {
 
 	@SerializedName("createdAt")
 	private String createdAt;

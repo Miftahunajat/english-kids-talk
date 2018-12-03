@@ -1,6 +1,5 @@
 package com.squishydev.setoz.englishkidstalk.ui.learning.learningcategory;
 
-import com.squishydev.setoz.englishkidstalk.data.model.LearningCategory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.LearningTopicsItem;
 import com.squishydev.setoz.englishkidstalk.ui.base.MvpView;
 
