@@ -45,7 +45,7 @@ public class ChalengeItemAFragment extends BaseChallengeItemFragment
         return binding.getRoot();
     }
 
-    @Override
+        @Override
     protected void setUp(View view) {
         binding.etAnswer.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override

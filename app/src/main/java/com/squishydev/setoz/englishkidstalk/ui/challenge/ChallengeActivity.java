@@ -18,6 +18,7 @@ import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.BaseChall
 import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChalengeItemAFragment;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChallengeItemBFragment;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChallengeItemCFragment;
+import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChallengeItemDFragment;
 import com.squishydev.setoz.englishkidstalk.utils.MediaUtils;
 
 import java.util.LinkedList;
@@ -147,6 +148,8 @@ public class ChallengeActivity extends BaseActivity implements
                 return ChallengeItemBFragment.newInstance(challenge);
             case 3:
                 return ChallengeItemCFragment.newInstance(challenge);
+            case 4:
+                return ChallengeItemDFragment.newInstance(challenge);
             default:
                 return ChalengeItemAFragment.newInstance(challenge);
         }
