@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.squishydev.setoz.englishkidstalk.R;
@@ -84,5 +85,9 @@ public class BattleResultActivity extends BaseActivity implements BattleResultMv
 //        binding.tvWinningStatus.setText(winningText);
         ((TextView) findViewById(R.id.tv_winning_status)).setText(winningText);
 
+    }
+
+    public void backBattle (View view){
+        finish();
     }
 }

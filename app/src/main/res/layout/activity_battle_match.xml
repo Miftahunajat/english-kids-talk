@@ -18,39 +18,93 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/latar_battle"
         tools:context=".ui.battle.battleselect.BattleActivity">
+
+        <ImageView
+            android:id="@+id/iv_user"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="45dp"
+            android:src="@drawable/avatar_cewek_profile_bulat"
+            android:visibility="invisible"
+            app:layout_constraintLeft_toLeftOf="@id/btn_back"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView49"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_user"
+            app:layout_constraintStart_toStartOf="@+id/iv_user"
+            app:layout_constraintTop_toTopOf="@+id/iv_user"
+            app:srcCompat="@drawable/kotak_player" />
 
         <TextView
             android:id="@+id/tv_my_name"
             android:layout_width="wrap_content"
             android:layout_height="17dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginLeft="45dp"
             android:text="@{user.name}"
-            app:layout_constraintEnd_toStartOf="@+id/textView15"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textColor="#FFFF"
+            app:layout_constraintBottom_toBottomOf="@id/imageView49"
+            app:layout_constraintLeft_toLeftOf="@id/imageView49"
+            app:layout_constraintTop_toTopOf="@id/imageView49"
+            tools:text="lala" />
 
         <TextView
             android:id="@+id/textView15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Vs"
+            android:textColor="#FFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="24dp"
+            app:layout_constraintTop_toTopOf="@id/imageView49"
+            app:layout_constraintBottom_toBottomOf="@id/imageView49"
+            app:layout_constraintLeft_toRightOf="@id/imageView49"
+            />
+
+        <ImageView
+            android:id="@+id/iv_musuh"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="90dp"
+            android:src="@drawable/avatar_cewek_profile_bulat"
+            android:visibility="invisible"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/textView15"/>
+
+        <ImageView
+            android:id="@+id/imageView51"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="vs"
-            app:layout_constraintEnd_toStartOf="@+id/tv_enemy_name"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/tv_my_name"
-            app:layout_constraintTop_toTopOf="@+id/tv_my_name" />
+            app:layout_constraintBottom_toBottomOf="@+id/iv_musuh"
+            app:layout_constraintStart_toStartOf="@+id/iv_musuh"
+            app:layout_constraintTop_toTopOf="@+id/iv_musuh"
+            app:srcCompat="@drawable/kotak_player" />
 
         <TextView
             android:id="@+id/tv_enemy_name"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="17dp"
+            android:layout_marginLeft="45dp"
             android:text="@{musuh.name}"
-            app:layout_constraintBottom_toBottomOf="@+id/textView15"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/textView15" />
+            android:textColor="#FFFF"
+            tools:text="siska"
+            app:layout_constraintTop_toTopOf="@id/imageView51"
+            app:layout_constraintBottom_toBottomOf="@id/imageView51"
+            app:layout_constraintLeft_toLeftOf="@id/imageView51"/>
 
         <android.support.v7.widget.CardView
             android:id="@+id/cardView"
@@ -76,8 +130,10 @@
             android:id="@+id/tv_my_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0
-"
+            android:text="0"
+            android:textColor="#FFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/cardView"
             app:layout_constraintEnd_toEndOf="@+id/textView15"
             app:layout_constraintStart_toStartOf="@+id/textView15"
@@ -88,9 +144,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
+            android:textColor="#FFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/tv_my_score"
             app:layout_constraintStart_toStartOf="@+id/textView15"
             app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/back" />
+
     </android.support.constraint.ConstraintLayout>
 </layout>

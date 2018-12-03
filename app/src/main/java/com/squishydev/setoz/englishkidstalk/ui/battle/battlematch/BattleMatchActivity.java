@@ -6,8 +6,8 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.View;
 
-import com.google.firebase.database.FirebaseDatabase;
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.network.model.Challenge;
 import com.squishydev.setoz.englishkidstalk.data.network.model.User;
@@ -18,7 +18,6 @@ import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.BaseChall
 import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChalengeItemAFragment;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChallengeItemBFragment;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChallengeItemCFragment;
-import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChallengeItemDFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +26,8 @@ import javax.inject.Inject;
 
 public class BattleMatchActivity extends BaseActivity implements BattleMatchMvpView,
         BaseChallengeItemFragment.ChallengeFragmentInteractionCallback {
+
+    User user;
 
     @Inject
     BattleMatchMvpPresenter<BattleMatchMvpView> mPresenter;
@@ -55,6 +56,15 @@ public class BattleMatchActivity extends BaseActivity implements BattleMatchMvpV
 
         mPresenter.onAttach(BattleMatchActivity.this);
         mPresenter.setUserData(getIntent().getStringExtra("userid"), getIntent().getStringExtra("enemyid"));
+
+        int profil = user.getGender() == 0 ? R.drawable.avatar_cowok_profile_bulat : R.drawable.avatar_cewek_profile_bulat;
+
+        binding.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override

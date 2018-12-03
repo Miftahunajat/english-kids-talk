@@ -54,6 +54,12 @@ public class BattleSelectFragment extends BaseFragment implements BattleSelectAd
         binding.rvMatchBattle.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.rvMatchBattle.setAdapter(adapter);
         binding.fabCreate.setOnClickListener(v -> mCallback.createMatch());
+        binding.btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         // Inflate the layout for this fragment
         return binding.getRoot();

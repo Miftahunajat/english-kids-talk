@@ -63,6 +63,12 @@ public class BattleJoinFragment extends BaseFragment implements BattleJoinCallba
         }
 
         binding.button.setOnClickListener(v -> interactor.startMatch());
+        binding.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         // Inflate the layout for this fragment
         return binding.getRoot();
     }

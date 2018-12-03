@@ -106,82 +106,82 @@ public class ActivityModule {
     }
 
     @Provides
-    LevelSelectMvpPresenter<LevelSelectMvpView> provideLevelSelectPresenter(LevelSelectPresenter<LevelSelectMvpView> presenter){
+    LevelSelectMvpPresenter<LevelSelectMvpView> provideLevelSelectPresenter(LevelSelectPresenter<LevelSelectMvpView> presenter) {
         return presenter;
     }
 
     @Provides
-    ProfileMvpPresenter<ProfileMvpView> provideProfilePresenter(ProfilePresenter<ProfileMvpView> presenter){
+    ProfileMvpPresenter<ProfileMvpView> provideProfilePresenter(ProfilePresenter<ProfileMvpView> presenter) {
         return presenter;
     }
 
     @Provides
-    MainMenuMvpPresenter<MainMenuMvpView> provideMainMenuPresenter(MainMenuPresenter<MainMenuMvpView> presenter){
+    MainMenuMvpPresenter<MainMenuMvpView> provideMainMenuPresenter(MainMenuPresenter<MainMenuMvpView> presenter) {
         return presenter;
     }
 
     @Provides
-    ItemStoreMvpPresenter<ItemStoreMvpView> provideItemStorePresenter(ItemStorePresenter<ItemStoreMvpView> presenter){
+    ItemStoreMvpPresenter<ItemStoreMvpView> provideItemStorePresenter(ItemStorePresenter<ItemStoreMvpView> presenter) {
         return presenter;
     }
 
     @Provides
-    KonfirmasiAkunMvpPresenter<KonfirmasiAkunMvpView> provideKonfirmasiAkunPresenter(KonfirmasiAkunPresenter<KonfirmasiAkunMvpView> presenter){
+    KonfirmasiAkunMvpPresenter<KonfirmasiAkunMvpView> provideKonfirmasiAkunPresenter(KonfirmasiAkunPresenter<KonfirmasiAkunMvpView> presenter) {
         return presenter;
     }
 
     @Provides
-    InputNamaMvpPresenter<InputNamaMvpView> provideInputNamaPresenter(InputNamaPresenter<InputNamaMvpView> presenter){
+    InputNamaMvpPresenter<InputNamaMvpView> provideInputNamaPresenter(InputNamaPresenter<InputNamaMvpView> presenter) {
         return presenter;
     }
 
     @Provides
-    PilihAvatarMvpPresenter<PilihAvatarMvpView> providePilihAvatarPresenter(PilihAvatarPresenter<PilihAvatarMvpView> presenter){
+    PilihAvatarMvpPresenter<PilihAvatarMvpView> providePilihAvatarPresenter(PilihAvatarPresenter<PilihAvatarMvpView> presenter) {
         return presenter;
     }
 
     @Provides
-    SplashScreenMvpPresenter<SplashScreenMvpView> provideSplashScreenPresenter(SplashScreenPresenter<SplashScreenMvpView> presenter){
+    SplashScreenMvpPresenter<SplashScreenMvpView> provideSplashScreenPresenter(SplashScreenPresenter<SplashScreenMvpView> presenter) {
         return presenter;
     }
 
     @Provides
-    LearningCategoryMvpPresenter<LearningCategoryMvpView> provideLearningCategoryPresenter(LearningCategoryPresenter<LearningCategoryMvpView> presenter){
+    LearningCategoryMvpPresenter<LearningCategoryMvpView> provideLearningCategoryPresenter(LearningCategoryPresenter<LearningCategoryMvpView> presenter) {
         return presenter;
     }
 
     @Provides
-    LearningItemMvpPresenter<LearningItemMvpView> provideLearningItemPresenter(LearningItemPresenter<LearningItemMvpView> presenter){
+    LearningItemMvpPresenter<LearningItemMvpView> provideLearningItemPresenter(LearningItemPresenter<LearningItemMvpView> presenter) {
         return presenter;
     }
 
     @Provides
-    ChallengeMvpPresenter<ChallengeMvpView> provideChallengePresenter(ChallengePresenter<ChallengeMvpView> presenter){
+    ChallengeMvpPresenter<ChallengeMvpView> provideChallengePresenter(ChallengePresenter<ChallengeMvpView> presenter) {
         return presenter;
     }
 
     @Provides
-    BuatAkunMvpPresenter<BuatAkunMvpView> provideBuatAkunPresenter(BuatAkunPresenter<BuatAkunMvpView> presenter){
+    BuatAkunMvpPresenter<BuatAkunMvpView> provideBuatAkunPresenter(BuatAkunPresenter<BuatAkunMvpView> presenter) {
         return presenter;
     }
 
     @Provides
-    InventoryMvpPresenter<InventoryMvpView> provideInventoryPresenter(InventoryPresenter<InventoryMvpView> presenter){
+    InventoryMvpPresenter<InventoryMvpView> provideInventoryPresenter(InventoryPresenter<InventoryMvpView> presenter) {
         return presenter;
     }
 
     @Provides
-    LearningSpeakingMvpPresenter<LearningSpeakingMvpView> provideLearningSpeakingPresenter(LearningSpeakingPresenter<LearningSpeakingMvpView> presenter){
+    LearningSpeakingMvpPresenter<LearningSpeakingMvpView> provideLearningSpeakingPresenter(LearningSpeakingPresenter<LearningSpeakingMvpView> presenter) {
         return presenter;
     }
 
     @Provides
-    LearningWritingMvpPresenter<LearningWritingMvpView> provideLearningWritingPresenter(LearningWritingPresenter<LearningWritingMvpView> presenter){
+    LearningWritingMvpPresenter<LearningWritingMvpView> provideLearningWritingPresenter(LearningWritingPresenter<LearningWritingMvpView> presenter) {
         return presenter;
     }
 
     @Provides
-    BattleMvpPresenter<BattleMvpView> provideBattlePresenter(BattlePresenter<BattleMvpView> presenter){
+    BattleMvpPresenter<BattleMvpView> provideBattlePresenter(BattlePresenter<BattleMvpView> presenter) {
         return presenter;
     }
 

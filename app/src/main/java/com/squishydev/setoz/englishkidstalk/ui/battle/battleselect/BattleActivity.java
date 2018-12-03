@@ -6,14 +6,13 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
-
+import android.view.View;
 import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.firebase.model.Match;
 import com.squishydev.setoz.englishkidstalk.data.network.model.User;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivityBattleBinding;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
 import com.squishydev.setoz.englishkidstalk.ui.battle.battlematch.BattleMatchActivity;
-
 import java.nio.file.FileAlreadyExistsException;
 import java.util.List;
 
@@ -151,6 +150,7 @@ public class BattleActivity extends BaseActivity implements BattleMvpView,
     public void startMatch() {
         mPresenter.startMatch();
     }
+
 }
 
 interface BattleSelectCallback{
