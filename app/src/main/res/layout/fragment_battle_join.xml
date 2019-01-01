@@ -57,7 +57,11 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_user" />
+            app:layout_constraintTop_toBottomOf="@+id/iv_user"
+            tools:text="The quickster"
+            android:textColor="@color/white"
+            android:fontFamily="@font/acme"
+            android:textSize="24sp"/>
 
         <TextView
             android:id="@+id/tv_musuh"
@@ -68,7 +72,11 @@
             app:layout_constraintEnd_toEndOf="@+id/iv_musuh"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/iv_musuh"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Mr. Magma"
+            android:textColor="@color/white"
+            android:fontFamily="@font/acme"
+            android:textSize="24sp"/>
 
         <Button
             android:id="@+id/button"
@@ -83,7 +91,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/iv_user"
             app:layout_constraintTop_toBottomOf="@+id/iv_musuh"
-            tools:text="Start a Game" />
+            android:text="@string/start_a_game" />
 
         <ImageView
             android:id="@+id/btn_back"

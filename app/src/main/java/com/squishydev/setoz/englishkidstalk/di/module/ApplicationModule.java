@@ -17,7 +17,11 @@ import com.squishydev.setoz.englishkidstalk.data.prefs.AppPreferencesHelper;
 import com.squishydev.setoz.englishkidstalk.data.prefs.PreferencesHelper;
 import com.squishydev.setoz.englishkidstalk.di.ApplicationContext;
 import com.squishydev.setoz.englishkidstalk.di.DatabaseInfo;
+import com.squishydev.setoz.englishkidstalk.di.HttpHeader;
 import com.squishydev.setoz.englishkidstalk.di.PreferenceInfo;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.inject.Singleton;
 
@@ -94,6 +98,14 @@ public class ApplicationModule {
     @PreferenceInfo
     String providePreferenceName() {
         return Config.PREF_NAME;
+    }
+
+    @Provides
+    @HttpHeader
+    Map<String, String> provideHttpHeader(PreferencesHelper preferencesHelper) {
+        Map<String,String> mHeader = new HashMap<>();
+        mHeader.put("Authorization","Bearer " + preferencesHelper.getToken());
+        return mHeader;
     }
 
     @Provides

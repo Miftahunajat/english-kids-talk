@@ -1,11 +1,16 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout>
+    <data>
+        <variable
+            name="user"
+            type="com.squishydev.setoz.englishkidstalk.data.network.model.User"/>
+    </data>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.squishydev.setoz.englishkidstalk.ui.dashboard.HomeFragment">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,7 +26,7 @@
         app:srcCompat="@drawable/kotak_dashboard" />
 
     <ImageView
-        android:id="@+id/imageView36"
+        android:id="@+id/iv_profile"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginBottom="8dp"
@@ -33,7 +38,7 @@
         app:srcCompat="@drawable/avatar_cewek_profile_bulat" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/tv_nama"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -43,9 +48,9 @@
         android:textColor="#4F4E4E"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView36"
-        app:layout_constraintStart_toEndOf="@+id/imageView36"
-        app:layout_constraintTop_toTopOf="@+id/imageView36" />
+        app:layout_constraintBottom_toBottomOf="@+id/iv_profile"
+        app:layout_constraintStart_toEndOf="@+id/iv_profile"
+        app:layout_constraintTop_toTopOf="@+id/iv_profile" />
 
     <ImageView
         android:id="@+id/imageView37"
@@ -60,13 +65,13 @@
         app:srcCompat="@drawable/bintang_kuning" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/tv_star"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="@{String.valueOf(user.starGained)"
+        android:text="@{String.valueOf(user.starGained)}"
         android:textColor="#DFAB3B"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -96,18 +101,17 @@
                     android:orientation="vertical" />
 
                 <ImageView
-                    android:id="@+id/imageView17"
+                    android:id="@+id/iv_easy"
                     android:layout_width="340dp"
                     android:layout_height="150dp"
                     android:layout_marginTop="8dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/basic"
-                    android:onClick="openBasic"/>
+                    app:srcCompat="@drawable/basic"/>
 
                 <ImageView
-                    android:id="@+id/imageView32"
+                    android:id="@+id/iv_intermediate"
                     android:layout_width="340dp"
                     android:layout_height="160dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -115,36 +119,48 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView17"
-                    app:srcCompat="@drawable/intermediate"
-                    android:onClick="openIntermediate"/>
+                    app:layout_constraintTop_toBottomOf="@+id/iv_easy"
+                    app:srcCompat="@drawable/intermediate"/>
 
                 <ImageView
-                    android:id="@+id/imageView33"
+                    android:id="@+id/iv_advanced"
                     android:layout_width="340dp"
                     android:layout_height="150dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView32"
-                    app:srcCompat="@drawable/advance"
-                    android:onClick="openAdvance"/>
+                    app:layout_constraintTop_toBottomOf="@+id/iv_intermediate"
+                    app:srcCompat="@drawable/advance"/>
 
                 <ImageView
-                    android:id="@+id/imageView34"
+                    android:id="@+id/iv_battle"
                     android:layout_width="340dp"
                     android:layout_height="150dp"
                     android:layout_marginBottom="64dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:onClick="openBattle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_advanced"
+                    app:srcCompat="@drawable/battle" />
+
+                <Button
+                    android:id="@+id/btn_exit"
+                    android:layout_width="340dp"
+                    android:layout_height="80dp"
+                    android:layout_marginBottom="64dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Quit"
+                    android:background="@color/redMedium"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView33"
-                    app:srcCompat="@drawable/battle" />
+                    app:layout_constraintTop_toBottomOf="@+id/iv_battle"/>
 
             </android.support.constraint.ConstraintLayout>
         </android.support.v4.widget.NestedScrollView>
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>
+</layout>

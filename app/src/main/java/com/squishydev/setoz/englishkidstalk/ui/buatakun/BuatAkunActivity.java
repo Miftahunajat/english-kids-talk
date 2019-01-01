@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.squishydev.setoz.englishkidstalk.R;
@@ -11,6 +12,7 @@ import com.squishydev.setoz.englishkidstalk.databinding.ActivityBuatAkunBinding;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
 import com.squishydev.setoz.englishkidstalk.ui.dashboard.DashboardActivity;
 import com.squishydev.setoz.englishkidstalk.ui.levelselect.LevelSelectActivity;
+import com.squishydev.setoz.englishkidstalk.utils.AnimationUtil;
 
 import javax.inject.Inject;
 
@@ -34,6 +36,22 @@ public class BuatAkunActivity extends BaseActivity implements BuatAkunMvpView {
         getActivityComponent().inject(this);
 
         mPresenter.onAttach(BuatAkunActivity.this);
+
+        animate();
+    }
+
+    private void animate() {
+        binding.tvHaiNama.startAnimation(AnimationUtil.getInstance(this).getTranslationAnimation(100,AnimationUtil.UP));
+        binding.textView2.startAnimation(AnimationUtil.getInstance(this).getTranslationAnimation(200,AnimationUtil.UP));
+        binding.imageView.startAnimation(AnimationUtil.getInstance(this).getTranslationAnimation(100,AnimationUtil.LEFT));
+
+        binding.textView3.startAnimation(AnimationUtil.getInstance(this).getTranslationAnimation(100,AnimationUtil.RIGHT));
+        binding.etNama.startAnimation(AnimationUtil.getInstance(this).getTranslationAnimation(100,AnimationUtil.RIGHT));
+
+        binding.textView4.startAnimation(AnimationUtil.getInstance(this).getTranslationAnimation(250,AnimationUtil.RIGHT));
+        binding.etPassword.startAnimation(AnimationUtil.getInstance(this).getTranslationAnimation(250,AnimationUtil.RIGHT));
+
+        binding.btnRegister.startAnimation(AnimationUtil.getInstance(this).getTranslationAnimation(400,AnimationUtil.DOWN));
     }
 
     @Override
@@ -54,6 +72,10 @@ public class BuatAkunActivity extends BaseActivity implements BuatAkunMvpView {
             if (binding.etNama.getText().toString().trim().equals("") ||
                     binding.etPassword.getText().toString().trim().equals("") ){
                 showMessage("Maaf nama / password tidak boleh kosong");
+                return;
+            }
+            if (binding.etPassword.getText().toString().length() < 6){
+                showMessage("Password tidak boleh kurang dari 6 karakter");
                 return;
             }
             mPresenter.registerUser(binding.etNama.getText().toString(),binding.etPassword.getText().toString());

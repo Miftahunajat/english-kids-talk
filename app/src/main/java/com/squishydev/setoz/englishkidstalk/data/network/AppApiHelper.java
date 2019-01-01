@@ -3,10 +3,7 @@ package com.squishydev.setoz.englishkidstalk.data.network;
 import android.util.Log;
 
 import com.rx2androidnetworking.Rx2AndroidNetworking;
-import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.network.model.Challenge;
-import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
-import com.squishydev.setoz.englishkidstalk.data.network.model.LearningCategory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.Inventory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.Item;
 import com.squishydev.setoz.englishkidstalk.data.network.model.ItemCategory;
@@ -16,8 +13,8 @@ import com.squishydev.setoz.englishkidstalk.data.network.model.QuestionCategory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.TokenResponse;
 import com.squishydev.setoz.englishkidstalk.data.network.model.UserResponse;
 import com.squishydev.setoz.englishkidstalk.data.prefs.PreferencesHelper;
+import com.squishydev.setoz.englishkidstalk.di.HttpHeader;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +22,7 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import dagger.Lazy;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 
@@ -37,6 +35,11 @@ import io.reactivex.Single;
 @Singleton
 public class AppApiHelper implements ApiHelper {
 
+
+    @Inject
+    @HttpHeader
+    Lazy<Map<String, String>> header;
+
     private Map<String,String> mHeader;
 
     @Inject
@@ -44,17 +47,6 @@ public class AppApiHelper implements ApiHelper {
 
     @Inject
     public AppApiHelper() {
-
-    }
-
-    @Override
-    public Single<List<LearningCategory>> getLearningCategory(Difficulty difficulty, String type) {
-        List<LearningCategory> list = new ArrayList<>();
-        list.add(new LearningCategory(0, "Animal", R.drawable.animal));
-        list.add(new LearningCategory(1, "Number", R.drawable.number));
-        list.add(new LearningCategory(2, "Vehicle", R.drawable.vehicle));
-
-        return Single.just(list);
     }
 
     @Override
@@ -66,12 +58,12 @@ public class AppApiHelper implements ApiHelper {
     }
 
     @Override
-    public Single<UserResponse> registerUser(String name,
-                                             String userName,
-                                             String password,
-                                             int gender,
-                                             int starGained,
-                                             int xpGained) {
+    public Single<User> registerUser(String name,
+                                     String userName,
+                                     String password,
+                                     int gender,
+                                     int starGained,
+                                     int xpGained) {
         Log.v("debug", name + userName + password);
         return Rx2AndroidNetworking.post(Endpoint.ENDPOINT_REGISTER_USERS)
                 .addUrlEncodeFormBodyParameter("name", name)
@@ -81,7 +73,7 @@ public class AppApiHelper implements ApiHelper {
                 .addUrlEncodeFormBodyParameter("star_gained",String.valueOf(starGained))
                 .addUrlEncodeFormBodyParameter("xp_gained",String.valueOf(xpGained))
                 .build()
-                .getObjectSingle(UserResponse.class);
+                .getObjectSingle(User.class);
     }
 
     @Override

@@ -22,9 +22,13 @@
         <activity
             android:name=".ui.menuselect.MenuSelectActivity"
             android:label="@string/title_activity_menu_select" />
-        <activity android:name=".ui.inputnama.InputNamaActivity" />
+        <activity android:name=".ui.inputnama.InputNamaActivity"
+            android:windowSoftInputMode="stateVisible|adjustResize">
+
+        </activity>
         <activity android:name=".ui.pilihavatar.PilihAvatarActivity" />
-        <activity android:name=".ui.konfirmasiakun.KonfirmasiAkunActivity" />
+        <activity android:name=".ui.konfirmasiakun.KonfirmasiAkunActivity"
+            android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".ui.splashscreen.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -55,11 +59,7 @@
         <activity android:name=".ui.learning.learningitem.learningspeaking.LearningSpeakingActivity"></activity>
         <activity android:name=".ui.learning.learningitem.learningwriting.LearningWritingActivity"></activity>
         <activity android:name=".ui.battle.battleselect.BattleActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ui.battle.battlematch.BattleMatchActivity" />
         <activity android:name=".ui.dashboard.DashboardActivity"></activity>

@@ -5,4 +5,5 @@ import com.squishydev.setoz.englishkidstalk.ui.base.MvpView;
 
 public interface HomeMvpView extends MvpView {
 
+    void setUser(User user);
 }

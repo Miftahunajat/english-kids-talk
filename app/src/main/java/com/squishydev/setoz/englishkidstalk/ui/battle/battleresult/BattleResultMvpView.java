@@ -5,5 +5,5 @@ import com.squishydev.setoz.englishkidstalk.ui.base.MvpView;
 
 public interface BattleResultMvpView extends MvpView {
 
-    void setBattleResultView(User user, User user2);
+    void setBattleResultView(String user, String user2);
 }

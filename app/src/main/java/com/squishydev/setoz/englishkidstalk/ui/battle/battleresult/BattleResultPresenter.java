@@ -28,22 +28,15 @@ public class BattleResultPresenter<V extends BattleResultMvpView> extends BasePr
     @Override
     public void getUserData(String userId, String enemyId) {
 
-        Observable<User> allyUser = getDataManager().getUser(userId).toObservable();
-        Observable<User> enemyUser = getDataManager().getUser(enemyId).toObservable();
+        Single<User> enemyUser = getDataManager().getUser(enemyId);
+        String myName = getDataManager().getPrefName();
 
 
-        getCompositeDisposable().add(Observable.zip(
-                allyUser,
-                enemyUser,
-                (user, user2) -> {
-                    Log.d(TAG, "getUserData: " + "Observable Success");
-                    getMvpView().setBattleResultView(user,user2);
-                    return null;
-                }
-        ).observeOn(AndroidSchedulers.mainThread())
+        getCompositeDisposable().add(enemyUser
+        .observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())
-        .subscribe(object -> {
-
+        .subscribe(user -> {
+            getMvpView().setBattleResultView(myName,user.getName());
         },this::baseHandleError));
     }
 }

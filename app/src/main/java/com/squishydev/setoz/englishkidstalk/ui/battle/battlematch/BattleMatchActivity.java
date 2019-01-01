@@ -57,14 +57,7 @@ public class BattleMatchActivity extends BaseActivity implements BattleMatchMvpV
         mPresenter.onAttach(BattleMatchActivity.this);
         mPresenter.setUserData(getIntent().getStringExtra("userid"), getIntent().getStringExtra("enemyid"));
 
-        int profil = user.getGender() == 0 ? R.drawable.avatar_cowok_profile_bulat : R.drawable.avatar_cewek_profile_bulat;
-
-        binding.btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        binding.btnBack.setOnClickListener(v -> finish());
     }
 
     @Override

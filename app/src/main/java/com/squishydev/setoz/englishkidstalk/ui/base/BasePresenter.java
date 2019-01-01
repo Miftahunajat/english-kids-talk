@@ -94,7 +94,8 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
         final Gson gson = builder.create();
 
         try {
-            ApiError apiError = gson.fromJson(error.getErrorBody(), ApiError.class);
+//            ApiError apiError = gson.fromJson(error.getErrorBody(), ApiError.class);
+            ApiError apiError = new ApiError(error.getErrorCode(),"1",error.getErrorBody());
 
             if (apiError == null || apiError.getMessage() == null) {
                 getMvpView().onError(R.string.api_default_error);
@@ -103,11 +104,16 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
 
             switch (error.getErrorCode()) {
                 case HttpsURLConnection.HTTP_UNAUTHORIZED:
+                    getMvpView().onError("Unauthorized");
+                    break;
                 case HttpsURLConnection.HTTP_FORBIDDEN:
 //                    setUserAsLoggedOut();
 //                    getMvpView().openActivityOnTokenExpire();
                 case HttpsURLConnection.HTTP_INTERNAL_ERROR:
                 case HttpsURLConnection.HTTP_NOT_FOUND:
+                case HttpsURLConnection.HTTP_BAD_REQUEST:
+                    getMvpView().onError("Bad Request");
+                    break;
                 default:
                     getMvpView().onError(apiError.getMessage());
             }

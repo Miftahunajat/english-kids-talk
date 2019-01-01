@@ -13,6 +13,7 @@ import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
 import com.squishydev.setoz.englishkidstalk.ui.buatakun.BuatAkunActivity;
 import com.squishydev.setoz.englishkidstalk.ui.konfirmasiakun.KonfirmasiAkunActivity;
 import com.squishydev.setoz.englishkidstalk.ui.levelselect.LevelSelectActivity;
+import com.squishydev.setoz.englishkidstalk.utils.AnimationUtil;
 import com.squishydev.setoz.englishkidstalk.utils.AvatarControl;
 
 import javax.inject.Inject;
@@ -42,6 +43,13 @@ public class PilihAvatarActivity extends BaseActivity implements PilihAvatarMvpV
 
         mPresenter.onAttach(PilihAvatarActivity.this);
 
+        animate();
+    }
+
+    private void animate() {
+        binding.btnPrevAvatar.startAnimation(AnimationUtil.getInstance(this).getTranslationAnimation(100,AnimationUtil.LEFT));
+        binding.btnNextAvatar.startAnimation(AnimationUtil.getInstance(this).getTranslationAnimation(100,AnimationUtil.RIGHT));
+        binding.flAvatar.startAnimation(AnimationUtil.getInstance(this).getTranslationAnimation(100,AnimationUtil.UP));
     }
 
     @Override

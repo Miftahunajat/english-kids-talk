@@ -9,7 +9,7 @@
         android:background="#CEE1E2">
 
         <TextView
-            android:id="@+id/textView2_lala"
+            android:id="@+id/tv_pilih_karakter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/fl_avatar"
@@ -32,8 +32,8 @@
             android:id="@+id/btn_masuk"
             android:layout_width="109dp"
             android:layout_height="46dp"
-            android:layout_alignEnd="@+id/textView2_lala"
-            android:layout_alignRight="@+id/textView2_lala"
+            android:layout_alignEnd="@+id/tv_pilih_karakter"
+            android:layout_alignRight="@+id/tv_pilih_karakter"
             android:layout_below="@+id/fl_avatar"
             android:layout_marginBottom="32dp"
             android:layout_marginTop="16dp"
@@ -108,10 +108,10 @@
             android:layout_width="249dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@+id/tv_nama_avatar"
-            app:layout_constraintEnd_toEndOf="@+id/textView2_lala"
+            app:layout_constraintEnd_toEndOf="@+id/tv_pilih_karakter"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/textView2_lala"
-            app:layout_constraintTop_toBottomOf="@+id/textView2_lala"
+            app:layout_constraintStart_toStartOf="@+id/tv_pilih_karakter"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pilih_karakter"
             app:layout_constraintVertical_chainStyle="spread">
             <ImageView
                 android:id="@+id/iv_avatar"

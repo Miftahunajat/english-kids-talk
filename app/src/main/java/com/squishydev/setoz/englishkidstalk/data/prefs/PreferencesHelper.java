@@ -41,4 +41,6 @@ public interface PreferencesHelper {
     void setInventoryId(String inventoryId);
 
     String getInventoryId();
+
+    void clearPreferenceData();
 }

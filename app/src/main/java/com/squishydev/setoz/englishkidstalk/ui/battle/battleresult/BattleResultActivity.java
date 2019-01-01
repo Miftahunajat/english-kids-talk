@@ -12,6 +12,7 @@ import com.squishydev.setoz.englishkidstalk.R;
 import com.squishydev.setoz.englishkidstalk.data.network.model.User;
 import com.squishydev.setoz.englishkidstalk.databinding.ActivityBattleResultBinding;
 import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
+import com.squishydev.setoz.englishkidstalk.utils.MediaUtils;
 
 import javax.inject.Inject;
 
@@ -46,12 +47,28 @@ public class BattleResultActivity extends BaseActivity implements BattleResultMv
 
         mPresenter.onAttach(BattleResultActivity.this);
         setDataLayar();
+        MediaUtils.playSound(this,R.raw.whistle);
     }
 
     private void setDataLayar() {
         String userId = getIntent().getStringExtra("userid");
         String enemyId = getIntent().getStringExtra("enemyid");
         mPresenter.getUserData(userId,enemyId);
+
+        Integer myscore = getIntent().getIntExtra("myscore",0);
+        Integer enemyscore = getIntent().getIntExtra("enemyscore",0);
+        boolean isWinning =  getIntent().getBooleanExtra("iswinning",false);
+
+        binding.tvMyScore.setText(myscore.toString());
+        binding.tvEnemyScore.setText(enemyscore.toString());
+
+        String winningText = isWinning ? "Selamat anda menang" : "Maaf anda kalah";
+        String bintangText = isWinning ? "Anda mendapatkan 100 bintang" : "Anda kehilangan 100 bintang";
+
+        ((TextView) findViewById(R.id.tv_winning_status)).setText(winningText);
+        ((TextView) findViewById(R.id.tv_my_score)).setText(myscore.toString());
+        ((TextView) findViewById(R.id.tv_enemy_score)).setText(enemyscore.toString());
+        binding.tvBintangTotal.setText(bintangText);
     }
 
     @Override
@@ -66,25 +83,10 @@ public class BattleResultActivity extends BaseActivity implements BattleResultMv
     }
 
     @Override
-    public void setBattleResultView(User user, User user2) {
-        Log.d(TAG, "setBattleResultView: " + user.toString() + "||" + user2.toString());
-//        binding.setMyUser(user);
-//        binding.setEnemyUser(user2);
+    public void setBattleResultView(String myName, String enemyName) {
 
-
-        Integer myscore = getIntent().getIntExtra("myscore",0);
-        Integer enemyscore = getIntent().getIntExtra("enemyscore",0);
-        boolean isWinning =  getIntent().getBooleanExtra("iswinning",false);
-
-//        binding.tvMyScore.setText(myscore.toString());
-//        binding.tvEnemyScore.setText(enemyscore.toString());
-
-        Log.d(TAG, "setBattleResultView: " + String.format("%d || %d || %d || %d || %s",user.getId(),user2.getId(),myscore,enemyscore,isWinning));
-
-        String winningText = isWinning ? "Selamat anda menang" : "Maaf anda kalah";
-//        binding.tvWinningStatus.setText(winningText);
-        ((TextView) findViewById(R.id.tv_winning_status)).setText(winningText);
-
+        ((TextView) findViewById(R.id.tv_my_username)).setText(myName);
+        ((TextView) findViewById(R.id.tv_enemy_username)).setText(enemyName);
     }
 
     public void backBattle (View view){

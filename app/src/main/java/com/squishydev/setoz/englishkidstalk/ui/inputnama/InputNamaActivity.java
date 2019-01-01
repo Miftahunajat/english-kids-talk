@@ -12,6 +12,7 @@ import com.squishydev.setoz.englishkidstalk.ui.base.BaseActivity;
 import com.squishydev.setoz.englishkidstalk.ui.buatakun.BuatAkunActivity;
 import com.squishydev.setoz.englishkidstalk.ui.menuselect.MenuSelectActivity;
 import com.squishydev.setoz.englishkidstalk.ui.pilihavatar.PilihAvatarActivity;
+import com.squishydev.setoz.englishkidstalk.utils.AnimationUtil;
 
 import javax.inject.Inject;
 
@@ -19,6 +20,7 @@ public class InputNamaActivity extends BaseActivity implements InputNamaMvpView 
 
     @Inject
     InputNamaMvpPresenter<InputNamaMvpView> mPresenter;
+    ActivityInputNamaBinding binding;
 
     public static Intent getStartIntent(Context context) {
         Intent intent = new Intent(context, InputNamaActivity.class);
@@ -29,9 +31,20 @@ public class InputNamaActivity extends BaseActivity implements InputNamaMvpView 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         getActivityComponent().inject(this);
 
         mPresenter.onAttach(InputNamaActivity.this);
+
+        animate();
+    }
+
+    private void animate() {
+        binding.logoBesar.startAnimation(AnimationUtil.getInstance(this).getTranslationAnimation(100,AnimationUtil.UP));
+        binding.tvHaiNama.startAnimation(AnimationUtil.getInstance(this).getTranslationAnimation(100,AnimationUtil.DOWN));
+        binding.etName.startAnimation(AnimationUtil.getInstance(this).getTranslationAnimation(200,AnimationUtil.DOWN));
+        binding.btnNext.startAnimation(AnimationUtil.getInstance(this).getTranslationAnimation(300,AnimationUtil.DOWN));
+
     }
 
     @Override
@@ -42,7 +55,7 @@ public class InputNamaActivity extends BaseActivity implements InputNamaMvpView 
 
     @Override
     protected void setUp() {
-        ActivityInputNamaBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_input_nama);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_input_nama);
         binding.btnNext.setOnClickListener(v ->{
             binding.executePendingBindings();
             if (binding.etName.getText().toString().trim().equals("")){
@@ -50,9 +63,6 @@ public class InputNamaActivity extends BaseActivity implements InputNamaMvpView 
                 return;
             }
             mPresenter.saveNama(binding.etName.getText().toString());
-
-            binding.btnNext.setOnClickListener(v2 ->{
-            });
             startActivity(new Intent(InputNamaActivity.this, PilihAvatarActivity.class));
         });
     }

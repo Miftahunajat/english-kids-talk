@@ -9,8 +9,6 @@ import com.squishydev.setoz.englishkidstalk.data.db.DbHelper;
 import com.squishydev.setoz.englishkidstalk.data.firebase.FirebaseHelper;
 import com.squishydev.setoz.englishkidstalk.data.firebase.model.Match;
 import com.squishydev.setoz.englishkidstalk.data.network.model.Challenge;
-import com.squishydev.setoz.englishkidstalk.data.model.Difficulty;
-import com.squishydev.setoz.englishkidstalk.data.network.model.LearningCategory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.Inventory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.Item;
 import com.squishydev.setoz.englishkidstalk.data.network.model.ItemCategory;
@@ -19,7 +17,6 @@ import com.squishydev.setoz.englishkidstalk.data.network.model.User;
 import com.squishydev.setoz.englishkidstalk.data.network.ApiHelper;
 import com.squishydev.setoz.englishkidstalk.data.network.model.QuestionCategory;
 import com.squishydev.setoz.englishkidstalk.data.network.model.TokenResponse;
-import com.squishydev.setoz.englishkidstalk.data.network.model.UserResponse;
 import com.squishydev.setoz.englishkidstalk.data.prefs.PreferencesHelper;
 import com.squishydev.setoz.englishkidstalk.di.ApplicationContext;
 
@@ -64,22 +61,17 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Single<List<LearningCategory>> getLearningCategory(Difficulty difficulty, String type) {
-        return mApiHelper.getLearningCategory(difficulty,type);
-    }
-
-    @Override
     public Observable<List<LearningItem>> getLearningItem() {
         return mApiHelper.getLearningItem();
     }
 
     @Override
-    public Single<UserResponse> registerUser(String name,
-                                             String userName,
-                                             String password,
-                                             int gender,
-                                             int starGained,
-                                             int xpGained) {
+    public Single<User> registerUser(String name,
+                                     String userName,
+                                     String password,
+                                     int gender,
+                                     int starGained,
+                                     int xpGained) {
         return mApiHelper.registerUser(name, userName, password, gender,starGained, xpGained);
     }
 
@@ -201,6 +193,11 @@ public class AppDataManager implements DataManager {
     @Override
     public String getInventoryId() {
         return mPreferencesHelper.getInventoryId();
+    }
+
+    @Override
+    public void clearPreferenceData() {
+        mPreferencesHelper.clearPreferenceData();
     }
 
     @Override

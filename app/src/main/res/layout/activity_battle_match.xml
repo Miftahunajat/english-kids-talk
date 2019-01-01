@@ -131,12 +131,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
+            android:textColor="@color/greenEasy"
+            android:fontFamily="@font/acme"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/cardView"
+            app:layout_constraintStart_toEndOf="@+id/tv_my"
+            app:layout_constraintEnd_toEndOf="@+id/textView15"
+            app:layout_constraintTop_toBottomOf="@+id/textView15"/>
+
+        <TextView
+            android:id="@+id/tv_my"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Score : "
             android:textColor="#FFFF"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/cardView"
-            app:layout_constraintEnd_toEndOf="@+id/textView15"
-            app:layout_constraintStart_toStartOf="@+id/textView15"
+            app:layout_constraintEnd_toStartOf="@+id/textView15"
+            app:layout_constraintStart_toStartOf="@+id/tv_my_name"
             app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
         <TextView
@@ -144,12 +158,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
+            android:textColor="@color/redMedium"
+            android:textSize="24sp"
+            android:fontFamily="@font/acme"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tv_my_score"
+            app:layout_constraintStart_toEndOf="@+id/tv_my_enemy"
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+        <TextView
+            android:id="@+id/tv_my_enemy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enemy Score : "
             android:textColor="#FFFF"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/tv_my_score"
-            app:layout_constraintStart_toStartOf="@+id/textView15"
+            app:layout_constraintEnd_toStartOf="@+id/tv_enemy_score"
+            app:layout_constraintStart_toStartOf="@+id/tv_my_name"
             app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
         <ImageView

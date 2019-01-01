@@ -20,4 +20,20 @@ public class HomePresenter<V extends HomeMvpView> extends BasePresenter<V>
         super(dataManager, compositeDisposable);
     }
 
+    @Override
+    public void onAttach(V mvpView) {
+        super.onAttach(mvpView);
+        String id = getDataManager().getUserId();
+        getCompositeDisposable().add(getDataManager().getUser(id)
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribeOn(Schedulers.io())
+        .subscribe(user -> {
+            getMvpView().setUser(user);
+        },this::baseHandleError));
+    }
+
+    @Override
+    public void clearCache() {
+        getDataManager().clearPreferenceData();
+    }
 }

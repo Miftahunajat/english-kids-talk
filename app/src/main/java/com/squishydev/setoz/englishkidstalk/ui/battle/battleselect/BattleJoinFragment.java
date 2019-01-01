@@ -54,6 +54,7 @@ public class BattleJoinFragment extends BaseFragment implements BattleJoinCallba
         if (getArguments().getSerializable("ally") != null ){
             setAlly((User) getArguments().getSerializable("ally"));
             setEnemy((User) getArguments().getSerializable("enemy"));
+            binding.button.setVisibility(View.GONE);
         }else{
             user = (User) getArguments().getSerializable("user");
             int profil = user.getGender() == 0 ? R.drawable.avatar_cowok_profile_bulat : R.drawable.avatar_cewek_profile_bulat;

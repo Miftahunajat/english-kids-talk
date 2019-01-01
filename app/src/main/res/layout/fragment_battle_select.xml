@@ -11,25 +11,26 @@
 
         <!-- TODO: Update blank fragment layout -->
         <ImageView
-            android:id="@+id/imageView50"
+            android:id="@+id/iv_background"
             android:layout_width="350dp"
-            android:layout_height="544dp"
-            android:layout_marginBottom="25dp"
+            android:layout_height="0dp"
             android:layout_marginTop="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/fab_create"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_close"
             app:srcCompat="@drawable/kotak_battle_join" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_match_battle"
             android:layout_width="320dp"
-            android:layout_height="510dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView50"
-            app:layout_constraintLeft_toLeftOf="@+id/imageView50"
-            app:layout_constraintRight_toRightOf="@+id/imageView50"
-            app:layout_constraintTop_toTopOf="@+id/imageView50">
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_background"
+            app:layout_constraintLeft_toLeftOf="@+id/iv_background"
+            app:layout_constraintRight_toRightOf="@+id/iv_background"
+            app:layout_constraintTop_toTopOf="@+id/iv_background"
+            android:layout_marginTop="16dp">
 
         </android.support.v7.widget.RecyclerView>
 
@@ -41,24 +42,12 @@
             android:layout_marginRight="16dp"
             app:backgroundTint="#D8D8D8"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintRight_toRightOf="parent"
+            android:src="@drawable/host"
+            app:fabSize="normal"/>
 
         <ImageView
-            android:id="@+id/imageView41"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/fab_create"
-            app:layout_constraintEnd_toEndOf="@+id/fab_create"
-            app:layout_constraintStart_toStartOf="@+id/fab_create"
-            app:layout_constraintTop_toTopOf="@+id/fab_create"
-            app:srcCompat="@drawable/host" />
-
-        <ImageView
-            android:id="@+id/btn_close"
+            android:id="@+id/iv_close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -78,11 +67,12 @@
             android:textColor="#FFFF"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/imageView50"
+            app:layout_constraintBottom_toTopOf="@+id/iv_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="CARI MUSUH" />
+            android:text="Cari Lawan anda"
+            android:fontFamily="@font/acme"/>
 
     </android.support.constraint.ConstraintLayout>
 </layout>

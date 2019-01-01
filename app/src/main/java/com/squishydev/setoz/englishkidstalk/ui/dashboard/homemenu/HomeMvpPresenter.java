@@ -6,5 +6,6 @@ import com.squishydev.setoz.englishkidstalk.ui.base.MvpPresenter;
 @PerActivity
 public interface HomeMvpPresenter<V extends HomeMvpView> extends MvpPresenter<V> {
 
+    void clearCache();
 }
 

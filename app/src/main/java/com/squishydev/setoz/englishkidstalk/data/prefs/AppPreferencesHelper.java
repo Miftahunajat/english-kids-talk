@@ -96,5 +96,10 @@ public class AppPreferencesHelper implements PreferencesHelper {
         return mPrefs.getString("inventory",null);
     }
 
+    @Override
+    public void clearPreferenceData() {
+        mPrefs.edit().clear().apply();
+    }
+
 
 }

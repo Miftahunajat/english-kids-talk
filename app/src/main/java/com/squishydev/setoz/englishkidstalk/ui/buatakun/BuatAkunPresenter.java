@@ -34,27 +34,30 @@ public class BuatAkunPresenter<V extends BuatAkunMvpView> extends BasePresenter<
 
     @Override
     public void registerUser(String name, String password) {
+        getMvpView().showLoading();
         String nickName = getDataManager().getPrefName();
         int gender = getDataManager().getAvatarType();
         getCompositeDisposable().add(getDataManager().registerUser(nickName,name,password,gender,0,0)
-                .flatMap(userResponse -> {
-                    Log.d(TAG, "registerUser: regsiter su,ses" + userResponse.toString());
-                    User user = userResponse.getUser();
+                .flatMap(user -> {
+                    Log.d(TAG, "registerUser: regsiter su,ses" + user.toString());
                     getDataManager().setAvatarType(user.getGender());
                     getDataManager().setUserId(String.valueOf(user.getId()));
                     getDataManager().setInventoryId(String.valueOf(user.getInventoryId()));
-                    return getDataManager().loginUser(userResponse.getUser().getUsername(),userResponse.getUser().getPassword());
+                    return getDataManager().loginUser(user.getUsername(),user.getPassword());
                 })
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(
                 tokenResponse -> {
+                    getMvpView().hideLoading();
                     Log.d(TAG, "registerUser: loginsukses" + tokenResponse.toString());
                     getDataManager().setLoggedInMode(DataManager.LoggedInMode.LOGGED_IN_MODE_SERVER_LOGIN);
                     getDataManager().setToken(tokenResponse.getToken());
                     getMvpView().openDashboardActivity();
-                },
-                this::baseHandleError
+                },throwable ->  {
+                    baseHandleError(throwable);
+                    getMvpView().hideLoading();
+                }
         ));
     }
 

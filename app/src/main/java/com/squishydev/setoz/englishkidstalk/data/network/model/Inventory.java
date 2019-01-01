@@ -2,6 +2,7 @@ package com.squishydev.setoz.englishkidstalk.data.network.model;
 
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,7 +11,7 @@ import javax.annotation.Generated;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("com.robohorse.robopojogenerator")
-public class Inventory{
+public class Inventory implements Serializable {
 
 	@SerializedName("createdAt")
 	private String createdAt;
