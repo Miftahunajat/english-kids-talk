@@ -87,10 +87,7 @@ public class MenuSelectActivity extends BaseActivity{
         });
 
         // Manage titles
-
         ahBottomNavigation.setInactiveColor(ContextCompat.getColor(this,R.color.white));
-//        ahBottomNavigation.setTitleState(AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE);
-//        ahBottomNavigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
         ahBottomNavigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_HIDE);
 
         ahBottomNavigation.setTranslucentNavigationEnabled(true);

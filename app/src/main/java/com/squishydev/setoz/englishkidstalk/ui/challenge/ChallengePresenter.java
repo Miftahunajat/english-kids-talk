@@ -37,7 +37,7 @@ public class ChallengePresenter<V extends ChallengeMvpView> extends BasePresente
         getCompositeDisposable().add(getDataManager().getChallenges()
                 .flatMap(Observable::fromIterable)
                 .filter(challenge -> challenge.getQuestionCategory().getQuestionDifficultyId() == difficulty.getId())
-                .filter(challenge -> challenge.getChallengeType() == 3)
+                .filter(challenge -> challenge.getChallengeType() == difficulty.getId())
                 .toList()
                 .map(challenges -> {
                     Collections.shuffle(challenges);

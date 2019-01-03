@@ -18,6 +18,7 @@ import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.BaseChall
 import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChalengeItemAFragment;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChallengeItemBFragment;
 import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChallengeItemCFragment;
+import com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem.ChallengeItemDFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -98,7 +99,7 @@ public class BattleMatchActivity extends BaseActivity implements BattleMatchMvpV
 
     private void observeCurrentScore() {
         Log.d(TAG, "observeCurrentScore: ");
-        if (myScore > 3 || enemyScore > 3){
+        if (myScore > 16 || enemyScore > 16){
             mPresenter.endMatchGame();
         }
     }

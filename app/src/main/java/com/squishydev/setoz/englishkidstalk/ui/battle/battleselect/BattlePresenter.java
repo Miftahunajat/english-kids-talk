@@ -140,7 +140,6 @@ public class BattlePresenter<V extends BattleMvpView> extends BasePresenter<V>
         String userId = getDataManager().getUserId();
 
         Log.d(TAG, "getAllMatches: " + "Sebelum");
-
         getCompositeDisposable().add(getDataManager().joinRandomMatch(userId)
                 .flatMap(matches -> Flowable.fromIterable(matches).filter(match -> !match.isPlaying()).toList().toFlowable())
                 .observeOn(AndroidSchedulers.mainThread())
