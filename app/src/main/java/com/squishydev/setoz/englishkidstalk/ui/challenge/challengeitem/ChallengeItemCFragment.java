@@ -116,9 +116,8 @@ public class ChallengeItemCFragment extends BaseChallengeItemFragment implements
         binding.btnSpeaking.setVisibility(View.INVISIBLE);
         binding.progressBar.setVisibility(View.VISIBLE);
     }
-
     public void hideLoading(){
-        binding.btnSpeaking.setVisibility(View.INVISIBLE);
-        binding.progressBar.setVisibility(View.VISIBLE);
+        binding.btnSpeaking.setVisibility(View.VISIBLE);
+        binding.progressBar.setVisibility(View.INVISIBLE);
     }
 }

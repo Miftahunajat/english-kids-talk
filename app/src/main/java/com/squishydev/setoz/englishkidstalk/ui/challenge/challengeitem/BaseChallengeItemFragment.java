@@ -71,6 +71,14 @@ public abstract class BaseChallengeItemFragment extends BaseFragment implements 
         }
     }
 
+    void onUserAnswer(Boolean isCorrect, int stars) {
+        if (isCorrect) {
+            callback.onAnswersCorrect(stars);
+        } else {
+            callback.onAnswersWrong();
+        }
+    }
+
     public Challenge getChallenge() {
         return mChallenge;
     }

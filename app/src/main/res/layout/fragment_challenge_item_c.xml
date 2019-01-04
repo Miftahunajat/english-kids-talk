@@ -20,8 +20,8 @@
 
             <ImageView
                 android:id="@+id/btn_speaking"
-                android:layout_width="100dp"
-                android:layout_height="65dp"
+                android:layout_width="80dp"
+                android:layout_height="55dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
 
@@ -36,7 +36,6 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="40dp"
                 android:background="@drawable/bg_uservoice"
                 android:fontFamily="@font/acme"
                 android:gravity="center"
@@ -44,7 +43,7 @@
                 android:textSize="20dp"
                 app:layout_constraintEnd_toEndOf="@+id/cv_content"
                 app:layout_constraintStart_toStartOf="@+id/cv_content"
-                app:layout_constraintTop_toTopOf="@+id/tv_title" />
+                app:layout_constraintTop_toBottomOf="@+id/cv_content" />
 
             <View
                 android:id="@+id/loading_empty"
@@ -140,18 +139,19 @@
 
             <TextView
                 android:id="@+id/tv_title"
+                tools:text="Semua kan"
                 android:layout_width="wrap_content"
                 android:layout_height="28dp"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/baloo_chettan"
                 android:text="@{challenge.challengeQuestion}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="#000"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@id/et_answer"
+                android:textColor="@color/brown"
+                android:textSize="16sp"
+
                 app:layout_constraintEnd_toEndOf="@+id/cv_content"
                 app:layout_constraintStart_toStartOf="@+id/cv_content"
-                app:layout_constraintTop_toBottomOf="@+id/cv_content" />
+                app:layout_constraintBottom_toBottomOf="@+id/cv_content" />
 
             <ProgressBar
                 android:id="@+id/progress_bar"

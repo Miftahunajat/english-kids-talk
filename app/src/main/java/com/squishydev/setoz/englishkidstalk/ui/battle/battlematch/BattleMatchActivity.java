@@ -140,8 +140,8 @@ public class BattleMatchActivity extends BaseActivity implements BattleMatchMvpV
                 return ChallengeItemBFragment.newInstance(challenge);
             case 3:
                 return ChallengeItemCFragment.newInstance(challenge);
-//            case 4:
-//                return ChallengeItemDFragment.newInstance(challenge);
+            case 4:
+                return ChallengeItemDFragment.newInstance(challenge);
             default:
                 return ChalengeItemAFragment.newInstance(challenge);
         }

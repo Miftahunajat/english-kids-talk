@@ -1,109 +1,62 @@
 package com.squishydev.setoz.englishkidstalk.ui.challenge.challengeitem;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.squishydev.setoz.englishkidstalk.R;
+import com.squishydev.setoz.englishkidstalk.data.network.model.AnswersItem;
+import com.squishydev.setoz.englishkidstalk.data.network.model.Challenge;
+import com.squishydev.setoz.englishkidstalk.databinding.FragmentChallengeItemDBinding;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ChallengeItemDFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link ChallengeItemDFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class ChallengeItemDFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+import java.util.ArrayList;
+import java.util.List;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+public class ChallengeItemDFragment extends BaseChallengeItemFragment implements ChallengeOptionsAdapter.OnItemClick {
 
-    private OnFragmentInteractionListener mListener;
+    private static final String TAG = "ChallengeItemDFragment";
+    FragmentChallengeItemDBinding binding;
+    ChallengeOptionsAdapter challengeOptionsAdapter;
+    List<AnswersItem> answersItems;
 
-    public ChallengeItemDFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ChallengeItemDFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ChallengeItemDFragment newInstance(String param1, String param2) {
-        ChallengeItemDFragment fragment = new ChallengeItemDFragment();
+    public static ChallengeItemDFragment newInstance(Challenge challenge) {
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putSerializable("challenge", challenge);
+        ChallengeItemDFragment fragment = new ChallengeItemDFragment();
         fragment.setArguments(args);
         return fragment;
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_challenge_item_d, container, false);
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+        super.onCreateView(inflater,container,savedInstanceState);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_challenge_item_d, container, false);
+        binding.setChallenge(mChallenge);
+        constructChallengeTimer(binding.fillLoading, binding.tvTimer);
+        challengeOptionsAdapter = new ChallengeOptionsAdapter(new ArrayList<>(), this, getContext());
+        binding.rvAnswerOptions.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.rvAnswerOptions.setAdapter(challengeOptionsAdapter);
+        setUpAnswerItem(mChallenge.getAnswers());
+        return binding.getRoot();
     }
 
     @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
+    protected void setUp(View view) {}
+
+    @Override
+    public void onClick(int position) {
+        onUserAnswer(answersItems.get(position).isIsCorrect(), mChallenge.getChallengeStar());
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    public void setUpAnswerItem(List<AnswersItem> answersItems) {
+        challengeOptionsAdapter.addAll(answersItems);
+        this.answersItems = answersItems;
     }
 }

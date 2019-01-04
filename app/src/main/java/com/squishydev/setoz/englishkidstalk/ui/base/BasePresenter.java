@@ -115,7 +115,7 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
                     getMvpView().onError("Bad Request");
                     break;
                 default:
-                    getMvpView().onError(apiError.getMessage());
+                    getMvpView().onError(apiError.getMessage() + "");
             }
         } catch (JsonSyntaxException | NullPointerException e) {
             Log.e(TAG, "handleApiError", e);
