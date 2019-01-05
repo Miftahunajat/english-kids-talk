@@ -12,11 +12,24 @@ This repository contains the source code of English Kids Talk android applicatio
 
 ## Architecture Blueprint
 
-![Architecture Blue Print](https://camo.githubusercontent.com/b6d28b8dca9127b5cf6cc5ebba7f0099c53946ab/68747470733a2f2f6a616e69736861722e6769746875622e696f2f696d616765732f6d76702d6170702d706963732f6d76702d617263682e706e67)
+<p align="center">
+<img src="https://camo.githubusercontent.com/b6d28b8dca9127b5cf6cc5ebba7f0099c53946ab/68747470733a2f2f6a616e69736861722e6769746875622e696f2f696d616765732f6d76702d6170702d706963732f6d76702d617263682e706e67" width="750">
+</p>
 
 English Kids Talk uses [Model View Presenter](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter) : as base of Design Pattern Application
 
-## Project Structure
+## English Kids Talk Structure
+<p align="center">
+<img src="https://github.com/bossyahrul/EnglishKidsTalkAPI/blob/master/Architecture%20System.png" width="750">
+</p>
+
+### Related Project
+
+English Kids Talk Related Project:
+
+1. [English Kids Talk Dashboard Admin Page](https://github.com/ckmd/EnglishKidsTalkDashboard) - Admin page for English Kids Talk to managing content and managing user.
+2. [English Kids Talk Landing Page](https://github.com/ckmd/EnglishKidsTalkLanding) - The front Landing page of english kids talk.
+3. [English Kids Talk API Page](https://github.com/bossyahrul/EnglishKidsTalkAPI) - The API Gateway for english kids talk application
 
 #### The app has following packages:
 1. **data**: It contains all the data accessing and manipulating components.
